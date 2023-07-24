@@ -1,0 +1,43 @@
+button {
+  font-family: "Roboto";
+  letter-spacing: normal;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border-radius: 5px;
+  border: none;
+  box-sizing: content-box;
+  font-weight: bold;
+  cursor: pointer;
+  transition: ease-in-out 0.2s all;
+}
+
+.button-primary {
+  background-color: #782CBF;
+  color: #F3EFF5;
+}
+.button-primary:hover {
+  background-color: #9864c9;
+}
+.button-primary:active {
+  background-color: #782CBF;
+  box-shadow: inset black 0 0 5px;
+}
+
+.button-secondary {
+  background-color: #343137;
+  color: #F3EFF5;
+  border: 2px #782CBF solid;
+}
+.button-secondary:hover {
+  background-color: #421969;
+  color: #F3EFF5;
+  border: 2px #F3EFF5 solid;
+}
+.button-secondary:active {
+  background-color: #343137;
+  box-shadow: inset black 0 0 5px;
+  color: #782CBF;
+  border: 2px #782CBF solid;
+}/*# sourceMappingURL=buttons.css.map */

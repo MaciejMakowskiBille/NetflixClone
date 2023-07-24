@@ -1,11 +1,11 @@
+import Home from "./components/home"
 import './style/style.css'
+
 function App() {
 
   return (
     <>
-      <div className="home">
-
-      </div>
+      <Home></Home>
     </>
   )
 }

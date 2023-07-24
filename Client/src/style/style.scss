@@ -1,12 +1,11 @@
+@import 'home.scss';
+@import 'colors.scss';
+@import 'buttons.scss';
+@import './fonts.scss';
+
 body{
+    font-family: 'Roboto';
+    color:$whiteText;
     margin: 0;
     padding: 0;
-}
-.home{
-    background-image: url('../imgs//theme/Background.png');
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 100vh;
-    width: 100vw;
 }
