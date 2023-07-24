@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "series",
+  "collectionName": "episodes",
   "info": {
-    "singularName": "series-s",
-    "pluralName": "series",
-    "displayName": "Series",
+    "singularName": "episode-s",
+    "pluralName": "episodes",
+    "displayName": "Episode",
     "description": ""
   },
   "options": {
@@ -15,21 +15,24 @@
     "title": {
       "type": "string"
     },
-    "description": {
-      "type": "richtext"
+    "number": {
+      "type": "integer"
     },
-    "longDescription": {
-      "type": "richtext"
+    "description": {
+      "type": "text"
     },
     "premiere": {
       "type": "date"
     },
-    "primaryImg": {
+    "duration": {
+      "type": "string"
+    },
+    "video": {
       "type": "media",
       "multiple": false,
       "required": false,
       "allowedTypes": [
-        "images"
+        "videos"
       ]
     },
     "miniImg": {
@@ -47,16 +50,6 @@
       "allowedTypes": [
         "images"
       ]
-    },
-    "categories": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::category-s.category-s"
-    },
-    "seasons": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::season-s.season-s"
     }
   }
 }
