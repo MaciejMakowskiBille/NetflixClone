@@ -1,11 +1,12 @@
 import Home from "./components/home"
+import MainPage from "./components/mainPage"
 import './style/style.css'
 
-function App() {
+const App = () => {
 
   return (
     <>
-      <Home></Home>
+      <MainPage/>
     </>
   )
 }

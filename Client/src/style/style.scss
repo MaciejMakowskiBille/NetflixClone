@@ -1,11 +1,53 @@
-@import 'home.scss';
-@import 'colors.scss';
-@import 'buttons.scss';
-@import './fonts.scss';
+@import './home';
+@import './colors';
+@import './buttons';
+@import './fonts';
+@import './navigation';
 
 body{
     font-family: 'Roboto';
     color:$whiteText;
     margin: 0;
     padding: 0;
+}
+.appBackground{
+    font-size: 32px;
+    box-sizing: border-box;
+    background: rgb(38,36,40);
+    background: linear-gradient(0deg, rgba(38,36,40,1) 0%, rgba(58,36,75,1) 100%);
+    width: 100vw;
+    min-height: 100vh;
+}
+
+.filmexLogo{
+    color:$whiteText;
+    font-family: 'Nico Moji';
+    span{
+        color:$purple;
+    }
+}
+.icon{
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    background-color: transparent;
+    cursor: pointer;
+}
+.avatar{
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    background-image: url('../imgs/avatars/av1.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+input{
+    background-color: $whiteTransparent;
+    margin: 0;
+    box-sizing: border-box;
+    border:none;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-radius: 3px;
+    height: 100%;
 }

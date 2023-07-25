@@ -1,0 +1,71 @@
+@import './colors';
+
+nav{
+    display: flex;
+    box-sizing: border-box;
+    width: 100%;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background-color: $blackTransparent;
+    justify-content: space-between;
+    border-bottom: 1px solid $purple;
+
+    .navLeft{
+        display: flex;
+        ul{
+            height: 100%;
+            font-size: medium;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            list-style-type: none;
+    
+            li{
+                margin-left: 1rem;
+                cursor: pointer;
+                transition: ease-in-out all 0.2s;
+    
+                &:hover{
+                    color: $purpleLight;
+                }
+            }
+        }
+    }
+    .navRight{
+        display: flex;
+        align-items: center;
+        gap:1rem;
+
+        .searchButton{
+            background-image: url('../imgs/icons/search.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .navMenu{
+            display: flex;
+            align-items: center;
+            gap:8px;
+
+            .menuArrow{
+                width: 16px;
+                height: 16px;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-image: url('../imgs/icons/menuArrow.png');
+            }
+        }
+        .navSearch{
+            height: 100%;
+            display: flex;
+            flex-grow:initial;
+            input{
+                background-color: $backgroundDrak;
+                color:$whiteText;
+            }
+        }
+    }
+}

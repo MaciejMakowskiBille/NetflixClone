@@ -1,5 +1,5 @@
 import '../style/style.css'
-function Home() {
+const Home = () => {
 
   return (
     <>
