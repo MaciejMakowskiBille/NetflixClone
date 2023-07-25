@@ -47,6 +47,39 @@ const CategoryRow = (props:CategoryRowPorps) => {
                     transcription={twd.transcription}
                     sezons={11}
                 />
+                <MovieTile 
+                    title={twd.title}
+                    categories={twd.categories}
+                    img={twd.img}
+                    hoverImg={twd.hoverImg}
+                    logo={twd.logo}
+                    ageCategory={twd.ageCategory}
+                    premiere={twd.premiere}
+                    transcription={twd.transcription}
+                    sezons={11}
+                />
+                <MovieTile 
+                    title={twd.title}
+                    categories={twd.categories}
+                    img={twd.img}
+                    hoverImg={twd.hoverImg}
+                    logo={twd.logo}
+                    ageCategory={twd.ageCategory}
+                    premiere={twd.premiere}
+                    transcription={twd.transcription}
+                    sezons={11}
+                />
+                <MovieTile 
+                    title={twd.title}
+                    categories={twd.categories}
+                    img={twd.img}
+                    hoverImg={twd.hoverImg}
+                    logo={twd.logo}
+                    ageCategory={twd.ageCategory}
+                    premiere={twd.premiere}
+                    transcription={twd.transcription}
+                    sezons={11}
+                />
             </div>
         </div>
     )
