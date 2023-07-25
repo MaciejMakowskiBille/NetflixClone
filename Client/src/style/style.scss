@@ -4,12 +4,14 @@
 @import './fonts';
 @import './navigation';
 @import './mainPage';
+@import './movies';
 
 body{
     font-family: 'Roboto';
     color:$whiteText;
     margin: 0;
     padding: 0;
+    font-size: medium;
 }
 .appBackground{
     font-size: 32px;

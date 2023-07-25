@@ -6,6 +6,7 @@ import geo from '../imgs/producers/geo.png'
 import star from '../imgs/producers/star.png'
 import dc from '../imgs/producers/dc.png'
 import Producer from "./producer"
+import CategoryRow from "./categoryRow"
 
 const producerList = [
     {
@@ -53,11 +54,7 @@ const MainPage = () => {
                         )
                     })}
                 </div>
-                <div className="category">
-                    <div className="title">
-                        Ostatnio popularne
-                    </div>
-                </div>
+                <CategoryRow title="Ostatnio popularne"/>
 
             </main>
         </div>
