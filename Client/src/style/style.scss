@@ -3,6 +3,7 @@
 @import './buttons';
 @import './fonts';
 @import './navigation';
+@import './mainPage';
 
 body{
     font-family: 'Roboto';
@@ -14,7 +15,7 @@ body{
     font-size: 32px;
     box-sizing: border-box;
     background: rgb(38,36,40);
-    background: linear-gradient(0deg, rgba(38,36,40,1) 0%, rgba(58,36,75,1) 100%);
+    background: linear-gradient(0deg, rgba(38,36,40,1) 0%, rgba(43,35,70,1) 100%);
     width: 100vw;
     min-height: 100vh;
 }

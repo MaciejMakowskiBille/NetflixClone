@@ -183,6 +183,68 @@ nav .navRight .navSearch input {
   color: #F3EFF5;
 }
 
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  width: 100%;
+  height: 100%;
+  gap: 2rem;
+}
+main .slider {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+}
+main .slider .slide {
+  width: 100%;
+  min-height: 40vh;
+  background-image: url("../imgs/slider/image.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+main .producersList {
+  width: 100%;
+  height: 15vh;
+  display: flex;
+  justify-content: space-between;
+}
+main .producersList .producer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15%;
+  height: 100%;
+  background-color: #343137;
+  border-radius: 10px;
+  box-shadow: inset rgba(138, 138, 138, 0.25) 0px 0px 10px;
+  cursor: pointer;
+  transition: ease-in-out all 0.3s;
+}
+main .producersList .producer:hover {
+  background-color: #782CBF;
+}
+main .producersList .producerImage {
+  width: 60%;
+  height: 10vh;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+main .category {
+  width: 100%;
+}
+main .category .title {
+  font-size: large;
+}
+
 body {
   font-family: "Roboto";
   color: #F3EFF5;
@@ -194,7 +256,7 @@ body {
   font-size: 32px;
   box-sizing: border-box;
   background: rgb(38, 36, 40);
-  background: linear-gradient(0deg, rgb(38, 36, 40) 0%, rgb(58, 36, 75) 100%);
+  background: linear-gradient(0deg, rgb(38, 36, 40) 0%, rgb(43, 35, 70) 100%);
   width: 100vw;
   min-height: 100vh;
 }
