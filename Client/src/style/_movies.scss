@@ -3,18 +3,31 @@
 .movieList{
     display: flex;
     justify-content: space-between;
+
+    .tile{
+        width: 18%;
+        height: 20vh;
+    }
 }
 
 .movieTile{
-    width: 18%;
+    width: 100%;
     height: 20vh;
     transition: all ease-in-out 0.3s;
-    position: relative;
+
 
     &:hover{
-        width: 35%;
+        width: 150%;
         height: 25vh;
+        z-index: 2;
+        transform: translateY(-50%) translateX(-15%);
         
+    }
+
+    .tileButton{
+        width: 40px;
+        height: 40px;
+        background-size: cover;
     }
 
     .movieTileImage{
@@ -23,6 +36,15 @@
         width: 100%;
         height: 100%;
         cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 3;
+
+        .playButton{
+            background-image: url('../imgs/movieTile/Play.png');
+            z-index: 5;
+        }
     }
 
     .movieTileInfo{
@@ -33,39 +55,36 @@
         background-color: $backgroundDrak;
         padding: 1rem;
 
+
+        .tileButton{
+            width: 40px;
+            height: 40px;
+            background-size: cover;
+        }
+        .favButton{
+            background-image: url('../imgs/movieTile/Favorite.png');
+        }
+        .moreButton{
+            background-image: url('../imgs/movieTile/More.png');
+        }
+
         .tileHeader{
             height: 5vh;
             display: flex;
             gap: 0.5rem;
-            font-size: small;
             align-items: center;
             justify-content: space-between;
-
-            .tileButton{
-                width: 40px;
-                height: 40px;
-                background-size: cover;
-            }
-
-            .playButton{
-                background-image: url('../imgs/movieTile/Play.png');
-            }
-            .favButton{
-                background-image: url('../imgs/movieTile/Favorite.png');
-            }
-            .moreButton{
-                background-image: url('../imgs/movieTile/More.png');
-            }
-            .infos{
-                display: flex;
-                gap:8px;
-                align-items: center;
-                text-align: start;
-            }
+        }
+        .infos{
+            display: flex;
+            gap:8px;
+            align-items: center;
+            text-align: start;
+            font-size: small;
         }
         .separator{
-            width: 10px;
-            height: 10px;
+            width: 5px;
+            height: 5px;
             background-color: $yellow;
             border-radius: 100%;
         }

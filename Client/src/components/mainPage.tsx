@@ -7,6 +7,9 @@ import star from '../imgs/producers/star.png'
 import dc from '../imgs/producers/dc.png'
 import Producer from "./producer"
 import CategoryRow from "./categoryRow"
+import small from '../imgs/testTile/mini.png'
+import hovered from '../imgs/testTile/hover.png'
+import logo from '../imgs/testTile/logo.png'
 
 const producerList = [
     {
@@ -35,6 +38,59 @@ const producerList = [
     }
 ]
 
+const list:FilmListType = [
+    {
+        title:"The Walking Dead",
+        categories:[{id:1, name:'Dramatyczny'}, {id:2,name:'Przygodowy'}, {id:3, name:"Amerykański"}],
+        img:small,
+        hoverImg:hovered,
+        logo:logo,
+        ageCategory:18,
+        premiere: new Date ("2021-12-22"),
+        transcription:true
+    },
+    {
+        title:"The Walking Dead",
+        categories:[{id:1, name:'Dramatyczny'}, {id:2,name:'Przygodowy'}, {id:3, name:"Amerykański"}],
+        img:small,
+        hoverImg:hovered,
+        logo:logo,
+        ageCategory:18,
+        premiere: new Date ("2021-12-22"),
+        transcription:true
+    },
+    {
+        title:"The Walking Dead",
+        categories:[{id:1, name:'Dramatyczny'}, {id:2,name:'Przygodowy'}, {id:3, name:"Amerykański"}],
+        img:small,
+        hoverImg:hovered,
+        logo:logo,
+        ageCategory:18,
+        premiere: new Date ("2021-12-22"),
+        transcription:true
+    },
+    {
+        title:"The Walking Dead",
+        categories:[{id:1, name:'Dramatyczny'}, {id:2,name:'Przygodowy'}, {id:3, name:"Amerykański"}],
+        img:small,
+        hoverImg:hovered,
+        logo:logo,
+        ageCategory:18,
+        premiere: new Date ("2021-12-22"),
+        transcription:true
+    },
+    {
+        title:"The Walking Dead",
+        categories:[{id:1, name:'Dramatyczny'}, {id:2,name:'Przygodowy'}, {id:3, name:"Amerykański"}],
+        img:small,
+        hoverImg:hovered,
+        logo:logo,
+        ageCategory:18,
+        premiere: new Date ("2021-12-22"),
+        transcription:true
+    },
+]
+
 const MainPage = () => {
 
 
@@ -54,7 +110,7 @@ const MainPage = () => {
                         )
                     })}
                 </div>
-                <CategoryRow title="Ostatnio popularne"/>
+                <CategoryRow title="Ostatnio popularne" moviesList={list}/>
 
             </main>
         </div>

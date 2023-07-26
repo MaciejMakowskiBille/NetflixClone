@@ -5,12 +5,12 @@ const Home = () => {
     <>
       <div className="home">
         <main>
-          <nav>
+          <div className='homeHeader'>
             <div className='title'>
                 Filme<text>x</text>
             </div>
             <button className='button-primary'>Zaloguj się</button>
-          </nav>
+          </div>
           <div className='centeredContent'>
             <h1>
                 Filmy seriale i wiele więcej bez ograniczeń

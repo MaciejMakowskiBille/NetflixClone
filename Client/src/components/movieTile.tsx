@@ -1,11 +1,9 @@
 import { useState } from "react"
-import PlayButtonIco from '../imgs/movieTile/Play.png'
-import FavButtonIco from '../imgs/movieTile/Favorite.png'
-import MoreButtonIco from '../imgs/movieTile/More.png'
+import {motion} from 'framer-motion'
 
 type MovieTileProps = {
     title:string,
-    categories:string[]
+    categories:Category[]
     img:string,
     hoverImg:string,
     logo:string,
@@ -33,6 +31,7 @@ const MovieTile = (props:MovieTileProps) => {
 
 
     return(
+        <div className="tile">
         <div className="movieTile"
             onMouseOver={handleMouseOver}
             onMouseLeave={handleMouseLeave}
@@ -41,14 +40,19 @@ const MovieTile = (props:MovieTileProps) => {
             <div 
                 className="movieTileImage" 
                 style={{backgroundImage:`url(${tileImage})`}} 
-            />
+            >
+                {isMouseOverTile && (
+                    <div className="icon tileButton playButton"/>
+                )}
+            </div>
             {isMouseOverTile && (
-                <div className="movieTileInfo">
+                <motion.div 
+                className="movieTileInfo" 
+                initial={{y:'-100%', opacity:0}}
+                whileInView={{y:0, opacity:1}}
+                transition={{duration:0.5}}
+                >
                     <div className="tileHeader">
-                        <div className="infos">
-                        <div className="icon tileButton playButton"/>
-                        <div className="icon tileButton favButton"/>
-                        </div>
                         <div className="infos">
                             {props.ageCategory}+
                             <div className="separator"/>
@@ -69,7 +73,10 @@ const MovieTile = (props:MovieTileProps) => {
                                 </>
                             )}
                         </div>
-                        <div className="icon tileButton moreButton"/>
+                        <div className="infos">
+                            <div className="icon tileButton favButton"/>
+                            <div className="icon tileButton moreButton"/>
+                        </div>
                     </div>
 
                     <div className="movieLogo" style={{backgroundImage:`url(${props.logo})`}}/>
@@ -77,7 +84,7 @@ const MovieTile = (props:MovieTileProps) => {
                         {props.categories.map((category, index) => {
                             return(
                                 <div key={index} className="movieCategory">
-                                    {category}
+                                    {category.name}
                                     {index < props.categories.length-1 && (
                                         <div className="separator"/>
                                     )}
@@ -85,8 +92,9 @@ const MovieTile = (props:MovieTileProps) => {
                             )
                         })}
                     </div>
-                </div>
+                </motion.div>
             )}
+        </div>
         </div>
     )
 }
