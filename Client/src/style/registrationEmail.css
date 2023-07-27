@@ -1,0 +1,75 @@
+.card {
+  width: 400px;
+  /* height: 600px; */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  padding: 16px;
+  border: 1px solid #F3EFF5;
+  border-radius: 4px;
+}
+.card__btn {
+  width: 370px;
+  height: 50px;
+  color: #F3EFF5;
+  background-color: #782CBF;
+  border: none;
+  border-radius: 4px;
+  box-shadow: none;
+  /* opacity: 1; */
+}
+.card__text {
+  color: #F3EFF5;
+}
+
+::-moz-placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #782CBF;
+  opacity: 1; /* Firefox */
+}
+
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #782CBF;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #782CBF;
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: #F3EFF5;
+}
+
+.wrapper {
+  width: 400px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
+}
+.wrapper__text-input {
+  padding: 10px 16px;
+  color: white;
+  background-color: inherit;
+  border: 3px solid white;
+  border-radius: 4px;
+}
+.wrapper__header {
+  color: white;
+}
+.wrapper__header h1 {
+  font-size: 24px;
+  font-weight: bold;
+}
+.wrapper__header h4 {
+  font-size: 13px;
+}
+.wrapper__text {
+  color: white;
+}/*# sourceMappingURL=registrationEmail.css.map */

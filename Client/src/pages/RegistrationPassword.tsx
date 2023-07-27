@@ -1,5 +1,5 @@
 import "../css/registration.css";
-import Card from "../components/Card";
+// import Card from "../components/Card";
 
 function RegistrationEmail() {
   return (

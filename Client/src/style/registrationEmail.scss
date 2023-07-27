@@ -1,0 +1,54 @@
+@import "./colors";
+@import "./card";
+
+// place holder style
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: $purple;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: $purple;
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: $whiteText;
+}
+
+.wrapper {
+  width: 400px;
+  height: 100%;
+  // position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
+
+  &__text-input {
+    padding: 10px 16px;
+    color: white;
+    background-color: inherit;
+    border: 3px solid white;
+    border-radius: 4px;
+  }
+
+  &__header {
+    color: white;
+
+    h1 {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    h4 {
+      font-size: 13px;
+    }
+  }
+
+  &__text {
+    color: white;
+  }
+}
