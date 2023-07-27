@@ -1,11 +1,10 @@
-import "./Registration.css";
-import Card from "./Card";
+import "./css/registration.css";
+import RegistrationEmail from "./pages/RegistrationEmail";
 
 function App() {
   return (
     <>
-      <div className="background-img"></div>
-      <Card></Card>
+      <RegistrationEmail></RegistrationEmail>
     </>
   );
 }
