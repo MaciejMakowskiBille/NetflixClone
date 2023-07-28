@@ -56,18 +56,6 @@
         padding: 1rem;
 
 
-        .tileButton{
-            width: 40px;
-            height: 40px;
-            background-size: cover;
-        }
-        .favButton{
-            background-image: url('../imgs/movieTile/Favorite.png');
-        }
-        .moreButton{
-            background-image: url('../imgs/movieTile/More.png');
-        }
-
         .tileHeader{
             height: 5vh;
             display: flex;
@@ -81,12 +69,6 @@
             align-items: center;
             text-align: start;
             font-size: small;
-        }
-        .separator{
-            width: 5px;
-            height: 5px;
-            background-color: $yellow;
-            border-radius: 100%;
         }
         .movieLogo{
             background-size: contain;

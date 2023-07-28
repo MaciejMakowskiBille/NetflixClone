@@ -15,6 +15,8 @@ type MovieDataType = {
     categories:Category[]
     cast:Actor[]
     director:Director
+    ageCategory:number
+    transcription:boolean
 }
 type Category = {
     id:number

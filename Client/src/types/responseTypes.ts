@@ -13,6 +13,8 @@ type MovieResponseType = {
             categories:{data:CategoryResponseType[]}
             cast:{data: ActorResponseType[]}
             director:{data: DirectorResponseType}
+            ageCategory:number
+            transcription:boolean
 
             createdAt:string
             updatedAt:string

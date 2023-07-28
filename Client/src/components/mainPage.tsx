@@ -94,7 +94,6 @@ const list:FilmListType = [
 
 const MainPage = () => {
 
-    getFilms()
     return(
         <>
         <div className="appBackground">

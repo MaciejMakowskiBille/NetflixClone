@@ -42,7 +42,7 @@ const MovieTile = (props:MovieTileProps) => {
                 style={{backgroundImage:`url(${tileImage})`}} 
             >
                 {isMouseOverTile && (
-                    <div className="icon tileButton playButton"/>
+                    <div className="icon iconButton playButton"/>
                 )}
             </div>
             {isMouseOverTile && (
@@ -74,8 +74,8 @@ const MovieTile = (props:MovieTileProps) => {
                             )}
                         </div>
                         <div className="infos">
-                            <div className="icon tileButton favButton"/>
-                            <div className="icon tileButton moreButton"/>
+                            <div className="icon iconButton favButton"/>
+                            <div className="icon iconButton moreButton"/>
                         </div>
                     </div>
 

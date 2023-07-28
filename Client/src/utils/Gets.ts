@@ -1,6 +1,5 @@
 import axios from "axios";
-const apiURL = "http://localhost:1337/api/"
-
+import { apiURL } from "./links";
 export const getFilms = async () => {
     axios.get(apiURL + "films?populate=deep").then((response) => {
         console.log(response.data);
@@ -11,6 +10,7 @@ export const getOneFilm = async (id:number):Promise<MovieDataType | null> => {
   const response = await axios.get(apiURL + `films?populate=deep&?id=${id}`)
   if(response && response.data.data[0]){
       const data:MovieResponseType = response.data.data[0]
+      console.log(data)
       const clearedCast:Actor[] = data.attributes.cast.data.map((actor) => {
         return (
           {
@@ -53,6 +53,8 @@ export const getOneFilm = async (id:number):Promise<MovieDataType | null> => {
         categories:clearedCategory,
         cast:clearedCast,
         director:clearedDirector,
+        ageCategory:data.attributes.ageCategory,
+        transcription:data.attributes.transcription
       }
       return clearedData
   }else{

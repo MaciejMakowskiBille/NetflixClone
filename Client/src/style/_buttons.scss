@@ -42,3 +42,18 @@ button{
 
     }
 }
+.iconButton{
+    width: 40px;
+    height: 40px;
+    background-size: cover;
+}
+.favButton{
+    background-image: url('../imgs/movieTile/Favorite.png');
+}
+.moreButton{
+    background-image: url('../imgs/movieTile/More.png');
+}
+.playButton{
+    background-image: url('../imgs/movieTile/Play.png');
+    z-index: 5;
+}
