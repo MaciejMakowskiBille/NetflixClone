@@ -24,9 +24,6 @@
     "premiere": {
       "type": "date"
     },
-    "duration": {
-      "type": "string"
-    },
     "video": {
       "type": "media",
       "multiple": false,
@@ -50,6 +47,14 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "duration": {
+      "type": "integer"
+    },
+    "director": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::director.director"
     }
   }
 }

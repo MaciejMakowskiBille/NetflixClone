@@ -10,6 +10,7 @@ import CategoryRow from "./categoryRow"
 import small from '../imgs/testTile/mini.png'
 import hovered from '../imgs/testTile/hover.png'
 import logo from '../imgs/testTile/logo.png'
+import { getFilms } from "../utils/Gets"
 
 const producerList = [
     {
@@ -93,7 +94,7 @@ const list:FilmListType = [
 
 const MainPage = () => {
 
-
+    getFilms()
     return(
         <>
         <div className="appBackground">

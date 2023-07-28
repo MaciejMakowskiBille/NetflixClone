@@ -64,6 +64,19 @@
       "target": "plugin::users-permissions.role",
       "inversedBy": "users",
       "configurable": false
+    },
+    "PhoneNumber": {
+      "type": "biginteger"
+    },
+    "favoriteFilms": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::film-s.film-s"
+    },
+    "favoriteSeries": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::series-s.series-s"
     }
   }
 }

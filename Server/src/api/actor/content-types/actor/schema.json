@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "actor_p",
+  "info": {
+    "singularName": "actor",
+    "pluralName": "actor-p",
+    "displayName": "Actor",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "birthDate": {
+      "type": "date"
+    }
+  }
+}
