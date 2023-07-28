@@ -8,8 +8,3 @@ type FilmListType={
     premiere: Date,
     transcription:boolean
 }[]
-
-type Category = {
-    id:number,
-    name:string
-}
