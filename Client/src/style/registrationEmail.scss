@@ -28,19 +28,11 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 30px;
-
-  &__text-input {
-    padding: 10px 16px;
-    color: white;
-    background-color: inherit;
-    border: 3px solid white;
-    border-radius: 4px;
-  }
+  gap: 25px;
 
   &__header {
     color: white;
-
+    margin-bottom: 10px;
     h1 {
       font-size: 24px;
       font-weight: bold;
@@ -53,27 +45,15 @@
 
   &__text {
     color: white;
+    margin-bottom: 10px;
   }
 
-  // &__checkbox input[type="checkbox"] {
-  //   -webkit-appearance: none;
-  //   appearance: none;
-  //   // color: $whiteText;
-  //   cursor: pointer;
-  //   display: inline-block;
-  //   width: 30px;
-  //   height: 30px;
-  //   border-radius: 0.15em;
-  //   // margin-right: 0.5em;
-  //   border: 0.15em solid $whiteText;
-  //   outline: none;
-  // }
-
-  // &__checkbox label {
-  //   color: $whiteText;
-  //   cursor: pointer;
-  //   font-size: 13px;
-  //   display: flex;
-  //   justify-content: left;
-  // }
+  &__text-input {
+    padding: 10px 16px;
+    height: 50px;
+    color: white;
+    background-color: inherit;
+    border: 3px solid white;
+    border-radius: 4px;
+  }
 }

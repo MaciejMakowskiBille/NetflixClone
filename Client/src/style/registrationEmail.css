@@ -1,4 +1,4 @@
-.card {
+.border-text {
   width: 400px;
   /* height: 600px; */
   display: flex;
@@ -9,22 +9,18 @@
   border: 1px solid #f3eff5;
   border-radius: 4px;
 }
-.card__btn {
-  width: 370px;
+.border-text__btn {
   height: 50px;
   color: #f3eff5;
   background-color: #782cbf;
   border: none;
   border-radius: 4px;
   box-shadow: none;
+  font-weight: bold;
   /* opacity: 1; */
 }
-.card__btn:hover {
-  background-color: #f3eff5;
-  color: #782cbf;
-}
-.card__text {
-  color: #f3eff5;
+.border-text__btn:hover {
+  background-color: #9864c9;
 }
 
 .black-background {
@@ -90,17 +86,11 @@ input[type=checkbox] {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 30px;
-}
-.wrapper__text-input {
-  padding: 10px 16px;
-  color: white;
-  background-color: inherit;
-  border: 3px solid white;
-  border-radius: 4px;
+  gap: 25px;
 }
 .wrapper__header {
   color: white;
+  margin-bottom: 10px;
 }
 .wrapper__header h1 {
   font-size: 24px;
@@ -111,4 +101,13 @@ input[type=checkbox] {
 }
 .wrapper__text {
   color: white;
+  margin-bottom: 10px;
+}
+.wrapper__text-input {
+  padding: 10px 16px;
+  height: 50px;
+  color: white;
+  background-color: inherit;
+  border: 3px solid white;
+  border-radius: 4px;
 }/*# sourceMappingURL=registrationEmail.css.map */

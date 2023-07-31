@@ -1,24 +1,29 @@
-import "../css/registration.css";
-// import Card from "../components/Card";
+import "../style/registrationPassword.css";
 
-function RegistrationEmail() {
+function RegistrationPassword() {
   return (
     <>
       <div className="black-background">
         <div className="wrapper">
-          <h4>Krok 1 z 4</h4>
-          <h1 className="wrapper__header">Wprowadź Twój Adres Email</h1>
-
+          <div className="wrapper__header">
+            <h4>Krok 1 z 4</h4>
+            <h1>Wprowadź Twój Adres Email</h1>
+          </div>
+          <p className="wrapper__text">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, nam?
+            Quidem odit neque repellendus quae porro adipisci obcaecati nostrum
+            amet!
+          </p>
           <input
             className="wrapper__text-input"
             type="text"
             placeholder="hasło"
           ></input>
-          <button className="card__btn">Kontynułuj</button>
+          <button className="wrapper__btn">Kontynułuj</button>
         </div>
       </div>
     </>
   );
 }
 
-export default RegistrationEmail;
+export default RegistrationPassword;
