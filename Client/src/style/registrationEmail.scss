@@ -1,16 +1,19 @@
 @import "./colors";
 @import "./card";
+@import "./background";
+@import "./fonts";
+@import "./checkbox";
 
 // place holder style
 ::placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: $purple;
+  color: $whiteText;
   opacity: 1; /* Firefox */
 }
 
 :-ms-input-placeholder {
   /* Internet Explorer 10-11 */
-  color: $purple;
+  color: $whiteText;
 }
 
 ::-ms-input-placeholder {
@@ -51,4 +54,26 @@
   &__text {
     color: white;
   }
+
+  // &__checkbox input[type="checkbox"] {
+  //   -webkit-appearance: none;
+  //   appearance: none;
+  //   // color: $whiteText;
+  //   cursor: pointer;
+  //   display: inline-block;
+  //   width: 30px;
+  //   height: 30px;
+  //   border-radius: 0.15em;
+  //   // margin-right: 0.5em;
+  //   border: 0.15em solid $whiteText;
+  //   outline: none;
+  // }
+
+  // &__checkbox label {
+  //   color: $whiteText;
+  //   cursor: pointer;
+  //   font-size: 13px;
+  //   display: flex;
+  //   justify-content: left;
+  // }
 }

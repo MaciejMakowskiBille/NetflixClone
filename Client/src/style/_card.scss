@@ -20,6 +20,11 @@
     /* opacity: 1; */
   }
 
+  &__btn:hover {
+    background-color: $whiteText;
+    color: $purple;
+  }
+
   &__text {
     color: $whiteText;
   }

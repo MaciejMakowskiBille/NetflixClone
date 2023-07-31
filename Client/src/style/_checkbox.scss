@@ -1,0 +1,38 @@
+// input.wrapper__checkbox {
+//   -webkit-appearance: none;
+//   appearance: none;
+//   // color: $whiteText;
+//   cursor: pointer;
+//   display: inline-block;
+//   width: 30px;
+//   height: 30px;
+//   border-radius: 0.15em;
+//   // margin-right: 0.5em;
+//   border: 0.15em solid $whiteText;
+//   outline: none;
+// }
+input[type="checkbox"] {
+  /* Double-sized Checkboxes */
+  -ms-transform: scale(1.2); /* IE */
+  -moz-transform: scale(1.2); /* FF */
+  -webkit-transform: scale(1.2); /* Safari and Chrome */
+  -o-transform: scale(1.2); /* Opera */
+  transform: scale(1.2);
+  padding: 10px;
+  margin-right: 10px;
+}
+
+.checkbox-text {
+  /* Checkbox text */
+  font-size: 13px;
+  color: $grayText;
+  display: inline-block;
+  text-align: left;
+}
+
+.wrapper__checkbox {
+  display: flex;
+  flex-direction: row;
+  //   align-items: center;
+  justify-content: center;
+}

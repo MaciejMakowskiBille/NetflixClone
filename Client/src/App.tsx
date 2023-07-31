@@ -1,4 +1,4 @@
-import "./css/registration.css";
+// import "./css/registration.css";
 import RegistrationEmail from "./pages/RegistrationEmail";
 
 function App() {

@@ -20,7 +20,14 @@ function RegistrationEmail() {
             type="text"
             placeholder="email"
           ></input>
-          {/* <input type="checkbox"></input> */}
+          <label className="wrapper__checkbox">
+            <input type="checkbox"></input>
+            <span className="checkbox-text">
+              Zgadzam się na otrzymywanie specjalnych ofert i informacji
+              dotyczących produktów FilmeX.
+            </span>
+          </label>
+
           <Card></Card>
         </div>
       </div>
