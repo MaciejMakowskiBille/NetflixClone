@@ -1,0 +1,68 @@
+@import "./colors";
+@import "./background";
+@import "./fonts";
+@import "./btn";
+@import "./text-input";
+
+.wrapper {
+  width: 400px;
+  height: 100%;
+  // position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 25px;
+  color: $whiteText;
+
+  &__header {
+    color: inherit;
+    margin-bottom: 10px;
+    h1 {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    h4 {
+      font-size: 13px;
+    }
+  }
+
+  &__text {
+    color: inherit;
+    margin-bottom: 10px;
+  }
+
+  &__text-input {
+    padding: 10px 16px;
+    height: 50px;
+    color: inherit;
+    background-color: inherit;
+    border: 3px solid $whiteText;
+    border-radius: 4px;
+  }
+
+  .payments-offer {
+    width: 160px;
+    height: 65px;
+    border: 1px solid $purple;
+    border-radius: 4px;
+    padding: 0 13px;
+    color: $purple;
+    display: flex;
+
+    // flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+
+    h3 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 13px;
+    }
+  }
+
+  @include btn;
+}

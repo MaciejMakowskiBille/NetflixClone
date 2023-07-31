@@ -2,7 +2,6 @@
 @import "./background";
 @import "./fonts";
 @import "./btn";
-@import "./text-input";
 
 .wrapper {
   width: 400px;
@@ -27,12 +26,6 @@
   }
 
   &__text-box {
-    width: 400px;
-    /* height: 600px; */
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    align-items: center;
     padding: 16px;
     border: 1px solid $whiteText;
     border-radius: 4px;

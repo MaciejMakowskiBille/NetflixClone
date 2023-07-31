@@ -12,27 +12,6 @@
   font-family: "Roboto";
   src: url(./fonts/roboto/Roboto-Regular.ttf);
 }
-::-moz-placeholder {
-  /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: #f3eff5;
-  opacity: 1; /* Firefox */
-}
-::placeholder {
-  /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: #f3eff5;
-  opacity: 1; /* Firefox */
-}
-
-:-ms-input-placeholder {
-  /* Internet Explorer 10-11 */
-  color: #f3eff5;
-}
-
-::-ms-input-placeholder {
-  /* Microsoft Edge */
-  color: #f3eff5;
-}
-
 .wrapper {
   width: 400px;
   height: 100%;
@@ -53,12 +32,6 @@
   font-size: 13px;
 }
 .wrapper__text-box {
-  width: 400px;
-  /* height: 600px; */
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  align-items: center;
   padding: 16px;
   border: 1px solid #f3eff5;
   border-radius: 4px;
