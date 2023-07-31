@@ -2,9 +2,12 @@ import {useState, useEffect} from 'react'
 import { getOneFilm } from '../utils/Gets'
 import Navigation from './nav'
 import { serverURL } from '../utils/links'
+import MoviePageNav from './moviePageNav'
+import MoviePageAdds from './moviePageAdds'
 const MoviePage = () => {
     const [movieData, setMovieData] = useState<MovieDataType | null>(null)
     const [isLoading, setIsLoading] = useState(true)
+    const [active, setActive] = useState('rec')
     useEffect(() => {
         getOneFilm(1).then((res) => {
             setMovieData(prev => prev = res)
@@ -13,12 +16,11 @@ const MoviePage = () => {
         })
     },[])
     return(
-        <div>
-                    <>
+        <>
         <div className="appBackground">
             <Navigation/>
-            <main>
                 {!isLoading && movieData && (
+                    <main>
                     <div className='movieInfoMain'>
                     <div className='primaryImage' style={{backgroundImage:`url(${serverURL + movieData.primaryImg})`}}/>
                     <div className='content'>
@@ -31,7 +33,7 @@ const MoviePage = () => {
                                 )}
                                 {movieData.premiere.substring(0,4)}
                                     <div className='separator'/>
-                                {Number(movieData.duration/60).toFixed()} godz
+                                {Number(movieData.duration/60).toFixed()} godz. 
                                 {movieData.duration%60}min
                             </div>
                             <div className='bottom'>
@@ -56,11 +58,25 @@ const MoviePage = () => {
                         </div>
                     </div>
                 </div>
+                    <MoviePageNav 
+                        active={active} 
+                        setActive={setActive}
+                    />
+                    <MoviePageAdds
+                        active={active}
+                        title={movieData.title}
+                        cast={movieData.cast}
+                        longDesc={movieData.longDescription}
+                        premiere={movieData.premiere}
+                        director={movieData.director}
+                        ageCategory={movieData.ageCategory}
+                        duration={movieData.duration}
+                        categories={movieData.categories}
+                     />
+                </main>
                 )}
-            </main>
         </div>
         </>
-        </div>
     )
 }
 
