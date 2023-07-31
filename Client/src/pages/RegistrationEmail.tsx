@@ -1,4 +1,6 @@
 import "../style/registrationEmail.css";
+// import Card from "../components/Card";
+// import TextBox from "../components/TextBox";
 import Card from "../components/Card";
 
 function RegistrationEmail() {
@@ -8,7 +10,7 @@ function RegistrationEmail() {
         <div className="wrapper">
           <div className="wrapper__header">
             <h4>Krok 1 z 4</h4>
-            <h1>Wprowadź Twój Adres Email</h1>
+            <h1>Wprowadź twój adres email</h1>
           </div>
           <p className="wrapper__text">
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Provident,
@@ -27,8 +29,7 @@ function RegistrationEmail() {
               dotyczących produktów FilmeX.
             </span>
           </label>
-
-          <Card></Card>
+          <Card />
         </div>
       </div>
     </>

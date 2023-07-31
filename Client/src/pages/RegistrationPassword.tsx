@@ -6,8 +6,8 @@ function RegistrationPassword() {
       <div className="black-background">
         <div className="wrapper">
           <div className="wrapper__header">
-            <h4>Krok 1 z 4</h4>
-            <h1>Wprowadź Twój Adres Email</h1>
+            <h4>Krok 2 z 4</h4>
+            <h1>Wprowadź hasło</h1>
           </div>
           <p className="wrapper__text">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, nam?
@@ -19,7 +19,7 @@ function RegistrationPassword() {
             type="text"
             placeholder="hasło"
           ></input>
-          <button className="wrapper__btn">Kontynułuj</button>
+          <button className="wrapper__btn">Zaloguj</button>
         </div>
       </div>
     </>

@@ -1,6 +1,6 @@
-@import "./btn";
-
-.card {
+.text-box {
+  width: 400px;
+  /* height: 600px; */
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -8,12 +8,4 @@
   padding: 16px;
   border: 1px solid $whiteText;
   border-radius: 4px;
-  color: inherit;
-  &__btn {
-    @include btn;
-  }
-
-  &__btn:hover {
-    background-color: $purpleLight;
-  }
 }

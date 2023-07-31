@@ -1,6 +1,6 @@
 export default function Card() {
   return (
-    <div className="text-box">
+    <div className="card">
       <p>
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolore optio
         eaque repudiandae consequuntur natus enim tenetur cupiditate est et
@@ -9,7 +9,7 @@ export default function Card() {
         repellat voluptas harum et error eum, atque omnis similique consequatur
         officiis consequuntur.
       </p>
-      <button className="text-box__btn">Kontynułuj</button>
+      <button className="wrapper__btn">Kontynułuj</button>
     </div>
   );
 }
