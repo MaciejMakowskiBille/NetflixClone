@@ -4,17 +4,21 @@ import Navigation from './nav'
 import { serverURL } from '../utils/links'
 import MoviePageNav from './moviePageNav'
 import MoviePageAdds from './moviePageAdds'
+import { useParams, useLocation } from 'react-router-dom'
 const MoviePage = () => {
     const [movieData, setMovieData] = useState<MovieDataType | null>(null)
     const [isLoading, setIsLoading] = useState(true)
     const [active, setActive] = useState('rec')
+    const location = useLocation()
+    const {movieId} = useParams()
     useEffect(() => {
-        getOneFilm(1).then((res) => {
-            setMovieData(prev => prev = res)
-            console.log(movieData)
-            setIsLoading(prev => prev = false)
-        })
-    },[])
+        if(movieId){
+            getOneFilm(+movieId).then((res) => {
+                setMovieData(prev => prev = res)
+                setIsLoading(prev => prev = false)
+            })
+        }
+    },[movieId])
     return(
         <>
         <div className="appBackground">

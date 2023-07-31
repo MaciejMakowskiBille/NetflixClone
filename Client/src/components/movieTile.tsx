@@ -1,16 +1,19 @@
 import { useState } from "react"
 import {motion} from 'framer-motion'
+import { serverURL } from "../utils/links"
+import { useNavigate } from "react-router-dom"
 
 type MovieTileProps = {
+    id:number
     title:string,
     categories:Category[]
     img:string,
     hoverImg:string,
     logo:string,
     ageCategory:number,
-    premiere:Date,
+    premiere:string,
     transcription?:boolean,
-    duration?:string,
+    duration?:number,
     sezons?:number
 
 
@@ -19,6 +22,7 @@ type MovieTileProps = {
 const MovieTile = (props:MovieTileProps) => {
     const [tileImage, setTileImage] = useState(props.img)
     const [isMouseOverTile, setIsMouseOverTile] = useState(false)
+    const navigate = useNavigate()
 
     const handleMouseOver = () => {
         setTileImage(prev => prev = props.hoverImg)
@@ -39,7 +43,7 @@ const MovieTile = (props:MovieTileProps) => {
 
             <div 
                 className="movieTileImage" 
-                style={{backgroundImage:`url(${tileImage})`}} 
+                style={{backgroundImage:`url(${serverURL+tileImage})`}} 
             >
                 {isMouseOverTile && (
                     <div className="icon iconButton playButton"/>
@@ -53,17 +57,18 @@ const MovieTile = (props:MovieTileProps) => {
                 transition={{duration:0.5}}
                 >
                     <div className="tileHeader">
-                        <div className="infos">
+                    <div className="infos">
                             {props.ageCategory}+
                             <div className="separator"/>
                             {props.transcription && (
                                 <>CC <div className="separator"/></>
                             )}
-                            {props.premiere.getFullYear()}
+                            {props.premiere.substring(0,4)}
                             {props.duration && (
                                 <>
                                     <div className="separator"/>
-                                    {props.duration} 
+                                    {Number(props.duration/60).toFixed()} godz.
+                                    {props.duration%60}min
                                 </>
                             )}
                             {props.sezons && (
@@ -72,14 +77,14 @@ const MovieTile = (props:MovieTileProps) => {
                                     Sezony: {props.sezons}
                                 </>
                             )}
-                        </div>
-                        <div className="infos">
+                    </div>
+                    </div>
+                    <div className="infos middle">
+                            <div className="movieLogo" style={{backgroundImage:`url(${serverURL + props.logo})`}}/>
                             <div className="icon iconButton favButton"/>
-                            <div className="icon iconButton moreButton"/>
-                        </div>
+                            <div className="icon iconButton moreButton" onClick={() => navigate(`/movie/${props.id}`)}/>
                     </div>
 
-                    <div className="movieLogo" style={{backgroundImage:`url(${props.logo})`}}/>
                     <div className="categories">
                         {props.categories.map((category, index) => {
                             return(

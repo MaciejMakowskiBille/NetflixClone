@@ -1,6 +1,8 @@
+import {useState, useEffect} from 'react'
 import { serverURL } from "../utils/links"
 import ActorComponent from "./actorComponent"
 import MovieTile from "./movieTile"
+import { getFilms } from '../utils/Gets'
 
 type MoviePageAddsProps = {
     active:string
@@ -17,10 +19,38 @@ type MoviePageAddsProps = {
 
 const MoviePageAdds = (props:MoviePageAddsProps) => {
 
+    const [moviesData, setMoviesData] = useState<MovieDataType[] | null>(null)
+    const [isLoading, setIsLoading] = useState(true)
+    useEffect(() => {
+        getFilms().then((res) => {
+            setMoviesData(prev => prev = res)
+            setIsLoading(prev => prev = false)
+        })
+    },[])
+
     return(
         <div className="movieAdds">
             {props.active === 'rec' && (
-                <div>
+                <div className='movieList'>
+                    {!isLoading && moviesData && (
+                        moviesData.map(movie => {
+                            return(
+                                <MovieTile
+                                    key={movie.id}
+                                    id={movie.id}
+                                    title={movie.title}
+                                    categories={movie.categories}
+                                    img={movie.miniImg}
+                                    hoverImg={movie.hoverImg}
+                                    logo={movie.logo}
+                                    ageCategory={movie.ageCategory}
+                                    premiere={movie.premiere}
+                                    duration={movie.duration}
+                                    transcription={movie.transcription}
+                                />
+                            )
+                        })
+                    )}
                 </div>
             )}
             {props.active === 'det' && (
