@@ -1,5 +1,6 @@
 import PaymentsOffer from "../components/PaymentsOffer";
 import "../style/style.css";
+import PaymentsSwitch from "./PaymentsSwitch";
 
 function RegistrationPayments() {
   return (
@@ -27,6 +28,7 @@ function RegistrationPayments() {
             />
           </div>
 
+          <PaymentsSwitch />
           <button className="button-primary">Zgadzam się</button>
         </div>
       </div>

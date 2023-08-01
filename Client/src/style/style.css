@@ -163,12 +163,30 @@ input[type=checkbox] {
 .payments-offer .circle-filled {
   width: 16px;
   height: 16px;
+  display: none;
   position: absolute;
+}
+.payments-offer:hover .circle-filled {
+  display: inline;
+}
+.payments-offer:hover {
+  border: 1px solid #9864c9;
+}
+.payments-offer:active {
+  box-shadow: inset rgb(173, 78, 218) 0 0 5px;
 }
 
 .payments-offer--primary {
   background-color: #782CBF;
+}
+.payments-offer--primary:hover {
   border: none;
+  background-color: #9864c9;
+}
+.payments-offer--primary:active {
+  border: none;
+  background-color: #782CBF;
+  box-shadow: inset rgb(0, 0, 0) 0 0 5px;
 }
 
 * {
@@ -235,6 +253,35 @@ body {
   background-color: inherit;
   border: 3px solid #F3EFF5;
   border-radius: 4px;
+}
+
+.services {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.services .credit_card {
+  width: 41px;
+  height: 30px;
+  margin-right: 12px;
+}
+.services .paypal {
+  width: 70px;
+  height: 30px;
+}
+.services .item {
+  width: 198px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 3px solid rgba(0, 0, 0, 0);
+  padding: 4px 0;
+}
+.services .item:hover {
+  border-bottom: 3px solid #F3EFF5;
+}
+.services .item--active {
+  border-bottom: 3px solid #F3EFF5;
 }
 
 .card {

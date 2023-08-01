@@ -37,12 +37,35 @@
   .circle-filled {
     width: 16px;
     height: 16px;
-    // display: none;
+    display: none;
     position: absolute;
+  }
+
+  &:hover {
+    .circle-filled {
+      display: inline;
+    }
+  }
+
+  &:hover {
+    border: 1px solid $purpleLight;
+  }
+  &:active {
+    box-shadow: inset rgb(173, 78, 218) 0 0 5px;
   }
 }
 
 .payments-offer--primary {
   background-color: $purple;
-  border: none;
+
+  &:hover {
+    border: none;
+    background-color: $purpleLight;
+  }
+
+  &:active {
+    border: none;
+    background-color: $purple;
+    box-shadow: inset rgb(0, 0, 0) 0 0 5px;
+  }
 }

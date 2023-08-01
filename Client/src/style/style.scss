@@ -80,6 +80,39 @@ body {
   }
 }
 
+.services {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .credit_card {
+    width: 41px;
+    height: 30px;
+    margin-right: 12px;
+  }
+
+  .paypal {
+    width: 70px;
+    height: 30px;
+  }
+
+  .item {
+    width: 198px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 3px solid rgba(0, 0, 0, 0);
+    padding: 4px 0;
+    &:hover {
+      border-bottom: 3px solid $whiteText;
+    }
+  }
+
+  .item--active {
+    border-bottom: 3px solid $whiteText;
+  }
+}
+
 .card {
   display: flex;
   flex-direction: column;
