@@ -1,4 +1,4 @@
-import "../style/registrationEmail.css";
+import "../style/style.css";
 // import Card from "../components/Card";
 // import TextBox from "../components/TextBox";
 import Card from "../components/Card";

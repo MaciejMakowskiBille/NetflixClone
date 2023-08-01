@@ -1,5 +1,5 @@
 import PaymentsOffer from "../components/PaymentsOffer";
-import "../style/main.css";
+import "../style/style.css";
 
 function RegistrationPayments() {
   return (
@@ -14,9 +14,20 @@ function RegistrationPayments() {
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
             Consequuntur voluptas officia laboriosam ullam facilis quae quos aut
           </p>
-          <PaymentsOffer text="Miesięcznie" cost="28.99zł" />
-          <PaymentsOffer text="Rocznie" cost="289.99zł" />
-          <button className="wrapper__btn">Zgadzam się</button>
+          <div className="options">
+            <PaymentsOffer
+              className="payments-offer"
+              text="Miesięcznie"
+              cost="28.99zł"
+            />
+            <PaymentsOffer
+              className="payments-offer payments-offer--primary"
+              text="Rocznie"
+              cost="289.99zł"
+            />
+          </div>
+
+          <button className="button-primary">Zgadzam się</button>
         </div>
       </div>
     </>
