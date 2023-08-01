@@ -31,7 +31,7 @@ body {
   gap: 25px;
   color: $whiteText;
 
-  &__header {
+  .wrapper__header {
     color: inherit;
     margin-bottom: 10px;
     h1 {
@@ -44,12 +44,12 @@ body {
     }
   }
 
-  &__text {
+  .wrapper__text {
     color: inherit;
     margin-bottom: 10px;
   }
 
-  &__text-input {
+  .wrapper__text-input {
     padding: 10px 16px;
     height: 50px;
     color: inherit;

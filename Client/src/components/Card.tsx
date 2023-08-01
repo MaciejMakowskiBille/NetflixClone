@@ -9,7 +9,7 @@ export default function Card() {
         repellat voluptas harum et error eum, atque omnis similique consequatur
         officiis consequuntur.
       </p>
-      <button className="wrapper__btn">Kontynułuj</button>
+      <button className="btn">Kontynułuj</button>
     </div>
   );
 }

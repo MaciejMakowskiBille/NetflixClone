@@ -19,7 +19,7 @@ function RegistrationPassword() {
             type="text"
             placeholder="hasło"
           ></input>
-          <button className="wrapper__btn">Zaloguj</button>
+          <button className="btn">Zaloguj</button>
         </div>
       </div>
     </>
