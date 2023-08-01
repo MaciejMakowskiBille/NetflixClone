@@ -1,0 +1,16 @@
+// place holder style
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: $whiteText;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: $whiteText;
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: $whiteText;
+}
