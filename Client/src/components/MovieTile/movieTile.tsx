@@ -1,6 +1,6 @@
 import { useState } from "react"
 import {motion} from 'framer-motion'
-import { serverURL } from "../utils/links"
+import { serverURL } from "../../utils/links"
 import { useNavigate } from "react-router-dom"
 
 type MovieTileProps = {

@@ -1,9 +1,9 @@
 import {useState, useEffect} from 'react'
-import { getOneFilm } from '../utils/Gets'
-import Navigation from './nav'
-import { serverURL } from '../utils/links'
-import MoviePageNav from './moviePageNav'
-import MoviePageAdds from './moviePageAdds'
+import { getOneFilm } from '../../utils/Gets'
+import Navigation from '../../components/Navigation/nav'
+import { serverURL } from '../../utils/links'
+import MoviePageNav from './components/moviePageNav'
+import MoviePageAdds from './components/moviePageAdds'
 import { useParams, useLocation } from 'react-router-dom'
 const MoviePage = () => {
     const [movieData, setMovieData] = useState<MovieDataType | null>(null)
@@ -26,9 +26,9 @@ const MoviePage = () => {
                 {!isLoading && movieData && (
                     <main>
                     <div className='movieInfoMain'>
-                    <div className='primaryImage' style={{backgroundImage:`url(${serverURL + movieData.primaryImg})`}}/>
+                    <div className='primaryImage' style={{backgroundImage:`url(${movieData.primaryImg})`}}/>
                     <div className='content'>
-                        <div className='logo' style={{backgroundImage:`url(${serverURL + movieData.logo})`}}/>
+                        <div className='logo' style={{backgroundImage:`url(${movieData.logo})`}}/>
                         <div className='short'>
                             <div className='top'>
                                 <div className='smallInfo'>{movieData.ageCategory}+</div>

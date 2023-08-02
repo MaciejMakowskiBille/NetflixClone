@@ -1,6 +1,6 @@
-import Home from "./components/home"
-import MainPage from "./components/mainPage"
-import MoviePage from "./components/moviePage"
+import Home from "./pages/home/home"
+import MainPage from "./pages/mainPage/mainPage"
+import MoviePage from "./pages/moviePage/moviePage"
 import './style/style.css'
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 

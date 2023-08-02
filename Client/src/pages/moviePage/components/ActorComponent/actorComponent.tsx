@@ -1,4 +1,4 @@
-import { serverURL } from "../utils/links"
+import { serverURL } from "../../../../utils/links"
 
 
 type ActorComponentProps = {

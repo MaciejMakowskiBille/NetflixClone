@@ -1,8 +1,8 @@
 import {useState, useEffect} from 'react'
-import { serverURL } from "../utils/links"
-import ActorComponent from "./actorComponent"
-import MovieTile from "./movieTile"
-import { getFilms } from '../utils/Gets'
+import { serverURL } from "../../../utils/links"
+import ActorComponent from "./ActorComponent/actorComponent"
+import MovieTile from "../../../components/MovieTile/movieTile"
+import { getFilms } from '../../../utils/Gets'
 
 type MoviePageAddsProps = {
     active:string
