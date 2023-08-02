@@ -44,7 +44,7 @@
         z-index: 3;
 
         .playButton{
-            background-image: url('../imgs/movieTile/Play.png');
+            background-image: url('../imgs/movieTile/Play.svg');
             z-index: 5;
         }
     }
@@ -56,7 +56,6 @@
         box-sizing: border-box;
         background-color: $backgroundDrak;
         padding: 1rem;
-
 
         .tileHeader{
             height: 5vh;

@@ -1,9 +1,6 @@
 @charset "UTF-8";
 .home {
-  background-image: url("../imgs//theme/Background.png");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-image: url("../imgs//theme/Background.jpg") center cover no-repeat;
   height: 100vh;
   width: 100vw;
   min-height: 400px;
@@ -75,11 +72,7 @@
 button {
   font-family: "Roboto";
   letter-spacing: normal;
-  padding-left: 16px;
-  padding-right: 16px;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  border-radius: 5px;
+  padding: 8px 16px;
   border: none;
   box-sizing: content-box;
   font-weight: bold;
@@ -177,7 +170,7 @@ nav .navRight {
   gap: 1rem;
 }
 nav .navRight .searchButton {
-  background-image: url("../imgs/icons/search.png");
+  background-image: url("../imgs/icons/search.svg");
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -191,7 +184,7 @@ nav .navRight .navMenu .menuArrow {
   height: 16px;
   background-size: contain;
   background-repeat: no-repeat;
-  background-image: url("../imgs/icons/menuArrow.png");
+  background-image: url("../imgs/icons/menuArrow.svg");
 }
 nav .navRight .navSearch {
   height: 100%;
@@ -304,7 +297,7 @@ main .category .title {
   z-index: 3;
 }
 .movieTile .movieTileImage .playButton {
-  background-image: url("../imgs/movieTile/Play.png");
+  background-image: url("../imgs/movieTile/Play.svg");
   z-index: 5;
 }
 .movieTile .movieTileInfo {
