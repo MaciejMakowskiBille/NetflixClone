@@ -1,4 +1,5 @@
-import MovieTile from "./movieTile"
+import MovieTile from "./MovieTile/movieTile"
+import { FilmListType } from "../types/mainPage"
 type CategoryRowPorps = {
     title:string,
     moviesList:FilmListType

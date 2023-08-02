@@ -1,4 +1,4 @@
-type FilmListType={
+export type FilmListType={
     title:string,
     categories:Category[],
     img:string,
@@ -9,7 +9,7 @@ type FilmListType={
     transcription:boolean
 }[]
 
-type Category = {
+export type Category = {
     id:number,
     name:string
 }

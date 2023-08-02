@@ -1,16 +1,17 @@
-import Navigation from "./nav"
+import Navigation from "../../components/nav"
 import disney from '../imgs/producers/disney.png'
 import pixar from '../imgs/producers/pix.png'
 import marvel from '../imgs/producers/marv.png'
 import geo from '../imgs/producers/geo.png'
 import star from '../imgs/producers/star.png'
 import dc from '../imgs/producers/dc.png'
-import Producer from "./producer"
-import CategoryRow from "./categoryRow"
+import Producer from "../home/producer"
+import CategoryRow from "../../components/categoryRow"
 import small from '../imgs/testTile/mini.png'
 import hovered from '../imgs/testTile/hover.png'
 import logo from '../imgs/testTile/logo.png'
-import { getFilms } from "../utils/Gets"
+import { getFilms } from "../../utils/Gets"
+import { FilmListType } from "../../types/mainPage"
 
 const producerList = [
     {

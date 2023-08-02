@@ -1,5 +1,5 @@
-import Home from "./components/home"
-import MainPage from "./components/mainPage"
+import Home from "./pages/home/home"
+import MainPage from "./pages/MainPage/mainPage"
 import './style/style.css'
 
 const App = () => {

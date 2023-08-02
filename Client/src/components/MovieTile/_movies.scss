@@ -42,7 +42,7 @@
         z-index: 3;
 
         .playButton{
-            background-image: url('../imgs/movieTile/Play.png');
+            background-image: url('../imgs/movieTile/Play.svg');
             z-index: 5;
         }
     }
@@ -62,10 +62,10 @@
             background-size: cover;
         }
         .favButton{
-            background-image: url('../imgs/movieTile/Favorite.png');
+            background-image: url('../imgs/movieTile/Favorite.svg');
         }
         .moreButton{
-            background-image: url('../imgs/movieTile/More.png');
+            background-image: url('../imgs/movieTile/More.svg');
         }
 
         .tileHeader{

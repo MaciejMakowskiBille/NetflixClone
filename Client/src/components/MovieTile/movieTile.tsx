@@ -1,6 +1,6 @@
 import { useState } from "react"
 import {motion} from 'framer-motion'
-
+import { Category } from "../../types/mainPage"
 type MovieTileProps = {
     title:string,
     categories:Category[]
