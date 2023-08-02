@@ -2,12 +2,10 @@ export default function Card() {
   return (
     <div className="card">
       <p>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolore optio
-        eaque repudiandae consequuntur natus enim tenetur cupiditate est et
-        adipisci rem doloribus vitae atque, modi eum dolores ipsam expedita
-        possimus sit vel voluptas, accusantium dolor hic delectus? Suscipit
-        repellat voluptas harum et error eum, atque omnis similique consequatur
-        officiis consequuntur.
+        FilmeX będzie używał twoich danych do ulepszania twoich wyszukiwań i
+        wysyłania informacji dotyczących FilmeX. Możesz w każdym momencie
+        zmienić twoje ustwienia komunikacji. Klikając Kontynłuj potwierdzasz, że
+        zaznajomiłeś się z naszą Polityką Prywatności.
       </p>
       <button className="button-primary">Kontynułuj</button>
     </div>

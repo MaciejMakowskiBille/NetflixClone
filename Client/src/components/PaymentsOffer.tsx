@@ -5,13 +5,15 @@ export default function PaymentsOffer({
   text,
   cost,
   className,
+  onClick,
 }: {
   text: string;
   cost: string;
   className: string;
+  onClick: React.MouseEventHandler<HTMLDivElement>;
 }) {
   return (
-    <div className={className}>
+    <div className={"payments-offer " + className} onClick={onClick}>
       <div className="payments-offer__text">
         <h3>{text}</h3>
         <h5>{cost}</h5>

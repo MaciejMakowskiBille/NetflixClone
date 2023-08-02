@@ -7,6 +7,7 @@
   color: $whiteText;
   display: flex;
   cursor: pointer;
+  transition: 0.3s;
 
   // flex-wrap: wrap;
   flex-direction: row;
@@ -53,6 +54,12 @@
   }
   &:active {
     box-shadow: inset rgb(173, 78, 218) 0 0 5px;
+  }
+
+  &.active {
+    .circle-filled {
+      display: inline;
+    }
   }
 }
 

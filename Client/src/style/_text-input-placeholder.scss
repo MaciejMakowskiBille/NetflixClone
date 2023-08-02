@@ -1,16 +1,44 @@
 // place holder style
 ::placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: $whiteText;
+  color: $grayText;
   opacity: 1; /* Firefox */
 }
 
 :-ms-input-placeholder {
   /* Internet Explorer 10-11 */
-  color: $whiteText;
+  color: $grayText;
 }
 
 ::-ms-input-placeholder {
   /* Microsoft Edge */
-  color: $whiteText;
+  color: $grayText;
+}
+
+// input[type="text"]:active {
+//   border: none;
+// }
+
+.wrapper__text-input {
+  padding: 10px 16px;
+  height: 50px;
+  width: 400px;
+  color: inherit;
+  background-color: inherit;
+  border: 2px solid $whiteText;
+  border-radius: 4px;
+
+  // transform: ;
+
+  // &:active,
+  &:focus {
+    // border: none;
+
+    outline: none;
+    border: 3px solid $whiteText;
+  }
+}
+
+.wrapper__text-input--smaller {
+  width: 190px;
 }

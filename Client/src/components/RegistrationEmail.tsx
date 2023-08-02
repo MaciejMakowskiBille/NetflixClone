@@ -13,9 +13,8 @@ function RegistrationEmail() {
             <h1>Wprowadź twój adres email</h1>
           </div>
           <p className="wrapper__text">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Provident,
-            laborum!Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-            Provident, laborum!
+            Będziesz używał tego emailu i hasła do logowania się do towjego
+            konta FilmeX aby oglądać twoje ulubione filmy i seriale.
           </p>
           <input
             className="wrapper__text-input"

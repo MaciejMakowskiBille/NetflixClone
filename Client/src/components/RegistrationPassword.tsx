@@ -10,9 +10,8 @@ function RegistrationPassword() {
             <h1>Wprowadź hasło</h1>
           </div>
           <p className="wrapper__text">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, nam?
-            Quidem odit neque repellendus quae porro adipisci obcaecati nostrum
-            amet!
+            Będziesz używał tego emailu i hasła do logowania się do towjego
+            konta FilmeX aby oglądać twoje ulubione filmy i seriale.
           </p>
           <input
             className="wrapper__text-input"

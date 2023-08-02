@@ -11,7 +11,7 @@ export default function Switch({
 }) {
   return (
     <div className={"item " + className} onClick={onClick}>
-      <img className="paypal" src={img} alt="paypal" />
+      <img className="paypal" src={img} alt="img" />
       <p>{name}</p>
     </div>
   );
