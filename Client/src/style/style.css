@@ -194,6 +194,59 @@ input[type=checkbox] {
   box-shadow: inset rgb(0, 0, 0) 0 0 5px;
 }
 
+.options {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  margin-top: 25px;
+  gap: 20px;
+}
+.content .inputs {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.content .content__main-text {
+  font-size: 13px;
+  color: #F3EFF5;
+}
+
+.services {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.services .credit_card {
+  width: 41px;
+  height: 30px;
+  margin-right: 12px;
+}
+.services .paypal {
+  width: 70px;
+  height: 30px;
+}
+.services .item {
+  width: 198px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 3px solid rgba(0, 0, 0, 0);
+  padding: 4px 0;
+  cursor: pointer;
+}
+.services .item:hover {
+  border-bottom: 3px solid #F3EFF5;
+}
+.services .item--active {
+  border-bottom: 3px solid #F3EFF5;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -268,36 +321,6 @@ body {
   font-size: 13px;
 }
 
-.services {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-.services .credit_card {
-  width: 41px;
-  height: 30px;
-  margin-right: 12px;
-}
-.services .paypal {
-  width: 70px;
-  height: 30px;
-}
-.services .item {
-  width: 198px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  border-bottom: 3px solid rgba(0, 0, 0, 0);
-  padding: 4px 0;
-  cursor: pointer;
-}
-.services .item:hover {
-  border-bottom: 3px solid #F3EFF5;
-}
-.services .item--active {
-  border-bottom: 3px solid #F3EFF5;
-}
-
 .card {
   display: flex;
   flex-direction: column;
@@ -320,27 +343,4 @@ body {
 }
 .filmexLogo span {
   color: #782CBF;
-}
-
-.options {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-}
-
-.content {
-  display: flex;
-  flex-direction: column;
-  margin-top: 25px;
-  gap: 20px;
-}
-.content .inputs {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-.content .content__main-text {
-  font-size: 13px;
-  color: #F3EFF5;
 }/*# sourceMappingURL=style.css.map */
