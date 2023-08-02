@@ -1,4 +1,4 @@
-import "../style/registrationPassword.css";
+// import "../style/registrationPassword.css";
 
 function RegistrationPassword() {
   return (
@@ -19,7 +19,7 @@ function RegistrationPassword() {
             type="text"
             placeholder="hasło"
           ></input>
-          <button className="btn">Zaloguj</button>
+          <button className="button-primary">Zaloguj</button>
         </div>
       </div>
     </>

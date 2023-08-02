@@ -78,6 +78,10 @@ body {
     border: 3px solid $whiteText;
     border-radius: 4px;
   }
+
+  .wrapper__text-input--smaller {
+    width: 190px;
+  }
 }
 
 .services {
@@ -103,6 +107,7 @@ body {
     align-items: center;
     border-bottom: 3px solid rgba(0, 0, 0, 0);
     padding: 4px 0;
+    cursor: pointer;
     &:hover {
       border-bottom: 3px solid $whiteText;
     }
@@ -137,4 +142,14 @@ body {
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: space-between;
+}
+
+.content {
+  // display: flex;
+
+  .inputs {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }

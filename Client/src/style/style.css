@@ -137,6 +137,7 @@ input[type=checkbox] {
   padding: 0 13px;
   color: #F3EFF5;
   display: flex;
+  cursor: pointer;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
@@ -254,6 +255,9 @@ body {
   border: 3px solid #F3EFF5;
   border-radius: 4px;
 }
+.wrapper .wrapper__text-input--smaller {
+  width: 190px;
+}
 
 .services {
   display: flex;
@@ -276,6 +280,7 @@ body {
   align-items: center;
   border-bottom: 3px solid rgba(0, 0, 0, 0);
   padding: 4px 0;
+  cursor: pointer;
 }
 .services .item:hover {
   border-bottom: 3px solid #F3EFF5;
@@ -307,5 +312,11 @@ body {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
+  justify-content: space-between;
+}
+
+.content .inputs {
+  display: flex;
+  flex-direction: row;
   justify-content: space-between;
 }/*# sourceMappingURL=style.css.map */

@@ -1,4 +1,4 @@
-import "../style/registrationAgreements.css";
+// import "../style/registrationAgreements.css";
 
 function RegistrationAgreements() {
   return (
@@ -9,7 +9,7 @@ function RegistrationAgreements() {
             <h4>Krok 3 z 4</h4>
             <h1>Zgoda na subskrypcję</h1>
           </div>
-          <p className="wrapper__text-box">
+          <p className="card">
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
             Consequuntur voluptas officia laboriosam ullam facilis quae quos aut
             laborum. Exercitationem libero optio nam voluptas recusandae placeat
@@ -19,7 +19,7 @@ function RegistrationAgreements() {
             tempora, veniam a sed dicta quam voluptas consectetur alias fugit
             deleniti culpa, qui at!
           </p>
-          <button className="wrapper__btn">Zgadzam się</button>
+          <button className="button-primary">Zgadzam się</button>
         </div>
       </div>
     </>

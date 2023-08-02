@@ -1,3 +1,4 @@
+// import { useState } from "react";
 import PaymentsOffer from "../components/PaymentsOffer";
 import "../style/style.css";
 import PaymentsSwitch from "./PaymentsSwitch";
