@@ -1,0 +1,44 @@
+@import 'colors.scss';
+
+button{
+    font-family: 'Roboto';
+    letter-spacing: normal;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border-radius: 5px;
+    border: none;
+    box-sizing: content-box;
+    font-weight: bold;
+    cursor: pointer;
+    transition: ease-in-out 0.2s all;
+}
+.button-primary{
+    background-color: $purple;
+    color: $whiteText;
+    &:hover{
+        background-color: $purpleLight;
+    }
+    &:active{
+        background-color: $purple;
+        box-shadow: inset black 0 0 5px;
+    }
+}
+.button-secondary{
+    background-color: $backgroundDrak;
+    color: $whiteText;
+    border: 2px $purple solid;
+    &:hover{
+        background-color: $purpleDark;
+        color:$whiteText;
+        border: 2px $whiteText solid;
+    }
+    &:active{
+        background-color: $backgroundDrak;
+        box-shadow: inset black 0 0 5px;
+        color:$purple;
+        border: 2px $purple solid;
+
+    }
+}
