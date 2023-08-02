@@ -26,7 +26,7 @@ const CategoryRow = (props:CategoryRowPorps) => {
                             ageCategory={movie.ageCategory}
                             premiere={movie.premiere}
                             transcription={movie.transcription}
-                            sezons={11}
+                            duration={movie.duration}
                         />
                     )
                 })}
