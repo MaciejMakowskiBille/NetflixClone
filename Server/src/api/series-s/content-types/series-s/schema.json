@@ -57,6 +57,19 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::season-s.season-s"
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "cast": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::actor.actor"
     }
   }
 }

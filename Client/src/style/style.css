@@ -1,8 +1,5 @@
 .home {
-  background-image: url("../imgs//theme/Background.png");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-image: url("../imgs//theme/Background.jpg") center cover no-repeat;
   height: 100vh;
   width: 100vw;
   min-height: 400px;
@@ -20,7 +17,7 @@
   padding-top: 2rem;
   box-sizing: border-box;
 }
-.home main nav {
+.home main .homeHeader {
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -29,11 +26,11 @@
   padding-left: 3rem;
   padding-right: 3rem;
 }
-.home main nav .title {
+.home main .homeHeader .title {
   font-size: 5rem;
   font-family: "Nico Moji";
 }
-.home main nav .title text {
+.home main .homeHeader .title text {
   margin: 0;
   color: #782CBF;
 }
@@ -52,7 +49,7 @@
   margin: 0;
 }
 .home main .darkinfo {
-  color: #BCB1B1;
+  color: #bab1bc;
 }
 .home main .homeForm {
   height: 3rem;
@@ -60,14 +57,9 @@
   display: flex;
 }
 .home main .homeForm input {
-  background-color: rgba(255, 255, 255, 0.7);
   width: 70%;
   height: 100%;
-  margin: 0;
-  box-sizing: border-box;
-  border: none;
   border-radius: 10px 0 0 10px;
-  padding-left: 1rem;
 }
 .home main .homeForm button {
   font-size: larger;
@@ -79,11 +71,7 @@
 button {
   font-family: "Roboto";
   letter-spacing: normal;
-  padding-left: 16px;
-  padding-right: 16px;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  border-radius: 5px;
+  padding: 8px 16px;
   border: none;
   box-sizing: content-box;
   font-weight: bold;
@@ -124,9 +112,276 @@ button {
   font-family: "Nico Moji";
   src: url(./fonts/nicomoji/NicoMoji-Regular.ttf);
 }
+nav {
+  display: flex;
+  box-sizing: border-box;
+  width: 100%;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  background-color: rgba(0, 0, 0, 0.7);
+  justify-content: space-between;
+  border-bottom: 1px solid #782CBF;
+}
+nav .navLeft {
+  display: flex;
+}
+nav .navLeft ul {
+  height: 100%;
+  font-size: medium;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+}
+nav .navLeft ul li {
+  margin-left: 1rem;
+  cursor: pointer;
+  transition: ease-in-out all 0.2s;
+}
+nav .navLeft ul li:hover {
+  color: #9864c9;
+}
+nav .navRight {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+nav .navRight .searchButton {
+  background-image: url("../imgs/icons/search.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+nav .navRight .navMenu {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+nav .navRight .navMenu .menuArrow {
+  width: 16px;
+  height: 16px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url("../imgs/icons/menuArrow.svg");
+}
+nav .navRight .navSearch {
+  height: 100%;
+  display: flex;
+  flex-grow: initial;
+}
+nav .navRight .navSearch input {
+  background-color: #343137;
+  color: #F3EFF5;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  width: 100%;
+  height: 100%;
+  gap: 2rem;
+}
+main .slider {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+}
+main .slider .slide {
+  width: 100%;
+  min-height: 40vh;
+  background-image: url("../imgs/slider/image.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+main .producersList {
+  width: 100%;
+  height: 15vh;
+  display: flex;
+  justify-content: space-between;
+}
+main .producersList .producer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15%;
+  height: 100%;
+  background-color: #343137;
+  border-radius: 10px;
+  box-shadow: inset rgba(138, 138, 138, 0.25) 0px 0px 10px;
+  cursor: pointer;
+  transition: ease-in-out all 0.3s;
+}
+main .producersList .producer:hover {
+  background-color: #782CBF;
+}
+main .producersList .producerImage {
+  width: 60%;
+  height: 10vh;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+main .category {
+  width: 100%;
+}
+main .category .title {
+  font-size: large;
+}
+
+.movieList {
+  display: flex;
+  justify-content: space-between;
+}
+.movieList .tile {
+  width: 18%;
+  height: 20vh;
+}
+
+.movieTile {
+  width: 100%;
+  height: 20vh;
+  transition: all ease-in-out 0.3s;
+}
+.movieTile:hover {
+  width: 150%;
+  height: 25vh;
+  z-index: 2;
+  transform: translateY(-50%) translateX(-15%);
+}
+.movieTile .tileButton {
+  width: 40px;
+  height: 40px;
+  background-size: cover;
+}
+.movieTile .movieTileImage {
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+}
+.movieTile .movieTileImage .playButton {
+  background-image: url("../imgs/movieTile/Play.svg");
+  z-index: 5;
+}
+.movieTile .movieTileInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  box-sizing: border-box;
+  background-color: #343137;
+  padding: 1rem;
+}
+.movieTile .movieTileInfo .tileButton {
+  width: 40px;
+  height: 40px;
+  background-size: cover;
+}
+.movieTile .movieTileInfo .favButton {
+  background-image: url("../imgs/movieTile/Favorite.svg");
+}
+.movieTile .movieTileInfo .moreButton {
+  background-image: url("../imgs/movieTile/More.svg");
+}
+.movieTile .movieTileInfo .tileHeader {
+  height: 5vh;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: space-between;
+}
+.movieTile .movieTileInfo .infos {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  text-align: start;
+  font-size: small;
+}
+.movieTile .movieTileInfo .separator {
+  width: 5px;
+  height: 5px;
+  background-color: #D2D21B;
+  border-radius: 100%;
+}
+.movieTile .movieTileInfo .movieLogo {
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 3rem;
+}
+.movieTile .movieTileInfo .categories {
+  display: flex;
+  font-size: small;
+  gap: 8px;
+}
+.movieTile .movieTileInfo .categories .movieCategory {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 body {
   font-family: "Roboto";
   color: #F3EFF5;
   margin: 0;
   padding: 0;
+  font-size: medium;
+}
+
+.appBackground {
+  font-size: 32px;
+  box-sizing: border-box;
+  background: rgb(38, 36, 40);
+  background: linear-gradient(0deg, rgb(38, 36, 40) 0%, rgb(43, 35, 70) 100%);
+  width: 100%;
+}
+
+.filmexLogo {
+  color: #F3EFF5;
+  font-family: "Nico Moji";
+}
+.filmexLogo span {
+  color: #782CBF;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background-image: url("../imgs/avatars/av1.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+input {
+  background-color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+  box-sizing: border-box;
+  border: none;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-radius: 3px;
+  height: 100%;
 }/*# sourceMappingURL=style.css.map */

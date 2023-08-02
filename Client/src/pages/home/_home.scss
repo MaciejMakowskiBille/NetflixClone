@@ -1,9 +1,6 @@
 @import 'colors.scss';
 .home{
-    background-image: url('../imgs//theme/Background.png');
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
+    background-image: url('../imgs//theme/Background.jpg') center cover no-repeat;
     height: 100vh;
     width: 100vw;
     min-height: 400px;
@@ -21,7 +18,7 @@
         padding-top: 2rem;
         box-sizing: border-box;
 
-        nav{
+        .homeHeader{
             width: 100%;
             display: flex;
             justify-content: space-between;
@@ -65,14 +62,9 @@
             display: flex;
             
             input{
-                background-color: $whiteTransparent;
                 width: 70%;
                 height: 100%;
-                margin: 0;
-                box-sizing: border-box;
-                border:none;
                 border-radius: 10px 0 0 10px;
-                padding-left: 1rem;
             }
 
             button{

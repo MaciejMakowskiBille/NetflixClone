@@ -1,11 +1,12 @@
-import Home from "./components/home"
+import Home from "./pages/home/home"
+import MainPage from "./pages/MainPage/mainPage"
 import './style/style.css'
 
-function App() {
+const App = () => {
 
   return (
     <>
-      <Home></Home>
+      <MainPage/>
     </>
   )
 }
