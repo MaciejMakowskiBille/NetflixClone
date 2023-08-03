@@ -26,9 +26,9 @@ const MoviePage = () => {
                 {!isLoading && movieData && (
                     <main>
                     <div className='movieInfoMain'>
-                    <div className='primaryImage' style={{backgroundImage:`url(${movieData.primaryImg})`}}/>
+                    <div className='primaryImage' style={{backgroundImage:`url(${serverURL + movieData.primaryImg})`}}/>
                     <div className='content'>
-                        <div className='logo' style={{backgroundImage:`url(${movieData.logo})`}}/>
+                        <div className='logo' style={{backgroundImage:`url(${serverURL + movieData.logo})`}}/>
                         <div className='short'>
                             <div className='top'>
                                 <div className='smallInfo'>{movieData.ageCategory}+</div>

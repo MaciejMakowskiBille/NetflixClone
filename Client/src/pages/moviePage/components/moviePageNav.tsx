@@ -6,9 +6,15 @@ type MoviePageNavProps ={
 }
 
 const MoviePageNav = (props:MoviePageNavProps) => {
+    const actives = ['rec', 'det', 'cast']
 
     const handleClick = (value:string) => {
             props.setActive(prev => prev = value)
+    }
+
+    const getBorderStyles = (active:string, value:string) =>{
+        if(active === value) return '#782CBF 4px solid'
+        return 'none'
     }
 
 
@@ -16,19 +22,19 @@ const MoviePageNav = (props:MoviePageNavProps) => {
             <div className="movieNav">
                     <ul>
                         <li 
-                            style={{borderBottom: props.active === 'rec' ? ' #782CBF 4px solid' : "none"}}
+                            style={{borderBottom: getBorderStyles(props.active, actives[0])}}
                             onClick={(() => handleClick('rec'))}
                         >
                             Proponowane
                         </li>
                         <li
-                            style={{borderBottom: props.active === 'det' ? ' #782CBF 4px solid' : "none"}}
+                            style={{borderBottom: getBorderStyles(props.active, actives[1])}}
                             onClick={(() => handleClick('det'))}
                         >
                             Szczegóły
                             </li>
                         <li
-                            style={{borderBottom: props.active === 'cast' ? ' #782CBF 4px solid' : "none"}}
+                            style={{borderBottom: getBorderStyles(props.active, actives[2])}}
                             onClick={(() => handleClick('cast'))}
                         >
                             Obsada

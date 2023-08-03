@@ -1,4 +1,3 @@
-import Home from "./pages/home/home"
 import MainPage from "./pages/mainPage/mainPage"
 import MoviePage from "./pages/moviePage/moviePage"
 import './style/style.css'

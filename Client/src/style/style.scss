@@ -1,12 +1,14 @@
-@import './home';
 @import './colors';
 @import './buttons';
 @import './fonts';
-@import './navigation';
-@import './mainPage';
-@import './movies';
-@import './moviePage';
-@import './actorComponent';
+@import './functions';
+@import '../pages/home/home';
+@import '../components/Navigation/navigation';
+@import '../pages/mainPage/mainPage';
+@import '../components/MovieTile/movies';
+@import '../pages/moviePage/moviePage';
+@import '../pages/moviePage/components/ActorComponent/actorComponent';
+
 
 body{
     font-family: 'Roboto';
@@ -53,8 +55,10 @@ main{
 .filmexLogo{
     color:$whiteText;
     font-family: 'Nico Moji';
+    cursor: pointer;
     span{
         color:$purple;
+        cursor: pointer;
     }
 }
 .icon{

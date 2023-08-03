@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import {motion} from 'framer-motion'
+import { useNavigate } from 'react-router-dom'
 const Navigation = () => {
+    const navigate = useNavigate()
     const [isSearch, setIsSearch] = useState(false)
 
     const handleClickSearch = () => {
@@ -11,7 +13,7 @@ const Navigation = () => {
         <>
             <nav>
                 <div className='navLeft'>
-                    <div className='filmexLogo'>
+                    <div className='filmexLogo' onClick={() => navigate('/')} >
                         Filme
                         <span>x</span>
                     </div>
