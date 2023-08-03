@@ -3,6 +3,7 @@ import { apiURL } from "./links";
 import { clearData } from "./helpers";
 export const getFilms = async ():Promise<MovieDataType[] | null> => {
   const response = await axios.get(apiURL + `films?populate=deep&?`)
+  console.log(response.data.data)
   if(response && response.data.data){
       const data:MovieResponseType[] = response.data.data
       const clearedData:MovieDataType[] = data.map(item => {
