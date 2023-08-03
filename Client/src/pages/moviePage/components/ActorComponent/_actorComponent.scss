@@ -1,7 +1,8 @@
 @import '../../../../style/colors';
 
 .actorComponent{
-    width: 128px;
+    min-width: 128px;
+    max-width: 128px;
     background-color: $backgroundDrak;
     border: 1px solid $purple;
     box-shadow: 5px 5px 5px black;

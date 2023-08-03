@@ -305,7 +305,7 @@ main .category .title {
   flex-direction: column;
   gap: 0.5rem;
   box-sizing: border-box;
-  background-color: #504957;
+  background-color: rgba(0, 0, 0, 0.7);
   padding: 1rem;
 }
 .movieTile .movieTileInfo .tileHeader {
@@ -484,13 +484,18 @@ main .category .title {
   background-position: center;
   box-shadow: 2px 2px 5px black;
 }
-.movieAdds .castRow {
+.movieAdds .castScroll {
+  max-width: 100%;
+  overflow-x: scroll;
+}
+.movieAdds .castScroll .castRow {
   display: flex;
   gap: 2rem;
 }
 
 .actorComponent {
-  width: 128px;
+  min-width: 128px;
+  max-width: 128px;
   background-color: #504957;
   border: 1px solid #782CBF;
   box-shadow: 5px 5px 5px black;
@@ -518,6 +523,7 @@ body {
   padding: 0;
   font-size: medium;
   background-color: #262428;
+  overflow-x: hidden;
 }
 
 ::-webkit-scrollbar {

@@ -64,7 +64,7 @@ const MovieTile = (props:MovieTileProps) => {
                             {props.duration && (
                                 <>
                                     <div className="separator"/>
-                                    {Number(props.duration/60).toFixed()} godz.
+                                    {Math.floor(props.duration/60)} godz. 
                                     {props.duration%60}min
                                 </>
                             )}

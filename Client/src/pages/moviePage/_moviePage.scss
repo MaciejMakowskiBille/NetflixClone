@@ -160,9 +160,13 @@
             }
         }
     }
-
-    .castRow{
-        display: flex;
-        gap: 2rem;
+    .castScroll{
+        max-width: 100%;
+        overflow-x: scroll;
+        .castRow{
+            display: flex;
+            gap: 2rem;
+    
+        }
     }
 }

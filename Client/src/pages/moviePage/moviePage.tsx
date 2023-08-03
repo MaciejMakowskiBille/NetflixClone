@@ -37,7 +37,7 @@ const MoviePage = () => {
                                 )}
                                 {movieData.premiere.substring(0,4)}
                                     <div className='separator'/>
-                                {Number(movieData.duration/60).toFixed()} godz. 
+                                {Math.floor(movieData.duration/60)} godz. 
                                 {movieData.duration%60}min
                             </div>
                             <div className='bottom'>

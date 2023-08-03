@@ -17,6 +17,7 @@ body{
     padding: 0;
     font-size: medium;
     background-color: $backgroundAppGrey;
+    overflow-x:hidden;
 }
 
 ::-webkit-scrollbar {

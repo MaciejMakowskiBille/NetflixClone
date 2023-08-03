@@ -122,17 +122,19 @@ const MoviePageAdds = (props:MoviePageAddsProps) => {
                 </div>
             )}
             {props.active === 'cast' && (
-                <div className="castRow">
-                        {props.cast.map((actor, index) => {
-                            return(
-                                <ActorComponent 
-                                    key={index}
-                                    firstName={actor.firstName}
-                                    lastName={actor.lastName}
-                                    image={actor.image}
-                                />
-                            )
-                        })}
+                <div className='castScroll'>
+                    <div className="castRow">
+                            {props.cast.map((actor, index) => {
+                                return(
+                                    <ActorComponent 
+                                        key={index}
+                                        firstName={actor.firstName}
+                                        lastName={actor.lastName}
+                                        image={actor.image}
+                                    />
+                                )
+                            })}
+                    </div>
                 </div>
             )}
         </div>

@@ -20,7 +20,7 @@ const CategoryRow = (props:CategoryRowPorps) => {
                             id={movie.id}
                             title={movie.title}
                             categories={movie.categories}
-                            img={movie.primaryImg}
+                            img={movie.miniImg}
                             hoverImg={movie.hoverImg}
                             logo={movie.logo}
                             ageCategory={movie.ageCategory}
