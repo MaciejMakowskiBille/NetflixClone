@@ -2,8 +2,15 @@ import "../style/style.css";
 // import Card from "../components/Card";
 // import TextBox from "../components/TextBox";
 import Card from "../components/Card";
+import { useEffect, useState } from "react";
 
 function RegistrationEmail() {
+  const [checkedOffers, setCheckedOffers] = useState(false);
+
+  useEffect(() => {
+    console.log(checkedOffers);
+  }, [checkedOffers]);
+
   return (
     <form>
       <div className="black-background">
@@ -22,7 +29,11 @@ function RegistrationEmail() {
             placeholder="email"
           ></input>
           <label className="wrapper__checkbox">
-            <input type="checkbox"></input>
+            <input
+              type="checkbox"
+              checked={checkedOffers}
+              onClick={() => setCheckedOffers(!checkedOffers)}
+            ></input>
             <span className="checkbox-text">
               Zgadzam się na otrzymywanie specjalnych ofert i informacji
               dotyczących produktów FilmeX.
