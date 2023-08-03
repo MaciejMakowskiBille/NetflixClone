@@ -1,7 +1,7 @@
 import MainPage from "./pages/mainPage/mainPage"
 import MoviePage from "./pages/moviePage/moviePage"
 import './style/style.css'
-import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 const App = () => {
 

@@ -1,5 +1,3 @@
-import {useState} from 'react'
-
 type MoviePageNavProps ={
     active:string
     setActive: React.Dispatch<React.SetStateAction<string>>

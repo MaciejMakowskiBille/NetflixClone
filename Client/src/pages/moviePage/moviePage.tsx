@@ -4,12 +4,11 @@ import Navigation from '../../components/Navigation/nav'
 import { serverURL } from '../../utils/links'
 import MoviePageNav from './components/moviePageNav'
 import MoviePageAdds from './components/moviePageAdds'
-import { useParams, useLocation } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 const MoviePage = () => {
     const [movieData, setMovieData] = useState<MovieDataType | null>(null)
     const [isLoading, setIsLoading] = useState(true)
     const [active, setActive] = useState('rec')
-    const location = useLocation()
     const {movieId} = useParams()
     useEffect(() => {
         if(movieId){

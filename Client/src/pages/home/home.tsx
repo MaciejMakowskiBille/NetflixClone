@@ -1,4 +1,3 @@
-import '../style/style.css'
 const Home = () => {
 
   return (
