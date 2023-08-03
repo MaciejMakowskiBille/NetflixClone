@@ -219,10 +219,7 @@ main .slider {
 main .slider .slide {
   width: 100%;
   min-height: 40vh;
-  background-image: url("../imgs/slider/image.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+  background-image: url("../imgs/slider/image.png") cover no-repeat center;
 }
 main .producersList {
   width: 100%;
