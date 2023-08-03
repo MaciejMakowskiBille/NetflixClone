@@ -1,4 +1,3 @@
-import '../style/style.css'
 import { useState } from 'react'
 import {motion} from 'framer-motion'
 const Navigation = () => {
