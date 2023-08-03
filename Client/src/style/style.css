@@ -254,7 +254,8 @@ input[type=checkbox] {
 }
 
 #root,
-html {
+html,
+form {
   height: 100%;
 }
 

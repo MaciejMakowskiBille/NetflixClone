@@ -5,7 +5,7 @@ import Card from "../components/Card";
 
 function RegistrationEmail() {
   return (
-    <>
+    <form>
       <div className="black-background">
         <div className="wrapper">
           <div className="wrapper__header">
@@ -31,7 +31,7 @@ function RegistrationEmail() {
           <Card />
         </div>
       </div>
-    </>
+    </form>
   );
 }
 

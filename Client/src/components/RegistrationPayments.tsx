@@ -7,7 +7,7 @@ import PaymentsSwitch from "./PaymentsSwitch";
 function RegistrationPayments() {
   const [offerIndex, setOfferIndex] = useState<number | undefined>();
   return (
-    <>
+    <form>
       <div className="black-background">
         <div className="wrapper">
           <div className="wrapper__header">
@@ -40,7 +40,7 @@ function RegistrationPayments() {
           <PaymentsSwitch />
         </div>
       </div>
-    </>
+    </form>
   );
 }
 

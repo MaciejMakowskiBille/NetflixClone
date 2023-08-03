@@ -2,7 +2,7 @@
 
 function RegistrationAgreements() {
   return (
-    <>
+    <form>
       <div className="black-background">
         <div className="wrapper">
           <div className="wrapper__header">
@@ -33,7 +33,7 @@ function RegistrationAgreements() {
           <button className="button-primary">Zgadzam się</button>
         </div>
       </div>
-    </>
+    </form>
   );
 }
 

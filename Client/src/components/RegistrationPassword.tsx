@@ -2,7 +2,7 @@
 
 function RegistrationPassword() {
   return (
-    <>
+    <form>
       <div className="black-background">
         <div className="wrapper">
           <div className="wrapper__header">
@@ -21,7 +21,7 @@ function RegistrationPassword() {
           <button className="button-primary">Zaloguj</button>
         </div>
       </div>
-    </>
+    </form>
   );
 }
 
