@@ -2,7 +2,6 @@ import { useState } from "react"
 import {motion} from 'framer-motion'
 import { serverURL } from "../../utils/links"
 import { useNavigate } from "react-router-dom"
-
 type MovieTileProps = {
     id:number
     title:string,
@@ -15,8 +14,6 @@ type MovieTileProps = {
     transcription?:boolean,
     duration?:number,
     sezons?:number
-
-
 }
 
 const MovieTile = (props:MovieTileProps) => {
@@ -84,7 +81,6 @@ const MovieTile = (props:MovieTileProps) => {
                             <div className="icon iconButton favButton"/>
                             <div className="icon iconButton moreButton" onClick={() => navigate(`/movie/${props.id}`)}/>
                     </div>
-
                     <div className="categories">
                         {props.categories.map((category, index) => {
                             return(

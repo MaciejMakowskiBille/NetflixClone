@@ -7,8 +7,8 @@ import star from '../../imgs/producers/star.png'
 import dc from '../../imgs/producers/dc.png'
 import Producer from "./components/producer"
 import CategoryRow from "../../components/categoryRow"
-import {useState, useEffect} from 'react'
 import { getFilms } from "../../utils/Gets"
+import {useState, useEffect} from 'react'
 
 const producerList = [
     {
@@ -48,6 +48,7 @@ const MainPage = () => {
         })
     },[])
 
+    getFilms()
     return(
         <>
         <div className="appBackground">

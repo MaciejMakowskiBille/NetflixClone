@@ -1,12 +1,9 @@
-@import 'colors.scss';
+@import './colors.scss';
 
 button{
     font-family: 'Roboto';
     letter-spacing: normal;
-    padding-left: 16px;
-    padding-right: 16px;
-    padding-top: 8px;
-    padding-bottom: 8px;
+    padding: 8px 16px;
     border-radius: 5px;
     border: none;
     box-sizing: content-box;
@@ -48,12 +45,12 @@ button{
     background-size: cover;
 }
 .favButton{
-    background-image: url('../imgs/movieTile/Favorite.png');
+    background-image: url('../imgs/movieTile/Favorite.svg');
 }
 .moreButton{
-    background-image: url('../imgs/movieTile/More.png');
+    background-image: url('../imgs/movieTile/More.svg');
 }
 .playButton{
-    background-image: url('../imgs/movieTile/Play.png');
+    background-image: url('../imgs/movieTile/Play.svg');
     z-index: 5;
 }
