@@ -2,8 +2,8 @@ import React, { createContext, useState } from "react";
 
 import { z, ZodType } from "zod";
 
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+// import { useForm } from "react-hook-form";
+// import { zodResolver } from "@hookform/resolvers/zod";
 
 interface ContextTypes {
   page: number;
@@ -12,6 +12,7 @@ interface ContextTypes {
   setData?: React.Dispatch<React.SetStateAction<FormTypes>>;
   onSubmit?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   handleChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  handleClick?: () => void;
   schema?: ZodType<FormTypes>;
 }
 
@@ -30,8 +31,8 @@ interface FormTypes {
   email: string;
   password: string;
   optInSubscription: boolean;
-  paymentsOffer?: "creditCard" | "payPal";
-  paymentsProcessing?: number;
+  paymentsOffer?: number;
+  paymentsProcessing?: "creditCard" | "payPal";
   cardNameSname?: string;
   cardNumber?: number;
   expiryDate?: string;
@@ -70,15 +71,22 @@ export function FormProvider({ children }: { children: React.ReactNode }) {
     email: "",
     password: "",
     optInSubscription: false,
+    paymentsOffer: undefined,
+    paymentsProcessing: "creditCard",
+    cardNameSname: "",
+    cardNumber: undefined,
+    expiryDate: undefined,
+    securityCode: undefined,
   });
 
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState<number>(0);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const inputType = event.target.type;
 
     const inputName = event.target.name;
-
+    console.log(inputType);
+    console.log(inputName);
     const value =
       inputType === "checked" ? event.target.checked : event.target.value;
 
@@ -88,6 +96,13 @@ export function FormProvider({ children }: { children: React.ReactNode }) {
     }));
   };
 
+  const handleClick = () => {
+    // jeżeli walidacja ok
+    if (setPage) {
+      setPage((prev) => prev + 1);
+    }
+  };
+
   const onSubmit = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
   };
@@ -95,7 +110,16 @@ export function FormProvider({ children }: { children: React.ReactNode }) {
   return (
     // <>{children}</>
     <RegistrationContext.Provider
-      value={{ page, setPage, data, setData, onSubmit, handleChange, schema }}
+      value={{
+        page,
+        setPage,
+        data,
+        setData,
+        onSubmit,
+        handleChange,
+        schema,
+        handleClick,
+      }}
     >
       {children}
     </RegistrationContext.Provider>

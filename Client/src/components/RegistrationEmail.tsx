@@ -2,18 +2,14 @@ import "../style/style.css";
 // import Card from "../components/Card";
 // import TextBox from "../components/TextBox";
 import Card from "../components/Card";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { useRegistrationContext } from "./hooks/useRegistrationContext";
+import RegistrationContext from "./context/RegistrationContext";
 
 function RegistrationEmail() {
-  const [checkedOffers, setCheckedOffers] = useState<boolean>(false);
-
-  useEffect(() => {
-    console.log(checkedOffers);
-  }, [checkedOffers]);
-
-  const handleClik = () => {
-    // jeżeli walidacja ok
-  };
+  // const [checkedOffers, setCheckedOffers] = useState<boolean>(false);
+  // const { data, handleChange, page, setPage } = useRegistrationContext();
+  const { data, handleChange, handleClick } = useContext(RegistrationContext);
 
   return (
     <div className="black-background">
@@ -26,16 +22,20 @@ function RegistrationEmail() {
           Będziesz używał tego emailu i hasła do logowania się do towjego konta
           FilmeX aby oglądać twoje ulubione filmy i seriale.
         </p>
+
         <input
           className="wrapper__text-input"
+          name="email"
           type="text"
+          onChange={handleChange}
           placeholder="email"
         ></input>
         <label className="wrapper__checkbox">
           <input
             type="checkbox"
-            checked={checkedOffers}
-            onClick={() => setCheckedOffers(!checkedOffers)}
+            name="optInSubscription"
+            checked={data?.optInSubscription}
+            onChange={handleChange}
           ></input>
           <span className="checkbox-text">
             Zgadzam się na otrzymywanie specjalnych ofert i informacji
@@ -43,7 +43,7 @@ function RegistrationEmail() {
           </span>
         </label>
         <Card>
-          <button className="button-primary" onClick={handleClik}>
+          <button className="button-primary" onClick={handleClick}>
             Kontynułuj
           </button>
         </Card>

@@ -7,7 +7,11 @@ import { useRegistrationContext } from "./hooks/useRegistrationContext";
 const PageSwitch = () => {
   const { page } = useRegistrationContext();
 
-  const display = {
+  interface displayArray {
+    [index: number]: JSX.Element;
+  }
+
+  const display: displayArray = {
     0: <RegistrationEmail />,
     1: <RegistrationPassword />,
     2: <RegistrationAgreements />,

@@ -1,8 +1,7 @@
-import { useState } from "react";
 import credit_card from "../imgs/icons/credit-card.svg";
 import paypal from "../imgs/icons/paypal.svg";
 import Switch from "./Switch";
-import PaymentsContent from "./PaymentsContent";
+// import PaymentsContent from "./PaymentsContent";
 
 export default function PaymentsSwitch({
   children,
@@ -27,7 +26,7 @@ export default function PaymentsSwitch({
         <Switch
           img={paypal}
           name="PayPal"
-          key={credit_card}
+          key={paypal}
           onClick={() => setActiveIndex(1)}
           className={activeIndex === 1 ? "item--active" : ""}
         />
