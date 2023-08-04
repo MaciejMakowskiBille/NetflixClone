@@ -2,15 +2,12 @@ import React, { createContext, useState } from "react";
 
 import { z, ZodType } from "zod";
 
-// import { useForm } from "react-hook-form";
-// import { zodResolver } from "@hookform/resolvers/zod";
-
 interface ContextTypes {
   page: number;
   setPage?: React.Dispatch<React.SetStateAction<number>>;
   data?: FormTypes;
   setData?: React.Dispatch<React.SetStateAction<FormTypes>>;
-  onSubmit?: React.FormEventHandler<HTMLFormElement>;
+  onSubmit?: (data: FormTypes) => void;
   handleChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   handleClick?: () => void;
   schema?: ZodType<FormTypes>;
@@ -27,10 +24,10 @@ interface ContextTypes {
 // schema: undefined,
 // });
 
-interface FormTypes {
+export interface FormTypes {
   email: string;
   password: string;
-  optInSubscription: boolean;
+  optInSubscription?: boolean;
   paymentsOffer?: number;
   agreement?: boolean;
   paymentsProcessing?: "creditCard" | "payPal";
@@ -44,30 +41,26 @@ const RegistrationContext = createContext<ContextTypes>({
   page: 0,
 });
 
+export const schema: ZodType<FormTypes> = z.object({
+  email: z
+    .string()
+    .email("Niepoprawny adres email")
+    .nonempty("Adres email jest wymagany"),
+  password: z
+    .string()
+    .min(8, "Hasło musi zawierać minimum 8 znaków")
+    .nonempty("Hasło jest wymagane"),
+  cardNameSname: z
+    .string()
+    .nonempty("pole jest wymagane")
+    .min(3, "musi zawierać minimum 3 znaków"),
+  expireDate: z.date({
+    required_error: "Pole jest wymagane",
+    // invalid_type_error: "That's not a date!",
+  }),
+});
+
 export function FormProvider({ children }: { children: React.ReactNode }) {
-  const schema: ZodType<FormTypes> = z.object({
-    email: z
-      .string()
-      .email("Niepoprawny adres email")
-      .nonempty("Adres email jest wymagany"),
-    password: z
-      .string()
-      .min(8, "Hasło musi zawierać minimum 8 znaków")
-      .nonempty("Hasło jest wymagane"),
-    optInSubscription: z.boolean(),
-    // paymentsOffer: z.undefined({message: "pole jest wymagane"});
-    cardNameSname: z
-      .string()
-      .nonempty("pole jest wymagane")
-      .min(3, "musi zawierać minimum 3 znaków"),
-    expireDate: z.date({
-      required_error: "Pole jest wymagane",
-      // invalid_type_error: "That's not a date!",
-    }),
-  });
-
-  //   const {register, handleSubmit} = useForm({ resolver: zodResolver(schema) });
-
   const [data, setData] = useState<FormTypes>({
     email: "",
     password: "",
@@ -106,10 +99,11 @@ export function FormProvider({ children }: { children: React.ReactNode }) {
     }
   };
 
-  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
+  const onSubmit = (data: FormTypes) => {
     console.log(JSON.stringify(data));
+    if (setPage) {
+      setPage((prev) => prev + 1);
+    }
   };
 
   return (

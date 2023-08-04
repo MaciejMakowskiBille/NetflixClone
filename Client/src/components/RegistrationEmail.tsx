@@ -1,8 +1,11 @@
 import "../style/style.css";
 import { useRegistrationContext } from "./hooks/useRegistrationContext";
-
+import { schema } from "./context/RegistrationContext";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 function RegistrationEmail() {
   const { data, handleChange, handleClick } = useRegistrationContext();
+  const { register } = useForm({ resolver: zodResolver(schema) });
 
   return (
     <div className="black-background">
@@ -18,8 +21,9 @@ function RegistrationEmail() {
 
         <input
           className="wrapper__text-input"
-          name="email"
           type="text"
+          {...register("email")}
+          name="email"
           onChange={handleChange}
           placeholder="email"
         ></input>
@@ -42,7 +46,7 @@ function RegistrationEmail() {
             zmienić twoje ustwienia komunikacji. Klikając Kontynłuj
             potwierdzasz, że zaznajomiłeś się z naszą Polityką Prywatności.
           </p>
-          <button className="button-primary" onClick={handleClick}>
+          <button type="submit" className="button-primary">
             Kontynułuj
           </button>
         </div>
