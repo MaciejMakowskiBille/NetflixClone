@@ -49,7 +49,9 @@ export default function PaymentsContent({
           rekompensaty za częściowo wykorzystane miesiące lub lata.
         </p>
 
-        <button className="button-primary">Zgadzam się</button>
+        <button type="submit" className="button-primary">
+          Zgadzam się
+        </button>
       </div>
     );
   } else {
@@ -74,7 +76,7 @@ export default function PaymentsContent({
           okresu rozliczeniowego. Nie zwracamy środków ani nie udzielamy
           rekompensaty za częściowo wykorzystane miesiące lub lata.
         </p>
-        <button className="button-primary button--paypal">
+        <button type="submit" className="button-primary button--paypal">
           <p className="button-primary__text">ZAPŁAĆ Z</p>
           <img src={paypal2} alt="" className="paypal-full" />
         </button>

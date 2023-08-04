@@ -1,4 +1,4 @@
-export default function Card() {
+export default function Card({ children }: { children: React.ReactNode }) {
   return (
     <div className="card">
       <p>
@@ -7,7 +7,7 @@ export default function Card() {
         zmienić twoje ustwienia komunikacji. Klikając Kontynłuj potwierdzasz, że
         zaznajomiłeś się z naszą Polityką Prywatności.
       </p>
-      <button className="button-primary">Kontynułuj</button>
+      {children}
     </div>
   );
 }

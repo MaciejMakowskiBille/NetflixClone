@@ -1,6 +1,9 @@
 // import "../style/registrationPassword.css";
+// import useRe
 
 function RegistrationPassword() {
+  // const {setPage} =
+
   return (
     <form>
       <div className="black-background">
@@ -15,7 +18,7 @@ function RegistrationPassword() {
           </p>
           <input
             className="wrapper__text-input"
-            type="text"
+            type="password"
             placeholder="hasło"
           ></input>
           <button className="button-primary">Zaloguj</button>

@@ -3,9 +3,11 @@ import { useState } from "react";
 import PaymentsOffer from "../components/PaymentsOffer";
 import "../style/style.css";
 import PaymentsSwitch from "./PaymentsSwitch";
+import PaymentsContent from "./PaymentsContent";
 
 function RegistrationPayments() {
   const [offerIndex, setOfferIndex] = useState<number | undefined>();
+  const [activeContentIndex, setActiveContentIndex] = useState<number>(0);
   return (
     <form>
       <div className="black-background">
@@ -37,7 +39,12 @@ function RegistrationPayments() {
             />
           </div>
 
-          <PaymentsSwitch />
+          <PaymentsSwitch
+            activeIndex={activeContentIndex}
+            setActiveIndex={setActiveContentIndex}
+          >
+            <PaymentsContent activeContentIndex={activeContentIndex} />
+          </PaymentsSwitch>
         </div>
       </div>
     </form>
