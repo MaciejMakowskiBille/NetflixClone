@@ -5,7 +5,7 @@ import { useRegistrationContext } from "./hooks/useRegistrationContext";
 
 function RegistrationPassword() {
   // const {setPage} =
-  const { handleClik } = useRegistrationContext();
+  const { handleClick, handleChange } = useRegistrationContext();
   return (
     <div className="black-background">
       <div className="wrapper">
@@ -22,9 +22,10 @@ function RegistrationPassword() {
           className="wrapper__text-input"
           name="password"
           type="password"
+          onChange={handleChange}
           placeholder="hasło"
         ></input>
-        <button className="button-primary" onClick={handleClik}>
+        <button className="button-primary" onClick={handleClick}>
           Zaloguj
         </button>
       </div>

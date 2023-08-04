@@ -1,8 +1,10 @@
 import paypal2 from "../imgs/icons/paypal2.svg";
 
 export default function PaymentsContent({
+  handleChange,
   activeContentIndex,
 }: {
+  handleChange?: React.ChangeEventHandler<HTMLInputElement>;
   activeContentIndex: number;
 }) {
   if (activeContentIndex === 0) {
@@ -10,11 +12,21 @@ export default function PaymentsContent({
       <div className="content">
         <div className="input">
           <p>IMIE I NAZWISKO NA KARCIE</p>
-          <input className="wrapper__text-input" type="text" />
+          <input
+            className="wrapper__text-input"
+            type="text"
+            name="cardNameSname"
+            onChange={handleChange}
+          />
         </div>
         <div className="input">
           <p>NUMER KARTY</p>
-          <input className="wrapper__text-input" type="text" />
+          <input
+            className="wrapper__text-input"
+            type="text"
+            onChange={handleChange}
+            name="cardNumber"
+          />
         </div>
         <div className="inputs">
           <div className="input">
@@ -22,6 +34,8 @@ export default function PaymentsContent({
             <input
               className="wrapper__text-input wrapper__text-input--smaller"
               type="text"
+              name="expiryDate"
+              onChange={handleChange}
               placeholder="MM/RR"
             />
           </div>
@@ -30,6 +44,8 @@ export default function PaymentsContent({
             <input
               className="wrapper__text-input wrapper__text-input--smaller"
               type="text"
+              name="securityCode"
+              onChange={handleChange}
               placeholder="CVV"
             />
           </div>

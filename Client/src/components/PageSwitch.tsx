@@ -3,9 +3,14 @@ import RegistrationPassword from "./RegistrationPassword";
 import RegistrationAgreements from "./RegistrationAgreement";
 import RegistrationPayments from "./RegistrationPayments";
 import { useRegistrationContext } from "./hooks/useRegistrationContext";
+import { useEffect } from "react";
 
 const PageSwitch = () => {
-  const { page } = useRegistrationContext();
+  const { page, onSubmit, data } = useRegistrationContext();
+
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
 
   interface displayArray {
     [index: number]: JSX.Element;
@@ -18,7 +23,11 @@ const PageSwitch = () => {
     3: <RegistrationPayments />,
   };
 
-  const content = <div className="form-inputs flex-col">{display[page]}</div>;
+  const content = (
+    <form className="form-inputs flex-col" onSubmit={onSubmit!}>
+      {display[page]}
+    </form>
+  );
 
   return content;
 };

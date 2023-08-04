@@ -1,13 +1,22 @@
 // import { useState } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PaymentsOffer from "../components/PaymentsOffer";
 import "../style/style.css";
 import PaymentsSwitch from "./PaymentsSwitch";
 import PaymentsContent from "./PaymentsContent";
+import { useRegistrationContext } from "./hooks/useRegistrationContext";
 
 function RegistrationPayments() {
-  const [offerIndex, setOfferIndex] = useState<number | undefined>();
   const [activeContentIndex, setActiveContentIndex] = useState<number>(0);
+  const { setData, data, handleChange } = useRegistrationContext();
+
+  useEffect(() => {
+    const processingValue = activeContentIndex === 0 ? "creditCard" : "payPal";
+    setData!((prev) => ({
+      ...prev,
+      ["paymentsProcessing"]: processingValue,
+    }));
+  }, [activeContentIndex]);
 
   return (
     <div className="black-background">
@@ -23,18 +32,28 @@ function RegistrationPayments() {
 
         <div className="options">
           <PaymentsOffer
-            className={offerIndex === 0 ? "active" : ""}
-            onClick={() => setOfferIndex(0)}
+            className={data!.paymentsOffer === 0 ? "active" : ""}
+            onClick={() => {
+              setData!((prev) => ({
+                ...prev,
+                ["paymentsOffer"]: 2,
+              }));
+            }}
             text="Miesięcznie"
             cost="28.99zł"
           />
           <PaymentsOffer
             className={
-              offerIndex === 1
+              data!.paymentsOffer === 1
                 ? "payments-offer--primary active"
                 : "payments-offer--primary"
             }
-            onClick={() => setOfferIndex(1)}
+            onClick={() => {
+              setData!((prev) => ({
+                ...prev,
+                ["paymentsOffer"]: 1,
+              }));
+            }}
             text="Rocznie"
             cost="289.99zł"
           />
@@ -44,7 +63,10 @@ function RegistrationPayments() {
           activeIndex={activeContentIndex}
           setActiveIndex={setActiveContentIndex}
         >
-          <PaymentsContent activeContentIndex={activeContentIndex} />
+          <PaymentsContent
+            activeContentIndex={activeContentIndex}
+            handleChange={handleChange}
+          />
         </PaymentsSwitch>
       </div>
     </div>

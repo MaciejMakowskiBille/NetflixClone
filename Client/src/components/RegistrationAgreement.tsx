@@ -1,8 +1,8 @@
-// import "../style/registrationAgreements.css";
 import { useRegistrationContext } from "./hooks/useRegistrationContext";
 
 function RegistrationAgreements() {
   const { handleClick } = useRegistrationContext();
+
   return (
     <div className="black-background">
       <div className="wrapper">
@@ -32,7 +32,11 @@ function RegistrationAgreements() {
           Klikając "Zgadzam się" wyrażasz Zgodę na Subskrybcję. Aby ją zapisać i
           wydrukowac twoją Zgodę subskrypcji proszę użyj twojej przeglądarki
         </p>
-        <button className="button-primary" onClick={handleClick}>
+        <button
+          className="button-primary"
+          name="agreement"
+          onClick={handleClick}
+        >
           Zgadzam się
         </button>
       </div>

@@ -10,7 +10,7 @@ interface ContextTypes {
   setPage?: React.Dispatch<React.SetStateAction<number>>;
   data?: FormTypes;
   setData?: React.Dispatch<React.SetStateAction<FormTypes>>;
-  onSubmit?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onSubmit?: React.FormEventHandler<HTMLFormElement>;
   handleChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   handleClick?: () => void;
   schema?: ZodType<FormTypes>;
@@ -32,6 +32,7 @@ interface FormTypes {
   password: string;
   optInSubscription: boolean;
   paymentsOffer?: number;
+  agreement?: boolean;
   paymentsProcessing?: "creditCard" | "payPal";
   cardNameSname?: string;
   cardNumber?: number;
@@ -71,6 +72,7 @@ export function FormProvider({ children }: { children: React.ReactNode }) {
     email: "",
     password: "",
     optInSubscription: false,
+    agreement: false,
     paymentsOffer: undefined,
     paymentsProcessing: "creditCard",
     cardNameSname: "",
@@ -85,10 +87,11 @@ export function FormProvider({ children }: { children: React.ReactNode }) {
     const inputType = event.target.type;
 
     const inputName = event.target.name;
-    console.log(inputType);
-    console.log(inputName);
+    // console.log(inputType);
+    // console.log(inputName);
+
     const value =
-      inputType === "checked" ? event.target.checked : event.target.value;
+      inputType === "checkbox" ? event.target.checked : event.target.value;
 
     setData((prev) => ({
       ...prev,
@@ -103,8 +106,10 @@ export function FormProvider({ children }: { children: React.ReactNode }) {
     }
   };
 
-  const onSubmit = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    console.log(JSON.stringify(data));
   };
 
   return (

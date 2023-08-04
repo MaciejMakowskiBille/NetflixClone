@@ -1,15 +1,8 @@
 import "../style/style.css";
-// import Card from "../components/Card";
-// import TextBox from "../components/TextBox";
-import Card from "../components/Card";
-import { useContext, useEffect, useState } from "react";
 import { useRegistrationContext } from "./hooks/useRegistrationContext";
-import RegistrationContext from "./context/RegistrationContext";
 
 function RegistrationEmail() {
-  // const [checkedOffers, setCheckedOffers] = useState<boolean>(false);
-  // const { data, handleChange, page, setPage } = useRegistrationContext();
-  const { data, handleChange, handleClick } = useContext(RegistrationContext);
+  const { data, handleChange, handleClick } = useRegistrationContext();
 
   return (
     <div className="black-background">
@@ -34,7 +27,7 @@ function RegistrationEmail() {
           <input
             type="checkbox"
             name="optInSubscription"
-            checked={data?.optInSubscription}
+            checked={data!.optInSubscription}
             onChange={handleChange}
           ></input>
           <span className="checkbox-text">
@@ -42,11 +35,17 @@ function RegistrationEmail() {
             dotyczących produktów FilmeX.
           </span>
         </label>
-        <Card>
+        <div className="card">
+          <p>
+            FilmeX będzie używał twoich danych do ulepszania twoich wyszukiwań i
+            wysyłania informacji dotyczących FilmeX. Możesz w każdym momencie
+            zmienić twoje ustwienia komunikacji. Klikając Kontynłuj
+            potwierdzasz, że zaznajomiłeś się z naszą Polityką Prywatności.
+          </p>
           <button className="button-primary" onClick={handleClick}>
             Kontynułuj
           </button>
-        </Card>
+        </div>
       </div>
     </div>
   );
