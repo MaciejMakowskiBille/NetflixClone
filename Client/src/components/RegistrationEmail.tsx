@@ -1,12 +1,38 @@
 import "../style/style.css";
 import { useRegistrationContext } from "./hooks/useRegistrationContext";
-import { schema } from "./context/RegistrationContext";
+import { FormTypes, schema } from "./context/RegistrationContext";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-function RegistrationEmail() {
-  const { data, handleChange, handleClick } = useRegistrationContext();
-  const { register } = useForm({ resolver: zodResolver(schema) });
 
+function RegistrationEmail() {
+  const { data, handleChange, handleClick, setPage } = useRegistrationContext();
+  const {
+    register,
+    trigger,
+    formState: { errors },
+  } = useForm<FormTypes>({ resolver: zodResolver(schema) });
+
+  // type FieldTypes = {
+  type fieldName =
+    | "email"
+    | "password"
+    | "optInSubscription"
+    | "paymentsOffer"
+    | "agreement"
+    | "paymentsProcessing"
+    | "cardNameSname"
+    | "cardNumber"
+    | "expiryDate"
+    | "securityCode";
+
+  const onClick = async (fieldName: fieldName) => {
+    const output = await trigger(fieldName);
+    console.log(output);
+    if (output) {
+      setPage!((prev) => prev + 1);
+    }
+  };
+  // console.log("errors:", errors);
   return (
     <div className="black-background">
       <div className="wrapper">
@@ -18,15 +44,20 @@ function RegistrationEmail() {
           Będziesz używał tego emailu i hasła do logowania się do towjego konta
           FilmeX aby oglądać twoje ulubione filmy i seriale.
         </p>
-
-        <input
-          className="wrapper__text-input"
-          type="text"
-          {...register("email")}
-          name="email"
-          onChange={handleChange}
-          placeholder="email"
-        ></input>
+        <div>
+          <input
+            className="wrapper__text-input"
+            type="text"
+            {...register("email")}
+            name="email"
+            // pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
+            onChange={handleChange}
+            placeholder="email"
+          />
+          {errors.email && (
+            <p className="error-message">{errors.email?.message}</p>
+          )}
+        </div>
         <label className="wrapper__checkbox">
           <input
             type="checkbox"
@@ -46,7 +77,11 @@ function RegistrationEmail() {
             zmienić twoje ustwienia komunikacji. Klikając Kontynłuj
             potwierdzasz, że zaznajomiłeś się z naszą Polityką Prywatności.
           </p>
-          <button type="submit" className="button-primary">
+          <button
+            type="button"
+            className="button-primary"
+            onClick={() => onClick("email")}
+          >
             Kontynułuj
           </button>
         </div>

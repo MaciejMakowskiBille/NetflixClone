@@ -45,11 +45,11 @@ export const schema: ZodType<FormTypes> = z.object({
   email: z
     .string()
     .email("Niepoprawny adres email")
-    .nonempty("Adres email jest wymagany"),
+    .nonempty("Email jest wymagany"),
   password: z
     .string()
-    .min(8, "Hasło musi zawierać minimum 8 znaków")
-    .nonempty("Hasło jest wymagane"),
+    .nonempty("Hasło jest wymagane")
+    .min(8, "Hasło musi zawierać minimum 8 znaków"),
   cardNameSname: z
     .string()
     .nonempty("pole jest wymagane")
@@ -59,6 +59,8 @@ export const schema: ZodType<FormTypes> = z.object({
     // invalid_type_error: "That's not a date!",
   }),
 });
+
+export type FormInput = z.infer<typeof schema>;
 
 export function FormProvider({ children }: { children: React.ReactNode }) {
   const [data, setData] = useState<FormTypes>({
@@ -98,6 +100,14 @@ export function FormProvider({ children }: { children: React.ReactNode }) {
       setPage((prev) => prev + 1);
     }
   };
+
+  // const onClick = async (fieldName: fieldName) => {
+  //   const output = await trigger(fieldName);
+  //   console.log(output);
+  //   if (output) {
+  //     setPage!((prev) => prev + 1);
+  //   }
+  // };
 
   const onSubmit = (data: FormTypes) => {
     console.log(JSON.stringify(data));
