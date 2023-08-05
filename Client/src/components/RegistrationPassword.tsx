@@ -1,11 +1,9 @@
-// import "../style/registrationPassword.css";
-// import useRe
-
 import { useRegistrationContext } from "./hooks/useRegistrationContext";
 
 function RegistrationPassword() {
   // const {setPage} =
-  const { handleClick, handleChange } = useRegistrationContext();
+  const { handleClick, handleChange, register, errors } =
+    useRegistrationContext();
   return (
     <div className="black-background">
       <div className="wrapper">
@@ -17,15 +15,23 @@ function RegistrationPassword() {
           Będziesz używał tego emailu i hasła do logowania się do towjego konta
           FilmeX aby oglądać twoje ulubione filmy i seriale.
         </p>
-
-        <input
-          className="wrapper__text-input"
-          name="password"
-          type="password"
-          onChange={handleChange}
-          placeholder="hasło"
-        ></input>
-        <button className="button-primary" onClick={handleClick}>
+        <div>
+          <input
+            className="wrapper__text-input"
+            type="password"
+            {...register!("password")}
+            name="password"
+            onChange={handleChange}
+            placeholder="hasło"
+          />
+          {errors?.password && (
+            <p className="error-message">{errors.password?.message}</p>
+          )}
+        </div>
+        <button
+          className="button-primary"
+          onClick={() => handleClick!("password")}
+        >
           Zaloguj
         </button>
       </div>

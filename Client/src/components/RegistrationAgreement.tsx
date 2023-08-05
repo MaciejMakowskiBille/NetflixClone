@@ -1,7 +1,7 @@
 import { useRegistrationContext } from "./hooks/useRegistrationContext";
 
 function RegistrationAgreements() {
-  const { handleClick } = useRegistrationContext();
+  const { setPage, setData } = useRegistrationContext();
 
   return (
     <div className="black-background">
@@ -35,7 +35,13 @@ function RegistrationAgreements() {
         <button
           className="button-primary"
           name="agreement"
-          onClick={handleClick}
+          onClick={() => {
+            setPage!((prev) => prev + 1);
+            setData!((prev) => ({
+              ...prev,
+              ["agreement"]: true,
+            }));
+          }}
         >
           Zgadzam się
         </button>

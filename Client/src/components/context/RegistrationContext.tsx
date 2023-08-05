@@ -1,6 +1,20 @@
 import React, { createContext, useState } from "react";
+import { useForm, UseFormRegister, FieldErrors } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 import { z, ZodType } from "zod";
+
+type fieldName =
+  | "email"
+  | "password"
+  | "optInSubscription"
+  | "paymentsOffer"
+  | "agreement"
+  | "paymentsProcessing"
+  | "cardNameSname"
+  | "cardNumber"
+  | "expiryDate"
+  | "securityCode";
 
 interface ContextTypes {
   page: number;
@@ -9,8 +23,10 @@ interface ContextTypes {
   setData?: React.Dispatch<React.SetStateAction<FormTypes>>;
   onSubmit?: (data: FormTypes) => void;
   handleChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  handleClick?: () => void;
+  handleClick?: (fieldName: fieldName) => Promise<void>;
   schema?: ZodType<FormTypes>;
+  register?: UseFormRegister<FormTypes>;
+  errors?: FieldErrors<FormTypes>;
 }
 
 // export const MyGlobalContext = createContext<ContextTypes>({
@@ -63,6 +79,12 @@ export const schema: ZodType<FormTypes> = z.object({
 export type FormInput = z.infer<typeof schema>;
 
 export function FormProvider({ children }: { children: React.ReactNode }) {
+  const {
+    register,
+    trigger,
+    formState: { errors },
+  } = useForm<FormTypes>({ resolver: zodResolver(schema) });
+
   const [data, setData] = useState<FormTypes>({
     email: "",
     password: "",
@@ -94,20 +116,13 @@ export function FormProvider({ children }: { children: React.ReactNode }) {
     }));
   };
 
-  const handleClick = () => {
-    // jeżeli walidacja ok
-    if (setPage) {
-      setPage((prev) => prev + 1);
+  const handleClick = async (fieldName: fieldName) => {
+    const output = await trigger(fieldName);
+    console.log(output);
+    if (output) {
+      setPage!((prev) => prev + 1);
     }
   };
-
-  // const onClick = async (fieldName: fieldName) => {
-  //   const output = await trigger(fieldName);
-  //   console.log(output);
-  //   if (output) {
-  //     setPage!((prev) => prev + 1);
-  //   }
-  // };
 
   const onSubmit = (data: FormTypes) => {
     console.log(JSON.stringify(data));
@@ -120,6 +135,8 @@ export function FormProvider({ children }: { children: React.ReactNode }) {
     // <>{children}</>
     <RegistrationContext.Provider
       value={{
+        register,
+        errors,
         page,
         setPage,
         data,

@@ -1,38 +1,10 @@
 import "../style/style.css";
 import { useRegistrationContext } from "./hooks/useRegistrationContext";
-import { FormTypes, schema } from "./context/RegistrationContext";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 
 function RegistrationEmail() {
-  const { data, handleChange, handleClick, setPage } = useRegistrationContext();
-  const {
-    register,
-    trigger,
-    formState: { errors },
-  } = useForm<FormTypes>({ resolver: zodResolver(schema) });
+  const { data, handleChange, handleClick, register, errors } =
+    useRegistrationContext();
 
-  // type FieldTypes = {
-  type fieldName =
-    | "email"
-    | "password"
-    | "optInSubscription"
-    | "paymentsOffer"
-    | "agreement"
-    | "paymentsProcessing"
-    | "cardNameSname"
-    | "cardNumber"
-    | "expiryDate"
-    | "securityCode";
-
-  const onClick = async (fieldName: fieldName) => {
-    const output = await trigger(fieldName);
-    console.log(output);
-    if (output) {
-      setPage!((prev) => prev + 1);
-    }
-  };
-  // console.log("errors:", errors);
   return (
     <div className="black-background">
       <div className="wrapper">
@@ -48,13 +20,13 @@ function RegistrationEmail() {
           <input
             className="wrapper__text-input"
             type="text"
-            {...register("email")}
+            {...register!("email")}
             name="email"
             // pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
             onChange={handleChange}
             placeholder="email"
           />
-          {errors.email && (
+          {errors?.email && (
             <p className="error-message">{errors.email?.message}</p>
           )}
         </div>
@@ -80,7 +52,7 @@ function RegistrationEmail() {
           <button
             type="button"
             className="button-primary"
-            onClick={() => onClick("email")}
+            onClick={() => handleClick!("email")}
           >
             Kontynułuj
           </button>
