@@ -1,8 +1,9 @@
 import {useState, useEffect} from 'react'
 import { serverURL } from "../../../utils/links"
-import ActorComponent from "./ActorComponent/actorComponent"
+import ActorComponent from "./Actor/actorComponent"
 import MovieTile from "../../../components/MovieTile/movieTile"
 import { getFilms } from '../../../utils/Gets'
+import SeasonsComponent from './Seasons/seasonsComponent'
 
 type MoviePageAddsProps = {
     active:string
@@ -78,6 +79,9 @@ const MoviePageAdds = (props:MoviePageAddsProps) => {
 
     return(
         <div className="movieAdds">
+            {props.active === 'sea' && props.seasons && (
+                <SeasonsComponent seasons={props.seasons}/>
+            )}
             {props.active === 'rec' && (
                 <div className='movieList'>
                     {!isLoading && moviesData && (

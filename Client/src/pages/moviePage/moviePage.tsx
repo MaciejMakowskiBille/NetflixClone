@@ -68,6 +68,7 @@ const MoviePage = () => {
             if(movieId){
                 getOneFilm(+movieId).then((res) => {
                     setMovieData(prev => prev = res)
+                    setActive('rec')
                     setIsLoading(prev => prev = false)
                 })
             }
@@ -76,6 +77,7 @@ const MoviePage = () => {
             if(movieId){
                 getOneSeries(+movieId).then((res) => {
                     setMovieData(prev => prev = res)
+                    setActive('sea')
                     setIsLoading(prev => prev = false)
                 })
             }

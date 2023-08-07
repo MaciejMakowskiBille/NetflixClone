@@ -7,8 +7,9 @@
 @import '../pages/mainPage/mainPage';
 @import '../components/MovieTile/movies';
 @import '../pages/moviePage/moviePage';
-@import '../pages/moviePage/components/ActorComponent/actorComponent';
-
+@import '../pages/moviePage/components/Actor/actorComponent';
+@import '../pages/moviePage/components/Seasons/seasons';
+@import '../pages/moviePage/components/Episode/episode';
 
 body{
     font-family: 'Roboto';
