@@ -35,6 +35,14 @@ export const getSeries = async () => {
     return null
   }
 }
+export const getOneSeries = async (id:number):Promise<SeriesDataType | null> => {
+  const response = await axios.get(apiURL + `series/${id}?populate=deep`)
+  if(response && response.data.data){
+      return clearSeriesData(response.data.data)
+  }else{
+    return null
+  }
+}
 
 export const getCategories = async ():Promise<Category[] | null> => {
     const response = await axios.get(apiURL + `categories`)

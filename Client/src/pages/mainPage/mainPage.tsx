@@ -42,11 +42,16 @@ const producerList = [
 const MainPage = () => {
 
     const [moviesData, setMoviesData] = useState<MovieDataType[] | null>(null)
+    const [seriesData, setSeriesData] = useState<SeriesDataType[] | null>(null)
+    const [combinedData, setCombinedData] = useState<CombinedDataType>([])
     const [categories, setCategories] = useState<Category[] | null>(null) 
     const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
-        getSeries()
+        getSeries().then((res) => {
+            setSeriesData(prev => prev = res)
+        }
+        )
         getCategories().then((res) => {
             setCategories(prev => prev = res)
             setIsLoading(prev => prev = false)
@@ -62,6 +67,15 @@ const MainPage = () => {
             console.log(error)
         })
     },[])
+    useEffect(() => {
+        if (moviesData && seriesData) {
+            setCombinedData([...moviesData, ...seriesData]);
+          } else if (moviesData) {
+            setCombinedData(moviesData);
+          } else if (seriesData) {
+            setCombinedData(seriesData);
+          }
+    },[moviesData, seriesData])
     return(
         <>
         <div className="appBackground">
@@ -81,7 +95,7 @@ const MainPage = () => {
                 {!isLoading && moviesData && categories && (
                     categories.map(category => {
                         return(
-                            <CategoryRow key={category.id} title={category.name} moviesList={moviesData}/>
+                            <CategoryRow key={category.id} title={category.name} moviesList={combinedData}/>
                         )
                     })
                 )}

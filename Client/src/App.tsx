@@ -9,7 +9,7 @@ const App = () => {
     <Router>
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<MainPage />}/>
-        <Route path="movie/:movieId" element={<MoviePage />} />
+        <Route path="movie/:movieType/:movieId" element={<MoviePage />} />
       </Routes>
     </Router>
   )

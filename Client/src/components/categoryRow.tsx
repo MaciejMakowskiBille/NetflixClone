@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import MovieTile from "./MovieTile/movieTile"
 type CategoryRowPorps = {
     title:string,
-    moviesList:MovieDataType[]
+    moviesList:CombinedDataType
 }
 
 
@@ -17,6 +17,42 @@ const CategoryRow = (props:CategoryRowPorps) => {
         })
     }
 
+    const checkVideoType = (data: MovieDataType | SeriesDataType) => {
+        if ("duration" in data) {
+            return(
+                <MovieTile
+                    key={data.id+"m"}
+                    id={data.id}
+                    title={data.title}
+                    categories={data.categories}
+                    img={data.miniImg}
+                    hoverImg={data.hoverImg}
+                    logo={data.logo}
+                    ageCategory={data.ageCategory}
+                    premiere={data.premiere}
+                    transcription={data.transcription}
+                    duration={data.duration}
+                                />
+            )
+          } else if ("seasons" in data) {
+            return(
+                <MovieTile
+                    key={data.id+"s"}
+                    id={data.id}
+                    title={data.title}
+                    categories={data.categories}
+                    img={data.miniImg}
+                    hoverImg={data.hoverImg}
+                    logo={data.logo}
+                    ageCategory={data.ageCategory}
+                    premiere={data.premiere}
+                    transcription={data.transcription}
+                    seasons={data.seasons.length}
+                                />
+            )
+          }
+    }
+
     useEffect(() => {
         checkIfHasMovies()
     },[])
@@ -28,24 +64,10 @@ const CategoryRow = (props:CategoryRowPorps) => {
                     {props.title}
                 </div>
                 <div className="movieList">
-                    {props.moviesList.map((movie, index) => {
-                        const isActionMovie = movie.categories.some(category => category.name === props.title);
-                        if (isActionMovie) {
-                            return (
-                                <MovieTile
-                                    key={index}
-                                    id={movie.id}
-                                    title={movie.title}
-                                    categories={movie.categories}
-                                    img={movie.miniImg}
-                                    hoverImg={movie.hoverImg}
-                                    logo={movie.logo}
-                                    ageCategory={movie.ageCategory}
-                                    premiere={movie.premiere}
-                                    transcription={movie.transcription}
-                                    duration={movie.duration}
-                                />
-                            );
+                    {props.moviesList.map((movie) => {
+                        const isCategoryMovie = movie.categories.some(category => category.name === props.title);
+                        if (isCategoryMovie) {
+                            return checkVideoType(movie)
                         }
                         return null;
                     })}

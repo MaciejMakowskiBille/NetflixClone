@@ -1,4 +1,4 @@
-
+type CombinedDataType = Array<SeriesDataType | MovieDataType>
 
 type MovieDataType = {
     id:number

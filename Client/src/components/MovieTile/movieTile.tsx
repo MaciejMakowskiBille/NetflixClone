@@ -13,7 +13,7 @@ type MovieTileProps = {
     premiere:string,
     transcription?:boolean,
     duration?:number,
-    sezons?:number
+    seasons?:number
 }
 
 const MovieTile = (props:MovieTileProps) => {
@@ -28,6 +28,19 @@ const MovieTile = (props:MovieTileProps) => {
     const handleMouseLeave = () => {
         setTileImage(prev => prev = props.img)
         setIsMouseOverTile(prev => prev = false)
+    }
+
+    const showMoreButton = () => {
+        if("duration" in props){
+            return(
+                <div className="icon iconButton moreButton" onClick={() => navigate(`/movie/m/${props.id}`)}/>
+            )
+        }
+        if("seasons" in props){
+            return(
+                <div className="icon iconButton moreButton" onClick={() => navigate(`/movie/s/${props.id}`)}/>
+            )
+        }
     }
 
 
@@ -68,10 +81,10 @@ const MovieTile = (props:MovieTileProps) => {
                                     {props.duration%60}min
                                 </>
                             )}
-                            {props.sezons && (
+                            {props.seasons && (
                                 <>
                                     <div className="separator"/>
-                                    Sezony: {props.sezons}
+                                    Sezony: {props.seasons}
                                 </>
                             )}
                     </div>
@@ -79,7 +92,8 @@ const MovieTile = (props:MovieTileProps) => {
                     <div className="infos middle">
                             <div className="movieLogo" style={{backgroundImage:`url(${serverURL + props.logo})`}}/>
                             <div className="icon iconButton favButton"/>
-                            <div className="icon iconButton moreButton" onClick={() => navigate(`/movie/${props.id}`)}/>
+                            {showMoreButton()}
+                            
                     </div>
                     <div className="categories">
                         {props.categories.map((category, index) => {
