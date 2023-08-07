@@ -13,10 +13,7 @@ import { z, ZodType } from "zod";
 type fieldName =
   | "email"
   | "password"
-  | "optInSubscription"
   | "paymentsOffer"
-  | "agreement"
-  | "paymentsProcessing"
   | "cardNameSname"
   | "cardNumber"
   | "expiryDate"
@@ -30,11 +27,11 @@ interface ContextTypes {
   onSubmit?: (data: FormTypes) => void;
   handleChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   handleClick?: (fieldName: fieldName) => Promise<void>;
-  schema?: ZodType<FormTypes>;
-  register?: UseFormRegister<FormTypes>;
-  errors?: FieldErrors<FormTypes>;
-  watch?: UseFormWatch<FormTypes>;
-  trigger?: UseFormTrigger<FormTypes>;
+  schema?: z.ZodSchema<FormInput>;
+  register?: UseFormRegister<FormInput>;
+  errors?: FieldErrors<FormInput>;
+  watch?: UseFormWatch<FormInput>;
+  trigger?: UseFormTrigger<FormInput>;
 }
 
 // export const MyGlobalContext = createContext<ContextTypes>({
@@ -55,7 +52,8 @@ export interface FormTypes {
   paymentsOffer?: number;
   agreement?: boolean;
   paymentsProcessing?: "creditCard" | "payPal";
-  cardNameSname?: string;
+  cardName?: string;
+  cardSname?: string;
   cardNumber?: number;
   expiryDate?: string;
   securityCode?: number;
@@ -65,7 +63,7 @@ const RegistrationContext = createContext<ContextTypes>({
   page: 0,
 });
 
-export const schema: ZodType<FormTypes> = z.object({
+export const schema = z.object({
   email: z
     .string()
     .email("Niepoprawny adres email")
@@ -74,15 +72,21 @@ export const schema: ZodType<FormTypes> = z.object({
     .string()
     .nonempty("Hasło jest wymagane")
     .min(8, "Hasło musi zawierać minimum 8 znaków"),
+  paymentsOffer: z.number(),
   cardNameSname: z
     .string()
     .nonempty("pole jest wymagane")
     .min(3, "musi zawierać minimum 3 znaków"),
-  expireDate: z.string().regex(/^\d\d\/\d\d/, "nie właściwy wzorzec!"),
+  cardNumber: z.number().max(16),
+  expiryDate: z.string().regex(/^\d\d\/\d\d/, "nie właściwy wzorzec!"),
   securityCode: z.number().max(3, "nie właściwy wzorzec!"),
 });
 
 export type FormInput = z.infer<typeof schema>;
+
+// function validateUser(user: FormInput, schema: z.ZodSchema<FormInput>) {
+//   return schema.parse(user);
+// }
 
 export function FormProvider({ children }: { children: React.ReactNode }) {
   const {
@@ -90,7 +94,7 @@ export function FormProvider({ children }: { children: React.ReactNode }) {
     register,
     trigger,
     formState: { errors },
-  } = useForm<FormTypes>({ resolver: zodResolver(schema) });
+  } = useForm<FormInput>({ resolver: zodResolver(schema) });
 
   const [data, setData] = useState<FormTypes>({
     email: "",
@@ -99,7 +103,8 @@ export function FormProvider({ children }: { children: React.ReactNode }) {
     agreement: false,
     paymentsOffer: undefined,
     paymentsProcessing: "creditCard",
-    cardNameSname: "",
+    cardName: "",
+    cardSname: "",
     cardNumber: undefined,
     expiryDate: undefined,
     securityCode: undefined,
@@ -117,25 +122,41 @@ export function FormProvider({ children }: { children: React.ReactNode }) {
     const value =
       inputType === "checkbox" ? event.target.checked : event.target.value;
 
-    setData((prev) => ({
-      ...prev,
-      [inputName]: value,
-    }));
+    // if(inputName === "expiryDate") {
+    //   setData((prev) => ({
+    //     ...prev,
+    //     [inputName]: value,
+    //   }));
+    // }
+
+    if (inputName === "cardNameSname") {
+      const values = event.target.value.split(" ");
+      setData((prev) => ({
+        ...prev,
+        ["cardName"]: values[0],
+        ["cardSname"]: values[1],
+      }));
+    } else {
+      setData((prev) => ({
+        ...prev,
+        [inputName]: value,
+      }));
+    }
   };
 
   const handleClick = async (fieldName: fieldName) => {
     const output = await trigger(fieldName);
     console.log(output);
-    // if (output) {
-    //   setPage!((prev) => prev + 1);
-    // }
+    if (output) {
+      setPage!((prev) => prev + 1);
+    }
   };
 
   const onSubmit = (data: FormTypes) => {
     console.log(JSON.stringify(data));
-    if (setPage) {
-      setPage((prev) => prev + 1);
-    }
+    // if (setPage) {
+    //   setPage((prev) => prev + 1);
+    // }
   };
 
   return (

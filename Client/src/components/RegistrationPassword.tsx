@@ -17,7 +17,11 @@ function RegistrationPassword() {
         </p>
         <div>
           <input
-            className="wrapper__text-input"
+            className={
+              errors?.password
+                ? "wrapper__text-input error"
+                : "wrapper__text-input"
+            }
             type="password"
             {...register!("password")}
             name="password"

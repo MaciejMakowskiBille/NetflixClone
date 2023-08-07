@@ -3,19 +3,19 @@ import RegistrationPassword from "./RegistrationPassword";
 import RegistrationAgreements from "./RegistrationAgreement";
 import RegistrationPayments from "./RegistrationPayments";
 import { useRegistrationContext } from "./hooks/useRegistrationContext";
-import { useEffect } from "react";
 import { FormTypes, schema } from "./context/RegistrationContext";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useEffect } from "react";
 
 const PageSwitch = () => {
   const { page, onSubmit, data } = useRegistrationContext();
   const { handleSubmit } = useForm<FormTypes>({
     resolver: zodResolver(schema),
   });
-  // useEffect(() => {
-  //   console.log(data);
-  // }, [data]);
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
 
   // useEffect(() => {
   //   watch!((_, { name }) => {

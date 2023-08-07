@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+// import React, { useEffect } from "react";
 import "../style/style.css";
 import { useRegistrationContext } from "./hooks/useRegistrationContext";
 

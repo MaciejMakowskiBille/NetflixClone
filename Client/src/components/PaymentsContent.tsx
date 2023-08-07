@@ -9,7 +9,7 @@ export default function PaymentsContent({
   handleChange?: React.ChangeEventHandler<HTMLInputElement>;
   activeContentIndex: number;
 }) {
-  // const {register, trigger, errors} = useRegistrationContext();
+  const { data, register, trigger, errors } = useRegistrationContext();
   // const handlePress = (e) => {
   //   // var isMonthEntered = monthRegex.exec(e.target.value);
   //
@@ -18,38 +18,34 @@ export default function PaymentsContent({
 
   // const isMonthEntered = true;
 
-  function handleKeyPress(e: React.KeyboardEvent<HTMLInputElement>) {
-    let key = e.key;
+  // function handleKeyPress(e: React.KeyboardEvent<HTMLInputElement>) {
+  //   let key = e.key;
 
-    let input = e.target as HTMLFormElement;
-    const monthRegex = /^\d\d$/;
-    const isMonthEntered = monthRegex.test(input.value);
+  //   let input = e.target as HTMLFormElement;
+  //   const monthRegex = /^\d\d$/;
+  //   const isMonthEntered = monthRegex.test(input.value);
 
-    let regex = /\d/;
-    // if (!regex.test(key) && key !== "Backspace" && key !== "Delete") {
-    //   e.preventDefault();
-    // }
-    if (regex.test(key)) {
-      input.value = input.value + key;
-    } else {
-      e.preventDefault();
-    }
-    // if (isMonthEntered) {
-    //   input.value = input.value + "/";
-    // }
-  }
+  //   let regex = /\d$/;
+  //   if (!regex.test(key) && key !== "Backspace" && key !== "Delete") {
+  //     e.preventDefault();
+  //   }
 
-  const removeSlash = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    let key = e.key;
-    const monthAndSlashRegex = /^\d\d\/$/;
+  //   if (isMonthEntered) {
+  //     input.value = input.value + "/";
+  //   }
+  // }
 
-    let input = e.target as HTMLFormElement;
+  // const removeSlash = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  //   let key = e.key;
+  //   const monthAndSlashRegex = /^\d\d\/$/;
 
-    var isMonthAndSlashEntered = monthAndSlashRegex.test(input.value);
-    if (isMonthAndSlashEntered && key === "Backspace") {
-      input.value = input.value.slice(0, 2);
-    }
-  };
+  //   let input = e.target as HTMLFormElement;
+
+  //   var isMonthAndSlashEntered = monthAndSlashRegex.test(input.value);
+  //   if (isMonthAndSlashEntered && key === "Backspace") {
+  //     input.value = input.value.slice(0, 2);
+  //   }
+  // };
 
   // const cardNumberKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
   //   let input = e.target as HTMLFormElement;
@@ -60,15 +56,15 @@ export default function PaymentsContent({
   //   }
   // };
 
-  const blockInitials = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    let key = e.key;
+  // const blockInitials = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  //   let key = e.key;
 
-    // let input = e.target as HTMLFormElement;
-    let regex = /\d/;
-    if (!regex.test(key) && key !== "Backspace" && key !== "Delete") {
-      e.preventDefault();
-    }
-  };
+  //   // let input = e.target as HTMLFormElement;
+  //   let regex = /\d/;
+  //   if (!regex.test(key) && key !== "Backspace" && key !== "Delete") {
+  //     e.preventDefault();
+  //   }
+  // };
 
   if (activeContentIndex === 0) {
     return (
@@ -79,6 +75,7 @@ export default function PaymentsContent({
             className="wrapper__text-input"
             type="text"
             name="cardNameSname"
+            // value={data?.cardName + " " + data?.cardSname}
             onChange={handleChange}
           />
         </div>
@@ -89,6 +86,7 @@ export default function PaymentsContent({
             type="text"
             maxLength={16}
             // onKeyUp={cardNumberKeyPress}
+            value={data?.cardNumber}
             onChange={handleChange}
             name="cardNumber"
           />
@@ -100,12 +98,15 @@ export default function PaymentsContent({
               className="wrapper__text-input wrapper__text-input--smaller"
               type="text"
               name="expiryDate"
-              onKeyUp={handleKeyPress}
-              onKeyDown={removeSlash}
               // onKeyUp={handleBackSpace}
               // pattern="/^\d\d\/\d\d$/"
               maxLength={5}
               onChange={handleChange}
+              // value={
+              //   data?.expiryDate?.slice(0, 1) +
+              //   "/" +
+              //   data?.expiryDate?.slice(2, 3)
+              // }
               placeholder="MM/RR"
             />
           </div>
@@ -116,6 +117,7 @@ export default function PaymentsContent({
               type="text"
               name="securityCode"
               maxLength={3}
+              // value={}
               // onKeyUp={blockInitials}
               onChange={handleChange}
               placeholder="CVV"
