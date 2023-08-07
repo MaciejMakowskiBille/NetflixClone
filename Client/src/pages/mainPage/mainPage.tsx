@@ -8,7 +8,7 @@ import dc from '../../imgs/producers/dc.png'
 import Producer from "./components/producer"
 import CategoryRow from "../../components/categoryRow"
 import {useState, useEffect} from 'react'
-import { getCategories, getFilms } from "../../utils/Gets"
+import { getCategories, getFilms, getSeries } from "../../utils/Gets"
 
 
 const producerList = [
@@ -46,6 +46,7 @@ const MainPage = () => {
     const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
+        getSeries()
         getCategories().then((res) => {
             setCategories(prev => prev = res)
             setIsLoading(prev => prev = false)

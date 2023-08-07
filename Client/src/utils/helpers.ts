@@ -22,6 +22,61 @@ export const clearMovieData = (data:MovieResponseType) => {
       return clearedData
 }
 
+export const clearSeriesData = (data:SeriesResponseType) => {
+    const clearedData:SeriesDataType = {
+      id:data.id,
+      title:data.attributes.title,
+      description:data.attributes.description,
+      longDescription:data.attributes.longDescription,
+      premiere:data.attributes.premiere,
+      primaryImg:data.attributes.primaryImg.data.attributes.url,
+      miniImg:data.attributes.miniImg.data.attributes.url,
+      hoverImg:data.attributes.hoverImg.data.attributes.url,
+      logo:data.attributes.logo.data.attributes.url,
+      categories:clearCategoryData(data.attributes.categories.data),
+      cast:clearCastData(data.attributes.cast.data),
+      ageCategory:data.attributes.ageCategory,
+      transcription:data.attributes.transcription,
+      seasons:clearSeasonsData(data.attributes.seasons.data)
+    }
+    return clearedData
+}
+
+export const clearSeasonsData = (data:SeasonResponseType[]) => {
+  const clearedSeasons:Season[] = data.map(season => {
+    return(
+      {
+        id:season.id,
+        title:season.attributes.title,
+        number:season.attributes.number,
+        episodes:clearEpisodesData(season.attributes.episodes.data)
+      }
+    )
+  })
+  return clearedSeasons
+}
+
+export const clearEpisodesData = (data:EpisodeResponseType[]) => {
+  const clearedEpisodes:Episode[] = data.map(episode => {
+    return(
+      {
+        id:episode.id,
+        title:episode.attributes.title,
+        description:episode.attributes.description,
+        number:episode.attributes.number,
+        premiere:episode.attributes.premiere,
+        director:clearDirectorData(episode.attributes.director.data),
+        duration:episode.attributes.duration,
+        miniImg:episode.attributes.miniImg.data.attributes.url,
+        hoverImg:episode.attributes.hoverImg.data.attributes.url,
+        video:episode.attributes.video.data.attributes.url,
+
+      }
+    )
+  })
+  return clearedEpisodes
+}
+
 export const clearCategoryData = (data:CategoryResponseType[]) => {
   const clearedCategories:Category[] = data.map((category) => {
     return (
