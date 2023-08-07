@@ -80,7 +80,7 @@ const MoviePage = () => {
                 })
             }
         }
-    },[movieId])
+    },[movieId,movieType])
     return(
         <>
         <div className="appBackground">
