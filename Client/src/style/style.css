@@ -309,7 +309,6 @@ main .category .title {
   padding: 1rem;
 }
 .movieTile .movieTileInfo .tileHeader {
-  height: 5vh;
   display: flex;
   gap: 0.5rem;
   align-items: center;
@@ -324,6 +323,10 @@ main .category .title {
 }
 .movieTile .movieTileInfo .middle {
   justify-content: space-between;
+}
+.movieTile .movieTileInfo .middle .buttons {
+  display: flex;
+  gap: 1rem;
 }
 .movieTile .movieTileInfo .movieLogo {
   background-size: contain;

@@ -60,11 +60,8 @@ const MovieTile = (props:MovieTileProps) => {
                 )}
             </div>
             {isMouseOverTile && (
-                <motion.div 
+                <div 
                 className="movieTileInfo" 
-                initial={{y:'-100%', opacity:0}}
-                whileInView={{y:0, opacity:1}}
-                transition={{duration:0.5}}
                 >
                     <div className="tileHeader">
                     <div className="infos">
@@ -91,8 +88,10 @@ const MovieTile = (props:MovieTileProps) => {
                     </div>
                     <div className="infos middle">
                             <div className="movieLogo" style={{backgroundImage:`url(${serverURL + props.logo})`}}/>
+                            <div className="buttons">
                             <div className="icon iconButton favButton"/>
                             {showMoreButton()}
+                            </div>
                             
                     </div>
                     <div className="categories">
@@ -107,7 +106,7 @@ const MovieTile = (props:MovieTileProps) => {
                             )
                         })}
                     </div>
-                </motion.div>
+                </div>
             )}
         </div>
         </div>

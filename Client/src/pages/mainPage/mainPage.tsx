@@ -50,17 +50,22 @@ const MainPage = () => {
     useEffect(() => {
         getSeries().then((res) => {
             setSeriesData(prev => prev = res)
-        }
-        )
-        getCategories().then((res) => {
-            setCategories(prev => prev = res)
             setIsLoading(prev => prev = false)
         }).catch((error) => {
             setIsLoading(true)
             console.log(error)
         })
+
         getFilms().then((res) => {
             setMoviesData(prev => prev = res)
+            setIsLoading(prev => prev = false)
+        }).catch((error) => {
+            setIsLoading(true)
+            console.log(error)
+        })
+
+        getCategories().then((res) => {
+            setCategories(prev => prev = res)
             setIsLoading(prev => prev = false)
         }).catch((error) => {
             setIsLoading(true)
