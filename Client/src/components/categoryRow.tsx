@@ -1,8 +1,7 @@
 import MovieTile from "./MovieTile/movieTile"
-import { FilmListType } from "../types/mainPage"
 type CategoryRowPorps = {
     title:string,
-    moviesList:FilmListType
+    moviesList:MovieDataType[]
 }
 
 
@@ -18,15 +17,16 @@ const CategoryRow = (props:CategoryRowPorps) => {
                     return(
                         <MovieTile
                             key={index}
+                            id={movie.id}
                             title={movie.title}
                             categories={movie.categories}
-                            img={movie.img}
+                            img={movie.miniImg}
                             hoverImg={movie.hoverImg}
                             logo={movie.logo}
                             ageCategory={movie.ageCategory}
                             premiere={movie.premiere}
                             transcription={movie.transcription}
-                            sezons={11}
+                            duration={movie.duration}
                         />
                     )
                 })}

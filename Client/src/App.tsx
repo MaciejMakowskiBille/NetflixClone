@@ -1,13 +1,17 @@
-import Home from "./pages/home/home"
-import MainPage from "./pages/MainPage/mainPage"
+import MainPage from "./pages/mainPage/mainPage"
+import MoviePage from "./pages/moviePage/moviePage"
 import './style/style.css'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 const App = () => {
 
   return (
-    <>
-      <MainPage/>
-    </>
+    <Router>
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<MainPage />}/>
+        <Route path="movie/:movieId" element={<MoviePage />} />
+      </Routes>
+    </Router>
   )
 }
 

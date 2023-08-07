@@ -81,6 +81,12 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::director.director"
+    },
+    "transcription": {
+      "type": "boolean"
+    },
+    "ageCategory": {
+      "type": "integer"
     }
   }
 }

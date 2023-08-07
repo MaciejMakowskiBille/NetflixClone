@@ -1,9 +1,10 @@
-@import 'colors.scss';
+@import './colors.scss';
 
 button{
     font-family: 'Roboto';
     letter-spacing: normal;
     padding: 8px 16px;
+    border-radius: 5px;
     border: none;
     box-sizing: content-box;
     font-weight: bold;
@@ -37,4 +38,19 @@ button{
         border: 2px $purple solid;
 
     }
+}
+.iconButton{
+    width: 40px;
+    height: 40px;
+    background-size: cover;
+}
+.favButton{
+    background-image: url('../imgs/movieTile/Favorite.svg');
+}
+.moreButton{
+    background-image: url('../imgs/movieTile/More.svg');
+}
+.playButton{
+    background-image: url('../imgs/movieTile/Play.svg');
+    z-index: 5;
 }

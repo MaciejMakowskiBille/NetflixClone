@@ -1,10 +1,14 @@
-@import './home';
 @import './colors';
 @import './buttons';
 @import './fonts';
-@import './navigation';
-@import './mainPage';
-@import './movies';
+@import './functions';
+@import '../pages/home/home';
+@import '../components/Navigation/navigation';
+@import '../pages/mainPage/mainPage';
+@import '../components/MovieTile/movies';
+@import '../pages/moviePage/moviePage';
+@import '../pages/moviePage/components/ActorComponent/actorComponent';
+
 
 body{
     font-family: 'Roboto';
@@ -12,6 +16,34 @@ body{
     margin: 0;
     padding: 0;
     font-size: medium;
+    background-color: $backgroundAppGrey;
+    overflow-x:hidden;
+}
+
+::-webkit-scrollbar {
+    z-index: 100;
+    width: 5px;
+    right: 0;
+}
+::-webkit-scrollbar-thumb {
+    background-color: $purple;
+    border-radius: 1100px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: $purpleLight; 
+}
+::-webkit-scrollbar-track {
+    background-color: $backgroundAppGrey;
+}
+main{
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: 4rem;
+    padding-right: 4rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    display: flex;
+    justify-content: center;
 }
 .appBackground{
     font-size: 32px;
@@ -24,16 +56,22 @@ body{
 .filmexLogo{
     color:$whiteText;
     font-family: 'Nico Moji';
+    cursor: pointer;
     span{
         color:$purple;
+        cursor: pointer;
     }
 }
 .icon{
-    width: 24px;
-    height: 24px;
     padding: 0;
     background-color: transparent;
     cursor: pointer;
+}
+.separator{
+    width: 5px;
+    height: 5px;
+    background-color: $yellow;
+    border-radius: 100%;
 }
 .avatar{
     width: 32px;

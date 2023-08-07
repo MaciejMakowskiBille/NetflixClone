@@ -1,0 +1,7 @@
+@function activeItem($activeElement, $currentElement) {
+    @if $activeElement == $currentElement {
+      @return 4px solid $purple;
+    } @else {
+      @return none;
+    }
+  }

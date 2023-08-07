@@ -1,8 +1,27 @@
 import axios from "axios";
-const url = "http://localhost:1337/api/"
+import { apiURL } from "./links";
+import { clearData } from "./helpers";
+export const getFilms = async ():Promise<MovieDataType[] | null> => {
+  const response = await axios.get(apiURL + `films?populate=deep&?`)
+  console.log(response.data.data)
+  if(response && response.data.data){
+      const data:MovieResponseType[] = response.data.data
+      const clearedData:MovieDataType[] = data.map(item => {
+        return clearData(item)
+      })
+      return clearedData
+  }else{
+    return null
+  }
+}
 
-export const getFilms = async () => {
-    axios.get(url + "films?populate=*").then((response) => {
-        console.log(response.data);
-      });
+export const getOneFilm = async (id:number):Promise<MovieDataType | null> => {
+  const response = await axios.get(apiURL + `films/${id}?populate=deep`)
+  console.log(response)
+  if(response && response.data.data){
+      const data:MovieResponseType = response.data.data
+      return clearData(data)
+  }else{
+    return null
+  }
 }

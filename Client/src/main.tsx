@@ -4,7 +4,5 @@ import App from './App.tsx'
 import './style/style.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
     <App />
-  </React.StrictMode>,
 )
