@@ -1,5 +1,5 @@
 
-export const clearData = (data:MovieResponseType) => {
+export const clearMovieData = (data:MovieResponseType) => {
     const clearedCast:Actor[] = data.attributes.cast.data.map((actor) => {
         return (
           {
@@ -11,14 +11,7 @@ export const clearData = (data:MovieResponseType) => {
           }
         )
       })
-      const clearedCategory:Category[] = data.attributes.categories.data.map((category) => {
-        return (
-          {
-            id:category.id,
-            name:category.attributes.name,
-          }
-        )
-      })
+      const clearedCategory:Category[] = clearCategoryData(data.attributes.categories.data)
 
       const clearedDirector:Director = {
         id: data.attributes.director.data.id,
@@ -46,4 +39,17 @@ export const clearData = (data:MovieResponseType) => {
         transcription:data.attributes.transcription
       }
       return clearedData
+}
+
+export const clearCategoryData = (data:CategoryResponseType[]) => {
+  const clearedCategories:Category[] = data.map((category) => {
+    return (
+      {
+        id:category.id,
+        name:category.attributes.name,
+      }
+    )
+  })
+  
+  return clearedCategories
 }

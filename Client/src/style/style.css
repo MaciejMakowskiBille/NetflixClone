@@ -305,7 +305,7 @@ main .category .title {
   flex-direction: column;
   gap: 0.5rem;
   box-sizing: border-box;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: black;
   padding: 1rem;
 }
 .movieTile .movieTileInfo .tileHeader {
@@ -560,7 +560,7 @@ main {
   font-size: 32px;
   box-sizing: border-box;
   background: rgb(38, 36, 40);
-  background: linear-gradient(0deg, rgb(38, 36, 40) 0%, rgb(43, 35, 70) 100%);
+  background: linear-gradient(0deg, rgb(38, 36, 40) 0%, rgb(38, 36, 40) 70%, rgba(120, 44, 191, 0.6166841737) 100%);
   width: 100%;
 }
 

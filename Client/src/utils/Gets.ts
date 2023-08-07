@@ -1,13 +1,12 @@
 import axios from "axios";
 import { apiURL } from "./links";
-import { clearData } from "./helpers";
+import { clearCategoryData, clearMovieData } from "./helpers";
 export const getFilms = async ():Promise<MovieDataType[] | null> => {
   const response = await axios.get(apiURL + `films?populate=deep&?`)
-  console.log(response.data.data)
   if(response && response.data.data){
       const data:MovieResponseType[] = response.data.data
       const clearedData:MovieDataType[] = data.map(item => {
-        return clearData(item)
+        return clearMovieData(item)
       })
       return clearedData
   }else{
@@ -17,11 +16,20 @@ export const getFilms = async ():Promise<MovieDataType[] | null> => {
 
 export const getOneFilm = async (id:number):Promise<MovieDataType | null> => {
   const response = await axios.get(apiURL + `films/${id}?populate=deep`)
-  console.log(response)
   if(response && response.data.data){
       const data:MovieResponseType = response.data.data
-      return clearData(data)
+      return clearMovieData(data)
   }else{
     return null
   }
+}
+
+export const getCategories = async () => {
+    const response = await axios.get(apiURL + `categories`)
+    if(response && response.data.data){
+      const data:Category[] = clearCategoryData(response.data.data)
+      return data
+    }else{
+      return null
+    }
 }

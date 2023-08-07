@@ -8,7 +8,7 @@ import dc from '../../imgs/producers/dc.png'
 import Producer from "./components/producer"
 import CategoryRow from "../../components/categoryRow"
 import {useState, useEffect} from 'react'
-import { getFilms } from "../../utils/Gets"
+import { getCategories, getFilms } from "../../utils/Gets"
 
 
 const producerList = [
@@ -42,12 +42,23 @@ const producerList = [
 const MainPage = () => {
 
     const [moviesData, setMoviesData] = useState<MovieDataType[] | null>(null)
+    const [categories, setCategories] = useState<Category[] | null>(null) 
     const [isLoading, setIsLoading] = useState(true)
+
     useEffect(() => {
+        getCategories().then((res) => {
+            setCategories(prev => prev = res)
+            setIsLoading(prev => prev = false)
+        }).catch((error) => {
+            setIsLoading(true)
+            console.log(error)
+        })
         getFilms().then((res) => {
             setMoviesData(prev => prev = res)
-            console.log(res)
             setIsLoading(prev => prev = false)
+        }).catch((error) => {
+            setIsLoading(true)
+            console.log(error)
         })
     },[])
     return(
@@ -66,8 +77,12 @@ const MainPage = () => {
                         )
                     })}
                 </div>
-                {!isLoading && moviesData && (
-                    <CategoryRow title="Ostatnio popularne" moviesList={moviesData}/>
+                {!isLoading && moviesData && categories && (
+                    categories.map(category => {
+                        return(
+                            <CategoryRow key={category.id} title={category.name} moviesList={moviesData}/>
+                        )
+                    })
                 )}
 
             </main>
