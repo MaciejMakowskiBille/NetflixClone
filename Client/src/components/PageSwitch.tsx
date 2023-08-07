@@ -13,9 +13,15 @@ const PageSwitch = () => {
   const { handleSubmit } = useForm<FormTypes>({
     resolver: zodResolver(schema),
   });
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
+  // useEffect(() => {
+  //   console.log(data);
+  // }, [data]);
+
+  // useEffect(() => {
+  //   watch!((_, { name }) => {
+  //     console.log("name", name);
+  //   });
+  // }, [watch, trigger]);
 
   interface displayArray {
     [index: number]: JSX.Element;

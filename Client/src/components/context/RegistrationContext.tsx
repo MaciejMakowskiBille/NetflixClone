@@ -1,5 +1,11 @@
 import React, { createContext, useState } from "react";
-import { useForm, UseFormRegister, FieldErrors } from "react-hook-form";
+import {
+  useForm,
+  UseFormRegister,
+  FieldErrors,
+  UseFormWatch,
+  UseFormTrigger,
+} from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { z, ZodType } from "zod";
@@ -27,6 +33,8 @@ interface ContextTypes {
   schema?: ZodType<FormTypes>;
   register?: UseFormRegister<FormTypes>;
   errors?: FieldErrors<FormTypes>;
+  watch?: UseFormWatch<FormTypes>;
+  trigger?: UseFormTrigger<FormTypes>;
 }
 
 // export const MyGlobalContext = createContext<ContextTypes>({
@@ -70,16 +78,15 @@ export const schema: ZodType<FormTypes> = z.object({
     .string()
     .nonempty("pole jest wymagane")
     .min(3, "musi zawierać minimum 3 znaków"),
-  expireDate: z.date({
-    required_error: "Pole jest wymagane",
-    // invalid_type_error: "That's not a date!",
-  }),
+  expireDate: z.string().regex(/^\d\d\/\d\d/, "nie właściwy wzorzec!"),
+  securityCode: z.number().max(3, "nie właściwy wzorzec!"),
 });
 
 export type FormInput = z.infer<typeof schema>;
 
 export function FormProvider({ children }: { children: React.ReactNode }) {
   const {
+    watch,
     register,
     trigger,
     formState: { errors },
@@ -119,9 +126,9 @@ export function FormProvider({ children }: { children: React.ReactNode }) {
   const handleClick = async (fieldName: fieldName) => {
     const output = await trigger(fieldName);
     console.log(output);
-    if (output) {
-      setPage!((prev) => prev + 1);
-    }
+    // if (output) {
+    //   setPage!((prev) => prev + 1);
+    // }
   };
 
   const onSubmit = (data: FormTypes) => {
@@ -135,8 +142,10 @@ export function FormProvider({ children }: { children: React.ReactNode }) {
     // <>{children}</>
     <RegistrationContext.Provider
       value={{
+        trigger,
         register,
         errors,
+        watch,
         page,
         setPage,
         data,

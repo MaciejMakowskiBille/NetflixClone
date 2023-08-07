@@ -36,7 +36,7 @@ function RegistrationPayments() {
             onClick={() => {
               setData!((prev) => ({
                 ...prev,
-                ["paymentsOffer"]: 2,
+                ["paymentsOffer"]: 0,
               }));
             }}
             text="Miesięcznie"

@@ -1,4 +1,6 @@
+// import { useEffect } from "react";
 import paypal2 from "../imgs/icons/paypal2.svg";
+import { useRegistrationContext } from "./hooks/useRegistrationContext";
 
 export default function PaymentsContent({
   handleChange,
@@ -7,6 +9,67 @@ export default function PaymentsContent({
   handleChange?: React.ChangeEventHandler<HTMLInputElement>;
   activeContentIndex: number;
 }) {
+  // const {register, trigger, errors} = useRegistrationContext();
+  // const handlePress = (e) => {
+  //   // var isMonthEntered = monthRegex.exec(e.target.value);
+  //
+
+  // }
+
+  // const isMonthEntered = true;
+
+  function handleKeyPress(e: React.KeyboardEvent<HTMLInputElement>) {
+    let key = e.key;
+
+    let input = e.target as HTMLFormElement;
+    const monthRegex = /^\d\d$/;
+    const isMonthEntered = monthRegex.test(input.value);
+
+    let regex = /\d/;
+    // if (!regex.test(key) && key !== "Backspace" && key !== "Delete") {
+    //   e.preventDefault();
+    // }
+    if (regex.test(key)) {
+      input.value = input.value + key;
+    } else {
+      e.preventDefault();
+    }
+    // if (isMonthEntered) {
+    //   input.value = input.value + "/";
+    // }
+  }
+
+  const removeSlash = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    let key = e.key;
+    const monthAndSlashRegex = /^\d\d\/$/;
+
+    let input = e.target as HTMLFormElement;
+
+    var isMonthAndSlashEntered = monthAndSlashRegex.test(input.value);
+    if (isMonthAndSlashEntered && key === "Backspace") {
+      input.value = input.value.slice(0, 2);
+    }
+  };
+
+  // const cardNumberKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  //   let input = e.target as HTMLFormElement;
+  //   // var onePartEntered = onePartRegex.test(input.value);
+  //   // console.log();
+  //   if (input.value.length % 4 == 0) {
+  //     input.value = input.value + "-";
+  //   }
+  // };
+
+  const blockInitials = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    let key = e.key;
+
+    // let input = e.target as HTMLFormElement;
+    let regex = /\d/;
+    if (!regex.test(key) && key !== "Backspace" && key !== "Delete") {
+      e.preventDefault();
+    }
+  };
+
   if (activeContentIndex === 0) {
     return (
       <div className="content">
@@ -24,6 +87,8 @@ export default function PaymentsContent({
           <input
             className="wrapper__text-input"
             type="text"
+            maxLength={16}
+            // onKeyUp={cardNumberKeyPress}
             onChange={handleChange}
             name="cardNumber"
           />
@@ -35,6 +100,11 @@ export default function PaymentsContent({
               className="wrapper__text-input wrapper__text-input--smaller"
               type="text"
               name="expiryDate"
+              onKeyUp={handleKeyPress}
+              onKeyDown={removeSlash}
+              // onKeyUp={handleBackSpace}
+              // pattern="/^\d\d\/\d\d$/"
+              maxLength={5}
               onChange={handleChange}
               placeholder="MM/RR"
             />
@@ -45,6 +115,8 @@ export default function PaymentsContent({
               className="wrapper__text-input wrapper__text-input--smaller"
               type="text"
               name="securityCode"
+              maxLength={3}
+              // onKeyUp={blockInitials}
               onChange={handleChange}
               placeholder="CVV"
             />

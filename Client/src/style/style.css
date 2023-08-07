@@ -299,6 +299,10 @@ p.error-message {
   padding-top: 10px;
 }
 
+input.error {
+  border: 2px solid rgb(255, 148, 148);
+}
+
 .wrapper {
   width: 400px;
   height: 100%;

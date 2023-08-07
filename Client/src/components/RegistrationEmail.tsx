@@ -1,9 +1,20 @@
+import React, { useEffect } from "react";
 import "../style/style.css";
 import { useRegistrationContext } from "./hooks/useRegistrationContext";
 
 function RegistrationEmail() {
   const { data, handleChange, handleClick, register, errors } =
     useRegistrationContext();
+
+  // React.useEffect(() => {
+  //   trigger!("email");
+  // }, [watch]);
+  // console.log(watch!("email"));
+  // useEffect(() => {
+  //   watch!((_, { name }) => {
+  //     console.log("name", name);
+  //   });
+  // }, [watch, trigger]);
 
   return (
     <div className="black-background">
@@ -18,10 +29,15 @@ function RegistrationEmail() {
         </p>
         <div>
           <input
-            className="wrapper__text-input"
+            className={
+              errors?.email
+                ? "wrapper__text-input error"
+                : "wrapper__text-input"
+            }
             type="text"
             {...register!("email")}
             name="email"
+            // onBlur={() => handleClick!("email")}
             // pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
             onChange={handleChange}
             placeholder="email"
@@ -51,8 +67,8 @@ function RegistrationEmail() {
           </p>
           <button
             type="button"
-            className="button-primary"
             onClick={() => handleClick!("email")}
+            className="button-primary"
           >
             Kontynułuj
           </button>
