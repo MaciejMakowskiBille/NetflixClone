@@ -37,3 +37,12 @@ type Director = {
     birthDate:string
     image:string
 }
+
+type Slide = {
+    id:number
+    title:string
+    movieId:number
+    movieType:string
+    image:string
+    logo:string
+}
