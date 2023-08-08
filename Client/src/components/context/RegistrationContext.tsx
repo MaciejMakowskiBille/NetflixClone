@@ -102,12 +102,11 @@ export const schema = z.object({
         return year < inputYear;
       }
     }, "karta jest nieważna"),
-  securityCode: z
-    .number()
-    .refine(
-      (val) => val.toString().length == 3,
-      "kod musi zawierać trzy cyfry"
-    ),
+  securityCode: z.coerce
+    .string()
+    .length(3, "kod musi zawierać trzy cyfry")
+    .refine((value) => !isNaN(Number(value)), "pole jest wymagane"),
+  // .refine((value) => typeof value == typeof NaN, "pole jest wymagane")
 });
 
 export type FormInput = z.infer<typeof schema>;
@@ -118,6 +117,7 @@ export type FormInput = z.infer<typeof schema>;
 
 export function FormProvider({ children }: { children: React.ReactNode }) {
   const {
+    // clearErrors,
     handleSubmit,
     watch,
     register,
@@ -125,14 +125,15 @@ export function FormProvider({ children }: { children: React.ReactNode }) {
     formState: { errors },
   } = useForm<FormInput>({
     mode: "onBlur",
+    reValidateMode: "onBlur",
     defaultValues: {
       cardNameSname: "",
       cardNumber: undefined,
       email: "",
       expiryDate: "",
       password: "",
-      paymentsOffer: undefined,
-      securityCode: undefined,
+      paymentsOffer: 0,
+      securityCode: "",
     },
     resolver: zodResolver(schema),
   });
@@ -141,13 +142,13 @@ export function FormProvider({ children }: { children: React.ReactNode }) {
     email: "",
     password: "",
     optInSubscription: false,
-    paymentsOffer: undefined,
+    paymentsOffer: 0,
     paymentsProcessing: "creditCard",
     cardName: "",
     cardSname: "",
     cardNumber: "",
     expiryDate: "",
-    securityCode: undefined,
+    securityCode: 0,
   });
 
   const [page, setPage] = useState<number>(0);
@@ -162,12 +163,12 @@ export function FormProvider({ children }: { children: React.ReactNode }) {
     const value =
       inputType === "checkbox" ? event.target.checked : event.target.value;
 
-    // if(inputName === "expiryDate") {
-    //   setData((prev) => ({
-    //     ...prev,
-    //     [inputName]: value,
-    //   }));
-    // }
+    if (inputName === "securityCode") {
+      setData((prev) => ({
+        ...prev,
+        [inputName]: Number(value),
+      }));
+    }
     // console.log(typeof Number(event.target.value) === typeof NaN);
 
     if (inputName === "cardNameSname") {

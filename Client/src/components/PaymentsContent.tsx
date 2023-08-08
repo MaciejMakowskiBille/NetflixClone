@@ -73,7 +73,6 @@ export default function PaymentsContent({
               type="number"
               maxLength={3}
               {...register!("securityCode", { valueAsNumber: true })}
-              // {...register!("securityCode")}
               name="securityCode"
               onChange={handleChange}
               placeholder="CVV"
