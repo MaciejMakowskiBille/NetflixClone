@@ -1,7 +1,7 @@
 import { useRegistrationContext } from "./hooks/useRegistrationContext";
 
 function RegistrationAgreements() {
-  const { setPage, setData } = useRegistrationContext();
+  const { setPage } = useRegistrationContext();
 
   return (
     <div className="black-background">
@@ -37,10 +37,6 @@ function RegistrationAgreements() {
           name="agreement"
           onClick={() => {
             setPage!((prev) => prev + 1);
-            setData!((prev) => ({
-              ...prev,
-              ["agreement"]: true,
-            }));
           }}
         >
           Zgadzam się

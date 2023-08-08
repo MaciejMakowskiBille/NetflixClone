@@ -1,4 +1,3 @@
-// import { useEffect } from "react";
 import paypal2 from "../imgs/icons/paypal2.svg";
 import { useRegistrationContext } from "./hooks/useRegistrationContext";
 
@@ -9,62 +8,7 @@ export default function PaymentsContent({
   handleChange?: React.ChangeEventHandler<HTMLInputElement>;
   activeContentIndex: number;
 }) {
-  const { data, register, trigger, errors } = useRegistrationContext();
-  // const handlePress = (e) => {
-  //   // var isMonthEntered = monthRegex.exec(e.target.value);
-  //
-
-  // }
-
-  // const isMonthEntered = true;
-
-  // function handleKeyPress(e: React.KeyboardEvent<HTMLInputElement>) {
-  //   let key = e.key;
-
-  //   let input = e.target as HTMLFormElement;
-  //   const monthRegex = /^\d\d$/;
-  //   const isMonthEntered = monthRegex.test(input.value);
-
-  //   let regex = /\d$/;
-  //   if (!regex.test(key) && key !== "Backspace" && key !== "Delete") {
-  //     e.preventDefault();
-  //   }
-
-  //   if (isMonthEntered) {
-  //     input.value = input.value + "/";
-  //   }
-  // }
-
-  // const removeSlash = (e: React.KeyboardEvent<HTMLInputElement>) => {
-  //   let key = e.key;
-  //   const monthAndSlashRegex = /^\d\d\/$/;
-
-  //   let input = e.target as HTMLFormElement;
-
-  //   var isMonthAndSlashEntered = monthAndSlashRegex.test(input.value);
-  //   if (isMonthAndSlashEntered && key === "Backspace") {
-  //     input.value = input.value.slice(0, 2);
-  //   }
-  // };
-
-  // const cardNumberKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
-  //   let input = e.target as HTMLFormElement;
-  //   // var onePartEntered = onePartRegex.test(input.value);
-  //   // console.log();
-  //   if (input.value.length % 4 == 0) {
-  //     input.value = input.value + "-";
-  //   }
-  // };
-
-  // const blockInitials = (e: React.KeyboardEvent<HTMLInputElement>) => {
-  //   let key = e.key;
-
-  //   // let input = e.target as HTMLFormElement;
-  //   let regex = /\d/;
-  //   if (!regex.test(key) && key !== "Backspace" && key !== "Delete") {
-  //     e.preventDefault();
-  //   }
-  // };
+  const { data } = useRegistrationContext();
 
   if (activeContentIndex === 0) {
     return (

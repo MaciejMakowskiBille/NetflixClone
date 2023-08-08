@@ -3,25 +3,16 @@ import RegistrationPassword from "./RegistrationPassword";
 import RegistrationAgreements from "./RegistrationAgreement";
 import RegistrationPayments from "./RegistrationPayments";
 import { useRegistrationContext } from "./hooks/useRegistrationContext";
-import { FormTypes, schema } from "./context/RegistrationContext";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 
 const PageSwitch = () => {
-  const { page, onSubmit, data } = useRegistrationContext();
-  const { handleSubmit } = useForm<FormTypes>({
-    resolver: zodResolver(schema),
-  });
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
-
+  const { page, onSubmit, data, handleSubmit } = useRegistrationContext();
+  // const { handleSubmit } = useForm<FormTypes>({
+  //   resolver: zodResolver(schema),
+  // });
   // useEffect(() => {
-  //   watch!((_, { name }) => {
-  //     console.log("name", name);
-  //   });
-  // }, [watch, trigger]);
+  //   console.log(data);
+  // }, [data]);
 
   interface displayArray {
     [index: number]: JSX.Element;
@@ -35,7 +26,7 @@ const PageSwitch = () => {
   };
 
   const content = (
-    <form className="form-inputs flex-col" onSubmit={handleSubmit(onSubmit!)}>
+    <form className="form-inputs flex-col" onSubmit={handleSubmit!(onSubmit!)}>
       {display[page]}
     </form>
   );

@@ -1,4 +1,4 @@
-// import React, { useEffect } from "react";
+import { useEffect } from "react";
 import "../style/style.css";
 import { useRegistrationContext } from "./hooks/useRegistrationContext";
 
@@ -6,13 +6,14 @@ function RegistrationEmail() {
   const { data, handleChange, handleClick, register, errors } =
     useRegistrationContext();
 
-  // React.useEffect(() => {
-  //   trigger!("email");
+  // useEffect(() => {
+  //
   // }, [watch]);
   // console.log(watch!("email"));
   // useEffect(() => {
   //   watch!((_, { name }) => {
   //     console.log("name", name);
+  //     ()trigger!("email");
   //   });
   // }, [watch, trigger]);
 

@@ -5,10 +5,11 @@ import {
   FieldErrors,
   UseFormWatch,
   UseFormTrigger,
+  UseFormHandleSubmit,
 } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { z, ZodType } from "zod";
+import { z } from "zod";
 
 type fieldName =
   | "email"
@@ -26,7 +27,8 @@ interface ContextTypes {
   setData?: React.Dispatch<React.SetStateAction<FormTypes>>;
   onSubmit?: (data: FormTypes) => void;
   handleChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  handleClick?: (fieldName: fieldName) => Promise<void>;
+  handleClick?: (fieldName: fieldName) => void;
+  handleSubmit?: UseFormHandleSubmit<FormInput>;
   schema?: z.ZodSchema<FormInput>;
   register?: UseFormRegister<FormInput>;
   errors?: FieldErrors<FormInput>;
@@ -50,7 +52,6 @@ export interface FormTypes {
   password: string;
   optInSubscription?: boolean;
   paymentsOffer?: number;
-  agreement?: boolean;
   paymentsProcessing?: "creditCard" | "payPal";
   cardName?: string;
   cardSname?: string;
@@ -90,17 +91,29 @@ export type FormInput = z.infer<typeof schema>;
 
 export function FormProvider({ children }: { children: React.ReactNode }) {
   const {
+    handleSubmit,
     watch,
     register,
     trigger,
     formState: { errors },
-  } = useForm<FormInput>({ resolver: zodResolver(schema) });
+  } = useForm<FormInput>({
+    mode: "onBlur",
+    defaultValues: {
+      cardNameSname: "",
+      cardNumber: 0,
+      email: "",
+      expiryDate: "",
+      password: "",
+      paymentsOffer: undefined,
+      securityCode: 0,
+    },
+    resolver: zodResolver(schema),
+  });
 
   const [data, setData] = useState<FormTypes>({
     email: "",
     password: "",
     optInSubscription: false,
-    agreement: false,
     paymentsOffer: undefined,
     paymentsProcessing: "creditCard",
     cardName: "",
@@ -144,12 +157,14 @@ export function FormProvider({ children }: { children: React.ReactNode }) {
     }
   };
 
-  const handleClick = async (fieldName: fieldName) => {
-    const output = await trigger(fieldName);
-    console.log(output);
-    if (output) {
+  const handleClick = (fieldName: fieldName) => {
+    // const output = await trigger(fieldName);
+    // console.log(output);
+    if (!errors[fieldName]) {
       setPage!((prev) => prev + 1);
     }
+    // console.log(errors[fieldName]);
+    // setPage!((prev) => prev + 1);
   };
 
   const onSubmit = (data: FormTypes) => {
@@ -163,6 +178,7 @@ export function FormProvider({ children }: { children: React.ReactNode }) {
     // <>{children}</>
     <RegistrationContext.Provider
       value={{
+        handleSubmit,
         trigger,
         register,
         errors,
