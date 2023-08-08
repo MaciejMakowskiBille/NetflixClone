@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import "../style/style.css";
 import { useRegistrationContext } from "./hooks/useRegistrationContext";
 

@@ -18,6 +18,9 @@
 // input[type="text"]:active {
 //   border: none;
 // }
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
 
 .wrapper__text-input {
   padding: 10px 16px;

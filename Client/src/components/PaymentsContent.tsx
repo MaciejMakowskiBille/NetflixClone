@@ -8,7 +8,17 @@ export default function PaymentsContent({
   handleChange?: React.ChangeEventHandler<HTMLInputElement>;
   activeContentIndex: number;
 }) {
-  const { data } = useRegistrationContext();
+  const { setData, data, register, errors } = useRegistrationContext();
+
+  // const handleChanges = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   const input = event.target as HTMLInputElement;
+  //   const name = input.name;
+  //   if(name === "expiryDate"){
+  //     setData(prev => ({
+  //       ...prev,
+  //     }))
+  //   }
+  // }
 
   if (activeContentIndex === 0) {
     return (
@@ -18,22 +28,27 @@ export default function PaymentsContent({
           <input
             className="wrapper__text-input"
             type="text"
+            {...register!("cardNameSname")}
             name="cardNameSname"
-            // value={data?.cardName + " " + data?.cardSname}
             onChange={handleChange}
           />
+          {errors?.cardNameSname && (
+            <div className="error-message">{errors.cardNameSname?.message}</div>
+          )}
         </div>
         <div className="input">
           <p>NUMER KARTY</p>
           <input
             className="wrapper__text-input"
-            type="text"
-            maxLength={16}
-            // onKeyUp={cardNumberKeyPress}
-            value={data?.cardNumber}
-            onChange={handleChange}
+            type="number"
+            {...register!("cardNumber")}
             name="cardNumber"
+            maxLength={19}
+            onChange={handleChange}
           />
+          {errors?.cardNumber && (
+            <div className="error-message">{errors.cardNumber?.message}</div>
+          )}
         </div>
         <div className="inputs">
           <div className="input">
@@ -41,31 +56,33 @@ export default function PaymentsContent({
             <input
               className="wrapper__text-input wrapper__text-input--smaller"
               type="text"
+              {...register!("expiryDate")}
               name="expiryDate"
-              // onKeyUp={handleBackSpace}
-              // pattern="/^\d\d\/\d\d$/"
               maxLength={5}
               onChange={handleChange}
-              // value={
-              //   data?.expiryDate?.slice(0, 1) +
-              //   "/" +
-              //   data?.expiryDate?.slice(2, 3)
-              // }
               placeholder="MM/RR"
             />
+            {errors?.expiryDate && (
+              <div className="error-message">{errors.expiryDate?.message}</div>
+            )}
           </div>
           <div className="input">
             <p>KOD BEZPIECZEŃSTWA</p>
             <input
               className="wrapper__text-input wrapper__text-input--smaller"
-              type="text"
-              name="securityCode"
+              type="number"
               maxLength={3}
-              // value={}
-              // onKeyUp={blockInitials}
+              {...register!("securityCode", { valueAsNumber: true })}
+              // {...register!("securityCode")}
+              name="securityCode"
               onChange={handleChange}
               placeholder="CVV"
             />
+            {errors?.securityCode && (
+              <div className="error-message">
+                {errors.securityCode?.message}
+              </div>
+            )}
           </div>
         </div>
         <p className="content__main-text">
