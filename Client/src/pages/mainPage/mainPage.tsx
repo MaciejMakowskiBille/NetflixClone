@@ -9,6 +9,7 @@ import Producer from "./components/producer"
 import CategoryRow from "../../components/categoryRow"
 import {useState, useEffect} from 'react'
 import { getFilms } from "../../utils/Gets"
+import Slider from "../../components/Slider/slider"
 
 
 const producerList = [
@@ -46,7 +47,6 @@ const MainPage = () => {
     useEffect(() => {
         getFilms().then((res) => {
             setMoviesData(prev => prev = res)
-            console.log(res)
             setIsLoading(prev => prev = false)
         })
     },[])
@@ -55,10 +55,7 @@ const MainPage = () => {
         <div className="appBackground">
             <Navigation/>
             <main>
-                <div className="slider">
-                    <div className="slide">
-                    </div>
-                </div>
+                <Slider/>
                 <div className="producersList">
                     {producerList.map(prod => {
                         return(
