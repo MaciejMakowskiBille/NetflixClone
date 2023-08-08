@@ -20,6 +20,7 @@ main{
         height: max-content;
         display: flex;
         overflow-x: hidden;
+        box-shadow: 5px 5px 10px black;
 
         .slide{
             min-width: 100%;
