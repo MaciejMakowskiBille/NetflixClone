@@ -3,16 +3,24 @@ import RegistrationPassword from "./RegistrationPassword";
 import RegistrationAgreements from "./RegistrationAgreement";
 import RegistrationPayments from "./RegistrationPayments";
 import { useRegistrationContext } from "./hooks/useRegistrationContext";
-// import { useEffect } from "react";
+import { CreateUser } from "./fetchAPI";
+import { useEffect } from "react";
 
 const PageSwitch = () => {
-  const { page, onSubmit, data, handleSubmit } = useRegistrationContext();
+  const { page, data, handleSubmit, schema } = useRegistrationContext();
   // const { handleSubmit } = useForm<FormTypes>({
   //   resolver: zodResolver(schema),
   // });
-  // useEffect(() => {
-  //   console.log(data);
-  // }, [data]);
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
+
+  const onSubmit = () => {
+    // const response = CreateUser(data!);
+    const response = schema?.safeParse(data);
+    response?.success;
+    console.log(schema?.safeParse(data));
+  };
 
   interface displayArray {
     [index: number]: JSX.Element;
@@ -26,7 +34,7 @@ const PageSwitch = () => {
   };
 
   const content = (
-    <form className="form-inputs flex-col" onSubmit={handleSubmit!(onSubmit!)}>
+    <form className="form-inputs flex-col" onSubmit={handleSubmit!(onSubmit)}>
       {display[page]}
     </form>
   );

@@ -77,6 +77,37 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::series-s.series-s"
+    },
+    "cardName": {
+      "type": "string"
+    },
+    "cardSname": {
+      "type": "string"
+    },
+    "cardNumber": {
+      "type": "string"
+    },
+    "securityCode": {
+      "type": "integer",
+      "min": 100
+    },
+    "expiryDate": {
+      "type": "string",
+      "minLength": 5
+    },
+    "paymentsOffer": {
+      "type": "boolean"
+    },
+    "paymentsProcessing": {
+      "type": "enumeration",
+      "enum": [
+        "creditCard",
+        "payPal"
+      ],
+      "default": "creditCard"
+    },
+    "optInSubscription": {
+      "type": "boolean"
     }
   }
 }
