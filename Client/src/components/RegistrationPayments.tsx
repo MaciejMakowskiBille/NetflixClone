@@ -8,12 +8,12 @@ import { useRegistrationContext } from "./hooks/useRegistrationContext";
 
 function RegistrationPayments() {
   const [activeContentIndex, setActiveContentIndex] = useState<number>(0);
-  const { setData, data, handleChange, errors, register } =
+  const { setNoValidateData, noValidateData, errors, register } =
     useRegistrationContext();
 
   useEffect(() => {
     const processingValue = activeContentIndex === 0 ? "creditCard" : "payPal";
-    setData!((prev) => ({
+    setNoValidateData!((prev) => ({
       ...prev,
       ["paymentsProcessing"]: processingValue,
     }));
@@ -30,49 +30,44 @@ function RegistrationPayments() {
           Możesz anulować w dowolnym momencie, ze skutkiem na koniec okresu
           rozliczeniowego.
         </p>
-        <div>
-          <div className="options">
-            <PaymentsOffer
-              className={data!.paymentsOffer === 0 ? "active" : ""}
-              {...register!("paymentsOffer")}
-              onClick={() => {
-                setData!((prev) => ({
-                  ...prev,
-                  ["paymentsOffer"]: 0,
-                }));
-              }}
-              text="Miesięcznie"
-              cost="28.99zł"
-            />
 
-            <PaymentsOffer
-              className={
-                data!.paymentsOffer === 1
-                  ? "payments-offer--primary active"
-                  : "payments-offer--primary"
-              }
-              {...register!("paymentsOffer")}
-              onClick={() => {
-                setData!((prev) => ({
-                  ...prev,
-                  ["paymentsOffer"]: 1,
-                }));
-              }}
-              text="Rocznie"
-              cost="289.99zł"
-            />
-          </div>
-          {errors?.paymentsOffer && (
-            <div className="error-message">{errors.paymentsOffer?.message}</div>
-          )}
+        <div className="options">
+          <PaymentsOffer
+            className={noValidateData!.paymentsOffer === 0 ? "active" : ""}
+            onClick={() => {
+              setNoValidateData!((prev) => ({
+                ...prev,
+                ["paymentsOffer"]: 0,
+              }));
+            }}
+            text="Miesięcznie"
+            cost="28.99zł"
+          />
+
+          <PaymentsOffer
+            className={
+              noValidateData!.paymentsOffer === 1
+                ? "payments-offer--primary active"
+                : "payments-offer--primary"
+            }
+            onClick={() => {
+              setNoValidateData!((prev) => ({
+                ...prev,
+                ["paymentsOffer"]: 1,
+              }));
+            }}
+            text="Rocznie"
+            cost="289.99zł"
+          />
         </div>
+
         <PaymentsSwitch
           activeIndex={activeContentIndex}
           setActiveIndex={setActiveContentIndex}
         >
           <PaymentsContent
             activeContentIndex={activeContentIndex}
-            handleChange={handleChange}
+            // handleChange={handleChange}
           />
         </PaymentsSwitch>
       </div>

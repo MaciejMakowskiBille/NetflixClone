@@ -18,6 +18,9 @@ export function CreateUser(data: FormTypes) {
     .catch((err: AxiosError<UserCreationErrorType[]>) => {
       if (err.response?.status === 400) {
         console.log("taki użytkownik już istnieje!");
+      } else {
+        console.log("nieoczekiwany błąd!");
       }
+      return err.message;
     });
 }

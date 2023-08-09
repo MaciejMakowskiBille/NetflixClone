@@ -2,23 +2,11 @@ import paypal2 from "../imgs/icons/paypal2.svg";
 import { useRegistrationContext } from "./hooks/useRegistrationContext";
 
 export default function PaymentsContent({
-  handleChange,
   activeContentIndex,
 }: {
-  handleChange?: React.ChangeEventHandler<HTMLInputElement>;
   activeContentIndex: number;
 }) {
-  const { setData, data, register, errors } = useRegistrationContext();
-
-  // const handleChanges = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   const input = event.target as HTMLInputElement;
-  //   const name = input.name;
-  //   if(name === "expiryDate"){
-  //     setData(prev => ({
-  //       ...prev,
-  //     }))
-  //   }
-  // }
+  const { register, errors } = useRegistrationContext();
 
   if (activeContentIndex === 0) {
     return (
@@ -30,7 +18,7 @@ export default function PaymentsContent({
             type="text"
             {...register!("cardNameSname")}
             name="cardNameSname"
-            onChange={handleChange}
+            // onChange={handleChange}
           />
           {errors?.cardNameSname && (
             <div className="error-message">{errors.cardNameSname?.message}</div>
@@ -44,7 +32,7 @@ export default function PaymentsContent({
             {...register!("cardNumber")}
             name="cardNumber"
             maxLength={19}
-            onChange={handleChange}
+            // onChange={handleChange}
           />
           {errors?.cardNumber && (
             <div className="error-message">{errors.cardNumber?.message}</div>
@@ -59,7 +47,7 @@ export default function PaymentsContent({
               {...register!("expiryDate")}
               name="expiryDate"
               maxLength={5}
-              onChange={handleChange}
+              // onChange={handleChange}
               placeholder="MM/RR"
             />
             {errors?.expiryDate && (
@@ -73,8 +61,8 @@ export default function PaymentsContent({
               type="number"
               maxLength={3}
               {...register!("securityCode", { valueAsNumber: true })}
-              name="securityCode"
-              onChange={handleChange}
+              // name="securityCode"
+              // onChange={handleChange}
               placeholder="CVV"
             />
             {errors?.securityCode && (

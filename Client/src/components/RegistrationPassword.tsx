@@ -1,9 +1,7 @@
 import { useRegistrationContext } from "./hooks/useRegistrationContext";
 
 function RegistrationPassword() {
-  // const {setPage} =
-  const { handleClick, handleChange, register, errors } =
-    useRegistrationContext();
+  const { register, errors, setPage } = useRegistrationContext();
   return (
     <div className="black-background">
       <div className="wrapper">
@@ -25,7 +23,6 @@ function RegistrationPassword() {
             type="password"
             {...register!("password")}
             name="password"
-            onChange={handleChange}
             placeholder="hasło"
           />
           {errors?.password && (
@@ -34,7 +31,9 @@ function RegistrationPassword() {
         </div>
         <button
           className="button-primary"
-          onClick={() => handleClick!("password")}
+          onClick={() => {
+            setPage!((prev) => prev + 1);
+          }}
         >
           Zaloguj
         </button>

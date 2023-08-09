@@ -2,7 +2,7 @@ import "../style/style.css";
 import { useRegistrationContext } from "./hooks/useRegistrationContext";
 
 function RegistrationEmail() {
-  const { data, handleChange, handleClick, register, errors } =
+  const { noValidateData, setPage, register, errors, setNoValidateData } =
     useRegistrationContext();
 
   // useEffect(() => {
@@ -34,13 +34,9 @@ function RegistrationEmail() {
                 ? "wrapper__text-input error"
                 : "wrapper__text-input"
             }
-            type="text"
-            {...register!("email")}
-            name="email"
-            // onBlur={() => handleClick!("email")}
-            // pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
-            onChange={handleChange}
+            type="email"
             placeholder="email"
+            {...register!("email")}
           />
           {errors?.email && (
             <p className="error-message">{errors.email?.message}</p>
@@ -50,8 +46,13 @@ function RegistrationEmail() {
           <input
             type="checkbox"
             name="optInSubscription"
-            checked={data!.optInSubscription}
-            onChange={handleChange}
+            checked={noValidateData!.optInSubscription}
+            onChange={() => {
+              setNoValidateData!((prev) => ({
+                ...prev,
+                ["optInSubscription"]: !noValidateData!.optInSubscription,
+              }));
+            }}
           ></input>
           <span className="checkbox-text">
             Zgadzam się na otrzymywanie specjalnych ofert i informacji
@@ -67,7 +68,9 @@ function RegistrationEmail() {
           </p>
           <button
             type="button"
-            onClick={() => handleClick!("email")}
+            onClick={() => {
+              setPage!((prev) => prev + 1);
+            }}
             className="button-primary"
           >
             Kontynułuj
