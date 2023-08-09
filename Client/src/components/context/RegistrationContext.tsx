@@ -8,6 +8,7 @@ import {
   UseFormHandleSubmit,
 } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { FormTypes } from "../../utils/modules";
 
 import { z } from "zod";
 const cardNumberRegex =
@@ -47,19 +48,6 @@ interface ContextTypes {
 // handleChange: () => {},
 // schema: undefined,
 // });
-
-export interface FormTypes {
-  email: string;
-  password: string;
-  optInSubscription?: boolean;
-  paymentsOffer?: number;
-  paymentsProcessing?: "creditCard" | "payPal";
-  cardName?: string;
-  cardSname?: string;
-  cardNumber?: string;
-  expiryDate?: string;
-  securityCode?: number;
-}
 
 const RegistrationContext = createContext<ContextTypes>({
   page: 0,
@@ -164,9 +152,10 @@ export function FormProvider({ children }: { children: React.ReactNode }) {
       inputType === "checkbox" ? event.target.checked : event.target.value;
 
     if (inputName === "securityCode") {
+      console.log("value: ", typeof +value);
       setData((prev) => ({
         ...prev,
-        [inputName]: Number(value),
+        ["securityCode"]: +value,
       }));
     }
     // console.log(typeof Number(event.target.value) === typeof NaN);
