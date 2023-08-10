@@ -9,6 +9,7 @@ import Producer from "./components/producer"
 import CategoryRow from "../../components/categoryRow"
 import {useState, useEffect} from 'react'
 import { getCategories, getFilms, getSeries } from "../../utils/Gets"
+import Slider from "../../components/Slider/slider"
 
 
 const producerList = [
@@ -86,10 +87,7 @@ const MainPage = () => {
         <div className="appBackground">
             <Navigation/>
             <main>
-                <div className="slider">
-                    <div className="slide">
-                    </div>
-                </div>
+                <Slider/>
                 <div className="producersList">
                     {producerList.map(prod => {
                         return(

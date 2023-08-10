@@ -116,3 +116,16 @@ export const clearCastData = (data:ActorResponseType[]) => {
 
   return clearedCast
 }
+
+export const clearSliderData = (data:SliderResponseType) => {
+      const clearedData =
+          {
+            id:data.id,
+            title:data.attributes.title,
+            movieId:data.attributes.movieId,
+            movieType:data.attributes.movieType,
+            image:data.attributes.image.data.attributes.url,
+            logo:data.attributes.logo.data.attributes.url,
+          }
+      return clearedData
+}

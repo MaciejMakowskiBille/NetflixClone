@@ -1,6 +1,6 @@
 import axios from "axios";
 import { apiURL } from "./links";
-import { clearCategoryData, clearMovieData, clearSeriesData } from "./helpers";
+import { clearCategoryData, clearMovieData, clearSeriesData,clearSliderData  } from "./helpers";
 export const getFilms = async ():Promise<MovieDataType[] | null> => {
   const response = await axios.get(apiURL + `films?populate=deep&?`)
   if(response && response.data.data){
@@ -48,6 +48,19 @@ export const getCategories = async ():Promise<Category[] | null> => {
     const response = await axios.get(apiURL + `categories`)
     if(response && response.data.data){
       return clearCategoryData(response.data.data)
+      }else{
+      return null
+    }
+}
+
+export const getSlider = async () => {
+    const response = await axios.get(apiURL + 'sliders?populate=deep')
+    if(response && response.data.data){
+      const data:SliderResponseType[] = response.data.data
+      const clearedData:Slide[] = data.map(item => {
+        return clearSliderData(item)
+      })
+      return clearedData
     }else{
       return null
     }

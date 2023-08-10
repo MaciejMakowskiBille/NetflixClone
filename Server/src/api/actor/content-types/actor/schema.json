@@ -28,6 +28,9 @@
     },
     "birthDate": {
       "type": "date"
+    },
+    "fullName": {
+      "type": "string"
     }
   }
 }
