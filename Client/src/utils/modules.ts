@@ -9,6 +9,7 @@ export interface FormTypes {
   cardNumber?: string;
   expiryDate?: string;
   securityCode?: number;
+  username: string;
 }
 
 export interface noValidateFormProp {
