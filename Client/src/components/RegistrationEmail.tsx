@@ -5,17 +5,6 @@ function RegistrationEmail() {
   const { noValidateData, setPage, register, errors, setNoValidateData } =
     useRegistrationContext();
 
-  // useEffect(() => {
-  //
-  // }, [watch]);
-  // console.log(watch!("email"));
-  // useEffect(() => {
-  //   watch!((_, { name }) => {
-  //     console.log("name", name);
-  //     ()trigger!("email");
-  //   });
-  // }, [watch, trigger]);
-
   return (
     <div className="black-background">
       <div className="wrapper">
