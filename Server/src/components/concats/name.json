@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_concats_names",
+  "info": {
+    "displayName": "Name",
+    "icon": "link"
+  },
+  "options": {},
+  "attributes": {
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    }
+  }
+}
