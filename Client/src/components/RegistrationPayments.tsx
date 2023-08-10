@@ -8,8 +8,7 @@ import { useRegistrationContext } from "./hooks/useRegistrationContext";
 
 function RegistrationPayments() {
   const [activeContentIndex, setActiveContentIndex] = useState<number>(0);
-  const { setNoValidateData, noValidateData, errors, register } =
-    useRegistrationContext();
+  const { setNoValidateData, noValidateData } = useRegistrationContext();
 
   useEffect(() => {
     const processingValue = activeContentIndex === 0 ? "creditCard" : "payPal";
@@ -65,10 +64,7 @@ function RegistrationPayments() {
           activeIndex={activeContentIndex}
           setActiveIndex={setActiveContentIndex}
         >
-          <PaymentsContent
-            activeContentIndex={activeContentIndex}
-            // handleChange={handleChange}
-          />
+          <PaymentsContent activeContentIndex={activeContentIndex} />
         </PaymentsSwitch>
       </div>
     </div>

@@ -3,39 +3,44 @@ import RegistrationPassword from "./RegistrationPassword";
 import RegistrationAgreements from "./RegistrationAgreement";
 import RegistrationPayments from "./RegistrationPayments";
 import { useRegistrationContext } from "./hooks/useRegistrationContext";
-// import { CreateUser } from "./fetchAPI";
-import { useEffect } from "react";
-import { schema, FormInput } from "../utils/schemas";
+import { CreateUser } from "./Posts";
+import { FormInput } from "../utils/schemas";
 import { SubmitHandler } from "react-hook-form";
+import { FormTypes } from "../utils/modules";
 
 const PageSwitch = () => {
   const { page, handleSubmit, noValidateData } = useRegistrationContext();
 
+  const mockData: FormTypes = {
+    username: "stachu5",
+    email: "stasiol5.olszak@gmail.com",
+    password: "alamakota",
+    cardName: "Stanisław",
+    cardSname: "Olszak",
+    cardNumber: "1234 1234 1234 1234",
+    securityCode: 123,
+    expiryDate: "12/24",
+    paymentsOffer: 1,
+    paymentsProcessing: "creditCard",
+    optInSubscription: false,
+  };
+
   const onSubmit: SubmitHandler<FormInput> = (data) => {
-    const allData = {
-      ...data,
+    const allData: FormTypes = {
+      email: data?.email,
+      username: data?.email,
+      password: data?.password,
+      cardName: data?.cardNameSname[0],
+      cardSname: data?.cardNameSname[1],
+      cardNumber: data?.cardNumber,
+      expiryDate: data?.expiryDate,
+      securityCode: data?.securityCode,
       ...noValidateData,
     };
 
-    console.log(allData);
+    // console.log(allData);
+    CreateUser(allData);
   };
-
-  // const response = CreateUser(data!);
-
-  // const {cardNameSname: "asd", ...rest} = data;
-  //   const cleredData: FormInput = {
-  //     email: data?.email!,
-  //     password: data?.password!,
-  //     paymentsOffer: data?.paymentsOffer!,
-  //     cardNameSname: data?.cardName! + data?.cardSname!,
-  //     cardNumber: data?.cardNumber!,
-  //     expiryDate: data?.expiryDate!,
-  //     securityCode: data?.securityCode!,
-  //   };
-  //   const response = schema?.parse(cleredData);
-  //   // response?.success;
-  //   console.log(response);
-  // };
 
   interface displayArray {
     [index: number]: JSX.Element;

@@ -3,24 +3,11 @@ import {
   useForm,
   UseFormRegister,
   FieldErrors,
-  UseFormWatch,
-  UseFormTrigger,
   UseFormHandleSubmit,
 } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { noValidateFormProp } from "../../utils/modules";
-
-// import { z } from "zod";
 import { schema, FormInput } from "../../utils/schemas";
-
-// type fieldName =
-//   | "email"
-//   | "password"
-//   | "paymentsOffer"
-//   | "cardNameSname"
-//   | "cardNumber"
-//   | "expiryDate"
-//   | "securityCode";
 
 interface ContextTypes {
   page: number;
@@ -30,8 +17,6 @@ interface ContextTypes {
   handleSubmit?: UseFormHandleSubmit<FormInput>;
   register?: UseFormRegister<FormInput>;
   errors?: FieldErrors<FormInput>;
-  watch?: UseFormWatch<FormInput>;
-  trigger?: UseFormTrigger<FormInput>;
 }
 
 const RegistrationContext = createContext<ContextTypes>({ page: 0 });
@@ -45,7 +30,7 @@ export function FormProvider({ children }: { children: React.ReactNode }) {
     mode: "onBlur",
     reValidateMode: "onBlur",
     defaultValues: {
-      cardNameSname: "",
+      cardNameSname: [],
       cardNumber: undefined,
       email: "",
       expiryDate: "",
@@ -67,7 +52,6 @@ export function FormProvider({ children }: { children: React.ReactNode }) {
     <RegistrationContext.Provider
       value={{
         handleSubmit,
-
         register,
         errors,
         page,

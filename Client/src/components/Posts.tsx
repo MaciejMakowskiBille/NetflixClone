@@ -13,7 +13,8 @@ export function CreateUser(data: FormTypes) {
   axios
     .post(authURL + `/local/register`, data)
     .then((response: { data: { jwt: string; user: CreateUserResponse } }) => {
-      return response.data.user;
+      console.log("success", response.data.user);
+      // return response.data.user;
     })
     .catch((err: AxiosError<UserCreationErrorType[]>) => {
       if (err.response?.status === 400) {
@@ -21,6 +22,6 @@ export function CreateUser(data: FormTypes) {
       } else {
         console.log("nieoczekiwany błąd!");
       }
-      return err.message;
+      // return err.message;
     });
 }
