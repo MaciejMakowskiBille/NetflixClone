@@ -11,21 +11,21 @@ import { FormTypes } from "../utils/modules";
 const PageSwitch = () => {
   const { page, handleSubmit, noValidateData } = useRegistrationContext();
 
-  const mockData: FormTypes = {
-    username: "stachu5",
-    email: "stasiol5.olszak@gmail.com",
-    password: "alamakota",
-    cardName: "Stanisław",
-    cardSname: "Olszak",
-    cardNumber: "1234 1234 1234 1234",
-    securityCode: 123,
-    expiryDate: "12/24",
-    paymentsOffer: 1,
-    paymentsProcessing: "creditCard",
-    optInSubscription: false,
-  };
+  // const mockData: FormTypes = {
+  //   username: "stachu5",
+  //   email: "stasiol5.olszak@gmail.com",
+  //   password: "alamakota",
+  //   cardName: "Stanisław",
+  //   cardSname: "Olszak",
+  //   cardNumber: "1234 1234 1234 1234",
+  //   securityCode: 123,
+  //   expiryDate: "12/24",
+  //   paymentsOffer: 1,
+  //   paymentsProcessing: "creditCard",
+  //   optInSubscription: false,
+  // };
 
-  const onSubmit: SubmitHandler<FormInput> = (data) => {
+  const onSubmit: SubmitHandler<FormInput> = async (data) => {
     const allData: FormTypes = {
       email: data?.email,
       username: data?.email,
@@ -39,7 +39,8 @@ const PageSwitch = () => {
     };
 
     // console.log(allData);
-    CreateUser(allData);
+    const response = await CreateUser(allData);
+    console.log("response: ", response);
   };
 
   interface displayArray {

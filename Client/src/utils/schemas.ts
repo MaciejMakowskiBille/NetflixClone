@@ -6,11 +6,9 @@ const cardNumberRegex =
 const expiryDateValid = (value: string): boolean => {
   const date = new Date();
   const year = +date.getFullYear().toString().slice(2);
-  console.log("year", year);
   let month = date.getMonth() + 1;
   const inputMonth = Number(value.slice(0, 2));
   const inputYear = +value.slice(3);
-  console.log("input year", inputYear);
   if (inputMonth > 12) return false;
   if (year == inputYear) {
     return month < inputMonth;
