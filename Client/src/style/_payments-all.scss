@@ -15,7 +15,12 @@
   .inputs {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    gap: 20px;
+
+    .input {
+      width: 190px;
+      // display: inline-block;
+    }
   }
 
   .content__main-text {

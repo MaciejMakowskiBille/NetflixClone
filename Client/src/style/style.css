@@ -216,7 +216,10 @@ input[type=number]::-webkit-inner-spin-button {
 .content .inputs {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  gap: 20px;
+}
+.content .inputs .input {
+  width: 190px;
 }
 .content .content__main-text {
   font-size: 13px;
@@ -305,6 +308,7 @@ body {
 .error-message {
   color: #dc3545;
   padding-top: 10px;
+  overflow-wrap: break-word;
 }
 
 input.error {

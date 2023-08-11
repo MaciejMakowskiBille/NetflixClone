@@ -22,30 +22,30 @@ export const schema = z.object({
     .string()
     .trim()
     .email("Niepoprawny adres email")
-    .nonempty("Email jest wymagany"),
+    .nonempty("Pole jest wymagany"),
   password: z
     .string()
     .trim()
-    .nonempty("Hasło jest wymagane")
-    .min(8, "Hasło musi zawierać minimum 8 znaków"),
+    .nonempty("Pole jest wymagane")
+    .min(8, "Musi zawierać conajmniej 8 znaków"),
   cardNameSname: z
     .string()
     .trim()
-    .nonempty("pole jest wymagane")
-    .min(3, "musi zawierać minimum 3 znaków")
+    .nonempty("Pole jest wymagane")
+    .min(3, "Musi zawierac trzy znaki")
     .transform((value) => value.split(" ")),
   cardNumber: z
     .string()
-    .min(16, "numer musi zawierać conajmniej 16 znaków")
-    .regex(new RegExp(cardNumberRegex), "nieprawidłowy numer karty"),
+    .length(16, "Musi zawierać 16 znaków")
+    .regex(new RegExp(cardNumberRegex), "Nieprawidłowy numer karty"),
   expiryDate: z
-    .string()
+    .string().trim()
     .nonempty("pole jest wymagane")
-    .regex(/^\d\d\/\d\d$/, "nie właściwy wzorzec!")
-    .refine(expiryDateValid, "karta jest nieważna"),
+    .regex(/^\d\d\/\d\d$/, "Wpisz według wzorca: DD/RR")
+    .refine(expiryDateValid, "Karta jest nieważna"),
   securityCode: z.coerce
     .string()
-    .length(3, "kod musi zawierać trzy cyfry")
+    .length(3, "Kod musi zawierać trzy cyfry")
     .refine((value) => !isNaN(Number(value)), "pole jest wymagane")
     .transform((value) => parseInt(value)),
 });

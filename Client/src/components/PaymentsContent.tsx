@@ -18,7 +18,6 @@ export default function PaymentsContent({
             type="text"
             {...register!("cardNameSname")}
             name="cardNameSname"
-            // onChange={handleChange}
           />
           {errors?.cardNameSname && (
             <div className="error-message">{errors.cardNameSname?.message}</div>
@@ -32,7 +31,6 @@ export default function PaymentsContent({
             {...register!("cardNumber")}
             name="cardNumber"
             maxLength={19}
-            // onChange={handleChange}
           />
           {errors?.cardNumber && (
             <div className="error-message">{errors.cardNumber?.message}</div>
