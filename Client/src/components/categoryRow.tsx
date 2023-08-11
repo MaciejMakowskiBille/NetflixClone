@@ -18,10 +18,9 @@ const CategoryRow = (props:CategoryRowPorps) => {
     }
 
     const checkVideoType = (data: MovieDataType | SeriesDataType) => {
-        if ("duration" in data) {
             return(
                 <MovieTile
-                    key={data.id+"m"}
+                    key={data.id + ("seasons" in data ? "s" : "m")}
                     id={data.id}
                     title={data.title}
                     categories={data.categories}
@@ -31,26 +30,10 @@ const CategoryRow = (props:CategoryRowPorps) => {
                     ageCategory={data.ageCategory}
                     premiere={data.premiere}
                     transcription={data.transcription}
-                    duration={data.duration}
-                                />
+                    {...("duration" in data && { duration: data.duration })}
+                    {...("seasons" in data && { seasons: data.seasons.length })}
+                />
             )
-          } else if ("seasons" in data) {
-            return(
-                <MovieTile
-                    key={data.id+"s"}
-                    id={data.id}
-                    title={data.title}
-                    categories={data.categories}
-                    img={data.miniImg}
-                    hoverImg={data.hoverImg}
-                    logo={data.logo}
-                    ageCategory={data.ageCategory}
-                    premiere={data.premiere}
-                    transcription={data.transcription}
-                    seasons={data.seasons.length}
-                                />
-            )
-          }
     }
 
     useEffect(() => {
