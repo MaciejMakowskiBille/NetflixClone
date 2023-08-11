@@ -1,3 +1,4 @@
+
 export interface FormTypes {
   email: string;
   password: string;
@@ -10,6 +11,28 @@ export interface FormTypes {
   expiryDate?: string;
   securityCode?: number;
   username: string;
+}
+
+export interface UserPostResponseTypes {
+  jwt: string;
+  user : {
+      id: number,
+      email: string,
+      provider: string,
+      confirmed: boolean,
+      blocked: boolean,
+      createdAt: string,
+      updatedAt: string,
+      cardName: string,
+      cardSname: string,
+      cardNumber: string,
+      securityCode: number,
+      expiryDate: string,
+      paymentsOffer: boolean,
+      paymentsProcessing: "creditCard" | "payPal",
+      optInSubscription: boolean,
+      username: string,
+  }
 }
 
 export interface noValidateFormProp {
