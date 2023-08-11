@@ -19,7 +19,7 @@ button {
 }
 .button-primary:active {
   background-color: #782CBF;
-  box-shadow: inset black 0 0 5px;
+  box-shadow: inset #000 0 0 5px;
 }
 
 .button-secondary {
@@ -34,7 +34,7 @@ button {
 }
 .button-secondary:active {
   background-color: #504957;
-  box-shadow: inset black 0 0 5px;
+  box-shadow: inset #000 0 0 5px;
   color: #782CBF;
   border: 2px #782CBF solid;
 }
@@ -305,7 +305,7 @@ main .category .title {
   flex-direction: column;
   gap: 0.5rem;
   box-sizing: border-box;
-  background-color: black;
+  background-color: #000;
   padding: 1rem;
 }
 .movieTile .movieTileInfo .tileHeader {
@@ -485,7 +485,7 @@ main .category .title {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  box-shadow: 2px 2px 5px black;
+  box-shadow: 2px 2px 5px #000;
 }
 .movieAdds .castScroll {
   max-width: 100%;
@@ -501,7 +501,7 @@ main .category .title {
   max-width: 128px;
   background-color: #504957;
   border: 1px solid #782CBF;
-  box-shadow: 5px 5px 5px black;
+  box-shadow: 5px 5px 5px #000;
 }
 .actorComponent .actorImg {
   width: 100%;
@@ -552,7 +552,7 @@ main .category .title {
   font-size: medium;
   background-color: #343137;
   border: 1px solid #782CBF;
-  box-shadow: 2px 2px 2px black;
+  box-shadow: 2px 2px 2px #000;
 }
 .episode .image {
   width: 100%;
