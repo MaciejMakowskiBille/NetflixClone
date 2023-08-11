@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "directors",
+  "collectionName": "sliders",
   "info": {
-    "singularName": "director",
-    "pluralName": "directors",
-    "displayName": "Director",
+    "singularName": "slider",
+    "pluralName": "sliders",
+    "displayName": "Slider",
     "description": ""
   },
   "options": {
@@ -12,14 +12,14 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "firstName": {
+    "title": {
       "type": "string"
     },
-    "lastName": {
-      "type": "string"
+    "movieId": {
+      "type": "integer"
     },
-    "birthDate": {
-      "type": "date"
+    "movieType": {
+      "type": "string"
     },
     "image": {
       "type": "media",
@@ -29,8 +29,13 @@
         "images"
       ]
     },
-    "fullName": {
-      "type": "string"
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
     }
   }
 }

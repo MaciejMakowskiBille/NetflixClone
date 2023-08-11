@@ -135,4 +135,18 @@ type EpisodeResponseType = {
         publishedAt:string
     }
     id:number
+ }
+type SliderResponseType ={
+    attributes:{
+      title:string
+      movieId:number
+      movieType:string
+      image:{data:MediaResponseType}
+      logo:{data:MediaResponseType}
+
+      createdAt:string
+      updatedAt:string
+      publishedAt:string
+    }
+    id:number
 }

@@ -55,7 +55,6 @@ type Director = {
     birthDate:string
     image:string
 }
-
 type Season = {
     id:number
     title:string
@@ -74,5 +73,12 @@ type Episode = {
     miniImg:string
     hoverImg:string
     video:string
-
+}
+type Slide = {
+    id:number
+    title:string
+    movieId:number
+    movieType:string
+    image:string
+    logo:string
 }
