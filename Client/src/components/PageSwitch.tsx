@@ -8,13 +8,13 @@ import { useRegistrationContext } from "./hooks/useRegistrationContext";
 import { FormInput } from "../utils/schemas";
 import { SubmitHandler } from "react-hook-form";
 import { FormTypes } from "../utils/modules";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios, { isAxiosError } from "axios";
 import { UserPostResponseTypes } from "../utils/modules";
 
 interface modalTypes {
-  success: boolean;
-  content: string;
+  success?: boolean;
+  content?: string;
 }
 
 interface UserTypes extends FormTypes {
@@ -30,11 +30,22 @@ interface ResponseTypes {
 const PageSwitch = () => {
   const { page, handleSubmit, noValidateData } = useRegistrationContext();
   const [showModal, setShowModal] = useState<boolean>(false);
-  const [modalData, setModalData] = useState<modalTypes>({
-    success: false,
-    content: "Spróbuj ponownie!",
-  });
+  const [modalData, setModalData] = useState<modalTypes>({});
+  const [isSubmitSuccessful, setIsSubmitSuccessful] = useState(false);
+  const { reset } = useRegistrationContext();
 
+  useEffect(() => {
+    if (isSubmitSuccessful) {
+      reset!({
+        cardNameSname: [],
+        cardNumber: "",
+        email: "",
+        expiryDate: "",
+        password: "",
+        securityCode: "",
+      });
+    }
+  }, [isSubmitSuccessful]);
   // const mockData: FormTypes = {
   //   username: "stachu5",
   //   email: "stasiol5.olszak@gmail.com",
@@ -77,12 +88,12 @@ const PageSwitch = () => {
     axios
       .post<UserPostResponseTypes>(authURL + `/local/register`, allData)
       .then((response) => {
-        console.log(response.data.jwt);
         localStorage.setItem("jwt", response.data.jwt);
         setModalData({
           success: true,
           content: "Udało się pomyślnie zarejestrować!",
         });
+        setIsSubmitSuccessful(true);
       })
       .catch((err) => {
         if (isAxiosError(err)) {
@@ -101,7 +112,6 @@ const PageSwitch = () => {
             success: false,
             content: "Nieoczekiwany błąd, Spróbuj ponownie!",
           });
-          // console.log("Nieoczekiwany błąd");
         }
       });
 
@@ -121,10 +131,10 @@ const PageSwitch = () => {
 
   const content = (
     <div>
-      {showModal && (
+      {showModal && modalData.content && (
         <SuccessModal
           title={modalData.success ? "Sukces" : "Uwaga"}
-          content={modalData.content}
+          content={modalData.content!}
         />
       )}
       <form className="form-inputs flex-col" onSubmit={handleSubmit!(onSubmit)}>

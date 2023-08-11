@@ -9,7 +9,7 @@ export interface FormTypes {
   cardSname?: string;
   cardNumber?: string;
   expiryDate?: string;
-  securityCode?: number;
+  securityCode?: string|number;
   username: string;
 }
 

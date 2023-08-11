@@ -1,6 +1,7 @@
 import React, { createContext, useState } from "react";
 import {
   useForm,
+  UseFormReset,
   UseFormRegister,
   FieldErrors,
   UseFormHandleSubmit,
@@ -10,6 +11,7 @@ import { noValidateFormProp } from "../../utils/modules";
 import { schema, FormInput } from "../../utils/schemas";
 
 interface ContextTypes {
+  reset?: UseFormReset<FormInput>;
   page: number;
   setPage?: React.Dispatch<React.SetStateAction<number>>;
   noValidateData?: noValidateFormProp;
@@ -23,6 +25,7 @@ const RegistrationContext = createContext<ContextTypes>({ page: 0 });
 
 export function FormProvider({ children }: { children: React.ReactNode }) {
   const {
+    reset,
     handleSubmit,
     register,
     formState: { errors },
@@ -51,6 +54,7 @@ export function FormProvider({ children }: { children: React.ReactNode }) {
   return (
     <RegistrationContext.Provider
       value={{
+        reset,
         handleSubmit,
         register,
         errors,
