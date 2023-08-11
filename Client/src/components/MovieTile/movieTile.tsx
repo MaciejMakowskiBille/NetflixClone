@@ -31,16 +31,10 @@ const MovieTile = (props:MovieTileProps) => {
     }
 
     const showMoreButton = () => {
-        if("duration" in props){
-            return(
-                <div className="icon iconButton moreButton" onClick={() => navigate(`/movie/m/${props.id}`)}/>
-            )
-        }
-        if("seasons" in props){
-            return(
-                <div className="icon iconButton moreButton" onClick={() => navigate(`/movie/s/${props.id}`)}/>
-            )
-        }
+        const path = "duration" in props ? `movie/m/${props.id}` : "seasons" in props ? `movie/s/${props.id}` : '/'
+        return(
+                <div className="icon iconButton moreButton" onClick={() => navigate(path)}/>
+        )
     }
 
 
