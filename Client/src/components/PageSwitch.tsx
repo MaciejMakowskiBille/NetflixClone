@@ -53,16 +53,13 @@ const PageSwitch = () => {
             setModalData({
               success: false,
               content:
-                "Użytkownik o takim emailu już istnieje. Spróbuj ponownie!",
+                "Użytkownik o takim emailu już istnieje.\nSpróbuj ponownie!",
             });
-            console.log(
-              "Użytkownik o takim emailu już istnieje. Spróbuj ponownie!"
-            );
           }
         } else {
           setModalData({
             success: false,
-            content: "Nieoczekiwany błąd, Spróbuj ponownie!",
+            content: "Nieoczekiwany błąd. \nSpróbuj ponownie!",
           });
         }
       });
@@ -139,7 +136,7 @@ const PageSwitch = () => {
     <div className="form-wrapper">
       {modalData.content && (
         <SuccessModal
-          title={modalData.success ? "Sukces" : "Uwaga"}
+          title={modalData.success ? "Sukces" : "Upss!"}
           content={modalData.content!}
         />
       )}

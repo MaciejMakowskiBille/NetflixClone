@@ -10,24 +10,32 @@
 
 .modal {
   position: fixed;
-  top: 30vh;
+  background-color: $backgroundAppGrey;
+  // padding: 40px;
+  top: 15px;
   left: 10%;
-  width: 80%;
+  width: 60%;
   z-index: 100;
   overflow: hidden;
+
+  .modal__header {
+    background: #4f005f;
+    // display: flex;
+    // justify-content: center;
+    padding: 1rem;
+
+    h2 {
+      margin: 0;
+      color: white;
+    }
+  }
+
+  .modal__content {
+    padding: 1rem;
+  }
 }
 
-.header {
-  background: #4f005f;
-  padding: 1rem;
-}
-
-.header h2 {
-  margin: 0;
-  color: white;
-}
-
-.actions {
+.modal__actions {
   padding: 1rem;
   display: flex;
   justify-content: flex-end;
@@ -35,7 +43,7 @@
 
 @media (min-width: 768px) {
   .modal {
-    left: calc(50% - 20rem);
-    width: 40rem;
+    left: calc(50% - 10rem);
+    width: 20rem;
   }
 }

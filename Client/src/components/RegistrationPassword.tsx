@@ -2,7 +2,7 @@ import React from "react";
 import { useRegistrationContext } from "./hooks/useRegistrationContext";
 
 function RegistrationPassword() {
-  const { register, errors, setPage, setNoValidateData, nextPage } =
+  const { register, errors, setNoValidateData, nextPage } =
     useRegistrationContext();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

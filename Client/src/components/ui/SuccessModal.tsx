@@ -8,16 +8,16 @@ export default function SuccessModal({
   return (
     <div>
       <div className="backdrop" />
-      <div className="card modal">
-        <header>
+      <div className="modal">
+        <header className="modal__header">
           <h1>{title}</h1>
         </header>
-        <div className="content">
+        <div className="modal__content">
           <p>{content}</p>
         </div>
-        <footer>
+        <footer className="modal__actions">
           <button type="button" className="button-secondary">
-            Okey
+            Zaloguj się
           </button>
         </footer>
       </div>

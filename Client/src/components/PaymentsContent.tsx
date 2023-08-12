@@ -1,4 +1,3 @@
-import React from "react";
 import paypal2 from "../imgs/icons/paypal2.svg";
 import { useRegistrationContext } from "./hooks/useRegistrationContext";
 

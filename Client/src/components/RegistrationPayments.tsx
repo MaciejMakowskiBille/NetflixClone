@@ -18,8 +18,6 @@ function RegistrationPayments() {
     }));
   }, [activeContentIndex]);
 
-  const handlePayPalClick = (e: React.MouseEvent<HTMLButtonElement>) => {};
-
   return (
     <div className="black-background">
       <div className="wrapper">
