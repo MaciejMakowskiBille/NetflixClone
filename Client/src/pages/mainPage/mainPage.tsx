@@ -8,7 +8,7 @@ import dc from '../../imgs/producers/dc.png'
 import Producer from "./components/producer"
 import CategoryRow from "../../components/categoryRow"
 import {useState, useEffect} from 'react'
-import { getFilms } from "../../utils/Gets"
+import { getCategories, getFilms, getSeries } from "../../utils/Gets"
 import Slider from "../../components/Slider/slider"
 
 
@@ -43,13 +43,45 @@ const producerList = [
 const MainPage = () => {
 
     const [moviesData, setMoviesData] = useState<MovieDataType[] | null>(null)
+    const [seriesData, setSeriesData] = useState<SeriesDataType[] | null>(null)
+    const [combinedData, setCombinedData] = useState<CombinedDataType>([])
+    const [categories, setCategories] = useState<Category[] | null>(null) 
     const [isLoading, setIsLoading] = useState(true)
+
     useEffect(() => {
+        getSeries().then((res) => {
+            setSeriesData(prev => prev = res)
+            setIsLoading(prev => prev = false)
+        }).catch((error) => {
+            setIsLoading(true)
+            console.log(error)
+        })
+
         getFilms().then((res) => {
             setMoviesData(prev => prev = res)
             setIsLoading(prev => prev = false)
+        }).catch((error) => {
+            setIsLoading(true)
+            console.log(error)
+        })
+
+        getCategories().then((res) => {
+            setCategories(prev => prev = res)
+            setIsLoading(prev => prev = false)
+        }).catch((error) => {
+            setIsLoading(true)
+            console.log(error)
         })
     },[])
+    useEffect(() => {
+        if (moviesData && seriesData) {
+            setCombinedData([...moviesData, ...seriesData]);
+          } else if (moviesData) {
+            setCombinedData(moviesData);
+          } else if (seriesData) {
+            setCombinedData(seriesData);
+          }
+    },[moviesData, seriesData])
     return(
         <>
         <div className="appBackground">
@@ -63,8 +95,12 @@ const MainPage = () => {
                         )
                     })}
                 </div>
-                {!isLoading && moviesData && (
-                    <CategoryRow title="Ostatnio popularne" moviesList={moviesData}/>
+                {!isLoading && moviesData && categories && (
+                    categories.map(category => {
+                        return(
+                            <CategoryRow key={category.id} title={category.name} moviesList={combinedData}/>
+                        )
+                    })
                 )}
 
             </main>

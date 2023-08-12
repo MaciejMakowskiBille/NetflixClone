@@ -19,7 +19,7 @@ button {
 }
 .button-primary:active {
   background-color: #782CBF;
-  box-shadow: inset black 0 0 5px;
+  box-shadow: inset #000 0 0 5px;
 }
 
 .button-secondary {
@@ -34,7 +34,7 @@ button {
 }
 .button-secondary:active {
   background-color: #504957;
-  box-shadow: inset black 0 0 5px;
+  box-shadow: inset #000 0 0 5px;
   color: #782CBF;
   border: 2px #782CBF solid;
 }
@@ -342,11 +342,10 @@ main .category .title {
   flex-direction: column;
   gap: 0.5rem;
   box-sizing: border-box;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: #000;
   padding: 1rem;
 }
 .movieTile .movieTileInfo .tileHeader {
-  height: 5vh;
   display: flex;
   gap: 0.5rem;
   align-items: center;
@@ -361,6 +360,10 @@ main .category .title {
 }
 .movieTile .movieTileInfo .middle {
   justify-content: space-between;
+}
+.movieTile .movieTileInfo .middle .buttons {
+  display: flex;
+  gap: 1rem;
 }
 .movieTile .movieTileInfo .movieLogo {
   background-size: contain;
@@ -519,7 +522,7 @@ main .category .title {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  box-shadow: 2px 2px 5px black;
+  box-shadow: 2px 2px 5px #000;
 }
 .movieAdds .castScroll {
   max-width: 100%;
@@ -535,7 +538,7 @@ main .category .title {
   max-width: 128px;
   background-color: #504957;
   border: 1px solid #782CBF;
-  box-shadow: 5px 5px 5px black;
+  box-shadow: 5px 5px 5px #000;
 }
 .actorComponent .actorImg {
   width: 100%;
@@ -551,6 +554,73 @@ main .category .title {
   width: 100%;
   text-align: center;
   font-size: medium;
+}
+
+.seasons {
+  width: 100%;
+  height: -moz-fit-content;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.seasons select {
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0;
+  border: none;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.7);
+  background: #504957;
+  color: #F3EFF5;
+  box-sizing: border-box;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+.seasons .episodes {
+  width: 100%;
+  display: flex;
+  gap: 8px;
+  justify-content: start;
+  flex-direction: row-reverse;
+}
+
+.episode {
+  width: 250px;
+  font-size: medium;
+  background-color: #343137;
+  border: 1px solid #782CBF;
+  box-shadow: 2px 2px 2px #000;
+}
+.episode .image {
+  width: 100%;
+  height: 100px;
+  background: no-repeat;
+  background-size: cover;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.episode .info {
+  padding: 4px 4px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.episode .info .top {
+  display: flex;
+  justify-content: space-between;
+}
+.episode .info .top .title {
+  font-weight: bold;
+}
+.episode .info .description {
+  font-size: 12px;
+}
+.episode .info .duration {
+  display: flex;
+  justify-content: end;
 }
 
 body {
@@ -597,7 +667,7 @@ main {
   font-size: 32px;
   box-sizing: border-box;
   background: rgb(38, 36, 40);
-  background: linear-gradient(0deg, rgb(38, 36, 40) 0%, rgb(43, 35, 70) 100%);
+  background: linear-gradient(0deg, rgb(38, 36, 40) 0%, rgb(38, 36, 40) 70%, rgba(120, 44, 191, 0.6166841737) 100%);
   width: 100%;
 }
 

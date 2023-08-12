@@ -7,8 +7,9 @@
 @import '../pages/mainPage/mainPage';
 @import '../components/MovieTile/movies';
 @import '../pages/moviePage/moviePage';
-@import '../pages/moviePage/components/ActorComponent/actorComponent';
-
+@import '../pages/moviePage/components/Actor/actorComponent';
+@import '../pages/moviePage/components/Seasons/seasons';
+@import '../pages/moviePage/components/Episode/episode';
 
 body{
     font-family: 'Roboto';
@@ -49,7 +50,7 @@ main{
     font-size: 32px;
     box-sizing: border-box;
     background: rgb(38,36,40);
-    background: linear-gradient(0deg, rgba(38,36,40,1) 0%, rgba(43,35,70,1) 100%);
+    background: linear-gradient(0deg, rgba(38,36,40,1) 0%, rgba(38,36,40,1) 70%, rgba(120,44,191,0.6166841736694677) 100%);
     width: 100%;
 }
 

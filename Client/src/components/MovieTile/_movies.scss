@@ -54,11 +54,10 @@
         flex-direction: column;
         gap: 0.5rem;
         box-sizing: border-box;
-        background-color: $blackTransparent;
+        background-color: $black;
         padding: 1rem;
 
         .tileHeader{
-            height: 5vh;
             display: flex;
             gap: 0.5rem;
             align-items: center;
@@ -73,6 +72,10 @@
         }
         .middle{
             justify-content: space-between;
+            .buttons{
+                display: flex;
+                gap: 1rem;
+            }
         }
         .movieLogo{
             background-size: contain;

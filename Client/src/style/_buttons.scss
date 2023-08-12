@@ -19,7 +19,7 @@ button{
     }
     &:active{
         background-color: $purple;
-        box-shadow: inset black 0 0 5px;
+        box-shadow: inset $black 0 0 5px;
     }
 }
 .button-secondary{
@@ -33,7 +33,7 @@ button{
     }
     &:active{
         background-color: $backgroundDrak;
-        box-shadow: inset black 0 0 5px;
+        box-shadow: inset $black 0 0 5px;
         color:$purple;
         border: 2px $purple solid;
 

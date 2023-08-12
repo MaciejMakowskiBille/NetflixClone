@@ -1,0 +1,27 @@
+.seasons{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    select{
+        width: fit-content;
+        margin: 0;
+        border:none;
+        box-shadow: 2px 2px 2px $blackTransparent;
+        background: $backgroundDrak;
+        color:$whiteText;
+        box-sizing: border-box;
+        padding: 4px 8px;
+        border-radius: 4px;
+    }
+
+    .episodes{
+        width: 100%;
+        display: flex;
+        gap: 8px;
+        justify-content: start;
+        flex-direction: row-reverse;
+    }
+}

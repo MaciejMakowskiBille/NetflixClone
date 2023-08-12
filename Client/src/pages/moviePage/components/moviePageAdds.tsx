@@ -1,8 +1,9 @@
 import {useState, useEffect} from 'react'
 import { serverURL } from "../../../utils/links"
-import ActorComponent from "./ActorComponent/actorComponent"
+import ActorComponent from "./Actor/actorComponent"
 import MovieTile from "../../../components/MovieTile/movieTile"
 import { getFilms } from '../../../utils/Gets'
+import SeasonsComponent from './Seasons/seasonsComponent'
 
 type MoviePageAddsProps = {
     active:string
@@ -10,9 +11,10 @@ type MoviePageAddsProps = {
     cast:Actor[]
     longDesc:string
     premiere:string
-    director:Director
+    director?:Director
     ageCategory:number
-    duration:number
+    duration?:number
+    seasons?:Season[]
     categories:Category[]
 }
 
@@ -28,8 +30,58 @@ const MoviePageAdds = (props:MoviePageAddsProps) => {
         })
     },[])
 
+    const showLength = () =>{
+        if(props.duration && "duration" in props){
+            return(
+                <div>
+                    <div className="infoTitle">
+                        Czas trwania:
+                    </div>
+                    <div className="infoValue">
+                        {Math.floor(props.duration/60)} godz.
+                        {props.duration%60}min
+                </div>
+            </div>
+            )
+        }
+        if(props.seasons && "seasons" in props){
+            return(
+                <div>
+                    <div className="infoTitle">
+                        Liczba sezonów:
+                    </div>
+                    <div className="infoValue">
+                        {props.seasons.length}
+                </div>
+            </div>
+            )
+        }
+    }
+
+    const showDirector = () => {
+        if(props.director && "director" in props){
+            return(
+                <div className="bottom">
+                    <div className="infoTitle">
+                        Reżyser:
+                    </div>
+                    <div 
+                    className="directorPhoto" 
+                    style={{backgroundImage: `url(${serverURL + props.director.image})`}}
+                    />
+                    <div>
+                        {props.director.firstName + " " + props.director.lastName}
+                    </div>
+                </div>
+            )
+        }
+    }
+
     return(
         <div className="movieAdds">
+            {props.active === 'sea' && props.seasons && (
+                <SeasonsComponent seasons={props.seasons}/>
+            )}
             {props.active === 'rec' && (
                 <div className='movieList'>
                     {!isLoading && moviesData && (
@@ -65,15 +117,7 @@ const MoviePageAdds = (props:MoviePageAddsProps) => {
                     </div>
                     <div className="right">
                         <div className="top">
-                            <div>
-                                <div className="infoTitle">
-                                    Czas trwania:
-                                </div>
-                                <div className="infoValue">
-                                    {Number(props.duration/60).toFixed()} godz.
-                                    {props.duration%60}min
-                                </div>
-                            </div>
+                            {showLength()}
                             <div>
                                 <div className="infoTitle">
                                     Premiera:
@@ -106,18 +150,7 @@ const MoviePageAdds = (props:MoviePageAddsProps) => {
                                     })}
                                 </div>
                         </div>
-                        <div className="bottom">
-                            <div className="infoTitle">
-                                Reżyser:
-                            </div>
-                            <div 
-                            className="directorPhoto" 
-                            style={{backgroundImage: `url(${serverURL + props.director.image})`}}
-                            />
-                            <div>
-                                {props.director.firstName + " " + props.director.lastName}
-                            </div>
-                        </div>
+                        {showDirector()}
                     </div>
                 </div>
             )}

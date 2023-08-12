@@ -1,10 +1,13 @@
+import { useParams } from "react-router-dom"
+
 type MoviePageNavProps ={
     active:string
     setActive: React.Dispatch<React.SetStateAction<string>>
 }
 
 const MoviePageNav = (props:MoviePageNavProps) => {
-    const actives = ['rec', 'det', 'cast']
+    const actives = ['sea','rec', 'det', 'cast']
+    const {movieType} = useParams()
 
     const handleClick = (value:string) => {
             props.setActive(prev => prev = value)
@@ -19,20 +22,28 @@ const MoviePageNav = (props:MoviePageNavProps) => {
     return(
             <div className="movieNav">
                     <ul>
-                        <li 
+                        {movieType === 's' && (
+                            <li 
                             style={{borderBottom: getBorderStyles(props.active, actives[0])}}
+                            onClick={(() => handleClick('sea'))}
+                        >
+                            Odcinki
+                        </li>
+                        )}
+                        <li 
+                            style={{borderBottom: getBorderStyles(props.active, actives[1])}}
                             onClick={(() => handleClick('rec'))}
                         >
                             Proponowane
                         </li>
                         <li
-                            style={{borderBottom: getBorderStyles(props.active, actives[1])}}
+                            style={{borderBottom: getBorderStyles(props.active, actives[2])}}
                             onClick={(() => handleClick('det'))}
                         >
                             Szczegóły
                             </li>
                         <li
-                            style={{borderBottom: getBorderStyles(props.active, actives[2])}}
+                            style={{borderBottom: getBorderStyles(props.active, actives[3])}}
                             onClick={(() => handleClick('cast'))}
                         >
                             Obsada

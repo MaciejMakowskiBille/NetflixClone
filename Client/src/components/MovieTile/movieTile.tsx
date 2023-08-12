@@ -13,7 +13,7 @@ type MovieTileProps = {
     premiere:string,
     transcription?:boolean,
     duration?:number,
-    sezons?:number
+    seasons?:number
 }
 
 const MovieTile = (props:MovieTileProps) => {
@@ -28,6 +28,13 @@ const MovieTile = (props:MovieTileProps) => {
     const handleMouseLeave = () => {
         setTileImage(prev => prev = props.img)
         setIsMouseOverTile(prev => prev = false)
+    }
+
+    const showMoreButton = () => {
+        const path = "duration" in props ? `movie/m/${props.id}` : "seasons" in props ? `movie/s/${props.id}` : '/'
+        return(
+                <div className="icon iconButton moreButton" onClick={() => navigate(path)}/>
+        )
     }
 
 
@@ -47,11 +54,8 @@ const MovieTile = (props:MovieTileProps) => {
                 )}
             </div>
             {isMouseOverTile && (
-                <motion.div 
+                <div 
                 className="movieTileInfo" 
-                initial={{y:'-100%', opacity:0}}
-                whileInView={{y:0, opacity:1}}
-                transition={{duration:0.5}}
                 >
                     <div className="tileHeader">
                     <div className="infos">
@@ -68,18 +72,21 @@ const MovieTile = (props:MovieTileProps) => {
                                     {props.duration%60}min
                                 </>
                             )}
-                            {props.sezons && (
+                            {props.seasons && (
                                 <>
                                     <div className="separator"/>
-                                    Sezony: {props.sezons}
+                                    Sezony: {props.seasons}
                                 </>
                             )}
                     </div>
                     </div>
                     <div className="infos middle">
                             <div className="movieLogo" style={{backgroundImage:`url(${serverURL + props.logo})`}}/>
+                            <div className="buttons">
                             <div className="icon iconButton favButton"/>
-                            <div className="icon iconButton moreButton" onClick={() => navigate(`/movie/${props.id}`)}/>
+                            {showMoreButton()}
+                            </div>
+                            
                     </div>
                     <div className="categories">
                         {props.categories.map((category, index) => {
@@ -93,7 +100,7 @@ const MovieTile = (props:MovieTileProps) => {
                             )
                         })}
                     </div>
-                </motion.div>
+                </div>
             )}
         </div>
         </div>

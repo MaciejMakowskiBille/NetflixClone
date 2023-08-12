@@ -1,23 +1,88 @@
 import {useState, useEffect} from 'react'
-import { getOneFilm } from '../../utils/Gets'
+import { getOneFilm, getOneSeries } from '../../utils/Gets'
 import Navigation from '../../components/Navigation/nav'
 import { serverURL } from '../../utils/links'
 import MoviePageNav from './components/moviePageNav'
 import MoviePageAdds from './components/moviePageAdds'
 import { useParams } from 'react-router-dom'
 const MoviePage = () => {
-    const [movieData, setMovieData] = useState<MovieDataType | null>(null)
+    const [movieData, setMovieData] = useState<MovieDataType | SeriesDataType | null>(null)
     const [isLoading, setIsLoading] = useState(true)
     const [active, setActive] = useState('rec')
-    const {movieId} = useParams()
-    useEffect(() => {
-        if(movieId){
-            getOneFilm(+movieId).then((res) => {
-                setMovieData(prev => prev = res)
-                setIsLoading(prev => prev = false)
-            })
+    const {movieType,movieId} = useParams()
+
+
+    const showLength = () => {
+        if(movieData && "duration" in movieData){
+            return(
+                <>
+                    {Math.floor(movieData.duration/60)} godz. 
+                    {movieData.duration%60}min
+                </>
+            )
         }
-    },[movieId])
+        if(movieData && "seasons" in movieData){
+            return(
+                <>
+                    Sezony: {movieData.seasons.length}
+                </>
+            )
+        }
+    }
+
+    const showDetails = () => {
+        if(movieData && "duration" in movieData){
+            return(
+                <MoviePageAdds
+                        active={active}
+                        title={movieData.title}
+                        cast={movieData.cast}
+                        longDesc={movieData.longDescription}
+                        premiere={movieData.premiere}
+                        director={movieData.director}
+                        ageCategory={movieData.ageCategory}
+                        duration={movieData.duration}
+                        categories={movieData.categories}
+                     />
+            )
+        }
+        if(movieData && "seasons" in movieData){
+            return(
+                <MoviePageAdds
+                        active={active}
+                        title={movieData.title}
+                        cast={movieData.cast}
+                        longDesc={movieData.longDescription}
+                        premiere={movieData.premiere}
+                        ageCategory={movieData.ageCategory}
+                        seasons={movieData.seasons}
+                        categories={movieData.categories}
+                     />
+            )
+        }
+
+    }
+
+    useEffect(() => {
+        if(movieType === 'm'){
+            if(movieId){
+                getOneFilm(+movieId).then((res) => {
+                    setMovieData(prev => prev = res)
+                    setActive('rec')
+                    setIsLoading(prev => prev = false)
+                })
+            }
+        }
+        if(movieType === 's'){
+            if(movieId){
+                getOneSeries(+movieId).then((res) => {
+                    setMovieData(prev => prev = res)
+                    setActive('sea')
+                    setIsLoading(prev => prev = false)
+                })
+            }
+        }
+    },[movieId,movieType])
     return(
         <>
         <div className="appBackground">
@@ -36,8 +101,8 @@ const MoviePage = () => {
                                 )}
                                 {movieData.premiere.substring(0,4)}
                                     <div className='separator'/>
-                                {Math.floor(movieData.duration/60)} godz. 
-                                {movieData.duration%60}min
+                                    {showLength()}
+                                
                             </div>
                             <div className='bottom'>
                                 {movieData.categories.map((category,index) => {
@@ -65,17 +130,7 @@ const MoviePage = () => {
                         active={active} 
                         setActive={setActive}
                     />
-                    <MoviePageAdds
-                        active={active}
-                        title={movieData.title}
-                        cast={movieData.cast}
-                        longDesc={movieData.longDescription}
-                        premiere={movieData.premiere}
-                        director={movieData.director}
-                        ageCategory={movieData.ageCategory}
-                        duration={movieData.duration}
-                        categories={movieData.categories}
-                     />
+                    {showDetails()}
                 </main>
                 )}
         </div>
