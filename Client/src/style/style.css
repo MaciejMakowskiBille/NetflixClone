@@ -211,6 +211,7 @@ input[type=number]::-webkit-inner-spin-button {
   display: flex;
   flex-direction: column;
   margin-top: 25px;
+  padding: 0;
   gap: 20px;
 }
 .content .inputs {
@@ -285,10 +286,6 @@ input[type=number]::-webkit-inner-spin-button {
   color: white;
 }
 
-.content {
-  padding: 1rem;
-}
-
 .actions {
   padding: 1rem;
   display: flex;
@@ -317,6 +314,10 @@ button {
   padding: 0;
   width: 100%;
   height: 50px;
+}
+
+.form-wrapper {
+  height: 100%;
 }
 
 .button--paypal {
