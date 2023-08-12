@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "profiles",
+  "info": {
+    "singularName": "profile",
+    "pluralName": "profiles",
+    "displayName": "Profile",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "username": {
+      "type": "string",
+      "required": true
+    },
+    "ageGroup": {
+      "type": "enumeration",
+      "enum": [
+        "kid",
+        "teen",
+        "adult"
+      ],
+      "default": "adult"
+    },
+    "favorite_series": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::series-s.series-s"
+    },
+    "favorite_films": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::film-s.film-s"
+    }
+  }
+}

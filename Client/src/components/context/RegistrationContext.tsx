@@ -33,18 +33,20 @@ export function FormProvider({ children }: { children: React.ReactNode }) {
     mode: "onBlur",
     reValidateMode: "onBlur",
     defaultValues: {
-      cardNameSname: [],
-      cardNumber: undefined,
+      // cardNameSname: "",
+      // cardNumber: undefined,
       email: "",
       expiryDate: "",
       password: "",
-      securityCode: undefined,
+      // securityCode: undefined,
     },
     resolver: zodResolver(schema),
   });
 
   const [noValidateData, setNoValidateData] = useState<noValidateFormProp>({
     optInSubscription: false,
+    email: "",
+    password: "",
     paymentsOffer: 0,
     paymentsProcessing: "creditCard",
   });

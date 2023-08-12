@@ -1,9 +1,25 @@
+import React from "react";
 import "../style/style.css";
 import { useRegistrationContext } from "./hooks/useRegistrationContext";
 
 function RegistrationEmail() {
   const { noValidateData, setPage, register, errors, setNoValidateData } =
     useRegistrationContext();
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const name = e.target.name;
+    if (name == "email") {
+      setNoValidateData!((prev) => ({
+        ...prev,
+        ["email"]: e.target.value,
+      }));
+    } else if (name == "optInSubscription") {
+      setNoValidateData!((prev) => ({
+        ...prev,
+        ["optInSubscription"]: !noValidateData!.optInSubscription,
+      }));
+    }
+  };
 
   return (
     <div className="black-background">
@@ -26,6 +42,7 @@ function RegistrationEmail() {
             type="email"
             placeholder="email"
             {...register!("email")}
+            onChange={handleChange}
           />
           {errors?.email && (
             <p className="error-message">{errors.email?.message}</p>
@@ -36,12 +53,7 @@ function RegistrationEmail() {
             type="checkbox"
             name="optInSubscription"
             checked={noValidateData!.optInSubscription}
-            onChange={() => {
-              setNoValidateData!((prev) => ({
-                ...prev,
-                ["optInSubscription"]: !noValidateData!.optInSubscription,
-              }));
-            }}
+            onChange={handleChange}
           ></input>
           <span className="checkbox-text">
             Zgadzam się na otrzymywanie specjalnych ofert i informacji

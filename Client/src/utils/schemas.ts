@@ -31,7 +31,6 @@ export const schema = z.object({
   cardNameSname: z
     .string()
     .trim()
-    .nonempty("Pole jest wymagane")
     .min(3, "Musi zawierac trzy znaki")
     .transform((value) => value.split(" ")),
   cardNumber: z
@@ -40,15 +39,16 @@ export const schema = z.object({
     .regex(new RegExp(cardNumberRegex), "Nieprawidłowy numer karty"),
   expiryDate: z
     .string().trim()
-    .nonempty("pole jest wymagane")
     .regex(/^\d\d\/\d\d$/, "Wpisz według wzorca: DD/RR")
     .refine(expiryDateValid, "Karta jest nieważna"),
-  securityCode: z.coerce
+  securityCode: z
     .string()
     .length(3, "Kod musi zawierać trzy cyfry")
     .refine((value) => !isNaN(Number(value)), "pole jest wymagane")
     .transform((value) => parseInt(value)),
 });
+
+// use
 
 // export type FormInput = z.infer<typeof schema>;
 export interface FormInput {

@@ -1,10 +1,13 @@
+import React from "react";
 import paypal2 from "../imgs/icons/paypal2.svg";
 import { useRegistrationContext } from "./hooks/useRegistrationContext";
 
 export default function PaymentsContent({
   activeContentIndex,
-}: {
+}: // handlePayPalClick,
+{
   activeContentIndex: number;
+  // handlePayPalClick: React.MouseEventHandler<HTMLButtonElement>;
 }) {
   const { register, errors } = useRegistrationContext();
 
@@ -45,7 +48,6 @@ export default function PaymentsContent({
               {...register!("expiryDate")}
               name="expiryDate"
               maxLength={5}
-              // onChange={handleChange}
               placeholder="MM/RR"
             />
             {errors?.expiryDate && (
@@ -58,9 +60,7 @@ export default function PaymentsContent({
               className="wrapper__text-input wrapper__text-input--smaller"
               type="number"
               maxLength={3}
-              {...register!("securityCode", { valueAsNumber: true })}
-              // name="securityCode"
-              // onChange={handleChange}
+              {...register!("securityCode")}
               placeholder="CVV"
             />
             {errors?.securityCode && (
@@ -112,7 +112,11 @@ export default function PaymentsContent({
           okresu rozliczeniowego. Nie zwracamy środków ani nie udzielamy
           rekompensaty za częściowo wykorzystane miesiące lub lata.
         </p>
-        <button type="submit" className="button-primary button--paypal">
+        <button
+          type="submit"
+          className="button-primary button--paypal"
+          // onClick={handlePayPalClick}
+        >
           <p className="button-primary__text">ZAPŁAĆ Z</p>
           <img src={paypal2} alt="" className="paypal-full" />
         </button>

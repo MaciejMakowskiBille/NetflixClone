@@ -8,7 +8,7 @@ import { useRegistrationContext } from "./hooks/useRegistrationContext";
 import { FormInput } from "../utils/schemas";
 import { SubmitHandler } from "react-hook-form";
 import { FormTypes } from "../utils/modules";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios, { isAxiosError } from "axios";
 import { UserPostResponseTypes } from "../utils/modules";
 
@@ -28,14 +28,16 @@ interface ResponseTypes {
 }
 
 const PageSwitch = () => {
-  const { page, handleSubmit, noValidateData } = useRegistrationContext();
+  const { page, handleSubmit, reset, setNoValidateData, noValidateData } =
+    useRegistrationContext();
   const [showModal, setShowModal] = useState<boolean>(false);
   const [modalData, setModalData] = useState<modalTypes>({});
   const [isSubmitSuccessful, setIsSubmitSuccessful] = useState(false);
-  const { reset } = useRegistrationContext();
 
+  // nie wiem czy to dobry sposób ale wkładam w miejsce numeru pusty string aby wyczyści formularz
   useEffect(() => {
     if (isSubmitSuccessful) {
+      // cleanUp all form data
       reset!({
         cardNameSname: [],
         cardNumber: "",
@@ -44,78 +46,77 @@ const PageSwitch = () => {
         password: "",
         securityCode: "",
       });
+
+      setNoValidateData!({
+        optInSubscription: false,
+        password: "",
+        email: "",
+        paymentsOffer: 0,
+        paymentsProcessing: "creditCard",
+      });
     }
   }, [isSubmitSuccessful]);
-  // const mockData: FormTypes = {
-  //   username: "stachu5",
-  //   email: "stasiol5.olszak@gmail.com",
-  //   password: "alamakota",
-  //   cardName: "Stanisław",
-  //   cardSname: "Olszak",
-  //   cardNumber: "1234 1234 1234 1234",
-  //   securityCode: 123,
-  //   expiryDate: "12/24",
-  //   paymentsOffer: 1,
-  //   paymentsProcessing: "creditCard",
-  //   optInSubscription: false,
-  // };
 
-  // const handleSubmitModal = () => {
-  //   setShowModal(true);
-  // };
-
-  // interface ErrorType {
-  //   data: object {
-
-  //   };
-  //   status: number;
-  // }
   const authURL = "http://localhost:1337/api/auth";
 
+  const payPalSubmit = (e: React.MouseEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log("payPal submit!");
+  };
+
   const onSubmit: SubmitHandler<FormInput> = async (data) => {
+    // const { optInSubscription, paymentsOffer, paymentsProcessing } =
+    //   noValidateData!;
+
     const allData: FormTypes = {
-      email: data?.email,
+      // password: data?.password,
+      // email: data?.email,
       username: data?.email,
-      password: data?.password,
       cardName: data?.cardNameSname[0],
       cardSname: data?.cardNameSname[1],
       cardNumber: data?.cardNumber,
       expiryDate: data?.expiryDate,
       securityCode: data?.securityCode,
-      ...noValidateData,
+      ...noValidateData!,
+      // optInSubscription: optInSubscription,
+      // paymentsOffer: paymentsOffer,
+      // paymentsProcessing: paymentsProcessing,
     };
+    console.log(data);
+    if (noValidateData?.paymentsProcessing == "payPal") {
+      alert("udało się!");
+    }
+    // axios
+    //   .post<UserPostResponseTypes>(authURL + `/local/register`, allData)
+    //   .then((response) => {
+    //     localStorage.setItem("jwt", response.data.jwt);
+    //     setModalData({
+    //       success: true,
+    //       content: "Udało się pomyślnie zarejestrować!",
+    //     });
+    //     setIsSubmitSuccessful(true);
+    //   })
+    //   .catch((err) => {
+    //     if (isAxiosError(err)) {
+    //       if (err.response?.status == 400) {
+    //         setModalData({
+    //           success: false,
+    //           content:
+    //             "Użytkownik o takim emailu już istnieje. Spróbuj ponownie!",
+    //         });
+    //         console.log(
+    //           "Użytkownik o takim emailu już istnieje. Spróbuj ponownie!"
+    //         );
+    //       }
+    //     } else {
+    //       setModalData({
+    //         success: false,
+    //         content: "Nieoczekiwany błąd, Spróbuj ponownie!",
+    //       });
+    //     }
+    //   });
 
-    axios
-      .post<UserPostResponseTypes>(authURL + `/local/register`, allData)
-      .then((response) => {
-        localStorage.setItem("jwt", response.data.jwt);
-        setModalData({
-          success: true,
-          content: "Udało się pomyślnie zarejestrować!",
-        });
-        setIsSubmitSuccessful(true);
-      })
-      .catch((err) => {
-        if (isAxiosError(err)) {
-          if (err.response?.status == 400) {
-            setModalData({
-              success: false,
-              content:
-                "Użytkownik o takim emailu już istnieje. Spróbuj ponownie!",
-            });
-            console.log(
-              "Użytkownik o takim emailu już istnieje. Spróbuj ponownie!"
-            );
-          }
-        } else {
-          setModalData({
-            success: false,
-            content: "Nieoczekiwany błąd, Spróbuj ponownie!",
-          });
-        }
-      });
-
-    setShowModal(true);
+    // setShowModal(true);
   };
 
   interface displayArray {
@@ -131,13 +132,20 @@ const PageSwitch = () => {
 
   const content = (
     <div>
-      {showModal && modalData.content && (
+      {modalData.content && (
         <SuccessModal
           title={modalData.success ? "Sukces" : "Uwaga"}
           content={modalData.content!}
         />
       )}
-      <form className="form-inputs flex-col" onSubmit={handleSubmit!(onSubmit)}>
+      <form
+        className="form-inputs flex-col"
+        onSubmit={
+          noValidateData?.paymentsProcessing == "creditCard"
+            ? handleSubmit!(onSubmit)
+            : payPalSubmit
+        }
+      >
         {display[page]}
       </form>
     </div>

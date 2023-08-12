@@ -36,6 +36,8 @@ export interface UserPostResponseTypes {
 }
 
 export interface noValidateFormProp {
+  email: string;
+  password: string;
   optInSubscription?: boolean;
   paymentsOffer?: number;
   paymentsProcessing?: "creditCard" | "payPal";

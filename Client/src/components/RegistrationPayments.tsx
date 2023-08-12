@@ -1,5 +1,5 @@
 // import { useState } from "react";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import PaymentsOffer from "../components/PaymentsOffer";
 import "../style/style.css";
 import PaymentsSwitch from "./PaymentsSwitch";
@@ -17,6 +17,8 @@ function RegistrationPayments() {
       ["paymentsProcessing"]: processingValue,
     }));
   }, [activeContentIndex]);
+
+  const handlePayPalClick = (e: React.MouseEvent<HTMLButtonElement>) => {};
 
   return (
     <div className="black-background">

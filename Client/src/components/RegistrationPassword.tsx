@@ -1,7 +1,19 @@
+import React from "react";
 import { useRegistrationContext } from "./hooks/useRegistrationContext";
 
 function RegistrationPassword() {
-  const { register, errors, setPage } = useRegistrationContext();
+  const { register, errors, setPage, setNoValidateData } =
+    useRegistrationContext();
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const name = e.target.name;
+    if (name == "password") {
+      setNoValidateData!((prev) => ({
+        ...prev,
+        ["password"]: e.target.value,
+      }));
+    }
+  };
   return (
     <div className="black-background">
       <div className="wrapper">
@@ -24,6 +36,7 @@ function RegistrationPassword() {
             {...register!("password")}
             name="password"
             placeholder="hasło"
+            onChange={handleChange}
           />
           {errors?.password && (
             <p className="error-message">{errors.password?.message}</p>
