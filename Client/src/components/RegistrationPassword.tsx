@@ -2,7 +2,7 @@ import React from "react";
 import { useRegistrationContext } from "./hooks/useRegistrationContext";
 
 function RegistrationPassword() {
-  const { register, errors, setPage, setNoValidateData } =
+  const { register, errors, setPage, setNoValidateData, nextPage } =
     useRegistrationContext();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -44,9 +44,7 @@ function RegistrationPassword() {
         </div>
         <button
           className="button-primary"
-          onClick={() => {
-            setPage!((prev) => prev + 1);
-          }}
+          onClick={() => nextPage!("password")}
         >
           Zaloguj
         </button>

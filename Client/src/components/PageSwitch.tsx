@@ -136,7 +136,7 @@ const PageSwitch = () => {
   };
 
   const content = (
-    <div>
+    <div className="form-wrapper">
       {modalData.content && (
         <SuccessModal
           title={modalData.success ? "Sukces" : "Uwaga"}
@@ -144,7 +144,6 @@ const PageSwitch = () => {
         />
       )}
       <form
-        className="form-inputs flex-col"
         onSubmit={
           noValidateData?.paymentsProcessing == "creditCard"
             ? handleSubmit!(onSubmit)

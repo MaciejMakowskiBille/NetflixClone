@@ -3,7 +3,7 @@ import "../style/style.css";
 import { useRegistrationContext } from "./hooks/useRegistrationContext";
 
 function RegistrationEmail() {
-  const { noValidateData, setPage, register, errors, setNoValidateData } =
+  const { noValidateData, nextPage, register, errors, setNoValidateData } =
     useRegistrationContext();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -69,9 +69,7 @@ function RegistrationEmail() {
           </p>
           <button
             type="button"
-            onClick={() => {
-              setPage!((prev) => prev + 1);
-            }}
+            onClick={() => nextPage!("email")}
             className="button-primary"
           >
             Kontynułuj

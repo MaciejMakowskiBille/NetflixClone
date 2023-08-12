@@ -11,6 +11,7 @@ import { noValidateFormProp } from "../../utils/modules";
 import { schema, FormInput } from "../../utils/schemas";
 
 interface ContextTypes {
+  nextPage?: (fieldName: fieldNames) => Promise<void>;
   reset?: UseFormReset<FormInput>;
   page: number;
   setPage?: React.Dispatch<React.SetStateAction<number>>;
@@ -21,10 +22,20 @@ interface ContextTypes {
   errors?: FieldErrors<FormInput>;
 }
 
+type fieldNames =
+  | "cardNameSname"
+  | "cardNumber"
+  | "email"
+  | "expiryDate"
+  | "password"
+  | "securityCode"
+  | `cardNameSname.${number}`;
+
 const RegistrationContext = createContext<ContextTypes>({ page: 0 });
 
 export function FormProvider({ children }: { children: React.ReactNode }) {
   const {
+    trigger,
     reset,
     handleSubmit,
     register,
@@ -35,7 +46,7 @@ export function FormProvider({ children }: { children: React.ReactNode }) {
     defaultValues: {
       // cardNameSname: "",
       // cardNumber: undefined,
-      email: "",
+      email: undefined,
       expiryDate: "",
       password: "",
       // securityCode: undefined,
@@ -53,9 +64,18 @@ export function FormProvider({ children }: { children: React.ReactNode }) {
 
   const [page, setPage] = useState<number>(0);
 
+  const nextPage = async (fieldName: fieldNames) => {
+    const output = await trigger(fieldName);
+    // console.log("output", output);
+    if (output) {
+      setPage((prev) => prev + 1);
+    }
+  };
+
   return (
     <RegistrationContext.Provider
       value={{
+        nextPage,
         reset,
         handleSubmit,
         register,
