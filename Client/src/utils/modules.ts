@@ -43,7 +43,7 @@ export interface noValidateFormProp {
   paymentsProcessing?: "creditCard" | "payPal";
 }
 
-export interface UserCreationErrorType {
+export interface userCreationErrorType {
   fieldName: string;
   error: string;
 }
