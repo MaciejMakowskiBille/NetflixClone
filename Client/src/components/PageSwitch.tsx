@@ -96,6 +96,8 @@ const PageSwitch = () => {
       username: noValidateData?.email!,
       ...noValidateData!,
     };
+
+    // console.log(cleanedData);
     PostUser(`/local/register`, cleanedData);
   };
 
@@ -104,8 +106,6 @@ const PageSwitch = () => {
     //   noValidateData!;
 
     const allData: FormTypes = {
-      // password: data?.password,
-      // email: data?.email,
       username: data?.email,
       cardName: data?.cardNameSname[0],
       cardSname: data?.cardNameSname[1],
@@ -113,10 +113,9 @@ const PageSwitch = () => {
       expiryDate: data?.expiryDate,
       securityCode: data?.securityCode,
       ...noValidateData!,
-      // optInSubscription: optInSubscription,
-      // paymentsOffer: paymentsOffer,
-      // paymentsProcessing: paymentsProcessing,
     };
+
+    // console.log(allData);
 
     PostUser(`/local/register`, allData);
   };
@@ -137,6 +136,7 @@ const PageSwitch = () => {
       {modalData.content && (
         <SuccessModal
           title={modalData.success ? "Sukces" : "Upss!"}
+          buttonText={modalData.success ? "Zaloguj się" : "Okey"}
           content={modalData.content!}
         />
       )}

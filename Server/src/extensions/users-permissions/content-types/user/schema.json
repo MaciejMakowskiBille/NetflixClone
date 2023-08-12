@@ -112,7 +112,8 @@
     "payment": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::payment.payment"
+      "target": "api::payment.payment",
+      "inversedBy": "user"
     }
   }
 }

@@ -1,8 +1,10 @@
 export default function SuccessModal({
   title,
+  buttonText,
   content,
 }: {
   title: string;
+  buttonText: string;
   content: string;
 }) {
   return (
@@ -17,7 +19,7 @@ export default function SuccessModal({
         </div>
         <footer className="modal__actions">
           <button type="button" className="button-secondary">
-            Zaloguj się
+            {buttonText}
           </button>
         </footer>
       </div>
