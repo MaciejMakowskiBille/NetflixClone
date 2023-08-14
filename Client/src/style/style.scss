@@ -10,6 +10,7 @@
 @import '../pages/moviePage/components/Actor/actorComponent';
 @import '../pages/moviePage/components/Seasons/seasons';
 @import '../pages/moviePage/components/Episode/episode';
+@import '../pages/filteredMovies/filteredMovies';
 
 body{
     font-family: 'Roboto';
@@ -74,6 +75,19 @@ main{
     background-color: $yellow;
     border-radius: 100%;
 }
+
+select{
+    width: fit-content;
+    margin: 0;
+    border:none;
+    box-shadow: 2px 2px 2px $blackTransparent;
+    background: $backgroundDrak;
+    color:$whiteText;
+    box-sizing: border-box;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
 .avatar{
     width: 32px;
     height: 32px;
