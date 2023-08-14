@@ -39,6 +39,7 @@ type SeriesDataType = {
 type Category = {
     id:number
     name:string
+    filter:boolean
 }
 type Actor = {
     id:number

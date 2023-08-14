@@ -50,6 +50,7 @@ type SeriesResponseType = {
 type CategoryResponseType = {
     attributes:{
         name:string
+        filter:boolean
         createdAt:string
         updatedAt:string
         publishedAt:string
