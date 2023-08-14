@@ -25,8 +25,8 @@ const MoviePageAdds = (props:MoviePageAddsProps) => {
     const [isLoading, setIsLoading] = useState(true)
     useEffect(() => {
         getFilms().then((res) => {
-            setMoviesData(prev => prev = res)
-            setIsLoading(prev => prev = false)
+            setMoviesData(res)
+            setIsLoading(false)
         })
     },[])
 

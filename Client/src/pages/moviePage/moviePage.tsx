@@ -67,18 +67,18 @@ const MoviePage = () => {
         if(movieType === 'm'){
             if(movieId){
                 getOneFilm(+movieId).then((res) => {
-                    setMovieData(prev => prev = res)
+                    setMovieData(res)
                     setActive('rec')
-                    setIsLoading(prev => prev = false)
+                    setIsLoading(false)
                 })
             }
         }
         if(movieType === 's'){
             if(movieId){
                 getOneSeries(+movieId).then((res) => {
-                    setMovieData(prev => prev = res)
+                    setMovieData(res)
                     setActive('sea')
-                    setIsLoading(prev => prev = false)
+                    setIsLoading(false)
                 })
             }
         }

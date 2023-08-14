@@ -1,5 +1,4 @@
 import { useState } from "react"
-import {motion} from 'framer-motion'
 import { serverURL } from "../../utils/links"
 import { useNavigate } from "react-router-dom"
 type MovieTileProps = {
@@ -22,12 +21,12 @@ const MovieTile = (props:MovieTileProps) => {
     const navigate = useNavigate()
 
     const handleMouseOver = () => {
-        setTileImage(prev => prev = props.hoverImg)
-        setIsMouseOverTile(prev => prev = true)
+        setTileImage(props.hoverImg)
+        setIsMouseOverTile(true)
     }
     const handleMouseLeave = () => {
-        setTileImage(prev => prev = props.img)
-        setIsMouseOverTile(prev => prev = false)
+        setTileImage(props.img)
+        setIsMouseOverTile(false)
     }
 
     const showMoreButton = () => {

@@ -10,7 +10,7 @@ const MoviePageNav = (props:MoviePageNavProps) => {
     const {movieType} = useParams()
 
     const handleClick = (value:string) => {
-            props.setActive(prev => prev = value)
+            props.setActive(value)
     }
 
     const getBorderStyles = (active:string, value:string) =>{

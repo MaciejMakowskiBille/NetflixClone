@@ -6,12 +6,12 @@ const EpisodeComponent = (props:Episode) => {
     const [isMouseOverTile, setIsMouseOverTile] = useState(false)
 
     const handleMouseOver = () => {
-        setTileImage(prev => prev = props.hoverImg)
-        setIsMouseOverTile(prev => prev = true)
+        setTileImage(props.hoverImg)
+        setIsMouseOverTile(true)
     }
     const handleMouseLeave = () => {
-        setTileImage(prev => prev = props.miniImg)
-        setIsMouseOverTile(prev => prev = false)
+        setTileImage(props.miniImg)
+        setIsMouseOverTile(false)
     }
     return(
         <div

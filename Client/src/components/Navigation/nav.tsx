@@ -6,7 +6,7 @@ const Navigation = () => {
     const [isSearch, setIsSearch] = useState(false)
 
     const handleClickSearch = () => {
-        setIsSearch(prev => prev = !prev)
+        setIsSearch((prev) => prev = !prev)
     }
 
     return(
@@ -18,13 +18,13 @@ const Navigation = () => {
                         <span>x</span>
                     </div>
                     <ul>
-                        <li>
+                        <li onClick={() => navigate('/')}>
                             Strona główna
                         </li>
-                        <li>
+                        <li onClick={() => navigate('/list/series')}>
                             Seriale i programy
                         </li>
-                        <li>
+                        <li onClick={() => navigate('/list/movies')}>
                             Filmy
                         </li>
                         <li>
