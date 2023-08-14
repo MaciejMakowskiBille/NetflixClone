@@ -1,6 +1,5 @@
 import "./style/style.css";
-import Registration from "./components/Registration";
-
+import Registration from "./components/Auth/Registration";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 const App = () => {

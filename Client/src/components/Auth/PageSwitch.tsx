@@ -2,37 +2,35 @@ import RegistrationEmail from "./RegistrationEmail";
 import RegistrationPassword from "./RegistrationPassword";
 import RegistrationAgreements from "./RegistrationAgreement";
 import RegistrationPayments from "./RegistrationPayments";
-import SuccessModal from "./ui/SuccessModal";
-import { useRegistrationContext } from "./hooks/useRegistrationContext";
-// import { CreateUser } from "./Posts";
-import { FormInput } from "../utils/schemas";
+import SuccessModal from "../ui/SuccessModal";
+import { useRegistrationContext } from "../hooks/useRegistrationContext";
+import { FormInput } from "../../utils/schemas";
 import { SubmitHandler } from "react-hook-form";
-import { FormTypes, noValidateFormProp } from "../utils/modules";
+import { FormTypes } from "../../utils/modules";
 import React, { useEffect, useState } from "react";
 import axios, { isAxiosError } from "axios";
-import { UserPostResponseTypes } from "../utils/modules";
+import { UserPostResponseTypes } from "../../utils/modules";
 
 interface modalTypes {
   success?: boolean;
   content?: string;
 }
 
-interface UserTypes extends FormTypes {
-  createdAt: string;
-  updatedAt: string;
-}
+// interface UserTypes extends FormTypes {
+//   createdAt: string;
+//   updatedAt: string;
+// }
 
-interface ResponseTypes {
-  jwt: string;
-  user: UserTypes;
-}
+// interface ResponseTypes {
+//   jwt: string;
+//   user: UserTypes;
+// }
 
 const authURL = "http://localhost:1337/api/auth";
 
 const PageSwitch = () => {
   const { page, handleSubmit, reset, setNoValidateData, noValidateData } =
     useRegistrationContext();
-  // const [showModal, setShowModal] = useState<boolean>(false);
   const [modalData, setModalData] = useState<modalTypes>({});
   const [isSubmitSuccessful, setIsSubmitSuccessful] = useState(false);
 

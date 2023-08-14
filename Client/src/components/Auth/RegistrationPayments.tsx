@@ -1,10 +1,9 @@
 // import { useState } from "react";
-import React, { useEffect, useState } from "react";
-import PaymentsOffer from "../components/PaymentsOffer";
-import "../style/style.css";
+import { useEffect, useState } from "react";
+import PaymentsOffer from "./PaymentsOffer";
 import PaymentsSwitch from "./PaymentsSwitch";
 import PaymentsContent from "./PaymentsContent";
-import { useRegistrationContext } from "./hooks/useRegistrationContext";
+import { useRegistrationContext } from "../hooks/useRegistrationContext";
 
 function RegistrationPayments() {
   const [activeContentIndex, setActiveContentIndex] = useState<number>(0);

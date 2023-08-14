@@ -1,5 +1,5 @@
-import paypal2 from "../imgs/icons/paypal2.svg";
-import { useRegistrationContext } from "./hooks/useRegistrationContext";
+import paypal2 from "../../imgs/icons/paypal2.svg";
+import { useRegistrationContext } from "../hooks/useRegistrationContext";
 
 export default function PaymentsContent({
   activeContentIndex,

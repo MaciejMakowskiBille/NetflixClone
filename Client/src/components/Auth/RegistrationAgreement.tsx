@@ -1,4 +1,4 @@
-import { useRegistrationContext } from "./hooks/useRegistrationContext";
+import { useRegistrationContext } from "../hooks/useRegistrationContext";
 
 function RegistrationAgreements() {
   const { setPage } = useRegistrationContext();

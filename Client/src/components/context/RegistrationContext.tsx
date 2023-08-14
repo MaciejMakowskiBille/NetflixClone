@@ -33,7 +33,7 @@ type fieldNames =
 
 const RegistrationContext = createContext<ContextTypes>({ page: 0 });
 
-export function FormProvider({ children }: { children: React.ReactNode }) {
+export function AuthProvider({ children }: { children: React.ReactNode }) {
   const {
     trigger,
     reset,

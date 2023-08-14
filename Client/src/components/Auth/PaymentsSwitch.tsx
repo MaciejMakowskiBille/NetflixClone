@@ -1,7 +1,6 @@
-import credit_card from "../imgs/icons/credit-card.svg";
-import paypal from "../imgs/icons/paypal.svg";
-import Switch from "./ui/Switch";
-// import PaymentsContent from "./PaymentsContent";
+import credit_card from "../../imgs/icons/credit-card.svg";
+import paypal from "../../imgs/icons/paypal.svg";
+import Switch from "../ui/Switch";
 
 export default function PaymentsSwitch({
   children,
