@@ -9,14 +9,6 @@ type CategoryRowPorps = {
 const CategoryRow = (props:CategoryRowPorps) => {
     const [hasMovies, setHasMovies] = useState(false)
 
-    const checkIfHasMovies = () => {
-        props.moviesList.map(movie => {
-            if(movie.categories.some(category => category.name === props.title)){
-                setHasMovies(prev => prev = true)
-            }
-        })
-    }
-
     const checkVideoType = (data: MovieDataType | SeriesDataType) => {
             return(
                 <MovieTile
@@ -37,8 +29,13 @@ const CategoryRow = (props:CategoryRowPorps) => {
     }
 
     useEffect(() => {
-        checkIfHasMovies()
-    },[])
+        setHasMovies(false)
+        props.moviesList.map(movie => {
+            if(movie.categories.some(category => category.name === props.title)){
+                setHasMovies(true)
+            }
+        })
+    },[props.moviesList])
 
     return (
         hasMovies ? (
