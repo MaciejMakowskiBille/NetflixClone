@@ -1,5 +1,6 @@
 import MainPage from "./pages/mainPage/mainPage"
 import MoviePage from "./pages/moviePage/moviePage"
+import FilteredMovies from "./pages/filteredMovies/filteredMovies";
 import './style/style.css'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
@@ -10,6 +11,7 @@ const App = () => {
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<MainPage />}/>
         <Route path="movie/:movieType/:movieId" element={<MoviePage />} />
+        <Route path="list/:type" element={<FilteredMovies/>}/>
       </Routes>
     </Router>
   )
