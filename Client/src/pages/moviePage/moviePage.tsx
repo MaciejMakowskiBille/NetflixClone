@@ -102,6 +102,7 @@ const MoviePage = () => {
                         setActive={setActive}
                     />
                     <MoviePageAdds
+                        id={movieData.id}
                         active={active}
                         title={movieData.title}
                         cast={movieData.cast}

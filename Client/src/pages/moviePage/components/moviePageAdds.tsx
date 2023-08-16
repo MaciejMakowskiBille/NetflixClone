@@ -1,12 +1,12 @@
 import {useState, useEffect} from 'react'
 import { serverURL } from "../../../utils/links"
 import ActorComponent from "./Actor/actorComponent"
-import MovieTile from "../../../components/MovieTile/movieTile"
-import { getFilms } from '../../../utils/Gets'
+import { getAllTypeMoviesByCategory, getFilms } from '../../../utils/Gets'
 import SeasonsComponent from './Seasons/seasonsComponent'
 import CategoryRow from '../../../components/CategoryRow/categoryRow'
 
 type MoviePageAddsProps = {
+    id:number
     active:string
     title:string
     cast:Actor[]
@@ -22,10 +22,10 @@ type MoviePageAddsProps = {
 
 const MoviePageAdds = (props:MoviePageAddsProps) => {
 
-    const [moviesData, setMoviesData] = useState<MovieDataType[] | null>(null)
+    const [moviesData, setMoviesData] = useState<CombinedDataType | null>(null)
     const [isLoading, setIsLoading] = useState(true)
     useEffect(() => {
-        getFilms().then((res) => {
+        getAllTypeMoviesByCategory(props.categories[0].name, props.id).then((res) => {
             setMoviesData(res)
             setIsLoading(false)
         })
