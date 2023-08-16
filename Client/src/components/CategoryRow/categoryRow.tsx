@@ -53,12 +53,14 @@ const CategoryRow = (props:CategoryRowPorps) => {
                             </div>
                         </div>
                     )}
+                    
                     {filteredMovies.map((movie, index) => {
                                 if(displayed < 5 && display - index >= 0 && display - index <= 4){
                                     displayed ++ 
                                     return checkVideoType(movie)
                                 }
                     })}
+
                     {filteredMovies.length > 5 && display+1 < filteredMovies.length && (
                         <div className="arrowBg rightBg">
                             <div className="arrow right" onClick={() => setDisplay((prev)=> prev+1)}> 

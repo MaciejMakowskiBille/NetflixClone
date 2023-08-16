@@ -636,6 +636,7 @@ main .category .title {
   background-repeat: no-repeat;
   background-position: center;
   cursor: pointer;
+  z-index: 1;
 }
 .arrowBg .right {
   rotate: 180deg;
