@@ -4,12 +4,13 @@ import Navigation from '../../components/Navigation/nav'
 import { serverURL } from '../../utils/links'
 import MoviePageNav from './components/moviePageNav'
 import MoviePageAdds from './components/moviePageAdds'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams, Link } from 'react-router-dom'
 const MoviePage = () => {
     const [movieData, setMovieData] = useState<MovieDataType | SeriesDataType | null>(null)
     const [isLoading, setIsLoading] = useState(true)
     const [active, setActive] = useState('rec')
     const {movieType,movieId} = useParams()
+    const navigate = useNavigate()
 
 
     const showLength = () => {
@@ -30,6 +31,14 @@ const MoviePage = () => {
         }
     }
 
+    const handlePlayVideo = () => {
+        if( movieData &&"video" in movieData  && movieData.video){
+            const videoURL = serverURL + movieData.video;
+            window.open(videoURL, '_blank'); 
+
+        }
+    }
+        
 
     useEffect(() => {
         if(movieType === 'm'){
@@ -87,12 +96,10 @@ const MoviePage = () => {
                             </div>
                         </div>
                         {movieType === 'm' && (
-                                <div className='buttons'>
-                            
-                                <button className='button-primary'>ODTWÓRZ</button>
-                                <button className='button-secondary'>ZWIASTUN</button>
+                            <div className='buttons'>
+                                <button className='button-primary' onClick={handlePlayVideo}>ODTWÓRZ</button>
+                                <button className='button-secondary ' onClick={handlePlayVideo}>ZWIASTUN</button>
                                 <button className='iconButton icon favButton'/>
-                            
                             </div>
                         )}
                         <div className='description'>
