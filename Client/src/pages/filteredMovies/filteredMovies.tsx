@@ -27,12 +27,16 @@ const FilteredMovies = () => {
 
     const filterData = (data:CombinedDataType) => {
         if(filterCategory){
-            const res = data.filter(item =>
-                item.categories.some(category => category.id === filterCategory.id)
-            )
-            return res
-        }
-        else return null
+            if(filterCategory.filter){
+                const res = data.filter(item =>
+                    item.categories.some(category => category.id === filterCategory.id)
+                )
+                return res
+            }else{
+                return moviesData
+            }
+        } else return null
+       
     }
 
     const assignData = (foo:Promise<CombinedDataType | null>) =>{
@@ -70,7 +74,7 @@ const FilteredMovies = () => {
         if(filterCategory && filterCategory.filter){
             moviesData  && setFilteredData(filterData(moviesData))
         }else{
-            setFilteredData(null)
+            setFilteredData(moviesData)
         }
     }, [filterCategory])
 
