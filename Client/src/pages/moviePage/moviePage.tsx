@@ -30,38 +30,6 @@ const MoviePage = () => {
         }
     }
 
-    const showDetails = () => {
-        if(movieData && "duration" in movieData){
-            return(
-                <MoviePageAdds
-                        active={active}
-                        title={movieData.title}
-                        cast={movieData.cast}
-                        longDesc={movieData.longDescription}
-                        premiere={movieData.premiere}
-                        director={movieData.director}
-                        ageCategory={movieData.ageCategory}
-                        duration={movieData.duration}
-                        categories={movieData.categories}
-                     />
-            )
-        }
-        if(movieData && "seasons" in movieData){
-            return(
-                <MoviePageAdds
-                        active={active}
-                        title={movieData.title}
-                        cast={movieData.cast}
-                        longDesc={movieData.longDescription}
-                        premiere={movieData.premiere}
-                        ageCategory={movieData.ageCategory}
-                        seasons={movieData.seasons}
-                        categories={movieData.categories}
-                     />
-            )
-        }
-
-    }
 
     useEffect(() => {
         if(movieType === 'm'){
@@ -115,12 +83,15 @@ const MoviePage = () => {
                                 })}
                             </div>
                         </div>
-                        <div className='buttons'>
-                            <button className='button-primary'>ODTWÓRZ</button>
-                            <button className='button-secondary'>ZWIASTUN</button>
-                            <button className='iconButton icon favButton'/>
-                        
-                        </div>
+                        {movieType === 'm' && (
+                                <div className='buttons'>
+                            
+                                <button className='button-primary'>ODTWÓRZ</button>
+                                <button className='button-secondary'>ZWIASTUN</button>
+                                <button className='iconButton icon favButton'/>
+                            
+                            </div>
+                        )}
                         <div className='description'>
                             {movieData.description}
                         </div>
@@ -130,9 +101,23 @@ const MoviePage = () => {
                         active={active} 
                         setActive={setActive}
                     />
-                    {showDetails()}
+                    <MoviePageAdds
+                        active={active}
+                        title={movieData.title}
+                        cast={movieData.cast}
+                        longDesc={movieData.longDescription}
+                        premiere={movieData.premiere}
+                        ageCategory={movieData.ageCategory}
+                        categories={movieData.categories}
+                        {...("director" in movieData && {director:movieData.director})}
+                        {...("duration" in movieData && {duration:movieData.duration})}
+                        {...("seasons" in movieData && {seasons:movieData.seasons})}
+                     />
                 </main>
                 )}
+                <section className='spacer'>
+
+                </section>
         </div>
         </>
     )

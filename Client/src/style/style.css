@@ -524,6 +524,10 @@ main .category .title {
   gap: 2rem;
 }
 
+.spacer {
+  height: 100px;
+}
+
 .actorComponent {
   min-width: 128px;
   max-width: 128px;

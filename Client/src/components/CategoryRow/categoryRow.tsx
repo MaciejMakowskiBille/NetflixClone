@@ -32,20 +32,26 @@ const CategoryRow = (props:CategoryRowPorps) => {
 
     useEffect(() => {
         setFilteredMovies([])
-        props.moviesList.map((movie) => {
+        if(props.title !== "all"){
+            props.moviesList.map((movie) => {
             if(movie.categories.some(category => category.name === props.title)){
                 setFilteredMovies((prev) => [...prev, movie])
             }
         })
-        console.log(filteredMovies)
+        }else{
+            setFilteredMovies(props.moviesList)
+        }
+        
     },[props.moviesList])
 
     return (
         filteredMovies.length > 0 ? (
             <div className="category">
-                <div className="title">
+                {props.title !== 'all' && (
+                    <div className="title">
                     {props.title}
                 </div>
+                )}
                 <div className="movieList">
                     {filteredMovies.length > 5 && display-4 > 0 && (
                         <div className="arrowBg leftBg">
