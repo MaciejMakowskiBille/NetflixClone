@@ -59,6 +59,7 @@ const MainPage = () => {
 
         getFilms().then((res) => {
             setMoviesData(res)
+            console.log(res)
             setIsLoading(false)
         }).catch((error) => {
             setIsLoading(true)

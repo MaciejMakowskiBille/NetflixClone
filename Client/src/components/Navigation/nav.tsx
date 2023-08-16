@@ -27,6 +27,9 @@ const Navigation = () => {
                         <li onClick={() => navigate('/list/movies')}>
                             Filmy
                         </li>
+                        <li onClick={() => navigate('/list/producers')}>
+                            Producenci
+                        </li>
                         <li>
                             Nowe i popularne
                         </li>
