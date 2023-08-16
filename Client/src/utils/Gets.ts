@@ -68,19 +68,19 @@ export const getSlider = async () => {
 
 export const getAllTypeMoviesByCategory = async (category:string, id:number) => {
   let movies:CombinedDataType = []
-  const responseM = await axios.get(apiURL + `films/?populate=deep&filters[categories][name][$eq]=${category}`)
-  if(responseM && responseM.data.data){
-      const data:MovieResponseType[] = responseM.data.data
-      const clearedData:MovieDataType[] = data.map(item => {
-        return clearMovieData(item)
-      })
-      movies = movies.concat(clearedData)
-    }
-    const responseS = await axios.get(apiURL +`series/?populate=deep&filters[categories][name][$eq]=${category}?filters[id][$not]=${id}`)
+  const responseS = await axios.get(apiURL +`series/?populate=deep&filters[categories][name][$eq]=${category}&filters[id][$ne]=${id}`)
     if(responseS && responseS.data.data){
       const data:SeriesResponseType[] = responseS.data.data
       const clearedData:SeriesDataType[] = data.map(item => {
         return clearSeriesData(item)
+      })
+      movies = movies.concat(clearedData)
+    }
+  const responseM = await axios.get(apiURL + `films/?populate=deep&filters[categories][name][$eq]=${category}&filters[id][$ne]=${id}`)
+  if(responseM && responseM.data.data){
+      const data:MovieResponseType[] = responseM.data.data
+      const clearedData:MovieDataType[] = data.map(item => {
+        return clearMovieData(item)
       })
       movies = movies.concat(clearedData)
     }

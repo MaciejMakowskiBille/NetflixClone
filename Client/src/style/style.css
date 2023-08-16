@@ -381,7 +381,7 @@ main .category .title {
 .movieInfoMain .primaryImage {
   width: 50%;
   min-height: 20rem;
-  max-height: 30rem;
+  max-height: 25rem;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -394,6 +394,10 @@ main .category .title {
   flex-direction: column;
   justify-content: center;
   gap: 1rem;
+}
+.movieInfoMain .content .title {
+  font-weight: bold;
+  font-size: large;
 }
 .movieInfoMain .content .logo {
   width: 100%;

@@ -29,7 +29,7 @@ const MoviePageAdds = (props:MoviePageAddsProps) => {
             setMoviesData(res)
             setIsLoading(false)
         })
-    },[])
+    },[props.id])
 
     const showLength = () =>{
         if(props.duration && "duration" in props){

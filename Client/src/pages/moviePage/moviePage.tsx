@@ -62,6 +62,9 @@ const MoviePage = () => {
                     <div className='content'>
                         <div className='logo' style={{backgroundImage:`url(${serverURL + movieData.logo})`}}/>
                         <div className='short'>
+                            <div className='title'>
+                                {movieData.title}
+                            </div>
                             <div className='top'>
                                 <div className='smallInfo'>{movieData.ageCategory}+</div>
                                 {movieData.transcription && (
