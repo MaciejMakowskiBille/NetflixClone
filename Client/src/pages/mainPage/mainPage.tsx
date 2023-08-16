@@ -6,7 +6,7 @@ import geo from '../../imgs/producers/geo.png'
 import star from '../../imgs/producers/star.png'
 import dc from '../../imgs/producers/dc.png'
 import Producer from "./components/producer"
-import CategoryRow from "../../components/categoryRow"
+import CategoryRow from "../../components/CategoryRow/categoryRow"
 import {useState, useEffect} from 'react'
 import { getCategories, getFilms, getSeries } from "../../utils/Gets"
 import Slider from "../../components/Slider/slider"

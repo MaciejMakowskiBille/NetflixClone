@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react'
 import { getCategories, getFilms, getSeries } from "../../utils/Gets"
 import { useNavigate, useParams } from 'react-router-dom'
 import Navigation from '../../components/Navigation/nav'
-import CategoryRow from '../../components/categoryRow'
+import CategoryRow from '../../components/CategoryRow/categoryRow'
 import { ChangeEvent } from 'react'
 
 const FilteredMovies = () => {

@@ -296,21 +296,11 @@ main .category .title {
   font-size: large;
 }
 
-.movieList {
-  display: flex;
-  width: 100%;
-  justify-content: start;
-  gap: 2rem;
-}
-.movieList .tile {
-  width: 18%;
-  height: 20vh;
-}
-
 .movieTile {
-  width: 100%;
   height: 20vh;
+  width: 100%;
   transition: all ease-in-out 0.3s;
+  z-index: 1;
 }
 .movieTile:hover {
   width: 150%;
@@ -616,6 +606,47 @@ main .category .title {
   width: 100%;
   display: flex;
   justify-content: start;
+}
+
+.movieList {
+  display: flex;
+  width: 100%;
+  justify-content: start;
+  gap: 2rem;
+}
+.movieList .tile {
+  width: 18%;
+  height: 20vh;
+}
+
+.arrowBg {
+  width: 50px;
+  height: 20vh;
+  box-sizing: border-box;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.arrowBg .arrow {
+  width: 40px;
+  height: 40px;
+  background-image: url("../imgs/icons/arrow.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+}
+.arrowBg .right {
+  rotate: 180deg;
+}
+
+.leftBg {
+  left: 0;
+}
+
+.rightBg {
+  right: 0;
 }
 
 body {

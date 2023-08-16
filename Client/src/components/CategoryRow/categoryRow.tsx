@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import MovieTile from "./MovieTile/movieTile"
+import MovieTile from "../MovieTile/movieTile"
 type CategoryRowPorps = {
     title:string,
     moviesList:CombinedDataType
@@ -7,7 +7,9 @@ type CategoryRowPorps = {
 
 
 const CategoryRow = (props:CategoryRowPorps) => {
-    const [hasMovies, setHasMovies] = useState(false)
+    const [filteredMovies, setFilteredMovies] = useState<CombinedDataType>([])
+    let displayed = 0;
+    const [display, setDisplay] = useState(4)
 
     const checkVideoType = (data: MovieDataType | SeriesDataType) => {
             return(
@@ -29,28 +31,40 @@ const CategoryRow = (props:CategoryRowPorps) => {
     }
 
     useEffect(() => {
-        setHasMovies(false)
-        props.moviesList.map(movie => {
+        setFilteredMovies([])
+        props.moviesList.map((movie) => {
             if(movie.categories.some(category => category.name === props.title)){
-                setHasMovies(true)
+                setFilteredMovies((prev) => [...prev, movie])
             }
         })
+        console.log(filteredMovies)
     },[props.moviesList])
 
     return (
-        hasMovies ? (
+        filteredMovies.length > 0 ? (
             <div className="category">
                 <div className="title">
                     {props.title}
                 </div>
                 <div className="movieList">
-                    {props.moviesList.map((movie) => {
-                        const isCategoryMovie = movie.categories.some(category => category.name === props.title);
-                        if (isCategoryMovie) {
-                            return checkVideoType(movie)
-                        }
-                        return null;
+                    {filteredMovies.length > 5 && display-4 > 0 && (
+                        <div className="arrowBg leftBg">
+                            <div className="arrow" onClick={() => setDisplay((prev)=> prev-1)}> 
+                            </div>
+                        </div>
+                    )}
+                    {filteredMovies.map((movie, index) => {
+                                if(displayed < 5 && display - index >= 0 && display - index <= 4){
+                                    displayed ++ 
+                                    return checkVideoType(movie)
+                                }
                     })}
+                    {filteredMovies.length > 5 && display+1 < filteredMovies.length && (
+                        <div className="arrowBg rightBg">
+                            <div className="arrow right" onClick={() => setDisplay((prev)=> prev+1)}> 
+                             </div>
+                        </div>
+                    )}
                 </div>
             </div>
         ) : null
