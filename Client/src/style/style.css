@@ -508,18 +508,29 @@ main .category .title {
   display: flex;
   gap: 8px;
 }
-.movieAdds .moreInfo .right .bottom {
+.movieAdds .moreInfo .right .bottom-row {
+  display: flex;
+  justify-content: space-between;
+}
+.movieAdds .moreInfo .right .bottom-row .bottom {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
-.movieAdds .moreInfo .right .bottom .directorPhoto {
+.movieAdds .moreInfo .right .bottom-row .bottom .directorPhoto {
   width: 100px;
   height: 128px;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   box-shadow: 2px 2px 5px #000;
+}
+.movieAdds .moreInfo .right .bottom-row .bottom .producerImage {
+  min-width: 150px;
+  min-height: 75px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 .movieAdds .castScroll {
   max-width: 100%;

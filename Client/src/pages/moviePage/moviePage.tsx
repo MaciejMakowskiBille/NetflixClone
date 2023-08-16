@@ -120,6 +120,7 @@ const MoviePage = () => {
                         premiere={movieData.premiere}
                         ageCategory={movieData.ageCategory}
                         categories={movieData.categories}
+                        producer={movieData.producer}
                         {...("director" in movieData && {director:movieData.director})}
                         {...("duration" in movieData && {duration:movieData.duration})}
                         {...("seasons" in movieData && {seasons:movieData.seasons})}
