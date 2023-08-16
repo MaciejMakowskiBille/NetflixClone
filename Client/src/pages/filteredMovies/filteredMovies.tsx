@@ -32,7 +32,7 @@ const FilteredMovies = () => {
             )
             return res
         }
-        else {return moviesData}
+        else return null
     }
 
     const assignData = (foo:Promise<CombinedDataType | null>) =>{
@@ -70,7 +70,7 @@ const FilteredMovies = () => {
         if(filterCategory && filterCategory.filter){
             moviesData  && setFilteredData(filterData(moviesData))
         }else{
-            setFilteredData(moviesData)
+            setFilteredData(null)
         }
     }, [filterCategory])
 
