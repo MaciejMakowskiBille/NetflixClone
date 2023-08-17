@@ -59,3 +59,18 @@ export interface FormInput {
   password: string;
   securityCode: string | number;
 }
+
+
+export const loginSchema = z.object({
+  email: z
+  .string()
+  .trim()
+  .email("Niepoprawny adres email")
+  .nonempty("Pole jest wymagany"),
+  password: z
+  .string()
+  .trim()
+  .nonempty("Pole jest wymagane")
+  .min(8, "Musi zawierać conajmniej 8 znaków"),
+});
+export type loginTypes = z.infer<typeof loginSchema>;

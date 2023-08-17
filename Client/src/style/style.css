@@ -389,6 +389,9 @@ input.error {
 .wrapper .wrapper__text--small {
   font-size: 13px;
 }
+.wrapper .action {
+  width: 100%;
+}
 
 .card {
   display: flex;
