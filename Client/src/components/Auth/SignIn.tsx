@@ -1,7 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema, loginTypes } from "../../utils/schemas";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { signIn } from "./Post";
+import { signIn } from "./registrationHelpers";
 export default function SignIn() {
   const {
     handleSubmit,

@@ -12,6 +12,11 @@ export interface UserTypes {
   username: string;
 }
 
+export interface UserPaymentTypes {
+  user: UserTypes;
+  payment: paymentsTypes;
+}
+
 export interface UserPostResponseTypes {
   jwt: string;
   user: {
@@ -73,4 +78,13 @@ export interface paymentsResponseTypes {
     updatedAt: string;
     publishedAt: string;
   };
+}
+
+export interface displayArray {
+  [index: number]: JSX.Element;
+}
+
+export interface modalTypes {
+  success?: boolean;
+  content?: string;
 }

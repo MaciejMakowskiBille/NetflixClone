@@ -1,11 +1,13 @@
-import PageSwitch from "./PageSwitch";
+// import PageSwitch from "./PageSwitch";
+
 import { AuthProvider } from "../context/RegistrationContext";
+import RegistrationForm from "./RegistrationForm";
 // import "../../style/style.css";
 
-export default function Registration() {
+export default function SignUp() {
   return (
     <AuthProvider>
-      <PageSwitch />
+      <RegistrationForm />
     </AuthProvider>
   );
 }

@@ -10,21 +10,11 @@ import { UserTypes } from "../../utils/modules";
 import React, { useEffect, useState } from "react";
 import axios, { isAxiosError } from "axios";
 import { UserPostResponseTypes, paymentsTypes } from "../../utils/modules";
-import { postPayment } from "./Post";
+import { postPayment } from "./registrationHelpers";
 interface modalTypes {
   success?: boolean;
   content?: string;
 }
-
-// interface UserTypes extends UserTypes {
-//   createdAt: string;
-//   updatedAt: string;
-// }
-
-// interface ResponseTypes {
-//   jwt: string;
-//   user: UserTypes;
-// }
 
 const authURL = "http://localhost:3001/api/auth";
 
@@ -120,7 +110,7 @@ const PageSwitch = () => {
         },
       };
       console.log("id użytkownika: ", userResponse.user.id);
-      const response = await postPayment(paymentsData);
+      const response = await postPayment(`/payments`, paymentsData);
       if (response) {
         console.log(response);
         console.log("utworzono profil płatności!");
@@ -152,7 +142,7 @@ const PageSwitch = () => {
         },
       };
       console.log("id użytkownika: ", userResponse.user.id);
-      const response = await postPayment(paymentsData);
+      const response = await postPayment(`/payments`, paymentsData);
       if (response) {
         console.log(response);
         console.log("utworzono profil płatności!");
