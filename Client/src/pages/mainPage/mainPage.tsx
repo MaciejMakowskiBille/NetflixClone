@@ -6,7 +6,7 @@ import geo from '../../imgs/producers/geo.png'
 import star from '../../imgs/producers/star.png'
 import dc from '../../imgs/producers/dc.png'
 import Producer from "./components/producer"
-import CategoryRow from "../../components/categoryRow"
+import CategoryRow from "../../components/CategoryRow/categoryRow"
 import {useState, useEffect} from 'react'
 import { getCategories, getFilms, getSeries } from "../../utils/Gets"
 import Slider from "../../components/Slider/slider"
@@ -50,24 +50,24 @@ const MainPage = () => {
 
     useEffect(() => {
         getSeries().then((res) => {
-            setSeriesData(prev => prev = res)
-            setIsLoading(prev => prev = false)
+            setSeriesData( res)
+            setIsLoading(false)
         }).catch((error) => {
             setIsLoading(true)
             console.log(error)
         })
 
         getFilms().then((res) => {
-            setMoviesData(prev => prev = res)
-            setIsLoading(prev => prev = false)
+            setMoviesData(res)
+            setIsLoading(false)
         }).catch((error) => {
             setIsLoading(true)
             console.log(error)
         })
 
         getCategories().then((res) => {
-            setCategories(prev => prev = res)
-            setIsLoading(prev => prev = false)
+            setCategories(res)
+            setIsLoading(false)
         }).catch((error) => {
             setIsLoading(true)
             console.log(error)

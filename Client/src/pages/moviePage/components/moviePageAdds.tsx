@@ -1,11 +1,12 @@
 import {useState, useEffect} from 'react'
 import { serverURL } from "../../../utils/links"
 import ActorComponent from "./Actor/actorComponent"
-import MovieTile from "../../../components/MovieTile/movieTile"
-import { getFilms } from '../../../utils/Gets'
+import { getAllTypeMoviesByCategory, getFilms } from '../../../utils/Gets'
 import SeasonsComponent from './Seasons/seasonsComponent'
+import CategoryRow from '../../../components/CategoryRow/categoryRow'
 
 type MoviePageAddsProps = {
+    id:number
     active:string
     title:string
     cast:Actor[]
@@ -21,14 +22,14 @@ type MoviePageAddsProps = {
 
 const MoviePageAdds = (props:MoviePageAddsProps) => {
 
-    const [moviesData, setMoviesData] = useState<MovieDataType[] | null>(null)
+    const [moviesData, setMoviesData] = useState<CombinedDataType | null>(null)
     const [isLoading, setIsLoading] = useState(true)
     useEffect(() => {
-        getFilms().then((res) => {
-            setMoviesData(prev => prev = res)
-            setIsLoading(prev => prev = false)
+        getAllTypeMoviesByCategory(props.categories[0].name, props.id).then((res) => {
+            setMoviesData(res)
+            setIsLoading(false)
         })
-    },[])
+    },[props.id])
 
     const showLength = () =>{
         if(props.duration && "duration" in props){
@@ -58,53 +59,15 @@ const MoviePageAdds = (props:MoviePageAddsProps) => {
         }
     }
 
-    const showDirector = () => {
-        if(props.director && "director" in props){
-            return(
-                <div className="bottom">
-                    <div className="infoTitle">
-                        Reżyser:
-                    </div>
-                    <div 
-                    className="directorPhoto" 
-                    style={{backgroundImage: `url(${serverURL + props.director.image})`}}
-                    />
-                    <div>
-                        {props.director.firstName + " " + props.director.lastName}
-                    </div>
-                </div>
-            )
-        }
-    }
-
     return(
         <div className="movieAdds">
             {props.active === 'sea' && props.seasons && (
                 <SeasonsComponent seasons={props.seasons}/>
             )}
-            {props.active === 'rec' && (
-                <div className='movieList'>
-                    {!isLoading && moviesData && (
-                        moviesData.map(movie => {
-                            return(
-                                <MovieTile
-                                    key={movie.id}
-                                    id={movie.id}
-                                    title={movie.title}
-                                    categories={movie.categories}
-                                    img={movie.miniImg}
-                                    hoverImg={movie.hoverImg}
-                                    logo={movie.logo}
-                                    ageCategory={movie.ageCategory}
-                                    premiere={movie.premiere}
-                                    duration={movie.duration}
-                                    transcription={movie.transcription}
-                                />
-                            )
-                        })
-                    )}
-                </div>
-            )}
+            {props.active === 'rec' && !isLoading && moviesData && (
+                        <CategoryRow title='all' moviesList={moviesData}></CategoryRow>
+                    )
+            }
             {props.active === 'det' && (
                 <div className="moreInfo">
                     <div className="left">
@@ -150,7 +113,20 @@ const MoviePageAdds = (props:MoviePageAddsProps) => {
                                     })}
                                 </div>
                         </div>
-                        {showDirector()}
+                        { props.director && "director" in props && (
+                            <div className="bottom">
+                                <div className="infoTitle">
+                                    Reżyser:
+                                </div>
+                                <div 
+                                className="directorPhoto" 
+                                style={{backgroundImage: `url(${serverURL + props.director.image})`}}
+                                />
+                                <div>
+                                    {props.director.firstName + " " + props.director.lastName}
+                                </div>
+                            </div>
+                        )}
                     </div>
                 </div>
             )}

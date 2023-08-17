@@ -6,12 +6,19 @@ const EpisodeComponent = (props:Episode) => {
     const [isMouseOverTile, setIsMouseOverTile] = useState(false)
 
     const handleMouseOver = () => {
-        setTileImage(prev => prev = props.hoverImg)
-        setIsMouseOverTile(prev => prev = true)
+        setTileImage(props.hoverImg)
+        setIsMouseOverTile(true)
     }
     const handleMouseLeave = () => {
-        setTileImage(prev => prev = props.miniImg)
-        setIsMouseOverTile(prev => prev = false)
+        setTileImage(props.miniImg)
+        setIsMouseOverTile(false)
+    }
+    const handlePlayVideo = () => {
+        if( props &&"video" in props  && props.video){
+            const videoURL = serverURL + props.video;
+            window.open(videoURL, '_blank'); 
+
+        }
     }
     return(
         <div
@@ -22,7 +29,7 @@ const EpisodeComponent = (props:Episode) => {
             <div className="image" style={{backgroundImage:`url(${serverURL+tileImage})`}} 
             >
                 {isMouseOverTile && (
-                    <div className="icon iconButton playButton"/>
+                    <div className="icon iconButton playButton" onClick={handlePlayVideo}/>
                 )}
             </div>
             <div className="info">

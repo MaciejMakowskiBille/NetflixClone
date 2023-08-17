@@ -83,6 +83,7 @@ export const clearCategoryData = (data:CategoryResponseType[]) => {
       {
         id:category.id,
         name:category.attributes.name,
+        filter:category.attributes.filter
       }
     )
   })

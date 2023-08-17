@@ -10,8 +10,7 @@ const SeasonsComponent = (props:SeasonsComponentProps) => {
     const [activeSeason, setActiveSeason] = useState(props.seasons[0])
 
     const handleChangeSeason = (event: ChangeEvent<HTMLSelectElement>) => {
-        setActiveSeason(prev => prev = props.seasons[Number(event.target.value)])
-        console.log(activeSeason.id)
+        setActiveSeason(props.seasons[Number(event.target.value)])
     }
 
     return(

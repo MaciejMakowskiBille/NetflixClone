@@ -4,12 +4,13 @@ import Navigation from '../../components/Navigation/nav'
 import { serverURL } from '../../utils/links'
 import MoviePageNav from './components/moviePageNav'
 import MoviePageAdds from './components/moviePageAdds'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams, Link } from 'react-router-dom'
 const MoviePage = () => {
     const [movieData, setMovieData] = useState<MovieDataType | SeriesDataType | null>(null)
     const [isLoading, setIsLoading] = useState(true)
     const [active, setActive] = useState('rec')
     const {movieType,movieId} = useParams()
+    const navigate = useNavigate()
 
 
     const showLength = () => {
@@ -30,55 +31,31 @@ const MoviePage = () => {
         }
     }
 
-    const showDetails = () => {
-        if(movieData && "duration" in movieData){
-            return(
-                <MoviePageAdds
-                        active={active}
-                        title={movieData.title}
-                        cast={movieData.cast}
-                        longDesc={movieData.longDescription}
-                        premiere={movieData.premiere}
-                        director={movieData.director}
-                        ageCategory={movieData.ageCategory}
-                        duration={movieData.duration}
-                        categories={movieData.categories}
-                     />
-            )
-        }
-        if(movieData && "seasons" in movieData){
-            return(
-                <MoviePageAdds
-                        active={active}
-                        title={movieData.title}
-                        cast={movieData.cast}
-                        longDesc={movieData.longDescription}
-                        premiere={movieData.premiere}
-                        ageCategory={movieData.ageCategory}
-                        seasons={movieData.seasons}
-                        categories={movieData.categories}
-                     />
-            )
-        }
+    const handlePlayVideo = () => {
+        if( movieData &&"video" in movieData  && movieData.video){
+            const videoURL = serverURL + movieData.video;
+            window.open(videoURL, '_blank'); 
 
+        }
     }
+        
 
     useEffect(() => {
         if(movieType === 'm'){
             if(movieId){
                 getOneFilm(+movieId).then((res) => {
-                    setMovieData(prev => prev = res)
+                    setMovieData(res)
                     setActive('rec')
-                    setIsLoading(prev => prev = false)
+                    setIsLoading(false)
                 })
             }
         }
         if(movieType === 's'){
             if(movieId){
                 getOneSeries(+movieId).then((res) => {
-                    setMovieData(prev => prev = res)
+                    setMovieData(res)
                     setActive('sea')
-                    setIsLoading(prev => prev = false)
+                    setIsLoading(false)
                 })
             }
         }
@@ -94,6 +71,9 @@ const MoviePage = () => {
                     <div className='content'>
                         <div className='logo' style={{backgroundImage:`url(${serverURL + movieData.logo})`}}/>
                         <div className='short'>
+                            <div className='title'>
+                                {movieData.title}
+                            </div>
                             <div className='top'>
                                 <div className='smallInfo'>{movieData.ageCategory}+</div>
                                 {movieData.transcription && (
@@ -115,12 +95,13 @@ const MoviePage = () => {
                                 })}
                             </div>
                         </div>
-                        <div className='buttons'>
-                            <button className='button-primary'>ODTWÓRZ</button>
-                            <button className='button-secondary'>ZWIASTUN</button>
-                            <button className='iconButton icon favButton'/>
-                        
-                        </div>
+                        {movieType === 'm' && (
+                            <div className='buttons'>
+                                <button className='button-primary' onClick={handlePlayVideo}>ODTWÓRZ</button>
+                                <button className='button-secondary ' onClick={handlePlayVideo}>ZWIASTUN</button>
+                                <button className='iconButton icon favButton'/>
+                            </div>
+                        )}
                         <div className='description'>
                             {movieData.description}
                         </div>
@@ -130,9 +111,24 @@ const MoviePage = () => {
                         active={active} 
                         setActive={setActive}
                     />
-                    {showDetails()}
+                    <MoviePageAdds
+                        id={movieData.id}
+                        active={active}
+                        title={movieData.title}
+                        cast={movieData.cast}
+                        longDesc={movieData.longDescription}
+                        premiere={movieData.premiere}
+                        ageCategory={movieData.ageCategory}
+                        categories={movieData.categories}
+                        {...("director" in movieData && {director:movieData.director})}
+                        {...("duration" in movieData && {duration:movieData.duration})}
+                        {...("seasons" in movieData && {seasons:movieData.seasons})}
+                     />
                 </main>
                 )}
+                <section className='spacer'>
+
+                </section>
         </div>
         </>
     )

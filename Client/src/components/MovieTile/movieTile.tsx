@@ -1,5 +1,4 @@
 import { useState } from "react"
-import {motion} from 'framer-motion'
 import { serverURL } from "../../utils/links"
 import { useNavigate } from "react-router-dom"
 type MovieTileProps = {
@@ -20,21 +19,15 @@ const MovieTile = (props:MovieTileProps) => {
     const [tileImage, setTileImage] = useState(props.img)
     const [isMouseOverTile, setIsMouseOverTile] = useState(false)
     const navigate = useNavigate()
+    const path = "duration" in props ? `/movie/m/${props.id}` : "seasons" in props ? `/movie/s/${props.id}` : '/'
 
     const handleMouseOver = () => {
-        setTileImage(prev => prev = props.hoverImg)
-        setIsMouseOverTile(prev => prev = true)
+        setTileImage(props.hoverImg)
+        setIsMouseOverTile(true)
     }
     const handleMouseLeave = () => {
-        setTileImage(prev => prev = props.img)
-        setIsMouseOverTile(prev => prev = false)
-    }
-
-    const showMoreButton = () => {
-        const path = "duration" in props ? `movie/m/${props.id}` : "seasons" in props ? `movie/s/${props.id}` : '/'
-        return(
-                <div className="icon iconButton moreButton" onClick={() => navigate(path)}/>
-        )
+        setTileImage(props.img)
+        setIsMouseOverTile(false)
     }
 
 
@@ -48,10 +41,8 @@ const MovieTile = (props:MovieTileProps) => {
             <div 
                 className="movieTileImage" 
                 style={{backgroundImage:`url(${serverURL+tileImage})`}} 
+                onClick={() => navigate(path)}
             >
-                {isMouseOverTile && (
-                    <div className="icon iconButton playButton"/>
-                )}
             </div>
             {isMouseOverTile && (
                 <div 
@@ -84,7 +75,7 @@ const MovieTile = (props:MovieTileProps) => {
                             <div className="movieLogo" style={{backgroundImage:`url(${serverURL + props.logo})`}}/>
                             <div className="buttons">
                             <div className="icon iconButton favButton"/>
-                            {showMoreButton()}
+                            <div className="icon iconButton moreButton" onClick={() => navigate(path)}/>
                             </div>
                             
                     </div>

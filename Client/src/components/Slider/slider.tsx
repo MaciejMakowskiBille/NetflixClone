@@ -16,11 +16,11 @@ const Slider = () =>{
     useEffect(() => {
         if(isLoading){
             getSlider().then((res) => {
-                setSliderData(prev => prev = res)
-                setIsLoading(prev => prev = false)
+                setSliderData(res)
+                setIsLoading(false)
             })
         }
-        if(sliderData) setActiveSlide(prev => prev = sliderData[0])
+        if(sliderData) setActiveSlide(sliderData[0])
     },[isLoading])
 
     return(
