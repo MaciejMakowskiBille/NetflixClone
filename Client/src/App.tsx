@@ -12,7 +12,7 @@ const App = () => {
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<MainPage />}/>
         <Route path="movie/:movieType/:movieId" element={<MoviePage />} />
-        <Route path="list/:type" element={<FilteredMovies/>}/>
+        <Route path="list/:type/:producer" element={<FilteredMovies/>}/>
         <Route path="producers" element={<ProducersPage/>}/>
       </Routes>
     </Router>

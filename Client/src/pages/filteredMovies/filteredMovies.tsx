@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react'
-import { getCategories, getFilms, getSeries } from "../../utils/Gets"
+import { getAllTypeMoviesByProducer, getCategories, getFilms, getSeries } from "../../utils/Gets"
 import { useNavigate, useParams } from 'react-router-dom'
 import Navigation from '../../components/Navigation/nav'
 import CategoryRow from '../../components/CategoryRow/categoryRow'
@@ -13,7 +13,7 @@ const FilteredMovies = () => {
     const [filteredData, setFilteredData] = useState<CombinedDataType | null>(null)
 
     const navigate = useNavigate()
-    const {type} = useParams()
+    const {type, producer} = useParams()
 
     const handleChangeFilter = (event: ChangeEvent<HTMLSelectElement>) => {
         if (categories) {
@@ -53,7 +53,10 @@ const FilteredMovies = () => {
             assignData(getFilms())
         }else if(type && type === 'series'){
             assignData(getSeries())
-        }else{
+        }else if(type && type === 'producers' && producer){
+            assignData(getAllTypeMoviesByProducer(producer))
+        }else
+        {
             navigate('/')
         }
 
