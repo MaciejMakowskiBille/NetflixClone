@@ -65,7 +65,7 @@
       "inversedBy": "users",
       "configurable": false
     },
-    "phoneNumber": {
+    "PhoneNumber": {
       "type": "biginteger"
     },
     "favoriteFilms": {
@@ -78,42 +78,20 @@
       "relation": "oneToMany",
       "target": "api::series-s.series-s"
     },
-    "cardName": {
-      "type": "string"
-    },
-    "cardSname": {
-      "type": "string"
-    },
-    "cardNumber": {
-      "type": "string"
-    },
-    "securityCode": {
-      "type": "integer",
-      "min": 100
-    },
-    "expiryDate": {
-      "type": "string",
-      "minLength": 5
-    },
-    "paymentsOffer": {
-      "type": "boolean"
-    },
-    "paymentsProcessing": {
-      "type": "enumeration",
-      "enum": [
-        "creditCard",
-        "payPal"
-      ],
-      "default": "creditCard"
-    },
-    "optInSubscription": {
-      "type": "boolean"
+    "profile": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::profile.profile",
+      "inversedBy": "user"
     },
     "payment": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::payment.payment",
       "inversedBy": "user"
+    },
+    "optInSubscription": {
+      "type": "boolean"
     }
   }
 }
