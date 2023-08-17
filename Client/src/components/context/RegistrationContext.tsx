@@ -44,12 +44,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     mode: "onBlur",
     reValidateMode: "onBlur",
     defaultValues: {
-      // cardNameSname: "",
-      // cardNumber: undefined,
       email: undefined,
       expiryDate: "",
       password: "",
-      // securityCode: undefined,
     },
     resolver: zodResolver(schema),
   });
@@ -66,7 +63,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const nextPage = async (fieldName: fieldNames) => {
     const output = await trigger(fieldName);
-    // console.log("output", output);
     if (output) {
       setPage((prev) => prev + 1);
     }

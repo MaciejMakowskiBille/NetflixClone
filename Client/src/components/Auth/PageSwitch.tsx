@@ -6,17 +6,17 @@ import SuccessModal from "../ui/SuccessModal";
 import { useRegistrationContext } from "../hooks/useRegistrationContext";
 import { FormInput } from "../../utils/schemas";
 import { SubmitHandler } from "react-hook-form";
-import { FormTypes } from "../../utils/modules";
+import { UserTypes } from "../../utils/modules";
 import React, { useEffect, useState } from "react";
 import axios, { isAxiosError } from "axios";
-import { UserPostResponseTypes } from "../../utils/modules";
-
+import { UserPostResponseTypes, paymentsTypes } from "../../utils/modules";
+import { postPayment } from "./Post";
 interface modalTypes {
   success?: boolean;
   content?: string;
 }
 
-// interface UserTypes extends FormTypes {
+// interface UserTypes extends UserTypes {
 //   createdAt: string;
 //   updatedAt: string;
 // }
@@ -26,7 +26,13 @@ interface modalTypes {
 //   user: UserTypes;
 // }
 
-const authURL = "http://localhost:1337/api/auth";
+const authURL = "http://localhost:3001/api/auth";
+
+export const setAuthToken = (token: string) => {
+  if (token) {
+    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+  } else delete axios.defaults.headers.common["Authorization"];
+};
 
 const PageSwitch = () => {
   const { page, handleSubmit, reset, setNoValidateData, noValidateData } =
@@ -34,16 +40,21 @@ const PageSwitch = () => {
   const [modalData, setModalData] = useState<modalTypes>({});
   const [isSubmitSuccessful, setIsSubmitSuccessful] = useState(false);
 
-  function PostUser(endpoint: string, data: FormTypes) {
-    axios
-      .post<UserPostResponseTypes>(authURL + endpoint, data)
+  async function PostUser(
+    endpoint: string,
+    data: UserTypes
+  ): Promise<void | UserPostResponseTypes> {
+    return await axios
+      .post(authURL + endpoint, data)
       .then((response) => {
         localStorage.setItem("jwt", response.data.jwt);
+        setAuthToken(response.data.jwt);
         setModalData({
           success: true,
           content: "Udało się pomyślnie zarejestrować!",
         });
         setIsSubmitSuccessful(true);
+        return response.data as UserPostResponseTypes;
       })
       .catch((err) => {
         if (isAxiosError(err)) {
@@ -60,6 +71,7 @@ const PageSwitch = () => {
             content: "Nieoczekiwany błąd. \nSpróbuj ponownie!",
           });
         }
+        console.log(err);
       });
   }
 
@@ -86,36 +98,66 @@ const PageSwitch = () => {
     }
   }, [isSubmitSuccessful]);
 
-  const payPalSubmit = (e: React.MouseEvent<HTMLFormElement>) => {
+  const payPalSubmit = async (e: React.MouseEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log("payPal submit!");
 
-    const cleanedData: FormTypes = {
+    const cleanedData: UserTypes = {
       username: noValidateData?.email!,
-      ...noValidateData!,
+      password: noValidateData?.password!,
+      email: noValidateData?.email!,
+      optInSubscription: noValidateData?.optInSubscription!,
     };
 
-    // console.log(cleanedData);
-    PostUser(`/local/register`, cleanedData);
+    const userResponse = await PostUser(`/local/register`, cleanedData);
+    if (userResponse) {
+      console.log("utworzono użytkownaika: ", userResponse);
+      const paymentsData: paymentsTypes = {
+        data: {
+          paymentsOffer: noValidateData?.paymentsOffer!,
+          paymentsProcessing: noValidateData?.paymentsProcessing!,
+          user: userResponse.user.id!,
+        },
+      };
+      console.log("id użytkownika: ", userResponse.user.id);
+      const response = await postPayment(paymentsData);
+      if (response) {
+        console.log(response);
+        console.log("utworzono profil płatności!");
+      }
+    }
   };
 
   const onSubmit: SubmitHandler<FormInput> = async (data) => {
-    // const { optInSubscription, paymentsOffer, paymentsProcessing } =
-    //   noValidateData!;
-
-    const allData: FormTypes = {
+    const userData: UserTypes = {
       username: data?.email,
-      cardName: data?.cardNameSname[0],
-      cardSname: data?.cardNameSname[1],
-      cardNumber: data?.cardNumber,
-      expiryDate: data?.expiryDate,
-      securityCode: data?.securityCode,
-      ...noValidateData!,
+      password: noValidateData?.password!,
+      email: noValidateData?.email!,
+      optInSubscription: noValidateData?.optInSubscription,
     };
 
-    // console.log(allData);
-
-    PostUser(`/local/register`, allData);
+    const userResponse = await PostUser(`/local/register`, userData);
+    if (userResponse) {
+      console.log("utworzono użytkownika", userResponse.user);
+      const paymentsData: paymentsTypes = {
+        data: {
+          cardName: data.cardNameSname[0]!,
+          cardSname: data.cardNameSname[1]!,
+          cardNumber: data.cardNumber!,
+          expiryDate: data.expiryDate!,
+          securityCode: data.securityCode!,
+          paymentsProcessing: noValidateData?.paymentsProcessing!,
+          paymentsOffer: noValidateData?.paymentsOffer!,
+          user: userResponse.user.id!,
+        },
+      };
+      console.log("id użytkownika: ", userResponse.user.id);
+      const response = await postPayment(paymentsData);
+      if (response) {
+        console.log(response);
+        console.log("utworzono profil płatności!");
+      }
+    }
   };
 
   interface displayArray {
