@@ -556,15 +556,17 @@ main .category .title {
   gap: 1rem;
 }
 .seasons .episodes {
-  width: 100%;
+  max-width: 100%;
+  overflow-x: scroll;
+}
+.seasons .episodes .episodesRow {
   display: flex;
-  gap: 8px;
+  gap: 2rem;
   justify-content: start;
-  flex-direction: row-reverse;
 }
 
 .episode {
-  width: 250px;
+  min-width: 250px;
   font-size: medium;
   background-color: #343137;
   border: 1px solid #782CBF;
@@ -581,6 +583,7 @@ main .category .title {
   align-items: center;
 }
 .episode .info {
+  width: 250px;
   padding: 4px 4px;
   box-sizing: border-box;
   display: flex;
