@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react'
-import { getAllTypeMoviesByProducer, getCategories, getFilms, getSeries } from "../../utils/Gets"
+import { getAllTypeMoviesByProducer, getAllTypeMoviesBySearch, getCategories, getFilms, getSeries } from "../../utils/Gets"
 import { useNavigate, useParams } from 'react-router-dom'
 import Navigation from '../../components/Navigation/nav'
 import CategoryRow from '../../components/CategoryRow/categoryRow'
@@ -13,7 +13,7 @@ const FilteredMovies = () => {
     const [filteredData, setFilteredData] = useState<CombinedDataType | null>(null)
 
     const navigate = useNavigate()
-    const {type, producer} = useParams()
+    const {type, filter} = useParams()
 
     const handleChangeFilter = (event: ChangeEvent<HTMLSelectElement>) => {
         if (categories) {
@@ -53,8 +53,10 @@ const FilteredMovies = () => {
             assignData(getFilms())
         }else if(type && type === 'series'){
             assignData(getSeries())
-        }else if(type && type === 'producers' && producer){
-            assignData(getAllTypeMoviesByProducer(producer))
+        }else if(type && type === 'producers' && filter){
+            assignData(getAllTypeMoviesByProducer(filter))
+        }else if(type && type === 'search' && filter){
+            assignData(getAllTypeMoviesBySearch(filter))
         }else
         {
             navigate('/')
@@ -67,7 +69,7 @@ const FilteredMovies = () => {
             setIsLoading(true)
             console.log(error)
         })
-    },[type])
+    },[type, filter])
 
     useEffect(() => {
         if(filterCategory && filterCategory.filter){
@@ -83,8 +85,11 @@ const FilteredMovies = () => {
                 <Navigation/>
                 <main>
                     <div className='filterPage'>
-                        {type && type === 'producers' && producer && (
-                            <div className='producerTitle'>Produkcje od: <span>{producer}</span> </div>
+                        {type && type === 'producers' && filter && (
+                            <div className='producerTitle'>Produkcje od: <span>{filter}</span> </div>
+                        )}
+                        {type && type === 'search' && filter && (
+                            <div className='producerTitle'>Wyszukane dla: <span>{filter}</span> </div>
                         )}
 
                         <select 

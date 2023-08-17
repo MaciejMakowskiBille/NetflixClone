@@ -1,6 +1,28 @@
 import axios from "axios";
 import { apiURL } from "./links";
 import { clearCategoryData, clearMovieData, clearProducerData, clearSeriesData,clearSliderData  } from "./helpers";
+
+const getBothTypes = async (seriesURL:string, moviesURL:string) => {
+  let movies:CombinedDataType = []
+  const responseS = await axios.get(apiURL + seriesURL)
+    if(responseS && responseS.data.data){
+      const data:SeriesResponseType[] = responseS.data.data
+      const clearedData:SeriesDataType[] = data.map(item => {
+        return clearSeriesData(item)
+      })
+      movies = movies.concat(clearedData)
+    }
+  const responseM = await axios.get(apiURL + moviesURL)
+  if(responseM && responseM.data.data){
+      const data:MovieResponseType[] = responseM.data.data
+      const clearedData:MovieDataType[] = data.map(item => {
+        return clearMovieData(item)
+      })
+      movies = movies.concat(clearedData)
+    }
+    return movies
+}
+
 export const getFilms = async ():Promise<MovieDataType[] | null> => {
   const response = await axios.get(apiURL + `films?populate=deep&?`)
   if(response && response.data.data){
@@ -66,25 +88,11 @@ export const getSlider = async () => {
     }
 }
 
+
 export const getAllTypeMoviesByCategory = async (category:string, id:number) => {
-  let movies:CombinedDataType = []
-  const responseS = await axios.get(apiURL +`series/?populate=deep&filters[categories][name][$eq]=${category}&filters[id][$ne]=${id}`)
-    if(responseS && responseS.data.data){
-      const data:SeriesResponseType[] = responseS.data.data
-      const clearedData:SeriesDataType[] = data.map(item => {
-        return clearSeriesData(item)
-      })
-      movies = movies.concat(clearedData)
-    }
-  const responseM = await axios.get(apiURL + `films/?populate=deep&filters[categories][name][$eq]=${category}&filters[id][$ne]=${id}`)
-  if(responseM && responseM.data.data){
-      const data:MovieResponseType[] = responseM.data.data
-      const clearedData:MovieDataType[] = data.map(item => {
-        return clearMovieData(item)
-      })
-      movies = movies.concat(clearedData)
-    }
-    return movies
+  const series = `series/?populate=deep&filters[categories][name][$eq]=${category}&filters[id][$ne]=${id}`
+  const movies = `films/?populate=deep&filters[categories][name][$eq]=${category}&filters[id][$ne]=${id}`
+  return getBothTypes(series, movies)
 }
 
 export const getProducersLimit = async (limit:number):Promise<Producer[] | null> => {
@@ -113,22 +121,13 @@ export const getProducers = async ():Promise<Producer[] | null> => {
   }
 }
 export const getAllTypeMoviesByProducer = async (producer:string) => {
-  let movies:CombinedDataType = []
-  const responseS = await axios.get(apiURL +`series/?populate=deep&filters[producer][name][$eq]=${producer}`)
-    if(responseS && responseS.data.data){
-      const data:SeriesResponseType[] = responseS.data.data
-      const clearedData:SeriesDataType[] = data.map(item => {
-        return clearSeriesData(item)
-      })
-      movies = movies.concat(clearedData)
-    }
-  const responseM = await axios.get(apiURL + `films/?populate=deep&filters[producer][name][$eq]=${producer}`)
-  if(responseM && responseM.data.data){
-      const data:MovieResponseType[] = responseM.data.data
-      const clearedData:MovieDataType[] = data.map(item => {
-        return clearMovieData(item)
-      })
-      movies = movies.concat(clearedData)
-    }
-    return movies
+  const series = `series/?populate=deep&filters[producer][name][$eq]=${producer}`
+  const movies = `films/?populate=deep&filters[producer][name][$eq]=${producer}`
+  return getBothTypes(series, movies)
+}
+
+export const getAllTypeMoviesBySearch = async (value:string) =>{
+  const series = `series/?populate=deep&filters[title][$contains]=${value}`
+  const movies = `films/?populate=deep&filters[title][$contains]=${value}`
+  return getBothTypes(series, movies)
 }
