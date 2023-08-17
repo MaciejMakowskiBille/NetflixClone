@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react'
-import { getAllTypeMoviesByProducer, getAllTypeMoviesBySearch, getCategories, getFilms, getSeries } from "../../utils/Gets"
+import { getAllTypeMoviesByDate, getAllTypeMoviesByProducer, getAllTypeMoviesBySearch, getCategories, getFilms, getSeries } from "../../utils/Gets"
 import { useNavigate, useParams } from 'react-router-dom'
 import Navigation from '../../components/Navigation/nav'
 import CategoryRow from '../../components/CategoryRow/categoryRow'
@@ -57,6 +57,8 @@ const FilteredMovies = () => {
             assignData(getAllTypeMoviesByProducer(filter))
         }else if(type && type === 'search' && filter){
             assignData(getAllTypeMoviesBySearch(filter))
+        }else if(type && type === 'new'){
+            assignData(getAllTypeMoviesByDate())
         }else
         {
             navigate('/')
@@ -90,6 +92,9 @@ const FilteredMovies = () => {
                         )}
                         {type && type === 'search' && filter && (
                             <div className='producerTitle'>Wyszukane dla: <span>{filter}</span> </div>
+                        )}
+                        {type && type === 'new' && (
+                            <div className='producerTitle'>Ostatnio dodane:</div>
                         )}
 
                         <select 

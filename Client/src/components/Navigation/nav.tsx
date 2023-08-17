@@ -39,8 +39,8 @@ const Navigation = () => {
                         <li onClick={() => navigate('/producers')}>
                             Producenci
                         </li>
-                        <li>
-                            Nowe i popularne
+                        <li onClick={() => navigate('/list/new/all')}>
+                            Najnowsze
                         </li>
                         <li>
                             Moja lista

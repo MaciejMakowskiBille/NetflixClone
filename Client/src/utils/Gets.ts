@@ -131,3 +131,12 @@ export const getAllTypeMoviesBySearch = async (value:string) =>{
   const movies = `films/?populate=deep&filters[title][$contains]=${value}`
   return getBothTypes(series, movies)
 }
+export const getAllTypeMoviesByDate = async () =>{
+  const today = new Date();
+  let lastWeek = new Date(today);
+  lastWeek.setDate(today.getDate() - 7);
+  const filter = lastWeek.toJSON()
+  const series = `series/?populate=deep&filters[publishedAt][$gte]=${filter}`
+  const movies = `films/?populate=deep&filters[publishedAt][$gte]=${filter}`
+  return getBothTypes(series, movies)
+}
