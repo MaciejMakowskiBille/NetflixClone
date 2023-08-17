@@ -598,7 +598,16 @@ main .category .title {
 .filterPage {
   width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: start;
+  gap: 1rem;
+}
+
+.producerTitle {
+  font-size: medium;
+}
+.producerTitle span {
+  font-weight: bold;
 }
 
 .movieList {

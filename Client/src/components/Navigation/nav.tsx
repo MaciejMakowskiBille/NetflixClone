@@ -21,10 +21,10 @@ const Navigation = () => {
                         <li onClick={() => navigate('/')}>
                             Strona główna
                         </li>
-                        <li onClick={() => navigate('/list/series')}>
+                        <li onClick={() => navigate('/list/series/all')}>
                             Seriale i programy
                         </li>
-                        <li onClick={() => navigate('/list/movies')}>
+                        <li onClick={() => navigate('/list/movies/all')}>
                             Filmy
                         </li>
                         <li onClick={() => navigate('/producers')}>

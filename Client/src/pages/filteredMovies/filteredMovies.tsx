@@ -83,12 +83,15 @@ const FilteredMovies = () => {
                 <Navigation/>
                 <main>
                     <div className='filterPage'>
+                        {type && type === 'producers' && producer && (
+                            <div className='producerTitle'>Produkcje od: <span>{producer}</span> </div>
+                        )}
+
                         <select 
                         name='filter'
                         onChange={handleChangeFilter}
                         placeholder='Wszystkie'
                         >
-                            
                             {categories?.map(category => {
                                 return(
                                     <option
