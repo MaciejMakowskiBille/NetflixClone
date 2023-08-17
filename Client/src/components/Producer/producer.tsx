@@ -1,3 +1,4 @@
+import { serverURL } from "../../utils/links";
 
 type ProducerType = {
     name:string;
@@ -9,7 +10,7 @@ const Producer = (props:ProducerType) => {
 
     return(
         <div  className="producer">
-            <div className="producerImage" style={{backgroundImage:`url(${props.image})`}}/>
+            <div className="producerImage" style={{backgroundImage:`url(${serverURL + props.image})`}}/>
         </div>
     )
 }
