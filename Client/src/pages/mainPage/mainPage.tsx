@@ -8,7 +8,7 @@ import dc from '../../imgs/producers/dc.png'
 import Producer from "../../components/Producer/producer"
 import CategoryRow from "../../components/CategoryRow/categoryRow"
 import {useState, useEffect} from 'react'
-import { getCategories, getFilms, getProducers, getSeries } from "../../utils/Gets"
+import { getCategories, getFilms, getProducersLimit, getSeries } from "../../utils/Gets"
 import Slider from "../../components/Slider/slider"
 
 
@@ -50,7 +50,7 @@ const MainPage = () => {
     const [producers, setProducers] = useState<Producer[] | null>(null)
 
     useEffect(() => {
-        getProducers().then((res) => {
+        getProducersLimit(6).then((res) => {
             setProducers(res)
             setIsLoading(false)
         }).catch((error) => {

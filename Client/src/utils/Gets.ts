@@ -87,8 +87,8 @@ export const getAllTypeMoviesByCategory = async (category:string, id:number) => 
     return movies
 }
 
-export const getProducers = async ():Promise<Producer[] | null> => {
-  const response = await axios.get(apiURL + `producers/?populate=deep&pagination[limit]=6`)
+export const getProducersLimit = async (limit:number):Promise<Producer[] | null> => {
+  const response = await axios.get(apiURL + `producers/?populate=deep&pagination[limit]=${limit}`)
   if(response && response.data.data){
     const data:ProducerResponseType[] = response.data.data
     const clearedData = data.map(producer => {
