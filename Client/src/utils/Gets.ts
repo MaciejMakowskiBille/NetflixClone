@@ -99,3 +99,16 @@ export const getProducersLimit = async (limit:number):Promise<Producer[] | null>
     return null
   }
 }
+
+export const getProducers = async ():Promise<Producer[] | null> => {
+  const response = await axios.get(apiURL + `producers/?populate=deep`)
+  if(response && response.data.data){
+    const data:ProducerResponseType[] = response.data.data
+    const clearedData = data.map(producer => {
+      return clearProducerData(producer)
+    })
+    return clearedData
+    }else{
+    return null
+  }
+}
