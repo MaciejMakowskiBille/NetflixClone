@@ -43,7 +43,7 @@ function RegistrationPassword() {
           )}
         </div>
         <button
-          className="button-primary"
+          className="form-button button-primary"
           onClick={() => nextPage!("password")}
         >
           Zaloguj

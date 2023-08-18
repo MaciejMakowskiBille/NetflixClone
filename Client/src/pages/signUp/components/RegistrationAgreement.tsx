@@ -33,7 +33,7 @@ function RegistrationAgreements() {
           wydrukowac twoją Zgodę subskrypcji proszę użyj twojej przeglądarki
         </p>
         <button
-          className="button-primary"
+          className="form-button button-primary"
           name="agreement"
           onClick={() => {
             setPage!((prev) => prev + 1);

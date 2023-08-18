@@ -69,7 +69,7 @@ function RegistrationEmail() {
           <button
             type="button"
             onClick={() => nextPage!("email")}
-            className="button-primary"
+            className="form-button button-primary"
           >
             Kontynułuj
           </button>

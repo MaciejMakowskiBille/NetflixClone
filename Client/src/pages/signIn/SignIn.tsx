@@ -41,7 +41,7 @@ export default function SignIn() {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form className="form-wrapper" onSubmit={handleSubmit(onSubmit)}>
       <div className="black-background">
         <div className="wrapper">
           <div className="wrapper__header">
@@ -84,7 +84,7 @@ export default function SignIn() {
             <p>Nie pamiętam hasła!</p>
           </div>
           <div className="action">
-            <button className="button-primary" type="submit">
+            <button className="form-button button-primary" type="submit">
               Zaloguj
             </button>
           </div>
