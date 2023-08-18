@@ -1,5 +1,5 @@
-import circle from "../../imgs/icons/circle.svg";
-import circle_fill from "../../imgs/icons/circle-fill.svg";
+import circle from "../../../imgs/icons/circle.svg";
+import circle_fill from "../../../imgs/icons/circle-fill.svg";
 
 export default function PaymentsOffer({
   text,

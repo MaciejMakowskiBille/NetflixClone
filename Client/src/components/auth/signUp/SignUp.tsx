@@ -1,6 +1,6 @@
 // import PageSwitch from "./PageSwitch";
 
-import { AuthProvider } from "../context/RegistrationContext";
+import { AuthProvider } from "../../context/RegistrationContext";
 import RegistrationForm from "./RegistrationForm";
 // import "../../style/style.css";
 

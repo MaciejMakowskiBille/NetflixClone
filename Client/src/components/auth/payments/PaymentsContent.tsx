@@ -1,12 +1,10 @@
-import paypal2 from "../../imgs/icons/paypal2.svg";
-import { useRegistrationContext } from "../hooks/useRegistrationContext";
+import paypal2 from "../../../imgs/icons/paypal2.svg";
+import { useRegistrationContext } from "../../hooks/useRegistrationContext";
 
 export default function PaymentsContent({
   activeContentIndex,
-}: // handlePayPalClick,
-{
+}: {
   activeContentIndex: number;
-  // handlePayPalClick: React.MouseEventHandler<HTMLButtonElement>;
 }) {
   const { register, errors } = useRegistrationContext();
 
@@ -73,7 +71,6 @@ export default function PaymentsContent({
                   ? "wrapper__text-input wrapper__text-input--smaller error"
                   : "wrapper__text-input wrapper__text-input--smaller"
               }
-              // className="wrapper__text-input wrapper__text-input--smaller"
               type="number"
               maxLength={3}
               {...register!("securityCode")}

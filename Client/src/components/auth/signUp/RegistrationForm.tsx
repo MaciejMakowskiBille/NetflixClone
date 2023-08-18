@@ -1,21 +1,21 @@
-import { useRegistrationContext } from "../hooks/useRegistrationContext";
-import { postUser, postPayment } from "./registrationHelpers";
+import { useRegistrationContext } from "../../hooks/useRegistrationContext";
+import { postUser, postPayment } from "../helpers/services";
 import { SubmitHandler } from "react-hook-form";
 import React, { useState, useEffect } from "react";
 
-import RegistrationEmail from "./RegistrationEmail";
-import RegistrationPassword from "./RegistrationPassword";
-import RegistrationAgreements from "./RegistrationAgreement";
-import RegistrationPayments from "./RegistrationPayments";
-import SuccessModal from "../ui/SuccessModal";
+import RegistrationEmail from "../userData/RegistrationEmail";
+import RegistrationPassword from "../userData/RegistrationPassword";
+import RegistrationAgreements from "../userData/RegistrationAgreement";
+import RegistrationPayments from "../payments/RegistrationPayments";
+import SuccessModal from "../../ui/SuccessModal";
 
-import { FormInput } from "../../utils/schemas";
+import { FormInput } from "../../../utils/schemas";
 import {
   paymentsTypes,
   displayArray,
   UserTypes,
   modalTypes,
-} from "../../utils/registrationTypes";
+} from "../../../types/registrationTypes";
 
 const display: displayArray = {
   0: <RegistrationEmail />,

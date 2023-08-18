@@ -1,5 +1,5 @@
 import React from "react";
-import { useRegistrationContext } from "../hooks/useRegistrationContext";
+import { useRegistrationContext } from "../../hooks/useRegistrationContext";
 
 function RegistrationEmail() {
   const { noValidateData, nextPage, register, errors, setNoValidateData } =

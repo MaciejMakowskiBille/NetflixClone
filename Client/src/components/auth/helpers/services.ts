@@ -1,6 +1,6 @@
 import axios, {isAxiosError} from "axios";
-import { paymentsTypes, paymentsResponseTypes, UserPostResponseTypes, UserTypes} from "../../utils/registrationTypes";
-import { loginTypes } from "../../utils/schemas";
+import { paymentsTypes, paymentsResponseTypes, UserPostResponseTypes, UserTypes} from "../../../types/registrationTypes";
+import { loginTypes } from "../../../utils/schemas";
 
 const authURL = "http://localhost:3001/api/auth";
 

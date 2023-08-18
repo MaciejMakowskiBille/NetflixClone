@@ -7,7 +7,7 @@ import {
   UseFormHandleSubmit,
 } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { noValidateFormProp } from "../../utils/registrationTypes";
+import { noValidateFormProp } from "../../types/registrationTypes";
 import { schema, FormInput } from "../../utils/schemas";
 
 interface ContextTypes {
