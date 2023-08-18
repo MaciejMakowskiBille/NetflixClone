@@ -1,5 +1,5 @@
 import axios, {isAxiosError} from "axios";
-import { paymentsTypes, paymentsResponseTypes, UserPostResponseTypes, UserTypes} from "../../../types/registrationTypes";
+import { paymentsTypes, paymentsResponseTypes, UserPostResponseTypes, UserTypes, profileTypes} from "../../../types/registrationTypes";
 import { loginTypes } from "../../../utils/schemas";
 
 const authURL = "http://localhost:3001/api/auth";
@@ -54,6 +54,11 @@ export const postUser = async (endpoint: string, data: UserTypes) => {
 };
 
 export function postPayment(endpoint: string, data: paymentsTypes){
-  const response = axios.post(URL + endpoint, data).then(response=>response.data.data as paymentsResponseTypes).catch(err=>{throw new Error(err)});
+  const response = axios.post(URL + endpoint, data).then(response=>response.data.data as paymentsResponseTypes).catch(err=>{throw new Error("Wystąpił nieoczekiwany błąd:\n"+err)});
+  return response;
+}
+
+export function postProfile(endpoint: string, data: profileTypes){
+  const response = axios.post(URL + endpoint, data).then(response=>response.data.data).catch(err=>{throw new Error("Wystąpił nieoczekiwany błąd:\n"+err)});
   return response;
 }

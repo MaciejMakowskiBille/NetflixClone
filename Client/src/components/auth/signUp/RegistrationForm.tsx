@@ -1,5 +1,5 @@
 import { useRegistrationContext } from "../../hooks/useRegistrationContext";
-import { postUser, postPayment } from "../helpers/services";
+import { postUser, postPayment, postProfile } from "../helpers/services";
 import { SubmitHandler } from "react-hook-form";
 import React, { useState, useEffect } from "react";
 
@@ -15,6 +15,7 @@ import {
   displayArray,
   UserTypes,
   modalTypes,
+  profileTypes,
 } from "../../../types/registrationTypes";
 
 const display: displayArray = {
@@ -68,14 +69,25 @@ const RegistrationForm = () => {
           },
         ];
 
+        const profileData: profileTypes = {
+          data: {
+            ageGroup: "adult",
+            user: userResponse.user.id!,
+            username: "New User",
+          },
+        };
+
         console.log("id użytkownika: ", userResponse.user.id);
         const paymentsDataIndex = formData ? 1 : 0;
-        const response = await postPayment(
+        const paymenstResponse = await postPayment(
           "/payments",
           paymentsData[paymentsDataIndex]
         );
-        if (response) {
-          console.log(response);
+
+        const profileResponse = await postProfile(`/profiles`, profileData);
+        if (paymenstResponse && profileResponse) {
+          console.log(paymenstResponse);
+          console.log(profileResponse);
           console.log("utworzono profil płatności!");
         }
       }

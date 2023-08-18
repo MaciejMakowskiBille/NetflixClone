@@ -74,3 +74,13 @@ export interface modalTypes {
   success?: boolean;
   content?: string;
 }
+
+export interface profileTypes {
+  data: {
+    username: string;
+    ageGroup: "kid" | "teen" | "adult";
+    favorite_series?: string[];
+    favorite_films?: string[];
+    user: number;
+  };
+}
