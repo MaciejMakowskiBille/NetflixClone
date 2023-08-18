@@ -1,6 +1,113 @@
-@import "./colors";
-@import "./buttons";
-@import "./fonts";
 @import "./checkbox";
 
 @import "./registration";
+@import './colors';
+@import './buttons';
+@import './fonts';
+@import './functions';
+@import '../pages/home/home';
+@import '../components/Navigation/navigation';
+@import '../pages/mainPage/mainPage';
+@import '../components/MovieTile/movies';
+@import '../pages/moviePage/moviePage';
+@import '../pages/moviePage/components/Actor/actorComponent';
+@import '../pages/moviePage/components/Seasons/seasons';
+@import '../pages/moviePage/components/Episode/episode';
+@import '../pages/filteredMovies/filteredMovies';
+@import '../components/CategoryRow/categoryRow.scss';
+
+body{
+    font-family: 'Roboto';
+    color:$whiteText;
+    margin: 0;
+    padding: 0;
+    font-size: medium;
+    background-color: $backgroundAppGrey;
+    overflow-x:hidden;
+}
+
+::-webkit-scrollbar {
+    z-index: 100;
+    width: 5px;
+    right: 0;
+}
+::-webkit-scrollbar-thumb {
+    background-color: $purple;
+    border-radius: 1100px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: $purpleLight; 
+}
+::-webkit-scrollbar-track {
+    background-color: $backgroundAppGrey;
+}
+main{
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: 4rem;
+    padding-right: 4rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+}
+.appBackground{
+    font-size: 32px;
+    box-sizing: border-box;
+    background: rgb(38,36,40);
+    background: linear-gradient(0deg, rgba(38,36,40,1) 0%, rgba(38,36,40,1) 70%, rgba(120,44,191,0.6166841736694677) 100%);
+    width: 100%;
+}
+
+.filmexLogo{
+    color:$whiteText;
+    font-family: 'Nico Moji';
+    cursor: pointer;
+    span{
+        color:$purple;
+        cursor: pointer;
+    }
+}
+.icon{
+    padding: 0;
+    background-color: transparent;
+    cursor: pointer;
+}
+.separator{
+    width: 5px;
+    height: 5px;
+    background-color: $yellow;
+    border-radius: 100%;
+}
+
+select{
+    width: fit-content;
+    margin: 0;
+    border:none;
+    box-shadow: 2px 2px 2px $blackTransparent;
+    background: $backgroundDrak;
+    color:$whiteText;
+    box-sizing: border-box;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.avatar{
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    background-image: url('../imgs/avatars/av1.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+input{
+    background-color: $whiteTransparent;
+    margin: 0;
+    box-sizing: border-box;
+    border:none;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-radius: 3px;
+    height: 100%;
+}
+

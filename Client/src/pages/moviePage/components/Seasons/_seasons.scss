@@ -1,0 +1,15 @@
+.seasons{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    .episodes{
+        width: 100%;
+        display: flex;
+        gap: 8px;
+        justify-content: start;
+        flex-direction: row-reverse;
+    }
+}
