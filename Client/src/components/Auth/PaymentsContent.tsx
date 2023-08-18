@@ -16,7 +16,11 @@ export default function PaymentsContent({
         <div className="input">
           <p>IMIE I NAZWISKO NA KARCIE</p>
           <input
-            className="wrapper__text-input"
+            className={
+              errors?.cardNameSname
+                ? "wrapper__text-input error"
+                : "wrapper__text-input"
+            }
             type="text"
             {...register!("cardNameSname")}
             name="cardNameSname"
@@ -28,7 +32,11 @@ export default function PaymentsContent({
         <div className="input">
           <p>NUMER KARTY</p>
           <input
-            className="wrapper__text-input"
+            className={
+              errors?.cardNumber
+                ? "wrapper__text-input error"
+                : "wrapper__text-input"
+            }
             type="number"
             {...register!("cardNumber")}
             name="cardNumber"
@@ -42,7 +50,11 @@ export default function PaymentsContent({
           <div className="input">
             <p>DATA WAŻNOŚCI</p>
             <input
-              className="wrapper__text-input wrapper__text-input--smaller"
+              className={
+                errors?.expiryDate
+                  ? "wrapper__text-input wrapper__text-input--smaller error"
+                  : "wrapper__text-input wrapper__text-input--smaller"
+              }
               type="text"
               {...register!("expiryDate")}
               name="expiryDate"
@@ -56,7 +68,12 @@ export default function PaymentsContent({
           <div className="input">
             <p>KOD BEZPIECZEŃSTWA</p>
             <input
-              className="wrapper__text-input wrapper__text-input--smaller"
+              className={
+                errors?.securityCode
+                  ? "wrapper__text-input wrapper__text-input--smaller error"
+                  : "wrapper__text-input wrapper__text-input--smaller"
+              }
+              // className="wrapper__text-input wrapper__text-input--smaller"
               type="number"
               maxLength={3}
               {...register!("securityCode")}
@@ -111,11 +128,7 @@ export default function PaymentsContent({
           okresu rozliczeniowego. Nie zwracamy środków ani nie udzielamy
           rekompensaty za częściowo wykorzystane miesiące lub lata.
         </p>
-        <button
-          type="submit"
-          className="button-primary button--paypal"
-          // onClick={handlePayPalClick}
-        >
+        <button type="submit" className="button-primary button--paypal">
           <p className="button-primary__text">ZAPŁAĆ Z</p>
           <img src={paypal2} alt="" className="paypal-full" />
         </button>

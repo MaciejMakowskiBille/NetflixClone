@@ -15,7 +15,7 @@ import {
   displayArray,
   UserTypes,
   modalTypes,
-} from "../../utils/modules";
+} from "../../utils/registrationTypes";
 
 const display: displayArray = {
   0: <RegistrationEmail />,
@@ -80,9 +80,18 @@ const RegistrationForm = () => {
         }
       }
     } catch (err) {
-      setModalData({ success: false, content: err.message });
-      console.log(err);
+      if (err instanceof Error) {
+        setModalData({ success: false, content: err.message });
+        console.log(err);
+      }
     }
+  };
+
+  const userData: UserTypes = {
+    username: noValidateData?.email!,
+    password: noValidateData?.password!,
+    email: noValidateData?.email!,
+    optInSubscription: noValidateData?.optInSubscription!,
   };
 
   // payPal Submit
@@ -90,28 +99,15 @@ const RegistrationForm = () => {
     e.preventDefault();
     console.log("payPal submit!");
 
-    const cleanedData: UserTypes = {
-      username: noValidateData?.email!,
-      password: noValidateData?.password!,
-      email: noValidateData?.email!,
-      optInSubscription: noValidateData?.optInSubscription!,
-    };
-
-    await submitForm(`/local/register`, cleanedData);
+    await submitForm(`/local/register`, userData);
   };
 
   // creditCard submit
   const onSubmit: SubmitHandler<FormInput> = async (data) => {
-    const userData: UserTypes = {
-      username: data?.email,
-      password: noValidateData?.password!,
-      email: noValidateData?.email!,
-      optInSubscription: noValidateData?.optInSubscription,
-    };
-
     await submitForm(`/local/register`, userData, data);
   };
 
+  // cleanUp all form data
   const cleanUpData = () => {
     reset!({
       cardNameSname: [],
@@ -133,7 +129,6 @@ const RegistrationForm = () => {
 
   useEffect(() => {
     if (modalData.success) {
-      // cleanUp all form data
       cleanUpData;
     }
   }, [modalData]);

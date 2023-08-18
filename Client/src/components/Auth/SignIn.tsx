@@ -4,6 +4,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { signIn } from "./registrationHelpers";
 export default function SignIn() {
   const {
+    setError,
     handleSubmit,
     register,
     formState: { errors },
@@ -19,10 +20,24 @@ export default function SignIn() {
 
   const onSubmit: SubmitHandler<loginTypes> = async (data) => {
     console.log(data);
-    const response = await signIn(data);
-    if (response) {
-      localStorage.setItem("jwt", response.jwt);
-      console.log("sukces!!! ", response.jwt);
+    try {
+      const response = await signIn(data);
+      if (response) {
+        localStorage.setItem("jwt", response.jwt);
+        console.log("sukces!!! ", response.jwt);
+      }
+    } catch (error) {
+      if (error instanceof Error) {
+        setError("password", {
+          type: "manual",
+          message: error.message,
+        });
+        setError("email", {
+          type: "manual",
+          message: "",
+        });
+      }
+      // console.log(error);
     }
   };
 
@@ -37,7 +52,12 @@ export default function SignIn() {
           <div className="content">
             <div className="input">
               <input
-                className="wrapper__text-input"
+                className={
+                  errors?.email
+                    ? "wrapper__text-input error"
+                    : "wrapper__text-input"
+                }
+                // className="wrapper__text-input"
                 type="email"
                 placeholder="email"
                 {...register("email")}
@@ -49,7 +69,12 @@ export default function SignIn() {
             </div>
             <div className="input">
               <input
-                className="wrapper__text-input"
+                className={
+                  errors?.password
+                    ? "wrapper__text-input error"
+                    : "wrapper__text-input"
+                }
+                // className="wrapper__text-input"
                 type="password"
                 placeholder="password"
                 {...register("password")}

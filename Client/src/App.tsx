@@ -1,7 +1,7 @@
 import "./style/style.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import SignIn from "./components/Auth/SignIn";
-import SignUp from "./components/Auth/SignUp";
+import SignIn from "./components/auth/SignIn";
+import SignUp from "./components/auth/SignUp";
 
 const App = () => {
   return (
