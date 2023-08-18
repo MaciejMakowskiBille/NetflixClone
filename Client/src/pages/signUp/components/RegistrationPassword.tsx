@@ -1,5 +1,5 @@
 import React from "react";
-import { useRegistrationContext } from "../../hooks/useRegistrationContext";
+import { useRegistrationContext } from "../../../pages/signUp/hooks/useRegistrationContext";
 
 function RegistrationPassword() {
   const { register, errors, setNoValidateData, nextPage } =

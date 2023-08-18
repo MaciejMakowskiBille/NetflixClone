@@ -48,17 +48,9 @@ export const schema = z.object({
     .transform((value) => parseInt(value)),
 });
 
-// use
 
 // export type FormInput = z.infer<typeof schema>;
-export interface FormInput {
-  cardNameSname: string[];
-  cardNumber: string;
-  email: string;
-  expiryDate: string;
-  password: string;
-  securityCode: string | number;
-}
+
 
 
 export const loginSchema = z.object({

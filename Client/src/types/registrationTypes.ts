@@ -1,16 +1,23 @@
-export interface UserTypes {
+import {
+  UseFormReset,
+  UseFormRegister,
+  FieldErrors,
+  UseFormHandleSubmit,
+} from "react-hook-form";
+
+export type UserTypes = {
   email: string;
   password: string;
   optInSubscription?: boolean;
   username: string;
 }
 
-export interface UserPaymentTypes {
+export type UserPaymentTypes = {
   user: UserTypes;
   payment: paymentsTypes;
 }
 
-export interface UserPostResponseTypes {
+export type UserPostResponseTypes = {
   jwt: string;
   user: {
     id: number;
@@ -25,7 +32,7 @@ export interface UserPostResponseTypes {
   };
 }
 
-export interface noValidateFormProp {
+export type noValidateFormProp = {
   email: string;
   password: string;
   optInSubscription?: boolean;
@@ -33,12 +40,12 @@ export interface noValidateFormProp {
   paymentsProcessing?: "creditCard" | "payPal";
 }
 
-export interface userCreationErrorType {
+export type userCreationErrorType = {
   fieldName: string;
   error: string;
 }
 
-export interface paymentsTypes {
+export type paymentsTypes = {
   data: {
     cardName?: string;
     cardSname?: string;
@@ -51,7 +58,7 @@ export interface paymentsTypes {
   };
 }
 
-export interface paymentsResponseTypes {
+export type paymentsResponseTypes = {
   attributes: {
     cardName: string;
     cardSname: string;
@@ -66,16 +73,16 @@ export interface paymentsResponseTypes {
   };
 }
 
-export interface displayArray {
+export type displayArray = {
   [index: number]: JSX.Element;
 }
 
-export interface modalTypes {
+export type modalTypes = {
   success?: boolean;
   content?: string;
 }
 
-export interface profileTypes {
+export type profileTypes = {
   data: {
     username: string;
     ageGroup: "kid" | "teen" | "adult";
@@ -84,3 +91,33 @@ export interface profileTypes {
     user: number;
   };
 }
+
+export type fieldNames =
+  | "cardNameSname"
+  | "cardNumber"
+  | "email"
+  | "expiryDate"
+  | "password"
+  | "securityCode"
+  | `cardNameSname.${number}`;
+
+export type FormInput = {
+  cardNameSname: string[];
+  cardNumber: string;
+  email: string;
+  expiryDate: string;
+  password: string;
+  securityCode: string | number;
+}
+
+export type ContextTypes = {
+  nextPage?: (fieldName: fieldNames) => Promise<void>;
+  reset?: UseFormReset<FormInput>;
+  page: number;
+  setPage?: React.Dispatch<React.SetStateAction<number>>;
+  noValidateData?: noValidateFormProp;
+  setNoValidateData?: React.Dispatch<React.SetStateAction<noValidateFormProp>>;
+  handleSubmit?: UseFormHandleSubmit<FormInput>;
+  register?: UseFormRegister<FormInput>;
+  errors?: FieldErrors<FormInput>;
+};

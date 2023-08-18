@@ -1,4 +1,4 @@
-export default function SuccessModal({
+export default function Modal({
   title,
   buttonText,
   content,

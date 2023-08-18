@@ -3,11 +3,12 @@
 @import "./fonts";
 @import "./checkbox";
 
-@import "./background";
+@import "../style/background";
 @import "./text-input-placeholder";
-@import "./payments-offer";
-@import "./payments-all";
-@import "./modal";
+@import "../pages/signUp/components/payments/payments-offer";
+
+@import "../pages/signUp/components/payments/payments-all";
+@import "../components/modal/modal";
 
 * {
   margin: 0;

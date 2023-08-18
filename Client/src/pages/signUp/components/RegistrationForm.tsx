@@ -1,15 +1,15 @@
-import { useRegistrationContext } from "../../hooks/useRegistrationContext";
-import { postUser, postPayment, postProfile } from "../helpers/services";
+import { useRegistrationContext } from "../hooks/useRegistrationContext";
+import { postUser, postPayment, postProfile } from "../../../utils/Posts";
 import { SubmitHandler } from "react-hook-form";
 import React, { useState, useEffect } from "react";
 
-import RegistrationEmail from "../userData/RegistrationEmail";
-import RegistrationPassword from "../userData/RegistrationPassword";
-import RegistrationAgreements from "../userData/RegistrationAgreement";
-import RegistrationPayments from "../payments/RegistrationPayments";
-import SuccessModal from "../../ui/SuccessModal";
+import RegistrationEmail from "./RegistrationEmail";
+import RegistrationPassword from "./RegistrationPassword";
+import RegistrationAgreements from "./RegistrationAgreement";
+import RegistrationPayments from "./payments/RegistrationPayments";
+import Modal from "../../../components/modal/Modal";
 
-import { FormInput } from "../../../utils/schemas";
+import { FormInput } from "../../../types/registrationTypes";
 import {
   paymentsTypes,
   displayArray,
@@ -80,11 +80,11 @@ const RegistrationForm = () => {
         console.log("id użytkownika: ", userResponse.user.id);
         const paymentsDataIndex = formData ? 1 : 0;
         const paymenstResponse = await postPayment(
-          "/payments",
+          "payments",
           paymentsData[paymentsDataIndex]
         );
 
-        const profileResponse = await postProfile(`/profiles`, profileData);
+        const profileResponse = await postProfile(`profiles`, profileData);
         if (paymenstResponse && profileResponse) {
           console.log(paymenstResponse);
           console.log(profileResponse);
@@ -111,12 +111,12 @@ const RegistrationForm = () => {
     e.preventDefault();
     console.log("payPal submit!");
 
-    await submitForm(`/local/register`, userData);
+    await submitForm(`local/register`, userData);
   };
 
   // creditCard submit
   const onSubmit: SubmitHandler<FormInput> = async (data) => {
-    await submitForm(`/local/register`, userData, data);
+    await submitForm(`local/register`, userData, data);
   };
 
   // cleanUp all form data
@@ -148,7 +148,7 @@ const RegistrationForm = () => {
   return (
     <div className="form-wrapper">
       {modalData.content && (
-        <SuccessModal
+        <Modal
           title={modalData.success ? "Sukces" : "Upss!"}
           buttonText={modalData.success ? "Zaloguj się" : "Okey"}
           content={modalData.content!}

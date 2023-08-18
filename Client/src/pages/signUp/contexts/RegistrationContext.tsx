@@ -1,35 +1,13 @@
 import React, { createContext, useState } from "react";
-import {
-  useForm,
-  UseFormReset,
-  UseFormRegister,
-  FieldErrors,
-  UseFormHandleSubmit,
-} from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { noValidateFormProp } from "../../types/registrationTypes";
-import { schema, FormInput } from "../../utils/schemas";
-
-interface ContextTypes {
-  nextPage?: (fieldName: fieldNames) => Promise<void>;
-  reset?: UseFormReset<FormInput>;
-  page: number;
-  setPage?: React.Dispatch<React.SetStateAction<number>>;
-  noValidateData?: noValidateFormProp;
-  setNoValidateData?: React.Dispatch<React.SetStateAction<noValidateFormProp>>;
-  handleSubmit?: UseFormHandleSubmit<FormInput>;
-  register?: UseFormRegister<FormInput>;
-  errors?: FieldErrors<FormInput>;
-}
-
-type fieldNames =
-  | "cardNameSname"
-  | "cardNumber"
-  | "email"
-  | "expiryDate"
-  | "password"
-  | "securityCode"
-  | `cardNameSname.${number}`;
+import { noValidateFormProp } from "../../../types/registrationTypes";
+import { schema } from "../../../utils/schemas";
+import {
+  FormInput,
+  ContextTypes,
+  fieldNames,
+} from "../../../types/registrationTypes";
 
 const RegistrationContext = createContext<ContextTypes>({ page: 0 });
 

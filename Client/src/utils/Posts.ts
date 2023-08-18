@@ -1,16 +1,16 @@
 import axios, {isAxiosError} from "axios";
-import { paymentsTypes, paymentsResponseTypes, UserPostResponseTypes, UserTypes, profileTypes} from "../../../types/registrationTypes";
-import { loginTypes } from "../../../utils/schemas";
+import { paymentsTypes, paymentsResponseTypes, UserPostResponseTypes, UserTypes, profileTypes} from "../types/registrationTypes";
+import { loginTypes } from "./schemas";
+import { apiURL, authURL } from "./links";
+// const authURL = "http://localhost:3001/api/auth";
 
-const authURL = "http://localhost:3001/api/auth";
-
-const URL = "http://localhost:3001/api";
+// const URL = "http://localhost:3001/api";
 
 
 export async function signIn(data: loginTypes){
     try {
     const response = await axios
-      .post('http://localhost:3001/api/auth/local', {
+      .post(authURL+ 'local', {
         identifier: data.email,
         password: data.password,
       });
@@ -54,11 +54,11 @@ export const postUser = async (endpoint: string, data: UserTypes) => {
 };
 
 export function postPayment(endpoint: string, data: paymentsTypes){
-  const response = axios.post(URL + endpoint, data).then(response=>response.data.data as paymentsResponseTypes).catch(err=>{throw new Error("Wystąpił nieoczekiwany błąd:\n"+err)});
+  const response = axios.post(apiURL + endpoint, data).then(response=>response.data.data as paymentsResponseTypes).catch(err=>{throw new Error("Wystąpił nieoczekiwany błąd:\n"+err)});
   return response;
 }
 
 export function postProfile(endpoint: string, data: profileTypes){
-  const response = axios.post(URL + endpoint, data).then(response=>response.data.data).catch(err=>{throw new Error("Wystąpił nieoczekiwany błąd:\n"+err)});
+  const response = axios.post(apiURL + endpoint, data).then(response=>response.data.data).catch(err=>{throw new Error("Wystąpił nieoczekiwany błąd:\n"+err)});
   return response;
 }

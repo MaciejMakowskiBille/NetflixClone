@@ -1,7 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { loginSchema, loginTypes } from "../../../utils/schemas";
+import { loginSchema, loginTypes } from "../../utils/schemas";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { signIn } from "../helpers/services";
+import { signIn } from "../../utils/Posts";
 export default function SignIn() {
   const {
     setError,
@@ -37,7 +37,6 @@ export default function SignIn() {
           message: "",
         });
       }
-      // console.log(error);
     }
   };
 
@@ -57,7 +56,6 @@ export default function SignIn() {
                     ? "wrapper__text-input error"
                     : "wrapper__text-input"
                 }
-                // className="wrapper__text-input"
                 type="email"
                 placeholder="email"
                 {...register("email")}
@@ -74,7 +72,6 @@ export default function SignIn() {
                     ? "wrapper__text-input error"
                     : "wrapper__text-input"
                 }
-                // className="wrapper__text-input"
                 type="password"
                 placeholder="password"
                 {...register("password")}
