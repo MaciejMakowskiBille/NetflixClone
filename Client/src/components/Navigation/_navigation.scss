@@ -39,21 +39,6 @@ nav{
         align-items: center;
         gap:1rem;
 
-        .searchButton{
-            width: 30px;
-            height: 30px;
-            background-image: url('../imgs/icons/search.svg');
-            background-size: cover;
-            background-repeat: no-repeat;
-        }
-        .closeButton{
-            width: 25px;
-            height: 25px;
-            background-image: url('../imgs/icons/close.svg');
-            background-size: cover;
-            background-repeat: no-repeat;
-        }
-
         .navMenu{
             display: flex;
             align-items: center;

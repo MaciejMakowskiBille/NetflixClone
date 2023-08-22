@@ -55,6 +55,7 @@ const Navigation = () => {
                     whileInView={{x:0, opacity:1}}
                     >
                         <input 
+                        className='input-background'
                         type='text' 
                         placeholder='Po wpisaniu wciśnij enter'
                         onKeyDown={handleSearch}
