@@ -1,11 +1,17 @@
 import { useState } from 'react'
 import {motion} from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
+import Menu from './components/menu'
 const Navigation = () => {
     const [inputValue, setInputValue] = useState('');
     const [isSearch, setIsSearch] = useState(false)
+    const [isMenuOpen, setIsMenuOpen] = useState(false)
 
     const navigate = useNavigate()
+
+    const handleClickArrow = () =>{
+        setIsMenuOpen((prev) => !prev)
+    }
 
     const handleClickSearch = () => {
         setIsSearch((prev) => prev = !prev)
@@ -67,7 +73,9 @@ const Navigation = () => {
                     <button className={isSearch ? 'closeButton icon' : 'searchButton icon'} onClick={handleClickSearch}/>
                     <div className='navMenu'>
                         <div className='avatar'/>
-                        <div className='icon menuArrow'/>
+                        <div className='icon menuArrow' onClick={handleClickArrow}>
+                        </div>
+                                <Menu isOpen={isMenuOpen}/>
                     </div>
                 </div>
             </nav>
