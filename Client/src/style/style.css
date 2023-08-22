@@ -239,7 +239,7 @@ nav .menu {
   width: 150px;
   height: -moz-fit-content;
   height: fit-content;
-  background-color: #421969;
+  background-color: #000;
   opacity: 0;
   transition: all 0.5s ease;
 }
@@ -851,8 +851,7 @@ main .category .title {
   justify-content: end;
   padding: 0 2rem 2rem 0;
 }
-
-.right {
+.AddProfileModal .right {
   position: absolute;
   right: 2rem;
   top: 2rem;
