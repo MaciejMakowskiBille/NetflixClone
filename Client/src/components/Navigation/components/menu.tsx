@@ -7,6 +7,10 @@ type MenuProps = {
 const Menu = (props:MenuProps) => {
     const navigate = useNavigate()
 
+    const handleLogOut = () => {
+        navigate('/')
+    }
+
     return(
         <div className={props.isOpen ? "menu open" : "menu close"}>
             <div className="menu-item" onClick={() => navigate("/profile")}>
@@ -15,7 +19,7 @@ const Menu = (props:MenuProps) => {
             <div className="menu-item">
                 Opcje
             </div>
-            <div className="menu-item">
+            <div className="menu-item" onClick={handleLogOut}>
                 Wyloguj
             </div>
 
