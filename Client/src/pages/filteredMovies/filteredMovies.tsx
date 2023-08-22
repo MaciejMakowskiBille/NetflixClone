@@ -61,7 +61,7 @@ const FilteredMovies = () => {
             assignData(getAllTypeMoviesByDate())
         }else
         {
-            navigate('/')
+            navigate('/main')
         }
 
         getCategories().then((res) => {

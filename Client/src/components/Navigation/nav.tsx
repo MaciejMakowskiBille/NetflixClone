@@ -22,12 +22,12 @@ const Navigation = () => {
         <>
             <nav>
                 <div className='navLeft'>
-                    <div className='filmexLogo' onClick={() => navigate('/')} >
+                    <div className='filmexLogo' onClick={() => navigate('/main')} >
                         Filme
                         <span>x</span>
                     </div>
                     <ul>
-                        <li onClick={() => navigate('/')}>
+                        <li onClick={() => navigate('/main')}>
                             Strona główna
                         </li>
                         <li onClick={() => navigate('/list/series/all')}>
