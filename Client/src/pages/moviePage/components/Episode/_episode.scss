@@ -1,5 +1,5 @@
 .episode{
-    width: 250px;
+    min-width: 250px;
     font-size: medium;
     background-color: $episodeBackgorund;
     border: 1px solid $purple;
@@ -15,6 +15,7 @@
         align-items: center;
     }
     .info{
+        width: 250px;
         padding: 4px 4px;
         box-sizing: border-box;
         display: flex;

@@ -17,6 +17,7 @@ type MoviePageAddsProps = {
     duration?:number
     seasons?:Season[]
     categories:Category[]
+    producer:Producer
 }
 
 
@@ -113,20 +114,31 @@ const MoviePageAdds = (props:MoviePageAddsProps) => {
                                     })}
                                 </div>
                         </div>
-                        { props.director && "director" in props && (
+                        <section className='bottom-row'>
+                            { props.director && "director" in props && (
+                                <div className="bottom">
+                                    <div className="infoTitle">
+                                        Reżyser:
+                                    </div>
+                                    <div 
+                                    className="directorPhoto" 
+                                    style={{backgroundImage: `url(${serverURL + props.director.image})`}}
+                                    />
+                                    <div>
+                                        {props.director.firstName + " " + props.director.lastName}
+                                    </div>
+                                </div>
+                            )}
                             <div className="bottom">
-                                <div className="infoTitle">
-                                    Reżyser:
-                                </div>
-                                <div 
-                                className="directorPhoto" 
-                                style={{backgroundImage: `url(${serverURL + props.director.image})`}}
-                                />
-                                <div>
-                                    {props.director.firstName + " " + props.director.lastName}
-                                </div>
+                                    <div className="infoTitle">
+                                        Producent: {props.producer.name}
+                                    </div>
+                                    <div 
+                                    className="producerImage" 
+                                    style={{backgroundImage: `url(${serverURL + props.producer.image})`}}
+                                    />
                             </div>
-                        )}
+                        </section>
                     </div>
                 </div>
             )}

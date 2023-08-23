@@ -5,10 +5,10 @@ import marvel from '../../imgs/producers/marv.png'
 import geo from '../../imgs/producers/geo.png'
 import star from '../../imgs/producers/star.png'
 import dc from '../../imgs/producers/dc.png'
-import Producer from "./components/producer"
+import Producer from "../../components/Producer/producer"
 import CategoryRow from "../../components/CategoryRow/categoryRow"
 import {useState, useEffect} from 'react'
-import { getCategories, getFilms, getSeries } from "../../utils/Gets"
+import { getCategories, getFilms, getProducersLimit, getSeries } from "../../utils/Gets"
 import Slider from "../../components/Slider/slider"
 
 
@@ -47,24 +47,31 @@ const MainPage = () => {
     const [combinedData, setCombinedData] = useState<CombinedDataType>([])
     const [categories, setCategories] = useState<Category[] | null>(null) 
     const [isLoading, setIsLoading] = useState(true)
+    const [producers, setProducers] = useState<Producer[] | null>(null)
 
     useEffect(() => {
-        getSeries().then((res) => {
-            setSeriesData( res)
+        getProducersLimit(6).then((res) => {
+            setProducers(res)
             setIsLoading(false)
         }).catch((error) => {
             setIsLoading(true)
             console.log(error)
         })
-
+        getSeries().then((res) => {
+            setSeriesData(res)
+            setIsLoading(false)
+        }).catch((error) => {
+            setIsLoading(true)
+            console.log(error)
+        })
         getFilms().then((res) => {
             setMoviesData(res)
+            console.log(res)
             setIsLoading(false)
         }).catch((error) => {
             setIsLoading(true)
             console.log(error)
         })
-
         getCategories().then((res) => {
             setCategories(res)
             setIsLoading(false)
@@ -89,9 +96,9 @@ const MainPage = () => {
             <main>
                 <Slider/>
                 <div className="producersList">
-                    {producerList.map(prod => {
+                    {producers && producers.map(prod => {
                         return(
-                            <Producer key={prod.name} name={prod.name} image={prod.image}/>
+                            <Producer key={prod.id} name={prod.name} image={prod.image}/>
                         )
                     })}
                 </div>

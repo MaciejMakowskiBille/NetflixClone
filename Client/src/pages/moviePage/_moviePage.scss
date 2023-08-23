@@ -150,20 +150,32 @@
                     gap: 8px;
                 }
             }
-
-            .bottom{
+            .bottom-row{
                 display: flex;
-                flex-direction: column;
-                gap: 8px;
-                .directorPhoto{
-                    width: 100px;
-                    height: 128px;
-                    background-size: cover;
-                    background-repeat: no-repeat;
-                    background-position: center;
-                    box-shadow: 2px 2px 5px $black;
-                }
+                justify-content: space-between;
+                .bottom{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+                    .directorPhoto{
+                        width: 100px;
+                        height: 128px;
+                        background-size: cover;
+                        background-repeat: no-repeat;
+                        background-position: center;
+                        box-shadow: 2px 2px 5px $black;
+                    }
+                    .producerImage{
+                        min-width: 150px;
+                        min-height: 75px;
+                        background-size: contain;
+                        background-repeat: no-repeat;
+                        background-position: center;
+            
+                    }
+                 }
             }
+            
         }
     }
     .castScroll{

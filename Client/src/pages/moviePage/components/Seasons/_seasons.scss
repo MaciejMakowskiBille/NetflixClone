@@ -6,10 +6,12 @@
     gap: 1rem;
 
     .episodes{
-        width: 100%;
-        display: flex;
-        gap: 8px;
-        justify-content: start;
-        flex-direction: row-reverse;
+        max-width: 100%;
+        overflow-x: scroll;
+        .episodesRow{
+            display: flex;
+            gap: 2rem;
+            justify-content: start;
+        }
     }
 }
