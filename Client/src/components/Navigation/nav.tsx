@@ -2,11 +2,20 @@ import { useState } from 'react'
 import {motion} from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 const Navigation = () => {
-    const navigate = useNavigate()
+    const [inputValue, setInputValue] = useState('');
     const [isSearch, setIsSearch] = useState(false)
+
+    const navigate = useNavigate()
 
     const handleClickSearch = () => {
         setIsSearch((prev) => prev = !prev)
+    }
+
+    const handleSearch = (e:React.KeyboardEvent<HTMLInputElement>) => {
+        if(e.key === 'Enter'){
+            navigate(`/list/search/${inputValue}`)
+        }
+
     }
 
     return(
@@ -21,14 +30,17 @@ const Navigation = () => {
                         <li onClick={() => navigate('/')}>
                             Strona główna
                         </li>
-                        <li onClick={() => navigate('/list/series')}>
+                        <li onClick={() => navigate('/list/series/all')}>
                             Seriale i programy
                         </li>
-                        <li onClick={() => navigate('/list/movies')}>
+                        <li onClick={() => navigate('/list/movies/all')}>
                             Filmy
                         </li>
-                        <li>
-                            Nowe i popularne
+                        <li onClick={() => navigate('/producers')}>
+                            Producenci
+                        </li>
+                        <li onClick={() => navigate('/list/new/all')}>
+                            Najnowsze
                         </li>
                         <li>
                             Moja lista
@@ -44,12 +56,14 @@ const Navigation = () => {
                     >
                         <input 
                         type='text' 
-                        placeholder='Wpisz tytuł filmu, serialu ...'
+                        placeholder='Po wpisaniu wciśnij enter'
+                        onKeyDown={handleSearch}
+                        onChange={(e) => setInputValue(e.target.value)}
                         />
                     </motion.div>
                     )
                     }
-                    <button className='searchButton icon' onClick={handleClickSearch}/>
+                    <button className={isSearch ? 'closeButton icon' : 'searchButton icon'} onClick={handleClickSearch}/>
                     <div className='navMenu'>
                         <div className='avatar'/>
                         <div className='icon menuArrow'/>

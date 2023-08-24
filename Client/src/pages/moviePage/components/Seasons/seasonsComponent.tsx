@@ -1,4 +1,4 @@
-import { useState, ChangeEvent } from "react"
+import { useState, ChangeEvent,useEffect } from "react"
 import EpisodeComponent from "../Episode/episodeComponent"
 
 
@@ -12,6 +12,12 @@ const SeasonsComponent = (props:SeasonsComponentProps) => {
     const handleChangeSeason = (event: ChangeEvent<HTMLSelectElement>) => {
         setActiveSeason(props.seasons[Number(event.target.value)])
     }
+    useEffect(() => {
+        setActiveSeason((prev) => ({
+            ...prev, 
+            episodes:prev.episodes.sort((a,b) => a.number - b.number)
+        }))
+    },[activeSeason])
 
     return(
         <div className="seasons">
@@ -28,6 +34,7 @@ const SeasonsComponent = (props:SeasonsComponentProps) => {
                     })}
                 </select>
             <div className="episodes">
+                <div className="episodesRow">
                 {activeSeason.episodes.map(episode => {
                     return(
                         <EpisodeComponent
@@ -45,7 +52,7 @@ const SeasonsComponent = (props:SeasonsComponentProps) => {
                         />
                     )
                 })}
-                
+                </div>
             </div>
 
         </div>

@@ -17,6 +17,7 @@ type MovieDataType = {
     director:Director
     ageCategory:number
     transcription:boolean
+    producer:Producer
 }
 
 type SeriesDataType = {
@@ -34,6 +35,7 @@ type SeriesDataType = {
     ageCategory:number
     transcription:boolean
     seasons:Season[]
+    producer:Producer
 }
 
 type Category = {
@@ -82,4 +84,10 @@ type Slide = {
     movieType:string
     image:string
     logo:string
+}
+
+type Producer = {
+    id:number
+    name:string
+    image:string
 }

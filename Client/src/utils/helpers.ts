@@ -17,7 +17,8 @@ export const clearMovieData = (data:MovieResponseType) => {
         cast:clearCastData(data.attributes.cast.data),
         director:clearDirectorData(data.attributes.director.data),
         ageCategory:data.attributes.ageCategory,
-        transcription:data.attributes.transcription
+        transcription:data.attributes.transcription,
+        producer:clearProducerData(data.attributes.producer.data)
       }
       return clearedData
 }
@@ -37,7 +38,9 @@ export const clearSeriesData = (data:SeriesResponseType) => {
       cast:clearCastData(data.attributes.cast.data),
       ageCategory:data.attributes.ageCategory,
       transcription:data.attributes.transcription,
-      seasons:clearSeasonsData(data.attributes.seasons.data)
+      seasons:clearSeasonsData(data.attributes.seasons.data),
+      producer:clearProducerData(data.attributes.producer.data)
+      
     }
     return clearedData
 }
@@ -129,4 +132,12 @@ export const clearSliderData = (data:SliderResponseType) => {
             logo:data.attributes.logo.data.attributes.url,
           }
       return clearedData
+}
+
+export const clearProducerData = (data:ProducerResponseType) => {
+      return {
+        id:data.id,
+        name:data.attributes.name,
+        image:data.attributes.image.data.attributes.url
+      }
 }

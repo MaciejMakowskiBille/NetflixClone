@@ -15,6 +15,7 @@ type MovieResponseType = {
             director:{data: DirectorResponseType}
             ageCategory:number
             transcription:boolean
+            producer:{data:ProducerResponseType}
 
             createdAt:string
             updatedAt:string
@@ -39,6 +40,7 @@ type SeriesResponseType = {
         ageCategory:number
         transcription:boolean
         seasons:{data:SeasonResponseType[]}
+        producer:{data:ProducerResponseType}
 
         createdAt:string
         updatedAt:string
@@ -150,4 +152,16 @@ type SliderResponseType ={
       publishedAt:string
     }
     id:number
+}
+
+type ProducerResponseType = {
+    attributes:{
+        name:string
+        image:{data:MediaResponseType}
+  
+        createdAt:string
+        updatedAt:string
+        publishedAt:string
+      }
+      id:number
 }
