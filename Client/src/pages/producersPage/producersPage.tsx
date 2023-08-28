@@ -20,7 +20,7 @@ const ProducersPage = () => {
     <>
       <div className="appBackground">
         <Navigation />
-        <main>
+        <div>
           <section className="producersPage">
             {producers &&
               producers.map((producer) => {
@@ -33,7 +33,7 @@ const ProducersPage = () => {
                 );
               })}
           </section>
-        </main>
+        </div>
       </div>
     </>
   );

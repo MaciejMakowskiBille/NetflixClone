@@ -11,12 +11,6 @@
   box-sizing: border-box;
 }
 
-#root,
-html,
-form {
-  height: 100%;
-}
-
 .form-button {
   padding: 0;
   width: 100%;
@@ -24,7 +18,7 @@ form {
 }
 
 .form-wrapper {
-  background-image: url("../imgs/theme/Background.png");
+  background-image: url("../imgs/theme/Background.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -43,7 +37,7 @@ form {
 
 .button--paypal {
   background-color: $whiteText;
-  color: black;
+  color: $black;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -56,13 +50,13 @@ form {
 }
 
 .error-message {
-  color: #dc3545;
+  color: $red;
   padding-top: 10px;
   overflow-wrap: break-word;
 }
 
 input.error {
-  border: 2px solid rgb(255, 148, 148);
+  border: 2px solid $redLight;
 }
 
 .wrapper {

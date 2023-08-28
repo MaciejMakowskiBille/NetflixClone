@@ -18,7 +18,7 @@ export default function Modal({
           <p>{content}</p>
         </div>
         <footer className="modal__actions">
-          <button type="button" className="button-secondary">
+          <button type="button" className="form-button button-secondary">
             {buttonText}
           </button>
         </footer>

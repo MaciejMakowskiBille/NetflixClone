@@ -1,5 +1,5 @@
 .black-background {
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: fade-in($color: $blackTransparent, $amount: 0.1);
   padding: 40px 0;
   width: 662px;
   min-height: 100%;

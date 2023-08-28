@@ -12,8 +12,8 @@ export default function PaymentsSwitch({
   setActiveIndex: React.Dispatch<React.SetStateAction<number>>;
 }) {
   return (
-    <main>
-      <nav className="services">
+    <div>
+      <div className="services">
         <Switch
           img={credit_card}
           name="Karta kredytowa"
@@ -28,9 +28,8 @@ export default function PaymentsSwitch({
           onClick={() => setActiveIndex(1)}
           className={activeIndex === 1 ? "item--active" : ""}
         />
-      </nav>
-      {/* <PaymentsContent activeContentIndex={activeContentIndex} /> */}
+      </div>
       {children}
-    </main>
+    </div>
   );
 }
