@@ -19,12 +19,10 @@ export default function SignIn() {
   });
 
   const onSubmit: SubmitHandler<loginTypes> = async (data) => {
-    console.log(data);
     try {
       const response = await signIn(data);
       if (response) {
         localStorage.setItem("jwt", response.jwt);
-        console.log("sukces!!! ", response.jwt);
       }
     } catch (error) {
       if (error instanceof Error) {

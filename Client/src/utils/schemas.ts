@@ -49,10 +49,6 @@ export const schema = z.object({
 });
 
 
-// export type FormInput = z.infer<typeof schema>;
-
-
-
 export const loginSchema = z.object({
   email: z
   .string()

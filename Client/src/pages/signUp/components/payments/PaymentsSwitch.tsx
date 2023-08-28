@@ -11,7 +11,6 @@ export default function PaymentsSwitch({
   activeIndex: number;
   setActiveIndex: React.Dispatch<React.SetStateAction<number>>;
 }) {
-  // const [activeContentIndex, setActiveContentIndex] = useState<number>(0);
   return (
     <main>
       <nav className="services">

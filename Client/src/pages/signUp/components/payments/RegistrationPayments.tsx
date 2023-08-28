@@ -1,4 +1,3 @@
-// import { useState } from "react";
 import { useEffect, useState } from "react";
 import PaymentsOffer from "./PaymentsOffer";
 import PaymentsSwitch from "./PaymentsSwitch";

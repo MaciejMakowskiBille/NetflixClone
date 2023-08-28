@@ -27,7 +27,6 @@ const display: displayArray = {
 
 const RegistrationForm = () => {
   const [modalData, setModalData] = useState<modalTypes>({});
-  //   const [isSubmitSuccessful, setIsSubmitSuccessful] = useState(false);
   const { noValidateData, page, handleSubmit, reset, setNoValidateData } =
     useRegistrationContext();
 
@@ -40,8 +39,6 @@ const RegistrationForm = () => {
     try {
       const userResponse = await postUser(endpoint, data);
       if (userResponse) {
-        console.log("utworzono użytkownaika: ", userResponse);
-
         setModalData({
           success: true,
           content: "Udało się pomyślnie zarejestrować!",
@@ -77,24 +74,14 @@ const RegistrationForm = () => {
           },
         };
 
-        console.log("id użytkownika: ", userResponse.user.id);
         const paymentsDataIndex = formData ? 1 : 0;
-        const paymenstResponse = await postPayment(
-          "payments",
-          paymentsData[paymentsDataIndex]
-        );
+        await postPayment("payments", paymentsData[paymentsDataIndex]);
 
-        const profileResponse = await postProfile(`profiles`, profileData);
-        // if (paymenstResponse && profileResponse) {
-        //   console.log(paymenstResponse);
-        //   console.log(profileResponse);
-        //   console.log("utworzono profil płatności!");
-        // }
+        await postProfile(`profiles`, profileData);
       }
     } catch (err) {
       if (err instanceof Error) {
         setModalData({ success: false, content: err.message });
-        console.log(err);
       }
     }
   };
@@ -109,8 +96,6 @@ const RegistrationForm = () => {
   // payPal Submit
   const payPalSubmit = async (e: React.MouseEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("payPal submit!");
-
     await submitForm(`local/register`, userData);
   };
 

@@ -1,3 +1,5 @@
+@import "./colors";
+
 // place holder style
 ::placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -15,9 +17,6 @@
   color: $grayText;
 }
 
-// input[type="text"]:active {
-//   border: none;
-// }
 input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
@@ -31,12 +30,7 @@ input[type="number"]::-webkit-inner-spin-button {
   border: 2px solid $whiteText;
   border-radius: 4px;
 
-  // transform: ;
-
-  // &:active,
   &:focus {
-    // border: none;
-
     outline: none;
     border: 3px solid $whiteText;
   }

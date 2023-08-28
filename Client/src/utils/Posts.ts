@@ -2,9 +2,6 @@ import axios, {isAxiosError} from "axios";
 import { paymentsTypes, paymentsResponseTypes, UserPostResponseTypes, UserTypes, profileTypes} from "../types/registrationTypes";
 import { loginTypes } from "./schemas";
 import { apiURL, authURL } from "./links";
-// const authURL = "http://localhost:3001/api/auth";
-
-// const URL = "http://localhost:3001/api";
 
 
 export async function signIn(data: loginTypes){
