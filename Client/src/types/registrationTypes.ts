@@ -118,6 +118,6 @@ export type ContextTypes = {
   noValidateData?: noValidateFormProp;
   setNoValidateData?: React.Dispatch<React.SetStateAction<noValidateFormProp>>;
   handleSubmit?: UseFormHandleSubmit<FormInput>;
-  register?: UseFormRegister<FormInput>;
+  register: UseFormRegister<FormInput> | null;
   errors?: FieldErrors<FormInput>;
 };

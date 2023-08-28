@@ -85,11 +85,11 @@ const RegistrationForm = () => {
         );
 
         const profileResponse = await postProfile(`profiles`, profileData);
-        if (paymenstResponse && profileResponse) {
-          console.log(paymenstResponse);
-          console.log(profileResponse);
-          console.log("utworzono profil płatności!");
-        }
+        // if (paymenstResponse && profileResponse) {
+        //   console.log(paymenstResponse);
+        //   console.log(profileResponse);
+        //   console.log("utworzono profil płatności!");
+        // }
       }
     } catch (err) {
       if (err instanceof Error) {

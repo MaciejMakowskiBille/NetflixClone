@@ -9,7 +9,10 @@ import {
   fieldNames,
 } from "../../../types/registrationTypes";
 
-const RegistrationContext = createContext<ContextTypes>({ page: 0 });
+const RegistrationContext = createContext<ContextTypes>({
+  page: 0,
+  register: null,
+});
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const {
