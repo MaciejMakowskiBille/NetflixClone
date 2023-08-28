@@ -1,6 +1,3 @@
-@import "./checkbox";
-
-@import "./registration";
 @import "./colors";
 @import "./buttons";
 @import "./fonts";
@@ -16,6 +13,8 @@
 @import "../pages/filteredMovies/filteredMovies";
 @import "../components/CategoryRow/categoryRow";
 @import "../pages/producersPage/producersPage";
+@import "./registration";
+@import "./checkbox";
 
 body {
   font-family: "Roboto";
