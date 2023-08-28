@@ -16,10 +16,7 @@ export async function signIn(data: loginTypes){
     if (isAxiosError(error)) {
       if (error.response?.status === 400) {
         throw new Error("Wprowadzono nieprawidłowe dane");
-      } else {
-        throw new Error("Wystąpił nieoczekiwny błąd");
-      }
-
+      } 
     }
     throw new Error("Wystąpił nieoczekiwny błąd");
   }  

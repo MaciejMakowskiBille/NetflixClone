@@ -73,7 +73,7 @@ export type paymentsResponseTypes = {
   };
 }
 
-export type displayArray = {
+export type displayedPagesObjectTypes = {
   [index: number]: JSX.Element;
 }
 

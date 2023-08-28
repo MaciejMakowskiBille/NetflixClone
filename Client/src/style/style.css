@@ -2,10 +2,6 @@
   font-family: "Nico Moji";
   src: url(./fonts/nicomoji/NicoMoji-Regular.ttf);
 }
-@font-face {
-  font-family: "Roboto";
-  src: url(./fonts/roboto/Roboto-Regular.ttf);
-}
 button {
   font-family: "Roboto";
   letter-spacing: normal;
@@ -69,10 +65,6 @@ button {
 @font-face {
   font-family: "Nico Moji";
   src: url(./fonts/nicomoji/NicoMoji-Regular.ttf);
-}
-@font-face {
-  font-family: "Roboto";
-  src: url(./fonts/roboto/Roboto-Regular.ttf);
 }
 .home {
   background-image: url("../imgs//theme/Background.jpg") center cover no-repeat;

@@ -12,13 +12,13 @@ import Modal from "../../../components/modal/Modal";
 import { FormInput } from "../../../types/registrationTypes";
 import {
   paymentsTypes,
-  displayArray,
+  displayedPagesObjectTypes,
   UserTypes,
   modalTypes,
   profileTypes,
 } from "../../../types/registrationTypes";
 
-const display: displayArray = {
+const display: displayedPagesObjectTypes = {
   0: <RegistrationEmail />,
   1: <RegistrationPassword />,
   2: <RegistrationAgreements />,
