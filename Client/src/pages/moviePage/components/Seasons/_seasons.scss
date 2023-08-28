@@ -1,0 +1,17 @@
+.seasons{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    .episodes{
+        max-width: 100%;
+        overflow-x: scroll;
+        .episodesRow{
+            display: flex;
+            gap: 2rem;
+            justify-content: start;
+        }
+    }
+}

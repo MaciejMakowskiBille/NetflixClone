@@ -87,6 +87,11 @@
     },
     "ageCategory": {
       "type": "integer"
+    },
+    "producer": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::producer.producer"
     }
   }
 }

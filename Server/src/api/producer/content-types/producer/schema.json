@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "producers",
+  "info": {
+    "singularName": "producer",
+    "pluralName": "producers",
+    "displayName": "Producer",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+}
