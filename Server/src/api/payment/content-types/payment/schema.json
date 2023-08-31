@@ -1,0 +1,50 @@
+{
+  "kind": "collectionType",
+  "collectionName": "payments",
+  "info": {
+    "singularName": "payment",
+    "pluralName": "payments",
+    "displayName": "Payment",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "cardNumber": {
+      "type": "string",
+      "minLength": 16
+    },
+    "cardName": {
+      "type": "string"
+    },
+    "cardSname": {
+      "type": "string"
+    },
+    "expiryDate": {
+      "type": "string",
+      "minLength": 5
+    },
+    "securityCode": {
+      "type": "integer"
+    },
+    "paymentsProcessing": {
+      "type": "enumeration",
+      "enum": [
+        "creditCard",
+        "payPal"
+      ],
+      "default": "creditCard"
+    },
+    "paymentsOffer": {
+      "type": "boolean"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "mappedBy": "payment"
+    }
+  }
+}

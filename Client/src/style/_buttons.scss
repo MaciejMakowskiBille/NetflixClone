@@ -1,56 +1,61 @@
-@import './colors.scss';
+@import "fonts.scss";
 
-button{
-    font-family: 'Roboto';
-    letter-spacing: normal;
-    padding: 8px 16px;
-    border-radius: 5px;
-    border: none;
-    box-sizing: content-box;
-    font-weight: bold;
-    cursor: pointer;
-    transition: ease-in-out 0.2s all;
+@import "./colors.scss";
+
+button {
+  font-family: "Roboto";
+  letter-spacing: normal;
+  padding: 8px 16px;
+  border-radius: 5px;
+  border: none;
+  box-sizing: content-box;
+  font-weight: bold;
+  cursor: pointer;
+  transition: ease-in-out 0.2s all;
 }
-.button-primary{
+
+.button-primary {
+  background-color: $purple;
+
+  color: $whiteText;
+  &:hover {
+    background-color: $purpleLight;
+  }
+  &:active {
     background-color: $purple;
-    color: $whiteText;
-    &:hover{
-        background-color: $purpleLight;
-    }
-    &:active{
-        background-color: $purple;
-        box-shadow: inset $black 0 0 5px;
-    }
+    box-shadow: inset $black 0 0 5px;
+  }
 }
-.button-secondary{
-    background-color: $backgroundDrak;
-    color: $whiteText;
-    border: 2px $purple solid;
-    &:hover{
-        background-color: $purpleDark;
-        color:$whiteText;
-        border: 2px $whiteText solid;
-    }
-    &:active{
-        background-color: $backgroundDrak;
-        box-shadow: inset $black 0 0 5px;
-        color:$purple;
-        border: 2px $purple solid;
 
-    }
+.button-secondary {
+  background-color: $backgroundDrak;
+  color: $whiteText;
+  border: 2px $purple solid;
+
+  &:hover {
+    background-color: $purpleDark;
+    color: $whiteText;
+    border: 2px $whiteText solid;
+  }
+  &:active {
+    background-color: $backgroundDrak;
+    box-shadow: inset $black 0 0 5px;
+    color: $purple;
+    border: 2px $purple solid;
+  }
 }
-.iconButton{
-    width: 40px;
-    height: 40px;
-    background-size: cover;
+.iconButton {
+  width: 40px;
+  height: 40px;
+  background-size: cover;
 }
-.favButton{
-    background-image: url('../imgs/movieTile/Favorite.svg');
+.favButton {
+  background-image: url("../imgs/movieTile/Favorite.svg");
 }
-.moreButton{
-    background-image: url('../imgs/movieTile/More.svg');
+.moreButton {
+  background-image: url("../imgs/movieTile/More.svg");
 }
-.playButton{
-    background-image: url('../imgs/movieTile/Play.svg');
-    z-index: 5;
+.playButton {
+  background-image: url("../imgs/movieTile/Play.svg");
+  z-index: 5;
 }
