@@ -1,4 +1,3 @@
-
 type CombinedDataType = Array<SeriesDataType | MovieDataType>;
 
 type MovieDataType = {
@@ -101,14 +100,14 @@ type noValidateFormProp = {
   paymentsProcessing?: "creditCard" | "payPal";
 };
 
-type FormInput = {
-  cardNameSname: string[];
-  cardNumber: string;
-  email: string;
-  expiryDate: string;
-  password: string;
-  securityCode: string | number;
-};
+// interface FormInput extends FieldValues {
+//   cardNameSname: string[];
+//   cardNumber: string;
+//   email: string;
+//   expiryDate: string;
+//   password: string;
+//   securityCode: string | number;
+// };
 
 type CreateUserType = {
   email: string;
@@ -125,5 +124,3 @@ type CreateUserType = {
     paymentsProcessing: "creditCard" | "payPal";
   };
 };
-
-

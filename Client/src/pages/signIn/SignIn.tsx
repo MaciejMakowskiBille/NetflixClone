@@ -2,6 +2,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema, loginTypes } from "../../utils/schemas";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { signIn } from "../../utils/Posts";
+import Password from "../../components/Input/Password";
+import { useState } from "react";
 export default function SignIn() {
   const {
     setError,
@@ -38,6 +40,12 @@ export default function SignIn() {
     }
   };
 
+  const [passwordShown, setPasswordShown] = useState<boolean>(false);
+
+  const classNameText = errors?.password
+    ? "wrapper__text-input error"
+    : "wrapper__text-input";
+
   return (
     <form className="form-wrapper" onSubmit={handleSubmit(onSubmit)}>
       <div className="black-background">
@@ -63,7 +71,7 @@ export default function SignIn() {
                 <p className="error-message">{errors.email?.message}</p>
               )}
             </div>
-            <div className="input">
+            {/* <div className="input">
               <input
                 className={
                   errors?.password
@@ -78,7 +86,14 @@ export default function SignIn() {
               {errors?.password && (
                 <p className="error-message">{errors.password?.message}</p>
               )}
-            </div>
+            </div> */}
+            <Password
+              className={classNameText}
+              errors={errors}
+              passwordShown={passwordShown}
+              setPasswordShown={setPasswordShown}
+              register={register}
+            />
             <p>Nie pamiętam hasła!</p>
           </div>
           <div className="action">

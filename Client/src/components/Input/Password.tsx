@@ -15,6 +15,7 @@ const Password = ({
   };
 
   const passwordIcon = passwordShown ? eye : eyeSlash;
+  // if(register typeof UseFormRegister<{ email: string; password: string; }>){
   return (
     <div>
       <div className="password-input">
@@ -37,6 +38,7 @@ const Password = ({
       )}
     </div>
   );
+  // }
 };
 
 export default Password;

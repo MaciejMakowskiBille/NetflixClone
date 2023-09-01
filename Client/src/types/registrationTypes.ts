@@ -3,6 +3,7 @@ import {
   UseFormRegister,
   FieldErrors,
   UseFormHandleSubmit,
+  FieldValues,
 } from "react-hook-form";
 
 export type UserTypes = {
@@ -48,13 +49,11 @@ export type UserPostResponseTypes = {
   };
 }
 
-export type noValidateFormProp = {
-  email: string;
-  password: string;
-  optInSubscription?: boolean;
-  paymentsOffer?: number;
-  paymentsProcessing?: "creditCard" | "payPal";
-}
+// export type noValidateFormProp = {
+//   optInSubscription?: boolean;
+//   paymentsOffer?: number;
+//   paymentsProcessing?: "creditCard" | "payPal";
+// }
 
 export type userCreationErrorType = {
   fieldName: string;

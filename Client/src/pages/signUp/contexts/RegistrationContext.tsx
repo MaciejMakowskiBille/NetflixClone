@@ -1,7 +1,6 @@
 import React, { createContext, useState } from "react";
-import { useForm } from "react-hook-form";
+import { Field, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { noValidateFormProp } from "../../../types/registrationTypes";
 import { schema } from "../../../utils/schemas";
 import {
   FormInput,

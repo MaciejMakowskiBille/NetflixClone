@@ -1050,10 +1050,6 @@ input[type=checkbox] {
 }
 
 .password-input {
-  width: -moz-fit-content;
-  width: fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
   position: relative;
   display: flex;
   justify-content: end;
