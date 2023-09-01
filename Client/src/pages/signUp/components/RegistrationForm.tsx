@@ -1,5 +1,5 @@
 import { useRegistrationContext } from "../hooks/useRegistrationContext";
-import { postUser, postPayment, postProfile } from "../../../utils/Posts";
+import { postUser } from "../../../utils/Posts";
 import { SubmitHandler } from "react-hook-form";
 import React, { useState, useEffect } from "react";
 
@@ -11,12 +11,11 @@ import Modal from "../../../components/modal/Modal";
 
 import { FormInput } from "../../../types/registrationTypes";
 import {
-  paymentsTypes,
   displayedPagesObjectTypes,
-  UserTypes,
   modalTypes,
-  profileTypes,
+  UserTypes,
 } from "../../../types/registrationTypes";
+import { cleanUserData } from "../../../utils/helpers";
 
 const display: displayedPagesObjectTypes = {
   0: <RegistrationEmail />,
@@ -31,77 +30,34 @@ const RegistrationForm = () => {
     useRegistrationContext();
 
   // Submit Form function
-  const submitForm = async (
-    endpoint: string,
-    data: UserTypes,
-    formData?: FormInput
-  ) => {
+  const submitForm = async (data: noValidateFormProp, formData?: FormInput) => {
+    const cleanedData = cleanUserData(data, formData);
     try {
-      const userResponse = await postUser(endpoint, data);
+      const userResponse = await postUser(cleanedData);
+      console.log("udało się:", userResponse);
       if (userResponse) {
         setModalData({
           success: true,
           content: "Udało się pomyślnie zarejestrować!",
         });
-
-        const paymentsData: paymentsTypes[] = [
-          {
-            data: {
-              paymentsOffer: noValidateData?.paymentsOffer!,
-              paymentsProcessing: noValidateData?.paymentsProcessing!,
-              user: userResponse.user.id!,
-            },
-          },
-          {
-            data: {
-              cardName: formData?.cardNameSname[0]!,
-              cardSname: formData?.cardNameSname[1]!,
-              cardNumber: formData?.cardNumber!,
-              expiryDate: formData?.expiryDate!,
-              securityCode: formData?.securityCode!,
-              paymentsProcessing: noValidateData?.paymentsProcessing!,
-              paymentsOffer: noValidateData?.paymentsOffer!,
-              user: userResponse.user.id!,
-            },
-          },
-        ];
-
-        const profileData: profileTypes = {
-          data: {
-            ageGroup: "adult",
-            user: userResponse.user.id!,
-            username: "New User",
-          },
-        };
-
-        const paymentsDataIndex = formData ? 1 : 0;
-        await postPayment("payments", paymentsData[paymentsDataIndex]);
-
-        await postProfile(`profiles`, profileData);
       }
     } catch (err) {
       if (err instanceof Error) {
         setModalData({ success: false, content: err.message });
       }
+      console.log("error: ", err);
     }
-  };
-
-  const userData: UserTypes = {
-    username: noValidateData?.email!,
-    password: noValidateData?.password!,
-    email: noValidateData?.email!,
-    optInSubscription: noValidateData?.optInSubscription!,
   };
 
   // payPal Submit
   const payPalSubmit = async (e: React.MouseEvent<HTMLFormElement>) => {
     e.preventDefault();
-    await submitForm(`local/register`, userData);
+    await submitForm(noValidateData!);
   };
 
   // creditCard submit
   const onSubmit: SubmitHandler<FormInput> = async (data) => {
-    await submitForm(`local/register`, userData, data);
+    await submitForm(noValidateData!, data);
   };
 
   // cleanUp all form data

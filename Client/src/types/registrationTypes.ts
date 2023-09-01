@@ -12,6 +12,22 @@ export type UserTypes = {
   username: string;
 }
 
+// export type CreateUserType = {
+//   email: string;
+//   password: string;
+//   optInSubscription?: boolean;
+//   username: string;
+//   payment: {
+//     cardName?: string;
+//     cardSname?: string;
+//     cardNumber?: string;
+//     securityCode?: number | string;
+//     expiryDate?: string;
+//     paymentsOffer: number;
+//     paymentsProcessing: "creditCard" | "payPal";
+//   }
+// }
+
 export type UserPaymentTypes = {
   user: UserTypes;
   payment: paymentsTypes;
@@ -102,6 +118,9 @@ export type fieldNames =
   | `cardNameSname.${number}`;
 
 export type FormInput = {
+  paymentsOffer?: number;
+  paymentsProcessing?: "creditCard" | "payPal";
+  optInSubscription?: boolean;
   cardNameSname: string[];
   cardNumber: string;
   email: string;

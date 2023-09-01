@@ -91,3 +91,36 @@ type Producer = {
     name:string
     image:string
 }
+
+type noValidateFormProp = {
+    email: string;
+    password: string;
+    optInSubscription?: boolean;
+    paymentsOffer?: number;
+    paymentsProcessing?: "creditCard" | "payPal";
+  }
+
+  type FormInput = {
+    cardNameSname: string[];
+    cardNumber: string;
+    email: string;
+    expiryDate: string;
+    password: string;
+    securityCode: string | number;
+  }
+
+  type CreateUserType = {
+    email: string;
+    password: string;
+    optInSubscription?: boolean;
+    username: string;
+    payment: {
+      cardName?: string;
+      cardSname?: string;
+      cardNumber?: string;
+      securityCode?: number | string;
+      expiryDate?: string;
+      paymentsOffer: "year" | "month";
+      paymentsProcessing: "creditCard" | "payPal";
+    }
+  }
