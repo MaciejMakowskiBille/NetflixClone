@@ -8,6 +8,7 @@ import FilteredMovies from "./pages/filteredMovies/filteredMovies";
 import './style/style.css'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import ProducersPage from "./pages/producersPage/producersPage";
+import FavoritesPage from "./pages/favoritesPage/favoritesPage";
 
 
 const App = () => {
@@ -20,6 +21,7 @@ const App = () => {
         <Route path="movie/:movieType/:movieId" element={<MoviePage />} />
         <Route path="list/:type/:filter" element={<FilteredMovies/>}/>
         <Route path="producers" element={<ProducersPage/>}/>
+        <Route path="favorites" element={<FavoritesPage/>}/>
       </Routes>
     </Router>
   );

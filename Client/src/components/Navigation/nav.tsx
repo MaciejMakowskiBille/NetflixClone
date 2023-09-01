@@ -1,11 +1,17 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {motion} from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 const Navigation = () => {
     const [inputValue, setInputValue] = useState('');
     const [isSearch, setIsSearch] = useState(false)
+    const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
 
     const navigate = useNavigate()
+
+    const buttons = <>
+    <button className='button' onClick={() => navigate('/signIn')}>Zaloguj</button>
+    <button className='button' onClick={() => navigate('/signUp')}>Zarejestruj</button>
+    </>
 
     const handleClickSearch = () => {
         setIsSearch((prev) => prev = !prev)
@@ -17,6 +23,15 @@ const Navigation = () => {
         }
 
     }
+
+    useEffect(() => {
+      if(localStorage.getItem("jwt")) {
+        setIsLoggedIn(true);
+      } else {
+        setIsLoggedIn(false);
+      }
+    }, [])
+    
 
     return(
         <>
@@ -42,8 +57,10 @@ const Navigation = () => {
                         <li onClick={() => navigate('/list/new/all')}>
                             Najnowsze
                         </li>
-                        <li>
-                            Moja lista
+                        <li onClick={() => navigate("/favorites")}>
+                        {
+                            isLoggedIn ? "Moja lista" : null
+                        }
                         </li>
                     </ul>
                 </div>
@@ -64,10 +81,14 @@ const Navigation = () => {
                     )
                     }
                     <button className={isSearch ? 'closeButton icon' : 'searchButton icon'} onClick={handleClickSearch}/>
-                    <div className='navMenu'>
-                        <div className='avatar'/>
-                        <div className='icon menuArrow'/>
-                    </div>
+                    {
+                        isLoggedIn ?
+                        <div className='navMenu'>
+                            <div className='avatar'/>
+                            <div className='icon menuArrow'/>
+                        </div>
+                        : buttons
+                    }
                 </div>
             </nav>
         </>

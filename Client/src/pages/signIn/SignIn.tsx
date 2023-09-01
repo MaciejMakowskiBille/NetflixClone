@@ -2,7 +2,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema, loginTypes } from "../../utils/schemas";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { signIn } from "../../utils/Posts";
+import { useNavigate } from "react-router-dom";
 export default function SignIn() {
+  const navigate = useNavigate();
+
   const {
     setError,
     handleSubmit,
@@ -23,6 +26,7 @@ export default function SignIn() {
       const response = await signIn(data);
       if (response) {
         localStorage.setItem("jwt", response.jwt);
+        navigate("/");
       }
     } catch (error) {
       if (error instanceof Error) {
