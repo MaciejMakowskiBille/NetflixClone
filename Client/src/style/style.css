@@ -1049,6 +1049,24 @@ input[type=checkbox] {
   justify-content: center;
 }
 
+.password-input {
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  position: relative;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+.password-input .password-icon {
+  position: absolute;
+  margin-right: 14px;
+  z-index: 2;
+  width: 26px;
+  height: 18px;
+}
+
 body {
   font-family: "Roboto";
   color: #f3eff5;
