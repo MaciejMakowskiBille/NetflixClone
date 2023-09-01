@@ -34,13 +34,7 @@ module.exports = (plugin) => {
       },
     });
 
-    const profiles = await strapi.query("api::profile.profile").create({
-      data: {
-        username: "Nowy użytkownik",
-        ageGroup: "adult",
-        publishedAt: new Date().getTime(),
-      },
-    });
+
 
     const data = {
             username: username,
@@ -48,12 +42,20 @@ module.exports = (plugin) => {
             password: password,
             payment: payments.id,
             confirmed: true,
-            profiles: [profiles.id],
             provider: "local",
           };
 
     ctx.request.body = {...data}
     await strapi.plugin('users-permissions').controllers.auth.register(ctx);
+
+    await strapi.query("api::profile.profile").create({
+      data: {
+        username: "Nowy użytkownik",
+        ageGroup: "adult",
+        publishedAt: new Date().getTime(),
+        user: ctx.response.body.user.id,
+      },
+    });
   };
 
   plugin.routes["content-api"].routes.push(
