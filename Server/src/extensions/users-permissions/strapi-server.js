@@ -15,7 +15,7 @@ module.exports = (plugin) => {
     // if (ctx.state.user || ctx.state.user.id) {
     //   return (ctx.response.status = 400);
     // }
-    const { username, email, password, payment} = ctx.request.body;
+    const { username, email, password, optInSubscription, payment} = ctx.request.body;
 
     const userExists = await strapi
       .query("plugin::users-permissions.user")
@@ -40,6 +40,7 @@ module.exports = (plugin) => {
             username: username,
             email: email,
             password: password,
+            optInSubscription: optInSubscription,
             payment: payments.id,
             confirmed: true,
             provider: "local",
