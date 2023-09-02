@@ -100,15 +100,6 @@ type noValidateFormProp = {
   paymentsProcessing?: "creditCard" | "payPal";
 };
 
-// interface FormInput extends FieldValues {
-//   cardNameSname: string[];
-//   cardNumber: string;
-//   email: string;
-//   expiryDate: string;
-//   password: string;
-//   securityCode: string | number;
-// };
-
 type CreateUserType = {
   email: string;
   password: string;
@@ -123,4 +114,56 @@ type CreateUserType = {
     paymentsOffer: "year" | "month";
     paymentsProcessing: "creditCard" | "payPal";
   };
+};
+
+type SignInType = {
+  email: string;
+  password: string;
+};
+
+type FormInput = {
+  paymentsOffer?: number;
+  paymentsProcessing?: "creditCard" | "payPal";
+  optInSubscription?: boolean;
+  cardNameSname: string[];
+  cardNumber: string;
+  email: string;
+  expiryDate: string;
+  password: string;
+  securityCode: string | number;
+};
+
+type ProfileType = {
+  data: {
+    username: string;
+    ageGroup: "kid" | "teen" | "adult";
+    favorite_series?: string[];
+    favorite_films?: string[];
+    user: number;
+  };
+};
+
+type modalTypes = {
+  success?: boolean;
+  content?: string;
+};
+
+type PaymentsType = {
+  data: {
+    cardName?: string;
+    cardSname?: string;
+    cardNumber?: string;
+    securityCode?: number | string;
+    expiryDate?: string;
+    paymentsOffer: number;
+    paymentsProcessing: "creditCard" | "payPal";
+    user: number;
+  };
+};
+
+type UserType = {
+  email: string;
+  password: string;
+  optInSubscription?: boolean;
+  username: string;
 };

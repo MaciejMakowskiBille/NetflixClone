@@ -1,27 +1,42 @@
-import { UseFormRegister, FieldErrors, FieldValues } from "react-hook-form";
-import { loginTypes } from "../utils/schemas";
-import { FormInput } from "./registrationTypes";
+import {
+  UseFormReset,
+  UseFormRegister,
+  FieldErrors,
+  UseFormHandleSubmit,
+} from "react-hook-form";
 
-// interface FormInput extends FieldValues {
-//     cardNameSname: string[];
-//     cardNumber: string;
-//     email: string;
-//     expiryDate: string;
-//     password: string;
-//     securityCode: string | number;
-// };
-
-// interface LoginTypes extends FieldValues {
-//     login: string;
-//     password: string;
-// }
+type FormsType = SignInType | FormInput;
 
 export type PasswordProps = {
-    passwordShown: boolean;
-    setPasswordShown: React.Dispatch<React.SetStateAction<boolean>>;
-    register: (UseFormRegister<FormInput> | null ) | (UseFormRegister<{ email: string; password: string; }>| null);
-    handleChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    className: string;
-    errors: FieldErrors<FormInput> | undefined;
-  };
+  passwordShown: boolean;
+  setPasswordShown: React.Dispatch<React.SetStateAction<boolean>>;
+  register: UseFormRegister<any> | null;
+  handleChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  className: string;
+  errors: FieldErrors<FormsType> | undefined;
+};
 
+export type fieldNames =
+  | "cardNameSname"
+  | "cardNumber"
+  | "email"
+  | "expiryDate"
+  | "password"
+  | "securityCode"
+  | `cardNameSname.${number}`;
+
+export type ContextType = {
+  nextPage?: (fieldName: fieldNames) => Promise<void>;
+  reset?: UseFormReset<FormInput>;
+  page: number;
+  setPage?: React.Dispatch<React.SetStateAction<number>>;
+  noValidateData?: noValidateFormProp;
+  setNoValidateData?: React.Dispatch<React.SetStateAction<noValidateFormProp>>;
+  handleSubmit?: UseFormHandleSubmit<FormInput>;
+  register: UseFormRegister<FormInput> | null;
+  errors?: FieldErrors<FormInput>;
+};
+
+export type DisplayedPagesObjectType = {
+  [index: number]: JSX.Element;
+};

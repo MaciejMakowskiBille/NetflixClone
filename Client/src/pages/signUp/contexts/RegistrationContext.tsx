@@ -1,14 +1,10 @@
 import React, { createContext, useState } from "react";
-import { Field, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { schema } from "../../../utils/schemas";
-import {
-  FormInput,
-  ContextTypes,
-  fieldNames,
-} from "../../../types/registrationTypes";
+import { ContextType, fieldNames } from "../../../types/propsType";
 
-const RegistrationContext = createContext<ContextTypes>({
+const RegistrationContext = createContext<ContextType>({
   page: 0,
   register: null,
 });

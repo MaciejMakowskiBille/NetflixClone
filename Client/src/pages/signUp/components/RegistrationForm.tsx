@@ -8,16 +8,10 @@ import RegistrationPassword from "./RegistrationPassword";
 import RegistrationAgreements from "./RegistrationAgreement";
 import RegistrationPayments from "./payments/RegistrationPayments";
 import Modal from "../../../components/modal/Modal";
-
-import { FormInput } from "../../../types/registrationTypes";
-import {
-  displayedPagesObjectTypes,
-  modalTypes,
-  UserTypes,
-} from "../../../types/registrationTypes";
+import { DisplayedPagesObjectType } from "../../../types/propsType";
 import { cleanUserData } from "../../../utils/helpers";
 
-const display: displayedPagesObjectTypes = {
+const display: DisplayedPagesObjectType = {
   0: <RegistrationEmail />,
   1: <RegistrationPassword />,
   2: <RegistrationAgreements />,
