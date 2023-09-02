@@ -14,7 +14,7 @@ const Password = ({
     setPasswordShown(!passwordShown);
   };
 
-  const passwordIcon = passwordShown ? eye : eyeSlash;
+  const passwordIcon = passwordShown ? eyeSlash : eye;
   // if(register typeof UseFormRegister<{ email: string; password: string; }>){
   return (
     <div>
