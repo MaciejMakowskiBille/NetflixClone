@@ -26,7 +26,7 @@ export default function SignIn() {
       const response = await signIn(data);
       if (response) {
         localStorage.setItem("jwt", response.jwt);
-        navigate("/");
+        navigate("/main");
       }
     } catch (error) {
       if (error instanceof Error) {
