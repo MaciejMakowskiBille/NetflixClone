@@ -77,6 +77,21 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::series-s.series-s"
+    },
+    "profile": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::profile.profile",
+      "inversedBy": "user"
+    },
+    "payment": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::payment.payment",
+      "inversedBy": "user"
+    },
+    "optInSubscription": {
+      "type": "boolean"
     }
   }
 }

@@ -1,3 +1,7 @@
+@font-face {
+  font-family: "Nico Moji";
+  src: url(./fonts/nicomoji/NicoMoji-Regular.ttf);
+}
 button {
   font-family: "Roboto";
   letter-spacing: normal;
@@ -11,26 +15,26 @@ button {
 }
 
 .button-primary {
-  background-color: #782CBF;
-  color: #F3EFF5;
+  background-color: #782cbf;
+  color: #f3eff5;
 }
 .button-primary:hover {
   background-color: #9864c9;
 }
 .button-primary:active {
-  background-color: #782CBF;
+  background-color: #782cbf;
   box-shadow: inset #000 0 0 5px;
 }
 
 .button-secondary {
   background-color: #504957;
-  color: #F3EFF5;
-  border: 2px #782CBF solid;
+  color: #f3eff5;
+  border: 2px #782cbf solid;
 }
 .button-secondary:hover {
   background-color: #421969;
-  color: #F3EFF5;
-  border: 2px #F3EFF5 solid;
+  color: #f3eff5;
+  border: 2px #f3eff5 solid;
 }
 .button-secondary:active {
   background-color: #504957;
@@ -138,7 +142,7 @@ button {
 }
 .home main .homeHeader .title text {
   margin: 0;
-  color: #782CBF;
+  color: #782cbf;
 }
 .home main .centeredContent {
   width: 100%;
@@ -184,7 +188,7 @@ nav {
   padding-bottom: 1rem;
   background-color: rgba(0, 0, 0, 0.7);
   justify-content: space-between;
-  border-bottom: 1px solid #782CBF;
+  border-bottom: 1px solid #782cbf;
 }
 nav .navLeft {
   display: flex;
@@ -331,7 +335,7 @@ main .slider .slide .sliderNav .indicator {
   height: 15px;
   padding: 0;
   border-radius: 100%;
-  box-shadow: 0 0 5px #782CBF;
+  box-shadow: 0 0 5px #782cbf;
   background-color: #421969;
 }
 main .slider .slide .sliderNav .active {
@@ -467,7 +471,7 @@ main .category .title {
 }
 .movieInfoMain .content .short .top .smallInfo {
   box-sizing: border-box;
-  background-color: #D2D21B;
+  background-color: #d2d21b;
   padding-left: 8px;
   padding-right: 8px;
   padding-top: 2px;
@@ -496,7 +500,7 @@ main .category .title {
   width: 100%;
   display: flex;
   font-size: medium;
-  border-bottom: 1px #782CBF solid;
+  border-bottom: 1px #782cbf solid;
 }
 .movieNav ul {
   padding: 0;
@@ -509,7 +513,7 @@ main .category .title {
   cursor: pointer;
 }
 .movieNav ul li:hover {
-  color: #782CBF;
+  color: #782cbf;
 }
 
 .movieAdds {
@@ -595,7 +599,7 @@ main .category .title {
   min-width: 128px;
   max-width: 128px;
   background-color: #504957;
-  border: 1px solid #782CBF;
+  border: 1px solid #782cbf;
   box-shadow: 5px 5px 5px #000;
 }
 .actorComponent .actorImg {
@@ -636,7 +640,7 @@ main .category .title {
   min-width: 250px;
   font-size: medium;
   background-color: #343137;
-  border: 1px solid #782CBF;
+  border: 1px solid #782cbf;
   box-shadow: 2px 2px 2px #000;
 }
 .episode .image {
@@ -756,7 +760,7 @@ main .category .title {
   transition: ease-in-out all 0.3s;
 }
 .producer:hover {
-  background-color: #782CBF;
+  background-color: #782cbf;
 }
 .producer .producerImage {
   width: 60%;
@@ -764,6 +768,352 @@ main .category .title {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+}
+
+.black-background {
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 40px 0;
+  width: 662px;
+  min-height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+::-moz-placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #bab1bc;
+  opacity: 1; /* Firefox */
+}
+
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #bab1bc;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #bab1bc;
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: #bab1bc;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.wrapper__text-input {
+  padding: 10px 16px;
+  height: 50px;
+  width: 400px;
+  color: inherit;
+  background-color: inherit;
+  border: 2px solid #f3eff5;
+  border-radius: 4px;
+}
+.wrapper__text-input:focus {
+  outline: none;
+  border: 3px solid #f3eff5;
+}
+
+.wrapper__text-input--smaller {
+  width: 190px;
+}
+
+.payments-offer {
+  width: 190px;
+  height: 65px;
+  border: 1px solid #782cbf;
+  border-radius: 4px;
+  padding: 0 13px;
+  color: #f3eff5;
+  display: flex;
+  cursor: pointer;
+  transition: 0.3s;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.payments-offer h3 {
+  font-size: 16px;
+  font-weight: normal;
+}
+.payments-offer h5 {
+  font-size: 13px;
+  font-weight: normal;
+  color: #bab1bc;
+}
+.payments-offer .circles {
+  position: relative;
+  height: 16px;
+  width: 16px;
+}
+.payments-offer .circle {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+}
+.payments-offer .circle-filled {
+  width: 16px;
+  height: 16px;
+  display: none;
+  position: absolute;
+}
+.payments-offer:hover .circle-filled {
+  display: inline;
+}
+.payments-offer:hover {
+  border: 1px solid #9864c9;
+}
+.payments-offer:active {
+  box-shadow: inset rgb(173, 78, 218) 0 0 5px;
+}
+.payments-offer.active .circle-filled {
+  display: inline;
+}
+
+.payments-offer--primary {
+  background-color: #782cbf;
+}
+.payments-offer--primary:hover {
+  border: none;
+  background-color: #9864c9;
+}
+.payments-offer--primary:active {
+  border: none;
+  background-color: #782cbf;
+  box-shadow: inset rgb(0, 0, 0) 0 0 5px;
+}
+
+.options {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  margin-top: 25px;
+  padding: 0;
+  gap: 20px;
+}
+.content .inputs {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+.content .inputs .input {
+  width: 190px;
+}
+.content .content__main-text {
+  font-size: 13px;
+  color: #f3eff5;
+}
+
+.services {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.services .credit_card {
+  width: 41px;
+  height: 30px;
+  margin-right: 12px;
+}
+.services .paypal {
+  width: 70px;
+  height: 30px;
+}
+.services .item {
+  width: 198px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 3px solid rgba(0, 0, 0, 0);
+  padding: 4px 0;
+  cursor: pointer;
+}
+.services .item:hover {
+  border-bottom: 3px solid #f3eff5;
+}
+.services .item--active {
+  border-bottom: 3px solid #f3eff5;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.modal {
+  position: fixed;
+  background-color: #262428;
+  top: 15px;
+  left: 10%;
+  width: 60%;
+  z-index: 100;
+  overflow: hidden;
+}
+.modal .modal__header {
+  background: #421969;
+  padding: 1rem;
+}
+.modal .modal__header h2 {
+  margin: 0;
+  color: #f3eff5;
+}
+.modal .modal__content {
+  padding: 1rem;
+}
+.modal .modal__actions {
+  padding: 1rem;
+}
+
+@media (min-width: 768px) {
+  .modal {
+    left: calc(50% - 10rem);
+    width: 20rem;
+  }
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.form-button {
+  padding: 0;
+  width: 100%;
+  height: 50px;
+}
+
+.form-wrapper {
+  background-image: url("../imgs/theme/Background.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  overflow-x: hidden;
+  height: 100vh;
+  width: 100vw;
+  min-height: 400px;
+  min-width: 600px;
+  font-family: "Roboto";
+  color: #f3eff5;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.button--paypal {
+  background-color: #f3eff5;
+  color: #000;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.button--paypal:hover {
+  background-color: #bab1bc;
+}
+
+.error-message {
+  color: #dc3545;
+  padding-top: 10px;
+  overflow-wrap: break-word;
+}
+
+input.error {
+  border: 2px solid rgb(255, 148, 148);
+}
+
+.wrapper {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  color: #f3eff5;
+}
+.wrapper .wrapper__header {
+  color: inherit;
+  margin-bottom: 10px;
+}
+.wrapper .wrapper__header h1 {
+  font-size: 25px;
+}
+.wrapper .wrapper__header h4 {
+  font-size: 13px;
+  font-weight: normal;
+}
+.wrapper .wrapper__text {
+  color: inherit;
+  margin-bottom: 10px;
+}
+.wrapper .wrapper__text--small {
+  font-size: 13px;
+}
+.wrapper .action {
+  width: 100%;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  padding: 16px;
+  border: 1px solid #bab1bc;
+  border-radius: 4px;
+  color: inherit;
+}
+
+.card--scroll {
+  overflow-y: scroll;
+  height: 300px;
+}
+
+.filmexLogo {
+  color: #f3eff5;
+  font-family: "Nico Moji";
+}
+.filmexLogo span {
+  color: #782cbf;
+}
+
+input[type=checkbox] {
+  /* Double-sized Checkboxes */ /* IE */ /* FF */ /* Safari and Chrome */ /* Opera */
+  transform: scale(1.2);
+  padding: 10px;
+  margin-right: 10px;
+}
+
+.checkbox-text {
+  /* Checkbox text */
+  font-size: 13px;
+  color: #bab1bc;
+  display: inline-block;
+  text-align: left;
+}
+
+.wrapper__checkbox {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .profileContainer {
@@ -861,7 +1211,7 @@ main .category .title {
 
 body {
   font-family: "Roboto";
-  color: #F3EFF5;
+  color: #f3eff5;
   margin: 0;
   padding: 0;
   font-size: medium;
@@ -876,7 +1226,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #782CBF;
+  background-color: #782cbf;
   border-radius: 1100px;
 }
 
@@ -908,12 +1258,12 @@ main {
 }
 
 .filmexLogo {
-  color: #F3EFF5;
+  color: #f3eff5;
   font-family: "Nico Moji";
   cursor: pointer;
 }
 .filmexLogo span {
-  color: #782CBF;
+  color: #782cbf;
   cursor: pointer;
 }
 
@@ -926,7 +1276,7 @@ main {
 .separator {
   width: 5px;
   height: 5px;
-  background-color: #D2D21B;
+  background-color: #d2d21b;
   border-radius: 100%;
 }
 
@@ -937,7 +1287,7 @@ select {
   border: none;
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.7);
   background: #504957;
-  color: #F3EFF5;
+  color: #f3eff5;
   box-sizing: border-box;
   padding: 4px 8px;
   border-radius: 4px;

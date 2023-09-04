@@ -1,0 +1,64 @@
+.options {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  margin-top: 25px;
+
+  padding: 0;
+  gap: 20px;
+
+  .inputs {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+
+    .input {
+      width: 190px;
+    }
+  }
+
+  .content__main-text {
+    font-size: 13px;
+    color: $whiteText;
+  }
+}
+
+.services {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .credit_card {
+    width: 41px;
+    height: 30px;
+    margin-right: 12px;
+  }
+
+  .paypal {
+    width: 70px;
+    height: 30px;
+  }
+
+  .item {
+    width: 198px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 3px solid rgba(0, 0, 0, 0);
+    padding: 4px 0;
+    cursor: pointer;
+    &:hover {
+      border-bottom: 3px solid $whiteText;
+    }
+  }
+
+  .item--active {
+    border-bottom: 3px solid $whiteText;
+  }
+}
