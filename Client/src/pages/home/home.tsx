@@ -23,7 +23,7 @@ const Home = () => {
                   Wprowadź swój adres email aby rozpocząć swoją przygodę.
               </div>
               <div className='homeForm'>
-                  <input type='text' placeholder='Email' className='inputEmailHomge'/>
+                  <input type='text' placeholder='Email' className='inputEmailHomge input-background'/>
                   <button type='submit' className='button-primary'>Rozpocznij</button>
               </div>
             </div>

@@ -39,8 +39,22 @@ button {
 .button-secondary:active {
   background-color: #504957;
   box-shadow: inset #000 0 0 5px;
-  color: #782cbf;
-  border: 2px #782cbf solid;
+  color: #782CBF;
+  border: 2px #782CBF solid;
+}
+
+.button-exit {
+  background-color: rgb(134, 60, 60);
+  color: #F3EFF5;
+}
+.button-exit:hover {
+  background-color: rgb(201, 62, 62);
+  color: #F3EFF5;
+}
+.button-exit:active {
+  background-color: rgb(134, 60, 60);
+  box-shadow: inset #000 0 0 5px;
+  color: #F3EFF5;
 }
 
 .iconButton {
@@ -62,12 +76,40 @@ button {
   z-index: 5;
 }
 
+.addButton {
+  background-image: url("../imgs/icons/addIcon.svg");
+  transition: all ease-in-out 0.3s;
+}
+.addButton:hover {
+  filter: drop-shadow(#782CBF 1px 3px);
+  transform: scale(1.1);
+}
+
+.searchButton {
+  width: 30px;
+  height: 30px;
+  background-image: url("../imgs/icons/search.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.closeButton {
+  width: 25px;
+  height: 25px;
+  background-image: url("../imgs/icons/close.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 @font-face {
   font-family: "Nico Moji";
   src: url(./fonts/nicomoji/NicoMoji-Regular.ttf);
 }
 .home {
-  background-image: url("../imgs//theme/Background.jpg") center cover no-repeat;
+  background-image: url("../imgs//theme/Background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   height: 100vh;
   width: 100vw;
   min-height: 400px;
@@ -173,20 +215,6 @@ nav .navRight {
   align-items: center;
   gap: 1rem;
 }
-nav .navRight .searchButton {
-  width: 30px;
-  height: 30px;
-  background-image: url("../imgs/icons/search.svg");
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-nav .navRight .closeButton {
-  width: 25px;
-  height: 25px;
-  background-image: url("../imgs/icons/close.svg");
-  background-size: cover;
-  background-repeat: no-repeat;
-}
 nav .navRight .navMenu {
   display: flex;
   align-items: center;
@@ -206,7 +234,46 @@ nav .navRight .navSearch {
 }
 nav .navRight .navSearch input {
   background-color: #504957;
-  color: #f3eff5;
+  color: #F3EFF5;
+}
+nav .menu {
+  top: 4rem;
+  right: 0;
+  position: absolute;
+  width: 150px;
+  height: -moz-fit-content;
+  height: fit-content;
+  background-color: #000;
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+nav .menu.open {
+  opacity: 1;
+  transform: translateY(1);
+  max-height: -moz-fit-content;
+  max-height: fit-content;
+  padding-bottom: 1rem;
+  z-index: 10;
+}
+nav .menu.close {
+  opacity: 0;
+  height: -moz-fit-content;
+  height: fit-content;
+  transform: translateY(-100%);
+  padding-bottom: 0;
+  z-index: -1;
+}
+nav .menu .menu-item {
+  font-size: medium;
+  width: 100%;
+  border-bottom: 1px #F3EFF5 solid;
+  padding: 8px;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: all ease-in-out 0.3s;
+}
+nav .menu .menu-item:hover {
+  color: #9864c9;
 }
 
 main {
@@ -1049,6 +1116,99 @@ input[type=checkbox] {
   justify-content: center;
 }
 
+.profileContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  padding-top: 10%;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  position: relative;
+}
+.profileContainer .profileTile {
+  width: 14vw;
+  transition: all ease-in-out 0.3s;
+}
+.profileContainer .profileTile:hover {
+  cursor: pointer;
+  color: #9864c9;
+}
+.profileContainer .profileTile .profileImg {
+  width: 15vw;
+  min-height: 30vh;
+  background: #000;
+}
+.profileContainer .profileTile .profileName {
+  height: 10%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-exit-button {
+  position: absolute;
+  right: 2rem;
+  letter-spacing: 1px;
+  bottom: 2rem;
+}
+
+.AddProfileModal {
+  padding-top: 1rem;
+  box-sizing: border-box;
+  position: absolute;
+  border-radius: 10px;
+  z-index: 10;
+  background: rgb(22, 4, 40);
+  background: linear-gradient(0deg, rgb(22, 4, 40) 0%, rgba(40, 9, 69, 0.904441) 100%);
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  gap: 3rem;
+}
+.AddProfileModal .inputs {
+  display: flex;
+  flex-direction: column;
+  width: 225px;
+  gap: 2rem;
+}
+.AddProfileModal .inputs input[type=text] {
+  height: 50px;
+}
+.AddProfileModal .inputs .file {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  gap: 1rem;
+}
+.AddProfileModal .inputs .file label {
+  font-size: medium;
+}
+.AddProfileModal .inputs .file input[type=file] {
+  background-color: none;
+  padding: 0;
+}
+.AddProfileModal .inputs .file img {
+  width: 40px;
+  height: 40px;
+}
+.AddProfileModal .addRow {
+  display: flex;
+  box-sizing: border-box;
+  width: 100%;
+  justify-content: end;
+  padding: 0 2rem 2rem 0;
+}
+.AddProfileModal .right {
+  position: absolute;
+  right: 2rem;
+  top: 2rem;
+}
+
 body {
   font-family: "Roboto";
   color: #f3eff5;
@@ -1143,12 +1303,14 @@ select {
 }
 
 input {
-  background-color: rgba(255, 255, 255, 0.7);
   margin: 0;
   box-sizing: border-box;
   border: none;
   padding-left: 1rem;
   padding-right: 1rem;
   border-radius: 3px;
-  height: 100%;
+}
+
+.input-background {
+  background-color: #F3EFF5;
 }/*# sourceMappingURL=style.css.map */

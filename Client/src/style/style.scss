@@ -16,6 +16,8 @@
 @import "../pages/favoritesPage/favoritesPage.scss";
 @import "./registration";
 @import "./checkbox";
+@import '../pages/selectProfilPage/selectProfilePage';
+
 
 body {
   font-family: "Roboto";
@@ -106,13 +108,17 @@ select {
   background-size: cover;
   background-repeat: no-repeat;
 }
-input {
-  background-color: $whiteTransparent;
-  margin: 0;
-  box-sizing: border-box;
-  border: none;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  border-radius: 3px;
-  height: 100%;
+input{
+    background-color: $whiteTransparent;
+    margin: 0;
+    box-sizing: border-box;
+    border:none;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-radius: 3px;
+    height: 100%;
+}
+
+.input-background{
+  background-color: $whiteText;
 }
