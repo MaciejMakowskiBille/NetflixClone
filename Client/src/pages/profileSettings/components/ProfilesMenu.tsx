@@ -1,4 +1,3 @@
-import { ProfileResponseType } from "../../../types/responseTypes";
 import arrow from "../../../imgs/icons/settingsArrow.svg";
 import avatar from "../../../imgs/avatars/avatar.png";
 import { serverURL } from "../../../utils/links";

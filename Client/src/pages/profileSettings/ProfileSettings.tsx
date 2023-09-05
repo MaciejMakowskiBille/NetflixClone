@@ -1,6 +1,5 @@
 import Navigation from "../../components/Navigation/nav";
 // import  from "../../types/registrationTypes";
-import { AllUserDataResponseType } from "../../types/responseTypes";
 import { getAllUserData } from "../../utils/Gets";
 import ProfilesMenu from "./components/ProfilesMenu";
 import { useState, useEffect } from "react";
@@ -52,7 +51,6 @@ const UserData: AllUserDataResponseType = {
       updatedAt: "2023-08-22T15:43:05.649Z",
       publishedAt: "2023-08-22T15:43:05.647Z",
       avatar: {
-        id: 1,
         name: "av1.png",
         width: 50,
         height: 50,
@@ -61,7 +59,7 @@ const UserData: AllUserDataResponseType = {
         mime: "image/png",
         size: 1.12,
         url: "/uploads/av1_394c315578.png",
-
+        publishedAt: " asdas",
         provider: "local",
         createdAt: "2023-08-21T21:03:08.956Z",
         updatedAt: "2023-08-21T21:03:42.788Z",

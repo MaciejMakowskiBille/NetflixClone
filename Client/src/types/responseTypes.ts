@@ -195,3 +195,69 @@ type UserPostResponseType = {
     username: string;
   };
 };
+
+// SignIn SignOut Response Type
+type RegisterUserResponseType = {
+  jwt: string;
+  user: {
+    id: number;
+    phoneNumber: number;
+    email: string;
+    provider: string;
+    confirmed: boolean;
+    blocked: boolean;
+    createdAt: string;
+    updatedAt: string;
+    optInSubscription: boolean;
+    username: string;
+  };
+};
+
+type UserResponseType = {
+  id: number;
+  username: string;
+  email: string;
+  optInSubscription: boolean;
+  provider: string;
+  confirmed: boolean;
+  blocked: boolean;
+  phoneNumber?: number;
+  createdAt: string;
+  updatedAt: string;
+};
+
+type PaymentResponseType = {
+  attributes: {
+    cardName: string;
+    cardSname: string;
+    cardNumber: string;
+    securityCode: number;
+    expiryDate: string;
+    paymentsOffer: number;
+    paymentsProcessing: "creditCard" | "payPal";
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
+  };
+  id: number;
+};
+
+type ProfileResponseType = {
+  attributes: {
+    username: string;
+    ageGroup: "kid" | "teen" | "adult";
+    favorite_series?: {data: SeriesResponseType[]};
+    favorite_films?: {data: MovieResponseType};
+    avatar: MediaResponseType["attributes"]| null;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
+  };
+  id: number;
+};
+
+
+type AllUserDataResponseType = UserResponseType & {
+  profiles: Array<ProfileResponseType["attributes"] & { id: number }> | [];
+  payment: PaymentResponseType["attributes"] & {id: number} | null;
+}

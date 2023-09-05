@@ -140,3 +140,22 @@ export const getAllTypeMoviesByDate = async () =>{
   const movies = `films/?populate=deep&filters[publishedAt][$gte]=${filter}`
   return getBothTypes(series, movies)
 }
+
+function setToken(token: string) {
+  const headerObj = { headers: { Authorization: `Bearer ${token}` } };
+  return headerObj;
+}
+
+export const getAllUserData = async (): Promise<AllUserDataResponseType | null> => {
+  const tokenObj = setToken("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDcsImlhdCI6MTY5MzkwMDYzNSwiZXhwIjoxNjk2NDkyNjM1fQ.cuC-lKkWmx2MAw3bHde8JadkC5PpBCLehs7_NFvvF2Q");
+  const response = await axios.get(apiURL + `users/me?populate=payment,profiles.avatar`, tokenObj)
+  if(response && response.data){
+    // console.log(response);
+    console.log("sukces");
+      return response.data as AllUserDataResponseType;
+     
+  }else{
+    console.log("jest problem");
+    return null
+  }
+}

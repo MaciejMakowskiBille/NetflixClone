@@ -61,3 +61,11 @@ export const loginSchema = z.object({
   .nonempty("Pole jest wymagane")
   .min(8, "Musi zawierać conajmniej 8 znaków"),
 });
+
+export const settingsSchema = z.object({
+  // password: z.string().min(10, "wprowadź poprawną wartość").optional(),
+  email: z.string().email("niepoprawna wartość").optional().transform(e => e === "" ? undefined : e),
+  phoneNumber: z.number().min(9).optional()
+})
+
+export type SettingsSchemaType = z.infer<typeof settingsSchema>;
