@@ -11,15 +11,9 @@ export default function SettingsRow({
   index,
 }: {
   inputIsOpen: number;
-  register: UseFormRegister<{
-    email?: string | undefined;
-    phoneNumber?: number | undefined;
-  }>;
+  register: UseFormRegister<SettingsSchemaType>;
   setInputIsOpen: (value: React.SetStateAction<number>) => void;
-  errors: FieldErrors<{
-    email?: string | undefined;
-    phoneNumber?: number | undefined;
-  }>;
+  errors: FieldErrors<SettingsSchemaType>;
   resetForm: () => void;
   type: "email" | "phoneNumber";
   data: string | undefined;

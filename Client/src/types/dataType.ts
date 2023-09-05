@@ -167,3 +167,15 @@ type UserType = {
   optInSubscription?: boolean;
   username: string;
 };
+
+type putUserType = {
+  email?: string;
+  password?: string;
+  phoneNumber?: string;
+}
+
+type SettingsSchemaType = {
+  email?: string;
+  phoneNumber?:string;
+  password?:string;
+}

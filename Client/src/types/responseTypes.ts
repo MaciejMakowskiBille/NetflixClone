@@ -261,3 +261,12 @@ type AllUserDataResponseType = UserResponseType & {
   profiles: Array<ProfileResponseType["attributes"] & { id: number }> | [];
   payment: PaymentResponseType["attributes"] & {id: number} | null;
 }
+
+type PutUserResponseType = {
+  id: number,
+  email: string,
+  phoneNumber: string,
+  optInSubscription: boolean,
+  createdAt: string,
+  updatedAt: string,
+}
