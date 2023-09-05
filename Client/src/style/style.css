@@ -140,7 +140,7 @@ button {
   font-size: 5rem;
   font-family: "Nico Moji";
 }
-.home main .homeHeader .title text {
+.home main .homeHeader .title span {
   margin: 0;
   color: #782cbf;
 }

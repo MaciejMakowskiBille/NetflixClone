@@ -25,7 +25,7 @@ export default function SignIn() {
     try {
       const response = await signIn(data);
       if (response) {
-        navigate("/main");
+        navigate("/profile");
       }
     } catch (error) {
       if (error instanceof Error) {
