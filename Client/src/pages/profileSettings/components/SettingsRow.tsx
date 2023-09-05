@@ -1,0 +1,65 @@
+import { FieldErrors, UseFormRegister } from "react-hook-form";
+// import { AllUserDataResponseType } from "../../../types/responseTypes";
+export default function SettingsRow({
+  inputIsOpen,
+  register,
+  setInputIsOpen,
+  data,
+  type,
+  errors,
+  resetForm,
+  index,
+}: {
+  inputIsOpen: number;
+  register: UseFormRegister<{
+    email?: string | undefined;
+    phoneNumber?: number | undefined;
+  }>;
+  setInputIsOpen: (value: React.SetStateAction<number>) => void;
+  errors: FieldErrors<{
+    email?: string | undefined;
+    phoneNumber?: number | undefined;
+  }>;
+  resetForm: () => void;
+  type: "email" | "phoneNumber";
+  data: string | undefined;
+  index: number;
+}) {
+  return (
+    <div>
+      {inputIsOpen == index ? (
+        <div className="settings-item__row">
+          <div className="settings-item__input">
+            <input
+              type={type}
+              placeholder={data}
+              className="wrapper__text-input wrapper__text-input--modifySettings"
+              {...register(type)}
+              // name="email"
+              // onChange={handleChange}
+              autoFocus
+            />
+            {errors.email && (
+              <p className="error-message">{errors[type]?.message}</p>
+            )}
+          </div>
+          <div className="settings-item__buttons">
+            <button className="textButton" onClick={resetForm}>
+              Anuluj
+            </button>
+            <button type="submit" className="textButton">
+              Zapisz
+            </button>
+          </div>
+        </div>
+      ) : (
+        <div className="settings-item__row">
+          <p>{data ? data : "nie ustawiono"}</p>
+          <button className="textButton" onClick={() => setInputIsOpen(index)}>
+            zmień email
+          </button>
+        </div>
+      )}
+    </div>
+  );
+}

@@ -1,0 +1,81 @@
+*,
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.settings {
+  margin: 0;
+  margin-top: 20px;
+  padding: 0;
+  gap: 10px;
+  font-size: 16px;
+
+  button {
+    padding: 0;
+    background-color: inherit;
+  }
+  .settings__form {
+    width: calc(100% - 200px);
+
+    h3.settings__header {
+      margin: 10px 0;
+      display: flex;
+      font-size: 40px;
+      color: $pink;
+
+      justify-content: start;
+    }
+    .settings-item {
+      border-top: 2px solid $whiteText;
+      display: flex;
+      .settings-item__title {
+        min-width: 300px;
+        // border: 1px solid red;
+        font-size: 24px;
+        font-weight: bold;
+        padding-top: 10px;
+      }
+
+      .settings-item__content {
+        display: flex;
+        flex-direction: column;
+        // align-items: center;
+        flex-wrap: wrap;
+        // width: calc(100% - 190px);
+        width: 100%;
+        padding: 5px 0 50px 0;
+
+        .settings-item__row {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin: 10px 0 10px 50px;
+          align-items: start;
+          p.offer {
+            white-space: pre-wrap;
+            line-height: 2.5;
+          }
+
+          button.offer {
+            padding: 6px 0;
+          }
+
+          &.settings-item__row--offer {
+            margin-top: 1px;
+          }
+
+          .settings-item__buttons {
+            display: flex;
+            gap: 20px;
+          }
+        }
+      }
+
+      .settings-item__content--profiles {
+        padding: 5px 0 10px 0;
+      }
+    }
+  }
+}
