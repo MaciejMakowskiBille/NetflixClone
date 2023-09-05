@@ -9,6 +9,11 @@ module.exports = (plugin) => {
       .then((res) => {
         ctx.response.status = 200;
       });
+    
+    const {id, email, phoneNumber, optInSubscription, createdAt, updatedAt} = ctx.state.user;
+    ctx.response.body = {
+      id, email, phoneNumber, optInSubscription, createdAt, updatedAt
+    }
   };
 
   plugin.controllers.user.create = async (ctx) => {
