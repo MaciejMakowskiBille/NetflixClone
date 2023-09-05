@@ -3,6 +3,8 @@ import { z } from "zod";
 const cardNumberRegex =
   "^(?:4[0-9]{12}(?:[0-9]{3})?|[25][1-7][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35d{3})d{11})$";
 
+
+
 const expiryDateValid = (value: string): boolean => {
   const date = new Date();
   const year = +date.getFullYear().toString().slice(2);
@@ -62,10 +64,12 @@ export const loginSchema = z.object({
   .min(8, "Musi zawierać conajmniej 8 znaków"),
 });
 
+const phoneRegex = "^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{3,5}$";
+
 export const settingsSchema = z.object({
   // password: z.string().min(10, "wprowadź poprawną wartość").optional(),
-  email: z.string().email("niepoprawna wartość").optional().transform(e => e === "" ? undefined : e),
-  phoneNumber: z.number().min(9).optional()
+  email: z.string().email("niepoprawna wartość").optional().transform(e => typeof e === 'undefined' ? "" : e),
+  phoneNumber: z.string().regex(new RegExp(phoneRegex), "niewłaściwa wartość").optional().transform(e => typeof e === 'undefined' ? "" : e)
 })
 
-export type SettingsSchemaType = z.infer<typeof settingsSchema>;
+// export type SettingsSchemaType = z.infer<typeof settingsSchema>;

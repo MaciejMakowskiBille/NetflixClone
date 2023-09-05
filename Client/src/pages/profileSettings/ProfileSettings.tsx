@@ -3,7 +3,7 @@ import { getAllUserData } from "../../utils/Gets";
 import ProfilesMenu from "./components/ProfilesMenu";
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { settingsSchema, SettingsSchemaType } from "../../utils/schemas";
+import { settingsSchema } from "../../utils/schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import SettingsRow from "./components/SettingsRow";
 
@@ -83,10 +83,10 @@ const ProfileSettings = () => {
     null
   );
   const [inputIsOpen, setInputIsOpen] = useState<number>(-1);
-  const [inputData, setInputData] = useState<SettingsSchemaType>({
-    phoneNumber: undefined,
-    email: "",
-  });
+  // const [inputData, setInputData] = useState<SettingsSchemaType>({
+  //   phoneNumber: undefined,
+  //   email: "",
+  // });
 
   const {
     clearErrors,
@@ -134,6 +134,23 @@ const ProfileSettings = () => {
     // });
     // console.log(e.target.value);
   }
+
+  const cleanSettingsData = (data: SettingsSchemaType) => {
+    const values = Object.values(data);
+    const keys = Object.keys(data);
+    const output = values.map((item, index) => {
+      if (item.length) {
+        const key = keys[index];
+        if (key === "phoneNumber") {
+          return { phoneNumber: item };
+        } else if (key === "email") {
+          return { email: item };
+        } else {
+          return { password: item };
+        }
+      }
+    });
+  };
 
   const resetForm = () => {
     reset({
