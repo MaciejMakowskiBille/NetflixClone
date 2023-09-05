@@ -1063,6 +1063,165 @@ input[type=checkbox] {
   height: 18px;
 }
 
+*,
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.settings {
+  margin: 0;
+  margin-top: 20px;
+  padding: 0;
+  gap: 10px;
+  font-size: 16px;
+}
+.settings button {
+  padding: 0;
+  background-color: inherit;
+}
+.settings .settings__form {
+  width: calc(100% - 200px);
+}
+.settings .settings__form h3.settings__header {
+  margin: 10px 0;
+  display: flex;
+  font-size: 40px;
+  color: #d8b5f9;
+  justify-content: start;
+}
+.settings .settings__form .settings-item {
+  border-top: 2px solid #f3eff5;
+  display: flex;
+}
+.settings .settings__form .settings-item .settings-item__title {
+  min-width: 300px;
+  font-size: 24px;
+  font-weight: bold;
+  padding-top: 10px;
+}
+.settings .settings__form .settings-item .settings-item__content {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 5px 0 50px 0;
+}
+.settings .settings__form .settings-item .settings-item__content .settings-item__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 0 10px 50px;
+  align-items: start;
+}
+.settings .settings__form .settings-item .settings-item__content .settings-item__row p.offer {
+  white-space: pre-wrap;
+  line-height: 2.5;
+}
+.settings .settings__form .settings-item .settings-item__content .settings-item__row button.offer {
+  padding: 6px 0;
+}
+.settings .settings__form .settings-item .settings-item__content .settings-item__row.settings-item__row--offer {
+  margin-top: 1px;
+}
+.settings .settings__form .settings-item .settings-item__content .settings-item__row .settings-item__buttons {
+  display: flex;
+  gap: 20px;
+}
+.settings .settings__form .settings-item .settings-item__content--profiles {
+  padding: 5px 0 10px 0;
+}
+
+.profilesMenu {
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  width: calc(100% - 200px);
+  align-items: end;
+  gap: 10px;
+  font-size: 18px;
+}
+.profilesMenu .profilesMenu-item {
+  width: 60%;
+}
+.profilesMenu .profilesMenu-item .profilesMenu-item__header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #f3eff5;
+}
+.profilesMenu .profilesMenu-item .profilesMenu-item__header .profilesMenu-item__profileData {
+  display: flex;
+  gap: 20px;
+  height: 60px;
+}
+.profilesMenu .profilesMenu-item .profilesMenu-item__header .profilesMenu-item__profileData .profilesMenu-item__photo {
+  width: 60px;
+  height: 60px;
+}
+.profilesMenu .profilesMenu-item .profilesMenu-item__header .profilesMenu-item__profileData .profilesMenu-item__text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.profilesMenu .profilesMenu-item .profilesMenu-item__header .profilesMenu-item__profileData .profilesMenu-item__text p {
+  color: #d8b5f9;
+}
+.profilesMenu .profilesMenu-item .profilesMenu-item__header .arrow {
+  display: flex;
+  align-items: center;
+}
+.profilesMenu .profilesMenu-item .profilesMenu-item__header .arrow--open {
+  transition: 200ms linear;
+  transform: rotate(90deg);
+  transform-origin: center;
+}
+.profilesMenu .profilesMenu-item .profilesMenu-item__header:hover {
+  background-color: rgba(193, 73, 185, 0.326);
+}
+.profilesMenu .profilesMenu-item .drop-down {
+  height: 0;
+  opacity: 0;
+  transition: 200ms linear;
+  overflow: hidden;
+  display: flex;
+  justify-content: end;
+}
+.profilesMenu .profilesMenu-item .drop-down .drop-down__content {
+  padding: 0 30px;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.profilesMenu .profilesMenu-item .drop-down .drop-down__content p {
+  height: -moz-fit-content;
+  height: fit-content;
+}
+.profilesMenu .profilesMenu-item .drop-down--open {
+  transition: height 300ms ease-in, opacity 0.5s ease-in;
+  height: 60px;
+  opacity: 1;
+  display: flex;
+  justify-content: end;
+}
+.profilesMenu .profilesMenu-item .drop-down--open .drop-down__content {
+  padding: 0 30px;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.profilesMenu .profilesMenu-item .drop-down--open .drop-down__content p {
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
 body {
   font-family: "Roboto";
   color: #f3eff5;

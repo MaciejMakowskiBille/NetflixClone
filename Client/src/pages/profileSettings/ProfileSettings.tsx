@@ -1,5 +1,4 @@
 import Navigation from "../../components/Navigation/nav";
-// import  from "../../types/registrationTypes";
 import { getAllUserData } from "../../utils/Gets";
 import ProfilesMenu from "./components/ProfilesMenu";
 import { useState, useEffect } from "react";

@@ -1,4 +1,4 @@
-import arrow from "../../../imgs/icons/settingsArrow.svg";
+import arrow from "../../../imgs/icons/arrow.svg";
 import avatar from "../../../imgs/avatars/avatar.png";
 import { serverURL } from "../../../utils/links";
 
