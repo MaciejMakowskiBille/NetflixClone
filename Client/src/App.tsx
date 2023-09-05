@@ -18,12 +18,19 @@ const App = () => {
         <Route path="/signUp" element={<SignUp />} />
         <Route path="/signIn" element={<SignIn />} />
         <Route path="/" element={<Home />} />
-        <Route path="/movie/:movieType/:movieId" element={<MoviePage />} />
-        <Route path="/main" element={<MainPage />} />
-        <Route path="/profile" element={<SelectProfilePage />} />
-        <Route path="/list/:type/:filter" element={<FilteredMovies />} />
-        <Route path="/producers" element={<ProducersPage />} />
-        <Route path="favorites" element={<FavoritesPage/>}/>
+        {
+          localStorage.getItem("jwt") ?
+          <>
+            <Route path="/*" element={<MainPage/>} />
+            <Route path="/movie/:movieType/:movieId" element={<MoviePage />} />
+            <Route path="/main" element={<MainPage />} />
+            <Route path="/profile" element={<SelectProfilePage />} />
+            <Route path="/list/:type/:filter" element={<FilteredMovies />} />
+            <Route path="/producers" element={<ProducersPage />} />
+            <Route path="favorites" element={<FavoritesPage/>}/>
+          </>
+          : <Route path="/*" element={<Home/>} />
+        }
       </Routes>
     </Router>
   );
