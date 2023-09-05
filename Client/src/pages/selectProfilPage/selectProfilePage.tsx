@@ -37,6 +37,7 @@ const SelectProfilePage = () =>{
                                 key={profile.id} 
                                 name={profile.attributes.username} 
                                 image={profile.attributes.avatar.data?.attributes.url}
+                                profileId={profile.id}
                             />
                         ))
                         : null

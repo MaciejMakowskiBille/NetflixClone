@@ -4,12 +4,19 @@ import { serverURL } from "../../../utils/links"
 type ProfileTileProps = {
     name: string,
     image: string
+    profileId: number
 }
 
-const ProfileTile = ({name, image}: ProfileTileProps) =>{
+const ProfileTile = ({name, image, profileId}: ProfileTileProps) =>{
     const navigate = useNavigate()
+
+    const chooseProfile = () => {
+        localStorage.setItem("profileId", `${profileId}`);
+        navigate('/main');
+    }
+
     return(
-            <div className="profileTile" onClick={() => navigate('/main')} >
+            <div className="profileTile" onClick={chooseProfile} >
                 <div className="profileImg">
                 {
                     image ? 
