@@ -140,3 +140,11 @@ export const getAllTypeMoviesByDate = async () =>{
   const movies = `films/?populate=deep&filters[publishedAt][$gte]=${filter}`
   return getBothTypes(series, movies)
 }
+
+export const getUserProfiles = async (userId: number): Promise<ProfileInfo[] | null> => {  
+  const response = await axios.get(apiURL + `profiles?populate=user,avatar&filters[user][id][$eq]=${userId}`)
+  if (response && response.data.data) {
+    return response.data.data;
+  }
+  return null
+}

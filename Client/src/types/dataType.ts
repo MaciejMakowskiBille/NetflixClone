@@ -91,3 +91,52 @@ type Producer = {
     name:string
     image:string
 }
+
+type AgeGroup = "adult" | "kid" | "teen"
+
+
+type NewProfileInfo = {
+    name: string
+    ageGroup: AgeGroup
+    avatar: File | null
+}
+
+type NewProfileCompleteInfo = NewProfileInfo & {
+    userId: number,
+}
+
+type UserInfo = {
+    data: {
+        id: number,
+        attributes: {
+            username: string,
+            email: string,
+            provider: string,
+            confirmed: boolean,
+            blocked: boolean,
+            PhoneNumber: number,
+            createdAt: string,
+            updatedAt: string,
+            optInSubscription: boolean | null
+        }
+    }
+}
+
+type ProfileInfo = {
+    id: number,
+    attributes: {
+        username: string,
+        ageGroup: string,
+        createdAt: string,
+        updatedAt: string,
+        publishedAt: string,
+        user: UserInfo,
+        avatar: {
+            data: {
+                attributes: {
+                    url: string,
+                }
+            }
+        }
+    }
+}

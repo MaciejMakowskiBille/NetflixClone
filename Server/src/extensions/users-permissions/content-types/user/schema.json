@@ -78,11 +78,11 @@
       "relation": "oneToMany",
       "target": "api::series-s.series-s"
     },
-    "profile": {
+    "profiles": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "oneToMany",
       "target": "api::profile.profile",
-      "inversedBy": "user"
+      "mappedBy": "user"
     },
     "payment": {
       "type": "relation",

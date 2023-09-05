@@ -5,11 +5,12 @@
     padding-top: 10%;
     align-items: center;
     justify-content: center;
-    gap: 2rem;
+    gap: 4rem;
     position: relative;
 
     .profileTile{
         width: 14vw;
+        height: 14vw;
         transition: all ease-in-out 0.3s;
 
         &:hover{
@@ -18,11 +19,18 @@
         }
 
         .profileImg{
-            width: 15vw;
-            min-height: 30vh;
+            height: 100%;
             background: #000;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+
+            img {
+                height: 100%;
+            }
         }
         .profileName{
+            margin-top: 20px;
             height: 10%;
             width: 100%;
             display: flex;
@@ -43,6 +51,7 @@
     padding-top: 1rem;
     box-sizing: border-box;
     position: absolute;
+    top: 40px;
     border-radius: 10px;
     z-index: 10;
     background: rgb(22,4,40);
@@ -53,6 +62,14 @@
     align-items: center;
     justify-content: start;
     gap: 3rem;
+
+    img {
+        object-fit:contain;
+    }
+
+    label{
+        font-size: medium;
+    }
 
     .inputs{
         display: flex;
@@ -69,9 +86,7 @@
             align-items: start;
             justify-content: center;
             gap: 1rem;
-            label{
-                font-size: medium;
-            }
+
             input[type="file"]{
                 background-color: none;
                 padding: 0;

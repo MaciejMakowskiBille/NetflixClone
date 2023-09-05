@@ -16,7 +16,7 @@ button {
 
 .button-primary {
   background-color: #782cbf;
-  color: #f3eff5;
+  color: #F3EFF5;
 }
 .button-primary:hover {
   background-color: #9864c9;
@@ -28,19 +28,19 @@ button {
 
 .button-secondary {
   background-color: #504957;
-  color: #f3eff5;
+  color: #F3EFF5;
   border: 2px #782cbf solid;
 }
 .button-secondary:hover {
   background-color: #421969;
-  color: #f3eff5;
-  border: 2px #f3eff5 solid;
+  color: #F3EFF5;
+  border: 2px #F3EFF5 solid;
 }
 .button-secondary:active {
   background-color: #504957;
   box-shadow: inset #000 0 0 5px;
-  color: #782CBF;
-  border: 2px #782CBF solid;
+  color: #782cbf;
+  border: 2px #782cbf solid;
 }
 
 .button-exit {
@@ -81,7 +81,7 @@ button {
   transition: all ease-in-out 0.3s;
 }
 .addButton:hover {
-  filter: drop-shadow(#782CBF 1px 3px);
+  filter: drop-shadow(#782cbf 1px 3px);
   transform: scale(1.1);
 }
 
@@ -471,7 +471,7 @@ main .category .title {
 }
 .movieInfoMain .content .short .top .smallInfo {
   box-sizing: border-box;
-  background-color: #d2d21b;
+  background-color: #D2D21B;
   padding-left: 8px;
   padding-right: 8px;
   padding-top: 2px;
@@ -814,12 +814,12 @@ input[type=number]::-webkit-inner-spin-button {
   width: 400px;
   color: inherit;
   background-color: inherit;
-  border: 2px solid #f3eff5;
+  border: 2px solid #F3EFF5;
   border-radius: 4px;
 }
 .wrapper__text-input:focus {
   outline: none;
-  border: 3px solid #f3eff5;
+  border: 3px solid #F3EFF5;
 }
 
 .wrapper__text-input--smaller {
@@ -832,7 +832,7 @@ input[type=number]::-webkit-inner-spin-button {
   border: 1px solid #782cbf;
   border-radius: 4px;
   padding: 0 13px;
-  color: #f3eff5;
+  color: #F3EFF5;
   display: flex;
   cursor: pointer;
   transition: 0.3s;
@@ -915,7 +915,7 @@ input[type=number]::-webkit-inner-spin-button {
 }
 .content .content__main-text {
   font-size: 13px;
-  color: #f3eff5;
+  color: #F3EFF5;
 }
 
 .services {
@@ -942,10 +942,10 @@ input[type=number]::-webkit-inner-spin-button {
   cursor: pointer;
 }
 .services .item:hover {
-  border-bottom: 3px solid #f3eff5;
+  border-bottom: 3px solid #F3EFF5;
 }
 .services .item--active {
-  border-bottom: 3px solid #f3eff5;
+  border-bottom: 3px solid #F3EFF5;
 }
 
 .backdrop {
@@ -973,7 +973,7 @@ input[type=number]::-webkit-inner-spin-button {
 }
 .modal .modal__header h2 {
   margin: 0;
-  color: #f3eff5;
+  color: #F3EFF5;
 }
 .modal .modal__content {
   padding: 1rem;
@@ -1012,14 +1012,14 @@ input[type=number]::-webkit-inner-spin-button {
   min-height: 400px;
   min-width: 600px;
   font-family: "Roboto";
-  color: #f3eff5;
+  color: #F3EFF5;
   font-size: 16px;
   display: flex;
   justify-content: center;
 }
 
 .button--paypal {
-  background-color: #f3eff5;
+  background-color: #F3EFF5;
   color: #000;
   display: flex;
   flex-direction: row;
@@ -1032,13 +1032,13 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 .error-message {
-  color: #dc3545;
+  color: rgb(134, 60, 60);
   padding-top: 10px;
   overflow-wrap: break-word;
 }
 
 input.error {
-  border: 2px solid rgb(255, 148, 148);
+  border: 2px solid rgb(201, 62, 62);
 }
 
 .wrapper {
@@ -1047,7 +1047,7 @@ input.error {
   flex-direction: column;
   justify-content: center;
   gap: 20px;
-  color: #f3eff5;
+  color: #F3EFF5;
 }
 .wrapper .wrapper__header {
   color: inherit;
@@ -1088,7 +1088,7 @@ input.error {
 }
 
 .filmexLogo {
-  color: #f3eff5;
+  color: #F3EFF5;
   font-family: "Nico Moji";
 }
 .filmexLogo span {
@@ -1123,11 +1123,12 @@ input[type=checkbox] {
   padding-top: 10%;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
+  gap: 4rem;
   position: relative;
 }
 .profileContainer .profileTile {
   width: 14vw;
+  height: 14vw;
   transition: all ease-in-out 0.3s;
 }
 .profileContainer .profileTile:hover {
@@ -1135,11 +1136,17 @@ input[type=checkbox] {
   color: #9864c9;
 }
 .profileContainer .profileTile .profileImg {
-  width: 15vw;
-  min-height: 30vh;
+  height: 100%;
   background: #000;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+.profileContainer .profileTile .profileImg img {
+  height: 100%;
 }
 .profileContainer .profileTile .profileName {
+  margin-top: 20px;
   height: 10%;
   width: 100%;
   display: flex;
@@ -1158,6 +1165,7 @@ input[type=checkbox] {
   padding-top: 1rem;
   box-sizing: border-box;
   position: absolute;
+  top: 40px;
   border-radius: 10px;
   z-index: 10;
   background: rgb(22, 4, 40);
@@ -1168,6 +1176,13 @@ input[type=checkbox] {
   align-items: center;
   justify-content: start;
   gap: 3rem;
+}
+.AddProfileModal img {
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.AddProfileModal label {
+  font-size: medium;
 }
 .AddProfileModal .inputs {
   display: flex;
@@ -1184,9 +1199,6 @@ input[type=checkbox] {
   align-items: start;
   justify-content: center;
   gap: 1rem;
-}
-.AddProfileModal .inputs .file label {
-  font-size: medium;
 }
 .AddProfileModal .inputs .file input[type=file] {
   background-color: none;
@@ -1211,7 +1223,7 @@ input[type=checkbox] {
 
 body {
   font-family: "Roboto";
-  color: #f3eff5;
+  color: #F3EFF5;
   margin: 0;
   padding: 0;
   font-size: medium;
@@ -1258,7 +1270,7 @@ main {
 }
 
 .filmexLogo {
-  color: #f3eff5;
+  color: #F3EFF5;
   font-family: "Nico Moji";
   cursor: pointer;
 }
@@ -1276,7 +1288,7 @@ main {
 .separator {
   width: 5px;
   height: 5px;
-  background-color: #d2d21b;
+  background-color: #D2D21B;
   border-radius: 100%;
 }
 
@@ -1287,7 +1299,7 @@ select {
   border: none;
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.7);
   background: #504957;
-  color: #f3eff5;
+  color: #F3EFF5;
   box-sizing: border-box;
   padding: 4px 8px;
   border-radius: 4px;
@@ -1303,12 +1315,14 @@ select {
 }
 
 input {
+  background-color: rgba(255, 255, 255, 0.7);
   margin: 0;
   box-sizing: border-box;
   border: none;
   padding-left: 1rem;
   padding-right: 1rem;
   border-radius: 3px;
+  height: 100%;
 }
 
 .input-background {

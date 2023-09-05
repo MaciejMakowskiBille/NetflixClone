@@ -1,15 +1,24 @@
 import { useNavigate } from "react-router-dom"
+import { serverURL } from "../../../utils/links"
 
+type ProfileTileProps = {
+    name: string,
+    image: string
+}
 
-
-const ProfileTile = () =>{
+const ProfileTile = ({name, image}: ProfileTileProps) =>{
     const navigate = useNavigate()
-
     return(
-        <div className="profileTile" onClick={() => navigate('/main')} >
-            <div className="profileImg"/>
+            <div className="profileTile" onClick={() => navigate('/main')} >
+                <div className="profileImg">
+                {
+                    image ? 
+                    <img src={`${serverURL}${image}`} />
+                    : null
+                }
+            </div>
             <div className="profileName">
-                Name
+                {name}
             </div>
         </div>
     )
