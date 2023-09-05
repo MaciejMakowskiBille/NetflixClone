@@ -62,6 +62,15 @@ button {
   z-index: 5;
 }
 
+.textButton {
+  color: #d8b5f9;
+  cursor: pointer;
+  font-size: 16px;
+}
+.textButton:hover {
+  color: #9864c9;
+}
+
 @font-face {
   font-family: "Nico Moji";
   src: url(./fonts/nicomoji/NicoMoji-Regular.ttf);
@@ -757,6 +766,15 @@ input[type=number]::-webkit-inner-spin-button {
 
 .wrapper__text-input--smaller {
   width: 190px;
+}
+
+.wrapper__text-input--modifySettings {
+  border: none;
+  height: 20px;
+  padding: 0;
+}
+.wrapper__text-input--modifySettings:focus {
+  border: none;
 }
 
 .payments-offer {
