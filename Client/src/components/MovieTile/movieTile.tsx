@@ -13,6 +13,7 @@ type MovieTileProps = {
     transcription?:boolean,
     duration?:number,
     seasons?:number
+    isFavorite?: boolean
 }
 
 const MovieTile = (props:MovieTileProps) => {
@@ -29,7 +30,6 @@ const MovieTile = (props:MovieTileProps) => {
         setTileImage(props.img)
         setIsMouseOverTile(false)
     }
-
 
     return(
         <div className="tile">
@@ -72,11 +72,11 @@ const MovieTile = (props:MovieTileProps) => {
                     </div>
                     </div>
                     <div className="infos middle">
-                            <div className="movieLogo" style={{backgroundImage:`url(${serverURL + props.logo})`}}/>
-                            <div className="buttons">
-                            <div className="icon iconButton favButton"/>
-                            <div className="icon iconButton moreButton" onClick={() => navigate(path)}/>
-                            </div>
+                        <div className="movieLogo" style={{backgroundImage:`url(${serverURL + props.logo})`}}/>
+                        <div className="buttons">
+                        <div className={`icon iconButton ${props.isFavorite ? "activeFavButton" : "favButton"}`}/>
+                        <div className="icon iconButton moreButton" onClick={() => navigate(path)}/>
+                    </div>
                             
                     </div>
                     <div className="categories">

@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react"
 import MovieTile from "../MovieTile/movieTile"
+import { useFavoriteMoviesIds } from "../../customHooks/useFavoriteMoviesIds"
+import { useFavoriteSeriesIds } from "../../customHooks/useFavoriteSeriesIds"
 type CategoryRowPorps = {
     title:string,
     moviesList:CombinedDataType
@@ -10,6 +12,8 @@ const CategoryRow = (props:CategoryRowPorps) => {
     const [filteredMovies, setFilteredMovies] = useState<CombinedDataType>([])
     let displayed = 0;
     const [display, setDisplay] = useState(4)
+    const favoriteMoviesIds = useFavoriteMoviesIds({reloadValueCheck: null})
+    const favoriteSeriesIds = useFavoriteSeriesIds({reloadValueCheck: null})
 
     const checkVideoType = (data: MovieDataType | SeriesDataType) => {
             return(
@@ -24,6 +28,7 @@ const CategoryRow = (props:CategoryRowPorps) => {
                     ageCategory={data.ageCategory}
                     premiere={data.premiere}
                     transcription={data.transcription}
+                    isFavorite={"seasons" in data ? favoriteSeriesIds?.includes(data.id) : favoriteMoviesIds?.includes(data.id)}
                     {...("duration" in data && { duration: data.duration })}
                     {...("seasons" in data && { seasons: data.seasons.length })}
                 />
