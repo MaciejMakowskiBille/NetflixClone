@@ -25,7 +25,7 @@ export default function SettingsRow({
         <div className="settings-item__row">
           <div className="settings-item__input">
             <input
-              type={type}
+              type="text"
               placeholder={data}
               className="wrapper__text-input wrapper__text-input--modifySettings"
               {...register(type)}
@@ -41,7 +41,11 @@ export default function SettingsRow({
             <button className="textButton" onClick={resetForm}>
               Anuluj
             </button>
-            <button type="submit" className="textButton">
+            <button
+              type="submit"
+              className="textButton"
+              // onClick={(e) => e.preventDefault()}
+            >
               Zapisz
             </button>
           </div>
