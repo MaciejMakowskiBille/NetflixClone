@@ -4,8 +4,7 @@
   "info": {
     "singularName": "producer",
     "pluralName": "producers",
-    "displayName": "Producer",
-    "description": ""
+    "displayName": "Producer"
   },
   "options": {
     "draftAndPublish": true
@@ -16,12 +15,14 @@
       "type": "string"
     },
     "image": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
       "allowedTypes": [
-        "images"
-      ]
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }
