@@ -141,7 +141,7 @@ export const getAllTypeMoviesByDate = async () =>{
   return getBothTypes(series, movies)
 }
 
-function setToken(token: string) {
+export function setToken(token: string) {
   const headerObj = { headers: { Authorization: `Bearer ${token}` } };
   return headerObj;
 }
@@ -150,12 +150,10 @@ export const getAllUserData = async (): Promise<AllUserDataResponseType | null> 
   const tokenObj = setToken("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDcsImlhdCI6MTY5MzkxMjI0MywiZXhwIjoxNjk2NTA0MjQzfQ.il2-W1ahBu674nCAoz37dJxz1-cfllNZ_7sSTZL2R5Y");
   const response = await axios.get(apiURL + `users/me?populate=payment,profiles.avatar`, tokenObj)
   if(response && response.data){
-    // console.log(response);
-    console.log("sukces");
+
       return response.data as AllUserDataResponseType;
      
   }else{
-    console.log("jest problem");
     return null
   }
 }

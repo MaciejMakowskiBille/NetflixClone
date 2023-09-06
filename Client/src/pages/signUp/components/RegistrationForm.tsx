@@ -39,7 +39,6 @@ const RegistrationForm = () => {
       if (err instanceof Error) {
         setModalData({ success: false, content: err.message });
       }
-      console.log("error: ", err);
     }
   };
 
