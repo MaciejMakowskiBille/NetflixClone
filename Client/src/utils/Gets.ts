@@ -148,3 +148,19 @@ export const getUserProfiles = async (userId: number): Promise<ProfileInfo[] | n
   }
   return null
 }
+
+export const getFavoriteMovies = async (profileId: number): Promise<ProfileFavoritesResponsetype | null> => {
+  const response = await axios.get(apiURL + `profiles/${profileId}?populate=attributes,favorite_films`)
+  if (response && response.data.data) {
+    return response.data.data;
+  }
+  return null
+}
+
+export const getFavoriteSeries = async (profileId: number): Promise<ProfileFavoritesResponsetype | null> => {
+  const response = await axios.get(apiURL + `profiles/${profileId}?populate=attributes,favorite_series`)
+  if (response && response.data.data) {
+    return response.data.data;
+  }
+  return null;
+}

@@ -67,6 +67,10 @@ button {
   background-image: url("../imgs/movieTile/Favorite.svg");
 }
 
+.activeFavButton {
+  background-image: url("../imgs/icons/favorite-active.svg");
+}
+
 .moreButton {
   background-image: url("../imgs/movieTile/More.svg");
 }

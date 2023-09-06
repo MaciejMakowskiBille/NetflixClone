@@ -165,3 +165,43 @@ type ProducerResponseType = {
       }
       id:number
 }
+
+type ProfileFavoritesResponsetype = {
+    id: number,
+    attributes: {
+        favorite_films: {
+            data: {
+                id: number,
+                attributes: {
+                    title: string,
+                    description: string,
+                    premiere: string,
+                    longDescription: string,
+                    duration: number,
+                    transcription: boolean,
+                    ageCategory: number,
+                    createdAt: string,
+                    updatedAt: string,
+                    publishedAt: string
+                }
+            } []
+        }
+        favorite_series: {
+            data: {
+                id: number,
+                attributes: {
+                    title: string,
+                    description: string,
+                    premiere: string,
+                    longDescription: string,
+                    duration: number,
+                    transcription: boolean,
+                    ageCategory: number,
+                    createdAt: string,
+                    updatedAt: string,
+                    publishedAt: string
+                }
+            } []
+        }
+    }
+}
