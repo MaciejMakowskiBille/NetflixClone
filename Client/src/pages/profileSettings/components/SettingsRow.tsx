@@ -19,6 +19,13 @@ export default function SettingsRow({
   data: string | undefined;
   index: number;
 }) {
+  let filedName;
+  if (type === "email") {
+    filedName = "email";
+  } else if (type === "phoneNumber") {
+    filedName = "numer";
+  }
+
   return (
     <div>
       {inputIsOpen == index ? (
@@ -29,11 +36,9 @@ export default function SettingsRow({
               placeholder={data}
               className="wrapper__text-input wrapper__text-input--modifySettings"
               {...register(type)}
-              // name="email"
-              // onChange={handleChange}
               autoFocus
             />
-            {errors.email && (
+            {errors[type] && (
               <p className="error-message">{errors[type]?.message}</p>
             )}
           </div>
@@ -41,11 +46,7 @@ export default function SettingsRow({
             <button className="textButton" onClick={resetForm}>
               Anuluj
             </button>
-            <button
-              type="submit"
-              className="textButton"
-              // onClick={(e) => e.preventDefault()}
-            >
+            <button type="submit" className="textButton">
               Zapisz
             </button>
           </div>
@@ -54,7 +55,7 @@ export default function SettingsRow({
         <div className="settings-item__row">
           <p>{data ? data : "nie ustawiono"}</p>
           <button className="textButton" onClick={() => setInputIsOpen(index)}>
-            zmień email
+            zmień {filedName}
           </button>
         </div>
       )}
