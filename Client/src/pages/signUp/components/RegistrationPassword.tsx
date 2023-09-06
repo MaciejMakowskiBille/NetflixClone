@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { useRegistrationContext } from "../../../pages/signUp/hooks/useRegistrationContext";
+import Password from "../../../components/Input/Password";
 
 function RegistrationPassword() {
   const { register, errors, setNoValidateData, nextPage } =
@@ -14,6 +15,13 @@ function RegistrationPassword() {
       }));
     }
   };
+
+  const [passwordShown, setPasswordShown] = useState<boolean>(false);
+
+  const classNameText = errors?.password
+    ? "wrapper__text-input error"
+    : "wrapper__text-input";
+
   return (
     <div className="black-background">
       <div className="wrapper">
@@ -25,23 +33,16 @@ function RegistrationPassword() {
           Będziesz używał tego emailu i hasła do logowania się do towjego konta
           FilmeX aby oglądać twoje ulubione filmy i seriale.
         </p>
-        <div>
-          <input
-            className={
-              errors?.password
-                ? "wrapper__text-input error"
-                : "wrapper__text-input"
-            }
-            type="password"
-            {...register!("password")}
-            name="password"
-            placeholder="hasło"
-            onChange={handleChange}
-          />
-          {errors?.password && (
-            <p className="error-message">{errors.password?.message}</p>
-          )}
-        </div>
+
+        <Password
+          passwordShown={passwordShown}
+          setPasswordShown={setPasswordShown}
+          handleChange={handleChange}
+          register={register}
+          className={classNameText}
+          errors={errors}
+        />
+
         <button
           className="form-button button-primary"
           onClick={() => nextPage!("password")}
