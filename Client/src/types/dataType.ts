@@ -174,12 +174,12 @@ type putUserType = {
   phoneNumber?: string;
 }
 
-// type SettingsSchemaType = {
-//   email?: string;
-//   phoneNumber?:string;
-//   password?:string;
-// }
-
 type SettingsSchemaType = {
   [key: string]: string | undefined;
+};
+
+type ChangePasswordType = {
+  currentPassword: string;
+  password: string;
+  passwordConfirmation: string;
 };

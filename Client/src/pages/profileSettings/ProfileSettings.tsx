@@ -6,6 +6,8 @@ import { useForm } from "react-hook-form";
 import { settingsSchema } from "../../utils/schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import SettingsRow from "./components/SettingsRow";
+import { putUserData } from "../../utils/Puts";
+import { isAxiosError } from "axios";
 
 const UserData: AllUserDataResponseType = {
   id: 28,
@@ -78,25 +80,21 @@ const UserData: AllUserDataResponseType = {
 
 const ProfileSettings = () => {
   const [clickedIndex, setClickedIndex] = useState<number>(-1);
+  // const [successSubmit, setSuccessSubmit] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [userData, setUserData] = useState<AllUserDataResponseType | null>(
     null
   );
   const [inputIsOpen, setInputIsOpen] = useState<number>(-1);
-  // const [inputData, setInputData] = useState<SettingsSchemaType>({
-  //   phoneNumber: undefined,
-  //   email: "",
-  // });
 
   const {
-    clearErrors,
+    setError,
     reset,
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<SettingsSchemaType>({
     mode: "onChange",
-    // reValidateMode: "onChange",
     defaultValues: {
       email: undefined,
       phoneNumber: undefined,
@@ -108,8 +106,6 @@ const ProfileSettings = () => {
     getAllUserData().then((response) => {
       setIsLoading(false);
       setUserData(response);
-
-      console.log(response);
     });
   }, []);
 
@@ -125,17 +121,6 @@ const ProfileSettings = () => {
     }
     setPaymentsOfferText(outputString);
   }, [userData?.payment?.paymentsOffer]);
-
-  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    let value = e.target.value;
-    console.log(e.target.name);
-    // setInputData((prev) => {
-    //   []
-    // });
-    // console.log(e.target.value);
-  }
-
-  // type fileds = ["password", "email", "phoneNumber"];
 
   const cleanSettingsData = (data: SettingsSchemaType) => {
     const keys: (keyof SettingsSchemaType)[] = Object.keys(data);
@@ -161,12 +146,31 @@ const ProfileSettings = () => {
   //   console.log(errors.email);
   // }, [errors.email]);
 
-  // useEffect(() => clearErrors(), []);
-
-  const onSubmit = (formData: SettingsSchemaType) => {
-    resetForm();
+  const onSubmit = async (formData: SettingsSchemaType) => {
     const cleanedData = cleanSettingsData(formData);
-    console.log(cleanedData);
+    const keys = Object.keys(cleanedData);
+    const key = keys[0];
+    console.log("key", key);
+    try {
+      const response = await putUserData(cleanedData);
+      console.log(response);
+      // setSuccessSubmit(true);
+      resetForm();
+    } catch (error) {
+      if (error instanceof Error) {
+        if (key === "email") {
+          setError("email", {
+            type: "manual",
+            message: "wybrany email jest już zajęty",
+          });
+        } else {
+          setError(key, {
+            type: "manual",
+            message: "wprowadzono niewłaściwe dane",
+          });
+        }
+      }
+    }
   };
 
   return (
