@@ -98,7 +98,7 @@ const ProfileSettings = () => {
     mode: "onChange",
     // reValidateMode: "onChange",
     defaultValues: {
-      email: "",
+      email: undefined,
       phoneNumber: undefined,
     },
     resolver: zodResolver(settingsSchema),
@@ -135,26 +135,23 @@ const ProfileSettings = () => {
     // console.log(e.target.value);
   }
 
+  // type fileds = ["password", "email", "phoneNumber"];
+
   const cleanSettingsData = (data: SettingsSchemaType) => {
-    const values = Object.values(data);
-    const keys = Object.keys(data);
-    const output = values.map((item, index) => {
-      if (item.length) {
-        const key = keys[index];
-        if (key === "phoneNumber") {
-          return { phoneNumber: item };
-        } else if (key === "email") {
-          return { email: item };
-        } else {
-          return { password: item };
-        }
+    const keys: (keyof SettingsSchemaType)[] = Object.keys(data);
+    let outputObj: SettingsSchemaType = {};
+    keys.forEach((item) => {
+      if (data[item] !== undefined) {
+        outputObj[item] = data[item];
       }
     });
+
+    return outputObj;
   };
 
   const resetForm = () => {
     reset({
-      email: "",
+      email: undefined,
       phoneNumber: undefined,
     });
     setInputIsOpen(-1);
@@ -167,7 +164,9 @@ const ProfileSettings = () => {
   // useEffect(() => clearErrors(), []);
 
   const onSubmit = (formData: SettingsSchemaType) => {
-    console.log(formData);
+    resetForm();
+    const cleanedData = cleanSettingsData(formData);
+    console.log(cleanedData);
   };
 
   return (

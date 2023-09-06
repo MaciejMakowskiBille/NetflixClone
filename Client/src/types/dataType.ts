@@ -174,8 +174,12 @@ type putUserType = {
   phoneNumber?: string;
 }
 
+// type SettingsSchemaType = {
+//   email?: string;
+//   phoneNumber?:string;
+//   password?:string;
+// }
+
 type SettingsSchemaType = {
-  email?: string;
-  phoneNumber?:string;
-  password?:string;
-}
+  [key: string]: string | undefined;
+};
