@@ -6,18 +6,12 @@ const Navigation = () => {
     const [inputValue, setInputValue] = useState('');
     const [isSearch, setIsSearch] = useState(false)
     const [isMenuOpen, setIsMenuOpen] = useState(false)
-    const [isLoggedIn, setIsLoggedIn] = useState(false)
 
     const navigate = useNavigate()
 
     const handleClickArrow = () =>{
         setIsMenuOpen((prev) => !prev)
     }
-
-    const buttons = <>
-    <button className='button' onClick={() => navigate('/signIn')}>Zaloguj</button>
-    <button className='button' onClick={() => navigate('/signUp')}>Zarejestruj</button>
-    </>
 
     const handleClickSearch = () => {
         setIsSearch((prev) => prev = !prev)
@@ -29,15 +23,6 @@ const Navigation = () => {
         }
 
     }
-
-    useEffect(() => {
-      if(localStorage.getItem("jwt")) {
-        setIsLoggedIn(true);
-      } else {
-        setIsLoggedIn(false);
-      }
-    }, [])
-    
 
     return(
         <>
@@ -64,9 +49,7 @@ const Navigation = () => {
                             Najnowsze
                         </li>
                         <li onClick={() => navigate("/favorites")}>
-                        {
-                            isLoggedIn ? "Moja lista" : null
-                        }
+                            Moja lista
                         </li>
                     </ul>
                 </div>
@@ -88,15 +71,11 @@ const Navigation = () => {
                     )
                     }
                     <button className={isSearch ? 'closeButton icon' : 'searchButton icon'} onClick={handleClickSearch}/>
-                    {
-                        isLoggedIn ?
-                        <div className='navMenu'>
-                            <div className='avatar'/>
-                            <div className='icon menuArrow'  onClick={handleClickArrow}/>
-                            <Menu isOpen={isMenuOpen}/>
-                        </div>
-                        : buttons
-                    }
+                    <div className='navMenu'>
+                        <div className='avatar'/>
+                        <div className='icon menuArrow'  onClick={handleClickArrow}/>
+                        <Menu isOpen={isMenuOpen}/>
+                    </div>
                 </div>
             </nav>
         </>
