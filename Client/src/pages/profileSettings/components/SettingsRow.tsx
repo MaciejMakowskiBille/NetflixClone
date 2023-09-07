@@ -11,9 +11,9 @@ export default function SettingsRow({
   index,
 }: {
   inputIsOpen: number;
-  register: UseFormRegister<SettingsSchemaType>;
+  register: UseFormRegister<SettingsFormType>;
   setInputIsOpen: (value: React.SetStateAction<number>) => void;
-  errors: FieldErrors<SettingsSchemaType>;
+  errors: FieldErrors<SettingsFormType>;
   resetForm: () => void;
   type: "email" | "phoneNumber";
   data: string | undefined;

@@ -1088,6 +1088,10 @@ html {
   box-sizing: border-box;
 }
 
+.error-message--settings {
+  padding-top: 0;
+}
+
 .settings {
   margin: 0;
   margin-top: 20px;
@@ -1124,18 +1128,20 @@ html {
   flex-direction: column;
   flex-wrap: wrap;
   width: 100%;
-  padding: 5px 0 50px 0;
 }
 .settings .settings__form .settings-item .settings-item__content .settings-item__row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 10px 0 10px 50px;
   align-items: start;
 }
 .settings .settings__form .settings-item .settings-item__content .settings-item__row p.offer {
   white-space: pre-wrap;
   line-height: 2.5;
+}
+.settings .settings__form .settings-item .settings-item__content .settings-item__row .settings-item__input {
+  display: flex;
+  flex-direction: column;
 }
 .settings .settings__form .settings-item .settings-item__content .settings-item__row button.offer {
   padding: 6px 0;

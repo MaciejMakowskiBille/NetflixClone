@@ -178,6 +178,14 @@ type SettingsSchemaType = {
   [key: string]: string | undefined;
 };
 
+type SettingsFormType = {
+  currentPassword?: string | undefined;
+  password?: string | undefined;
+  email?: string | undefined;
+  phoneNumber?: string | undefined;
+  passwordConfirmation: string| undefined;
+}
+
 type ChangePasswordType = {
   currentPassword: string;
   password: string;

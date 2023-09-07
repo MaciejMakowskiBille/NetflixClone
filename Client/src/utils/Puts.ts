@@ -1,10 +1,8 @@
-import axios, { isAxiosError } from "axios";
+import axios from "axios";
 import { setAuthToken } from "./Posts";
-import { apiURL, authURL } from "./links";
+import { authURL } from "./links";
 
 export const putUserData = async (data: putUserType) => {
-  const keys = Object.keys(data);
-  const key = keys[0];
   setAuthToken(
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDcsImlhdCI6MTY5Mzk5MDY5NCwiZXhwIjoxNjk2NTgyNjk0fQ.qmu0XctCbmLVmVc8d1nBJS9dJ7tWo0P5L7CNB558EwA"
   );
@@ -24,7 +22,7 @@ export const changePassword = async (data: ChangePasswordType) => {
       );
       const response = await axios.post(authURL + "change-password", data).then((response) => response)
       .catch((error) => {
-        throw new Error(error);
+        throw error;
       });
     return response.data as UserPostResponseType;
 };
