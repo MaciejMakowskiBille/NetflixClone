@@ -63,6 +63,8 @@ button {
 }
 
 .textButton {
+  background-color: inherit;
+  border: none;
   color: #d8b5f9;
   cursor: pointer;
   font-size: 16px;
@@ -1081,82 +1083,6 @@ input[type=checkbox] {
   height: 18px;
 }
 
-*,
-html {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-.error-message--settings {
-  padding-top: 0;
-}
-
-.settings {
-  margin: 0;
-  margin-top: 20px;
-  padding: 0;
-  gap: 10px;
-  font-size: 16px;
-}
-.settings button {
-  padding: 0;
-  background-color: inherit;
-}
-.settings .settings__form {
-  width: calc(100% - 200px);
-}
-.settings .settings__form h3.settings__header {
-  margin: 10px 0;
-  display: flex;
-  font-size: 40px;
-  color: #d8b5f9;
-  justify-content: start;
-}
-.settings .settings__form .settings-item {
-  border-top: 2px solid #f3eff5;
-  display: flex;
-}
-.settings .settings__form .settings-item .settings-item__title {
-  min-width: 300px;
-  font-size: 24px;
-  font-weight: bold;
-  padding-top: 10px;
-}
-.settings .settings__form .settings-item .settings-item__content {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  width: 100%;
-}
-.settings .settings__form .settings-item .settings-item__content .settings-item__row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  align-items: start;
-}
-.settings .settings__form .settings-item .settings-item__content .settings-item__row p.offer {
-  white-space: pre-wrap;
-  line-height: 2.5;
-}
-.settings .settings__form .settings-item .settings-item__content .settings-item__row .settings-item__input {
-  display: flex;
-  flex-direction: column;
-}
-.settings .settings__form .settings-item .settings-item__content .settings-item__row button.offer {
-  padding: 6px 0;
-}
-.settings .settings__form .settings-item .settings-item__content .settings-item__row.settings-item__row--offer {
-  margin-top: 1px;
-}
-.settings .settings__form .settings-item .settings-item__content .settings-item__row .settings-item__buttons {
-  display: flex;
-  gap: 20px;
-}
-.settings .settings__form .settings-item .settings-item__content--profiles {
-  padding: 5px 0 10px 0;
-}
-
 .profilesMenu {
   padding: 0;
   list-style: none;
@@ -1244,6 +1170,114 @@ html {
 .profilesMenu .profilesMenu-item .drop-down--open .drop-down__content p {
   height: -moz-fit-content;
   height: fit-content;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+input[type=text] {
+  width: 50%;
+  padding: 12px;
+  border: none;
+  resize: vertical;
+}
+
+.label {
+  padding: 12px 12px 12px 12px;
+  display: inline-block;
+}
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-bottom: 6px;
+  background-color: #2a9d8f;
+  color: white;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-bottom: 6px;
+}
+
+.row {
+  border-top: 2px solid black;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25,
+  .col-75,
+  input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+*,
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.error-message--settings {
+  padding-top: 0;
+}
+
+.settings {
+  margin: 0;
+  margin-top: 20px;
+  padding: 0;
+  gap: 10px;
+  font-size: 16px;
+}
+.settings button {
+  padding: 0;
+  background-color: inherit;
+}
+.settings .settings__form {
+  width: calc(100% - 200px);
+}
+.settings .settings__form h3.settings__header {
+  margin: 10px 0;
+  display: flex;
+  font-size: 40px;
+  color: #d8b5f9;
+  justify-content: start;
+}
+
+.settings-item__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  align-items: start;
+}
+.settings-item__row p.offer {
+  white-space: pre-wrap;
+  line-height: 2.5;
+}
+.settings-item__row .settings-item__input {
+  display: flex;
+  flex-direction: column;
+}
+.settings-item__row button.offer {
+  padding: 6px 0;
+}
+.settings-item__row.settings-item__row--offer {
+  margin-top: 1px;
+}
+.settings-item__row .settings-item__buttons {
+  display: flex;
+  gap: 20px;
 }
 
 body {

@@ -1,8 +1,17 @@
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+
 *,
 html {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  resize: vertical;
 }
 
 .error-message--settings {
@@ -21,7 +30,7 @@ html {
     background-color: inherit;
   }
   .settings__form {
-    width: calc(100% - 200px);
+    // width: calc(100% - 200px);
 
     h3.settings__header {
       margin: 10px 0;
@@ -33,24 +42,29 @@ html {
     }
     .settings-item {
       border-top: 2px solid $whiteText;
-      display: flex;
+      // display: flex;
+
+      &::after {
+        content: "";
+        display: table;
+        clear: both;
+      }
 
       .settings-item__title {
-        min-width: 300px;
-        // border: 1px solid red;
-        font-size: 24px;
-        font-weight: bold;
-        padding-top: 10px;
+        float: left;
+        width: 25%;
+        margin-bottom: 6px;
+
+        p {
+          display: inline-block;
+          padding: 12px;
+        }
       }
 
       .settings-item__content {
-        display: flex;
-        flex-direction: column;
-        // align-items: center;
-        flex-wrap: wrap;
-        // width: calc(100% - 190px);
-        width: 100%;
-        // padding: 5px 0 40px 0;
+        float: left;
+        width: 75%;
+        margin-bottom: 6px;
 
         .settings-item__row {
           display: flex;
@@ -87,5 +101,14 @@ html {
         padding: 5px 0 10px 0;
       }
     }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .col-25,
+  .col-75,
+  input[type="submit"] {
+    width: 100%;
+    margin-top: 0;
   }
 }
