@@ -12,6 +12,7 @@ export type ContentType = {
 
 const FavoritesPage = () => {
   const [showDropdown, setShowDropdown] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
   const [arrowIconDirection, setarrowIconDirection] = useState<"up" | "down">(
     "down"
   );
@@ -44,6 +45,17 @@ const FavoritesPage = () => {
     setarrowIconDirection((prev) => (prev === "down" ? "up" : "down"));
   };
 
+  const filterWithSearchValue = (
+    list: (MovieDataType | SeriesDataType)[]
+  ): (MovieDataType | SeriesDataType)[] => {
+    if (searchValue) {
+      return list.filter((entry) =>
+        entry.title.toLowerCase().includes(searchValue)
+      );
+    }
+    return list;
+  };
+
   return (
     <div className="appBackground">
       <Navigation />
@@ -57,13 +69,25 @@ const FavoritesPage = () => {
             arrowIconDirection={arrowIconDirection}
             showDropdown={showDropdown}
             filters={filters}
+            searchValue={searchValue}
             toggleFilter={toggleFilters}
             toggleDropdown={toggleDropdown}
+            setSearchValue={setSearchValue}
           />
         </header>
         <section className="favorites__rows">
-          {filters[0].enabled? <CategoryRow title="Filmy" moviesList={favoriteMoviesData} /> : null}
-          {filters[1].enabled? <CategoryRow title="Seriale" moviesList={favoriteSeriesData} />: null}
+          {filters[0].enabled ? (
+            <CategoryRow
+              title="Filmy"
+              moviesList={filterWithSearchValue(favoriteMoviesData)}
+            />
+          ) : null}
+          {filters[1].enabled ? (
+            <CategoryRow
+              title="Seriale"
+              moviesList={filterWithSearchValue(favoriteSeriesData)}
+            />
+          ) : null}
         </section>
       </main>
     </div>

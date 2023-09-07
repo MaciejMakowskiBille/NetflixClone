@@ -845,13 +845,20 @@ main .category .title {
 .favorites__header--dropdown__box--filters__option--active:hover {
   text-decoration: line-through;
 }
-.favorites__header--dropdown__box input {
+.favorites__header--dropdown__box--search {
+  display: flex;
+  gap: 20px;
+}
+.favorites__header--dropdown__box--search input {
   font-size: 20px;
-  width: 100%;
+  max-width: 200px;
   height: 30px;
   background-color: #fff;
-  padding-left: 5px;
+  padding: 0px 5px;
   position: relative;
+}
+.favorites__header--dropdown__box--search input:focus {
+  outline: none;
 }
 .favorites__rows {
   display: flex;

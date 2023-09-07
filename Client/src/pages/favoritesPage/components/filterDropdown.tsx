@@ -1,20 +1,25 @@
 import { motion } from "framer-motion";
 import { ContentType } from "../favoritesPage";
+import { useState } from "react";
 
 type FilterDropdownProps = {
   arrowIconDirection: "up" | "down";
   showDropdown: boolean;
   filters: ContentType;
+  searchValue: string;
   toggleDropdown: () => void;
   toggleFilter: (index: number) => void;
+  setSearchValue: (value: string) => void;
 };
 
 export const FilterDropdown = ({
   arrowIconDirection,
   showDropdown,
   filters,
+  searchValue,
   toggleFilter,
   toggleDropdown,
+  setSearchValue,
 }: FilterDropdownProps) => {
   const boxAnimation = {
     initial: {
@@ -26,6 +31,17 @@ export const FilterDropdown = ({
     transition: {
       duration: 0.1,
     },
+  };
+
+  const [formValue, setFormValue] = useState(searchValue);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormValue(e.target.value.toLowerCase());
+  };
+
+  const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setSearchValue(formValue);
   };
 
   return (
@@ -62,7 +78,19 @@ export const FilterDropdown = ({
               </div>
             ))}
           </div>
-          <input placeholder="Wyszukaj po tytule"></input>
+          <form
+            className="favorites__header--dropdown__box--search"
+            onSubmit={handleSearch}
+          >
+            <input
+              name="search"
+              type="search"
+              placeholder="Wpisz tytuł"
+              value={formValue}
+              onChange={handleChange}
+            ></input>
+            <button type="submit">Wyszukaj</button>
+          </form>
         </motion.div>
       ) : null}
     </div>
