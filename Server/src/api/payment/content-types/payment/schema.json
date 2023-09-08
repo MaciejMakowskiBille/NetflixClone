@@ -37,14 +37,19 @@
       ],
       "default": "creditCard"
     },
-    "paymentsOffer": {
-      "type": "boolean"
-    },
     "user": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "plugin::users-permissions.user",
       "mappedBy": "payment"
+    },
+    "paymentsOffer": {
+      "type": "enumeration",
+      "enum": [
+        "year",
+        "month"
+      ],
+      "default": "month"
     }
   }
 }

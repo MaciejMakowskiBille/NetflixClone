@@ -61,4 +61,3 @@ export const loginSchema = z.object({
   .nonempty("Pole jest wymagane")
   .min(8, "Musi zawierać conajmniej 8 znaków"),
 });
-export type loginTypes = z.infer<typeof loginSchema>;
