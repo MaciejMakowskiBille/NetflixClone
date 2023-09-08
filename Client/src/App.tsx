@@ -14,7 +14,6 @@ import { useSignedInContext } from "./providers/signedInProvider";
 
 const App = () => {
   const signedInContext = useSignedInContext();
-  console.log(signedInContext.isSignedIn);
   return (
     <Router>
       <Routes location={location} key={location.pathname}>
