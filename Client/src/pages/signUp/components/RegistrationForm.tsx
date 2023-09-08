@@ -17,6 +17,7 @@ import {
   modalTypes,
   profileTypes,
 } from "../../../types/registrationTypes";
+import { useSignedInContext } from "../../../providers/signedInProvider";
 
 const display: displayedPagesObjectTypes = {
   0: <RegistrationEmail />,
@@ -29,7 +30,7 @@ const RegistrationForm = () => {
   const [modalData, setModalData] = useState<modalTypes>({});
   const { noValidateData, page, handleSubmit, reset, setNoValidateData } =
     useRegistrationContext();
-
+  const signedInContext = useSignedInContext();
   // Submit Form function
   const submitForm = async (
     endpoint: string,
@@ -126,6 +127,7 @@ const RegistrationForm = () => {
 
   useEffect(() => {
     if (modalData.success) {
+      signedInContext.setIsSignedIn(true);
       cleanUpData;
     }
   }, [modalData]);
@@ -135,7 +137,8 @@ const RegistrationForm = () => {
       {modalData.content && (
         <Modal
           title={modalData.success ? "Sukces" : "Upss!"}
-          buttonText={modalData.success ? "Zaloguj się" : "Okey"}
+          buttonText={modalData.success ? "Przejdź do serwisu" : "Zamknij"}
+          closeModal={() => setModalData({})}
           content={modalData.content!}
         />
       )}

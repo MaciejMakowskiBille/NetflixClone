@@ -16,7 +16,7 @@ export async function signIn(data: loginTypes){
         identifier: data.email,
         password: data.password,
       });
-      setUserSession(response.data.jwt, response.data.user.id);
+    setUserSession(response.data.jwt, response.data.user.id);
     return response.data as UserPostResponseTypes;
   } catch (error) {
     if (isAxiosError(error)) {
@@ -30,6 +30,7 @@ export async function signIn(data: loginTypes){
 
 export const setAuthToken = (token: string) => {
   if (token) {
+    console.log(token)
     axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
   } else delete axios.defaults.headers.common["Authorization"];
 };
