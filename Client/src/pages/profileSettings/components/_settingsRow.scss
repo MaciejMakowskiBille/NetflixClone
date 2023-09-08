@@ -1,25 +1,18 @@
 .settings-item__row {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   // margin: 10px 0 10px 50px;
   align-items: start;
-  p.offer {
-    white-space: pre-wrap;
-    line-height: 2.5;
-  }
+  flex-wrap: wrap;
+  padding: 5px 0;
+
   .settings-item__input {
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    // gap: 15px;
-  }
-
-  button.offer {
-    padding: 6px 0;
-  }
-
-  &.settings-item__row--offer {
-    margin-top: 1px;
+    flex-wrap: wrap;
+    // flex-direction: column;
   }
 
   .settings-item__buttons {

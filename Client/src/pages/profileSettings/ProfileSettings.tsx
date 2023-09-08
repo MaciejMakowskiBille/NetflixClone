@@ -48,9 +48,9 @@ const ProfileSettings = () => {
     const offer = userData?.payment?.paymentsOffer;
     let outputString: string;
     if (offer) {
-      outputString = "Plan miesięczny\n" + "29.99zł/miesiąc";
+      outputString = "<p>Plan miesięczny</p>" + "<p>29.99zł/miesiąc</p>";
     } else {
-      outputString = "Plan roczny\n" + "289.99zł/rok";
+      outputString = "<p>Plan roczny</p>" + "<p>289.99zł/rok</p>";
     }
     setPaymentsOfferText(outputString);
   }, [userData?.payment?.paymentsOffer]);
@@ -127,7 +127,7 @@ const ProfileSettings = () => {
               <h3 className="settings__header">Konto</h3>
               <div className="settings-item">
                 <div className="settings-item__title">
-                  <p>DANE KONTA</p>
+                  <p className="label">DANE KONTA</p>
                 </div>
 
                 <div className="settings-item__content">
@@ -180,12 +180,15 @@ const ProfileSettings = () => {
 
               <div className="settings-item">
                 <div className="settings-item__title">
-                  <p>ROZLICZENIE</p>
+                  <p className="label">ROZLICZENIE</p>
                 </div>
 
                 <div className="settings-item__content">
                   <div className="settings-item__row settings-item__row--offer">
-                    <p className="offer">{paymentsOfferText}</p>
+                    <div
+                      className="offer"
+                      dangerouslySetInnerHTML={{ __html: paymentsOfferText }}
+                    ></div>
 
                     <button
                       className="textButton offer"
@@ -198,10 +201,10 @@ const ProfileSettings = () => {
               </div>
               <div className="settings-item">
                 <div className="settings-item__title">
-                  <p>PROFILE I KONTROLA RODZICIELSKA</p>
+                  <p className="label">PROFILE I KONTROLA RODZICIELSKA</p>
                 </div>
 
-                <div className="settings-item__content settings-item__content--profiles">
+                <div className="settings-item__content">
                   <div className="settings-item__row">
                     <p></p>
                     <button className="textButton">dodaj użytkownika</button>

@@ -42,6 +42,7 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .wrapper__text-input--modifySettings {
   border: none;
+  width: 100%;
   height: 20px;
   padding: 0;
   &:focus {
