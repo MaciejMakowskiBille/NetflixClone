@@ -1,8 +1,10 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { loginSchema, loginTypes } from "../../utils/schemas";
+import { loginSchema } from "../../utils/schemas";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { signIn } from "../../utils/Posts";
 import { useNavigate } from "react-router-dom";
+import Password from "../../components/Input/Password";
+import { useState } from "react";
 export default function SignIn() {
   const navigate = useNavigate();
 
@@ -21,7 +23,7 @@ export default function SignIn() {
     resolver: zodResolver(loginSchema),
   });
 
-  const onSubmit: SubmitHandler<loginTypes> = async (data) => {
+  const onSubmit: SubmitHandler<SignInType> = async (data) => {
     try {
       const response = await signIn(data);
       if (response) {
@@ -41,6 +43,12 @@ export default function SignIn() {
       }
     }
   };
+
+  const [passwordShown, setPasswordShown] = useState<boolean>(false);
+
+  const classNameText = errors?.password
+    ? "wrapper__text-input error"
+    : "wrapper__text-input";
 
   return (
     <form className="form-wrapper" onSubmit={handleSubmit(onSubmit)}>
@@ -67,22 +75,13 @@ export default function SignIn() {
                 <p className="error-message">{errors.email?.message}</p>
               )}
             </div>
-            <div className="input">
-              <input
-                className={
-                  errors?.password
-                    ? "wrapper__text-input error"
-                    : "wrapper__text-input"
-                }
-                type="password"
-                placeholder="password"
-                {...register("password")}
-                name="password"
-              />
-              {errors?.password && (
-                <p className="error-message">{errors.password?.message}</p>
-              )}
-            </div>
+            <Password
+              className={classNameText}
+              errors={errors}
+              passwordShown={passwordShown}
+              setPasswordShown={setPasswordShown}
+              register={register}
+            />
             <p>Nie pamiętam hasła!</p>
           </div>
           <div className="action">
