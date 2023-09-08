@@ -1318,6 +1318,20 @@ input[type=checkbox] {
   top: 2rem;
 }
 
+.password-input {
+  position: relative;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+.password-input .password-icon {
+  position: absolute;
+  margin-right: 14px;
+  z-index: 2;
+  width: 26px;
+  height: 18px;
+}
+
 body {
   font-family: "Roboto";
   color: #F3EFF5;
