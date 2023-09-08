@@ -9,7 +9,7 @@ const setUserSession = (token: string, id: number) => {
   localStorage.setItem("userId", `${id}`);
 }
 
-export async function signIn(data: loginTypes){
+export async function signIn(data: SignInType){
     try {
     const response = await axios
       .post(authURL+ 'local', {
@@ -35,7 +35,7 @@ export const setAuthToken = (token: string) => {
   } else delete axios.defaults.headers.common["Authorization"];
 };
 
-export const postUser = async (endpoint: string, data: UserTypes) => {
+export const postUser = async (data: CreateUserType) => {
   try {
     const response = await axios.post(authURL + endpoint, data);
     setUserSession(response.data.jwt, response.data.user.id);
@@ -105,3 +105,4 @@ export const addProfile = async (newProfileData: NewProfileCompleteInfo) => {
     return response;
   }
 }
+

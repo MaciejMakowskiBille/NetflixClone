@@ -131,3 +131,40 @@ export const clearProducerData = (data: ProducerResponseType) => {
     image: data.attributes.image.data.attributes.url,
   };
 };
+
+export const cleanUserData = (
+  noValidateData: noValidateFormProp,
+  formData?: FormInput
+) => {
+  const paymentsOfferData = noValidateData.paymentsOffer! == 0 ? "month" : "year";
+
+  if (formData) {
+    const cleanedData: CreateUserType = {
+      email: formData.email,
+      password: formData.password,
+      optInSubscription: noValidateData.optInSubscription,
+      username: formData.email,
+      payment: {
+        paymentsOffer: paymentsOfferData,
+        paymentsProcessing: noValidateData.paymentsProcessing!,
+        cardName: formData.cardNameSname[0],
+        cardSname: formData.cardNameSname[1],
+        cardNumber: formData.cardNumber,
+        expiryDate: formData.expiryDate,
+        securityCode: formData.securityCode,
+      },
+    };
+    return cleanedData;
+  }
+  const cleanedData: CreateUserType = {
+    email: noValidateData.email,
+    password: noValidateData.password,
+    optInSubscription: noValidateData.optInSubscription,
+    username: noValidateData.email,
+    payment: {
+      paymentsOffer: paymentsOfferData,
+      paymentsProcessing: "payPal",
+    },
+  };
+  return cleanedData;
+};
