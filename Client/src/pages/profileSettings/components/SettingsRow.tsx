@@ -1,5 +1,4 @@
 import { FieldErrors, UseFormRegister } from "react-hook-form";
-// import { AllUserDataResponseType } from "../../../types/responseTypes";
 export default function SettingsRow({
   inputIsOpen,
   register,

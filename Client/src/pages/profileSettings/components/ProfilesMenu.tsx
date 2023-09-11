@@ -6,6 +6,7 @@ const ProfilesMenu = ({
   data,
   clickedIndex,
   setClickedIndex,
+  setRemoveProfileModalIsOpen,
 }: {
   data: Array<
     ProfileResponseType["attributes"] & {
@@ -14,20 +15,26 @@ const ProfilesMenu = ({
   >;
   clickedIndex: number;
   setClickedIndex: React.Dispatch<React.SetStateAction<number>>;
+  setRemoveProfileModalIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
-  return data.map((item, index) => {
+  return data.map((item) => {
     const profileImg = item.avatar?.url;
 
     const handleClick = () => {
       // if index is clicked, after next click clickedIndex state is cleaned up
-      if (clickedIndex == index) {
+      if (clickedIndex == item.id) {
         setClickedIndex(-1);
       } else {
-        setClickedIndex(index);
+        setClickedIndex(item.id);
+        console.log(item.id);
       }
     };
+
+    const handleRemoveProfileClick = () => {
+      setRemoveProfileModalIsOpen(true);
+    };
     return (
-      <li className="profilesMenu-item" key={index}>
+      <li className="profilesMenu-item" key={item.id}>
         <div className="profilesMenu-item__header" onClick={handleClick}>
           <div className="profilesMenu-item__profileData">
             <img
@@ -40,19 +47,23 @@ const ProfilesMenu = ({
             </div>
           </div>
           <div
-            className={clickedIndex == index ? "arrow arrow--open" : "arrow"}
+            className={clickedIndex == item.id ? "arrow arrow--open" : "arrow"}
           >
             <img src={arrow} />
           </div>
         </div>
         <div
           className={
-            clickedIndex == index ? "drop-down drop-down--open" : "drop-down"
+            clickedIndex == item.id ? "drop-down drop-down--open" : "drop-down"
           }
         >
           <div className="drop-down__content">
-            <p className="textButton">Edytuj dane</p>
-            <p className="textButton">Usuń profil</p>
+            <p className="textButton" onClick={(e) => console.log(e.target)}>
+              Edytuj dane
+            </p>
+            <p className="textButton" onClick={handleRemoveProfileClick}>
+              Usuń profil
+            </p>
           </div>
         </div>
       </li>
