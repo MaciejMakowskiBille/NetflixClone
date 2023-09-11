@@ -9,13 +9,13 @@
   padding: 5px 0;
 
   .settings-item__input {
-    width: 100%;
+    // width: 90%;
     display: flex;
-    flex-wrap: wrap;
-    // flex-direction: column;
+    flex-direction: column;
   }
 
   .settings-item__buttons {
+    // width: 10%;
     display: flex;
     gap: 20px;
   }

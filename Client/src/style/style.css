@@ -782,7 +782,6 @@ input[type=number]::-webkit-inner-spin-button {
 
 .wrapper__text-input--modifySettings {
   border: none;
-  width: 100%;
   height: 20px;
   padding: 0;
 }
@@ -1234,7 +1233,8 @@ html {
   color: white;
 }
 .settings .settings__form .settings-item .settings-item__title .label {
-  padding: 0 12px 12px 0;
+  padding: 5px 12px 0 0;
+  font-weight: bold;
 }
 .settings .settings__form .settings-item .settings-item__content {
   width: 75%;
@@ -1262,9 +1262,8 @@ html {
   padding: 5px 0;
 }
 .settings-item__row .settings-item__input {
-  width: 100%;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
 }
 .settings-item__row .settings-item__buttons {
   display: flex;
