@@ -22,10 +22,7 @@ export default function SignIn() {
 
   const onSubmit: SubmitHandler<SignInType> = async (data) => {
     try {
-      const response = await signIn(data);
-      if (response) {
-        localStorage.setItem("jwt", response.jwt);
-      }
+      await signIn(data);
     } catch (error) {
       if (error instanceof Error) {
         setError("password", {

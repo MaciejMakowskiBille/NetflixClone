@@ -1,6 +1,12 @@
 import axios, {isAxiosError} from "axios";
 import { apiURL, authURL} from "./links";
 
+export const setAuthToken = (token: string) => {
+  if (token) {
+    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+  } else delete axios.defaults.headers.common["Authorization"];
+};
+
 
 export async function signIn(data: SignInType){
     try {
@@ -9,6 +15,8 @@ export async function signIn(data: SignInType){
         identifier: data.email,
         password: data.password,
       });
+    localStorage.setItem("jwt", response.data.jwt);
+    setAuthToken(response.data.jwt);
     return response.data as UserPostResponseType;
   } catch (error) {
     if (isAxiosError(error)) {
@@ -20,11 +28,7 @@ export async function signIn(data: SignInType){
   }  
 }
 
-export const setAuthToken = (token: string) => {
-  if (token) {
-    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-  } else delete axios.defaults.headers.common["Authorization"];
-};
+
 
 export const postUser = async (data: CreateUserType) => {
   try {
