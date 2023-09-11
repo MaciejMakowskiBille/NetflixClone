@@ -1,11 +1,6 @@
 * {
   box-sizing: border-box;
 }
-
-// input[type="text"] {
-//   resize: vertical;
-// }
-
 *,
 html {
   margin: 0;
@@ -21,13 +16,9 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
-  .settings {
-    // margin: 0;
-    // margin-top: 20px;
-    // padding: 0;
-    // gap: 10px;
+  main.settings {
     font-size: 20px;
-
+    gap: 0;
     button {
       padding: 0;
       background-color: inherit;
@@ -36,7 +27,7 @@ html {
       width: calc(100% - 200px);
 
       @media (max-width: 660px) {
-        width: 100%;
+        width: calc(100% - 50px);
       }
       h3.settings__header {
         margin: 10px 0;
@@ -52,7 +43,7 @@ html {
 
         .settings-item__title {
           width: 25%;
-          margin-bottom: 26px;
+          margin-bottom: 30px;
           color: white;
           .label {
             padding: 10px 12px 0 0;
@@ -62,7 +53,8 @@ html {
 
         .settings-item__content {
           width: 75%;
-          margin-bottom: 26px;
+
+          margin-bottom: 30px;
           margin-top: 4px;
         }
       }

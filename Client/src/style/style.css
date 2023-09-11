@@ -1125,7 +1125,7 @@ input[type=checkbox] {
   width: calc(100% - 200px);
   align-items: end;
   gap: 10px;
-  font-size: 18px;
+  font-size: 20px;
 }
 .profilesMenu .profilesMenu-item {
   width: 60%;
@@ -1138,11 +1138,11 @@ input[type=checkbox] {
 .profilesMenu .profilesMenu-item .profilesMenu-item__header .profilesMenu-item__profileData {
   display: flex;
   gap: 20px;
-  height: 60px;
+  height: 80px;
 }
 .profilesMenu .profilesMenu-item .profilesMenu-item__header .profilesMenu-item__profileData .profilesMenu-item__photo {
-  width: 60px;
-  height: 60px;
+  max-width: 80px;
+  height: 80px;
 }
 .profilesMenu .profilesMenu-item .profilesMenu-item__header .profilesMenu-item__profileData .profilesMenu-item__text {
   display: flex;
@@ -1226,44 +1226,45 @@ html {
   justify-content: center;
   align-items: center;
 }
-.all-user-settings .settings {
+.all-user-settings main.settings {
   font-size: 20px;
+  gap: 0;
 }
-.all-user-settings .settings button {
+.all-user-settings main.settings button {
   padding: 0;
   background-color: inherit;
 }
-.all-user-settings .settings .settings__form {
+.all-user-settings main.settings .settings__form {
   width: calc(100% - 200px);
 }
 @media (max-width: 660px) {
-  .all-user-settings .settings .settings__form {
-    width: 100%;
+  .all-user-settings main.settings .settings__form {
+    width: calc(100% - 50px);
   }
 }
-.all-user-settings .settings .settings__form h3.settings__header {
+.all-user-settings main.settings .settings__form h3.settings__header {
   margin: 10px 0;
   display: flex;
   font-size: 40px;
   color: #d8b5f9;
   justify-content: start;
 }
-.all-user-settings .settings .settings__form .settings-item {
+.all-user-settings main.settings .settings__form .settings-item {
   border-top: 2px solid #f3eff5;
   display: flex;
 }
-.all-user-settings .settings .settings__form .settings-item .settings-item__title {
+.all-user-settings main.settings .settings__form .settings-item .settings-item__title {
   width: 25%;
-  margin-bottom: 26px;
+  margin-bottom: 30px;
   color: white;
 }
-.all-user-settings .settings .settings__form .settings-item .settings-item__title .label {
+.all-user-settings main.settings .settings__form .settings-item .settings-item__title .label {
   padding: 10px 12px 0 0;
   font-weight: bold;
 }
-.all-user-settings .settings .settings__form .settings-item .settings-item__content {
+.all-user-settings main.settings .settings__form .settings-item .settings-item__content {
   width: 75%;
-  margin-bottom: 26px;
+  margin-bottom: 30px;
   margin-top: 4px;
 }
 

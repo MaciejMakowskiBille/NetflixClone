@@ -6,23 +6,21 @@
   width: calc(100% - 200px);
   align-items: end;
   gap: 10px;
-  font-size: 18px;
+  font-size: 20px;
   .profilesMenu-item {
-    // width: fit-content;
     width: 60%;
     .profilesMenu-item__header {
       display: flex;
-      //   align-items: center;
       justify-content: space-between;
       border-bottom: 1px solid $whiteText;
-      //   padding-bottom: 4px;
+
       .profilesMenu-item__profileData {
         display: flex;
         gap: 20px;
-        height: 60px;
+        height: 80px;
         .profilesMenu-item__photo {
-          width: 60px;
-          height: 60px;
+          max-width: 80px;
+          height: 80px;
         }
 
         .profilesMenu-item__text {
@@ -35,10 +33,8 @@
         }
       }
       .arrow {
-        // margin-right: 10px;
         display: flex;
         align-items: center;
-        // transition: 200ms linear;
       }
 
       .arrow--open {
@@ -74,7 +70,6 @@
       &--open {
         transition: height 300ms ease-in, opacity 0.5s ease-in;
         height: 60px;
-        // background-color: grey;
         opacity: 1;
 
         display: flex;
@@ -93,10 +88,5 @@
         }
       }
     }
-
-    // .drop-down--open {
-    //   max-height: 1000px;
-    //   opacity: 1;
-    // }
   }
 }
