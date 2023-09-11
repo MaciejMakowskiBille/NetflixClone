@@ -8,6 +8,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import SettingsRow from "./components/SettingsRow";
 import { changePassword, putUserData } from "../../utils/Puts";
 import PasswordRow from "./components/PasswordRow";
+import { cleanSettingsData } from "../../utils/helpers";
+import PaymentDetails from "./components/PaymentDetails";
 
 const ProfileSettings = () => {
   const [clickedIndex, setClickedIndex] = useState<number>(-1);
@@ -15,7 +17,9 @@ const ProfileSettings = () => {
   const [userData, setUserData] = useState<AllUserDataResponseType | null>(
     null
   );
+  const [paymentsOfferText, setPaymentsOfferText] = useState<string>("");
   const [inputIsOpen, setInputIsOpen] = useState<number>(-1);
+  const [paymentModalIsOpen, setPaymentModalIsOpen] = useState<boolean>(false);
   const [reload, setReload] = useState(false);
 
   const {
@@ -36,15 +40,6 @@ const ProfileSettings = () => {
   });
 
   useEffect(() => {
-    getAllUserData().then((response) => {
-      setIsLoading(false);
-      setUserData(response);
-    });
-  }, [reload]);
-
-  const [paymentsOfferText, setPaymentsOfferText] = useState<string>("");
-
-  useEffect(() => {
     const offer = userData?.payment?.paymentsOffer;
     let outputString: string;
     if (offer) {
@@ -53,19 +48,14 @@ const ProfileSettings = () => {
       outputString = "<p>Plan roczny</p>" + "<p>289.99zł/rok</p>";
     }
     setPaymentsOfferText(outputString);
-  }, [userData?.payment?.paymentsOffer]);
+  }, [reload]);
 
-  const cleanSettingsData = (data: SettingsSchemaType) => {
-    const keys: (keyof SettingsSchemaType)[] = Object.keys(data);
-    let outputObj: SettingsSchemaType = {};
-    keys.forEach((item) => {
-      if (data[item] !== undefined) {
-        outputObj[item] = data[item];
-      }
+  useEffect(() => {
+    getAllUserData().then((response) => {
+      setIsLoading(false);
+      setUserData(response);
     });
-
-    return outputObj as SettingsFormType;
-  };
+  }, [reload]);
 
   const resetForm = () => {
     reset({
@@ -113,8 +103,13 @@ const ProfileSettings = () => {
     }
   };
 
+  function handlePaymentDetailsClick(e: React.MouseEvent<HTMLButtonElement>) {
+    e.preventDefault();
+    setPaymentModalIsOpen(true);
+  }
+
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form className="all-user-settings" onSubmit={handleSubmit(onSubmit)}>
       <div className="appBackground">
         <Navigation />
         {!isLoading && userData && (
@@ -176,7 +171,7 @@ const ProfileSettings = () => {
 
                     <button
                       className="textButton offer"
-                      onClick={(e) => e.preventDefault()}
+                      onClick={handlePaymentDetailsClick}
                     >
                       szczegóły rozliczenia
                     </button>
@@ -211,6 +206,12 @@ const ProfileSettings = () => {
           </main>
         )}
       </div>
+      {paymentModalIsOpen && (
+        <PaymentDetails
+          data={userData?.payment!}
+          setPaymentModalIsOpen={setPaymentModalIsOpen}
+        />
+      )}
     </form>
   );
 };

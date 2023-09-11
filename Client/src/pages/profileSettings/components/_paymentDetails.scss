@@ -1,0 +1,41 @@
+.payment-details {
+  position: fixed;
+
+  background-color: $backgroundAppGrey;
+  top: 15px;
+  //   left: 25%;
+  width: 50%;
+  z-index: 100;
+  overflow: hidden;
+
+  .payment-details__header {
+    background: $purpleDark;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    h2 {
+      margin: 0;
+      color: $whiteText;
+    }
+  }
+
+  .payment-details__content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    .payment-details__section ul {
+      margin-left: 20px;
+
+      li {
+        padding: 5px 0;
+      }
+    }
+  }
+
+  .right {
+    position: absolute;
+    right: 1.5rem;
+  }
+}

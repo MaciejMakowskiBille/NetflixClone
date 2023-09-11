@@ -73,6 +73,14 @@ button {
   color: #9864c9;
 }
 
+.closeButton {
+  width: 25px;
+  height: 25px;
+  background-image: url("../imgs/icons/close.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 @font-face {
   font-family: "Nico Moji";
   src: url(./fonts/nicomoji/NicoMoji-Regular.ttf);
@@ -782,11 +790,27 @@ input[type=number]::-webkit-inner-spin-button {
 
 .wrapper__text-input--modifySettings {
   border: none;
-  height: 20px;
+  height: 100%;
+  width: 100%;
+  color: inherit;
+  background-color: inherit;
+  border-radius: none;
   padding: 0;
 }
 .wrapper__text-input--modifySettings:focus {
+  outline: none;
   border: none;
+}
+
+.inputWithError {
+  box-sizing: border-box;
+  height: 24px;
+}
+
+.inputWithError--open {
+  box-sizing: border-box;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 
 .payments-offer {
@@ -1197,48 +1221,50 @@ html {
   padding-top: 0;
 }
 
-.settings {
-  margin: 0;
-  margin-top: 20px;
-  padding: 0;
-  gap: 10px;
-  font-size: 16px;
+.all-user-settings {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.settings button {
+.all-user-settings .settings {
+  font-size: 20px;
+}
+.all-user-settings .settings button {
   padding: 0;
   background-color: inherit;
 }
-.settings .settings__form {
+.all-user-settings .settings .settings__form {
   width: calc(100% - 200px);
 }
 @media (max-width: 660px) {
-  .settings .settings__form {
+  .all-user-settings .settings .settings__form {
     width: 100%;
   }
 }
-.settings .settings__form h3.settings__header {
+.all-user-settings .settings .settings__form h3.settings__header {
   margin: 10px 0;
   display: flex;
   font-size: 40px;
   color: #d8b5f9;
   justify-content: start;
 }
-.settings .settings__form .settings-item {
+.all-user-settings .settings .settings__form .settings-item {
   border-top: 2px solid #f3eff5;
   display: flex;
 }
-.settings .settings__form .settings-item .settings-item__title {
+.all-user-settings .settings .settings__form .settings-item .settings-item__title {
   width: 25%;
   margin-bottom: 26px;
   color: white;
 }
-.settings .settings__form .settings-item .settings-item__title .label {
-  padding: 5px 12px 0 0;
+.all-user-settings .settings .settings__form .settings-item .settings-item__title .label {
+  padding: 10px 12px 0 0;
   font-weight: bold;
 }
-.settings .settings__form .settings-item .settings-item__content {
+.all-user-settings .settings .settings__form .settings-item .settings-item__content {
   width: 75%;
   margin-bottom: 26px;
+  margin-top: 4px;
 }
 
 /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
@@ -1259,7 +1285,7 @@ html {
   justify-content: space-between;
   align-items: start;
   flex-wrap: wrap;
-  padding: 5px 0;
+  padding: 6px 0;
 }
 .settings-item__row .settings-item__inputs,
 .settings-item__row .settings-item__password-fields {
@@ -1268,11 +1294,46 @@ html {
   gap: 10px;
 }
 .settings-item__row .settings-item__password-fields .settings-item__field {
-  height: 20px;
+  height: 24px;
 }
 .settings-item__row .settings-item__buttons {
   display: flex;
   gap: 20px;
+}
+
+.payment-details {
+  position: fixed;
+  background-color: #262428;
+  top: 15px;
+  width: 50%;
+  z-index: 100;
+  overflow: hidden;
+}
+.payment-details .payment-details__header {
+  background: #421969;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+}
+.payment-details .payment-details__header h2 {
+  margin: 0;
+  color: #f3eff5;
+}
+.payment-details .payment-details__content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.payment-details .payment-details__content .payment-details__section ul {
+  margin-left: 20px;
+}
+.payment-details .payment-details__content .payment-details__section ul li {
+  padding: 5px 0;
+}
+.payment-details .right {
+  position: absolute;
+  right: 1.5rem;
 }
 
 body {
