@@ -11,12 +11,12 @@ import PasswordRow from "./components/PasswordRow";
 
 const ProfileSettings = () => {
   const [clickedIndex, setClickedIndex] = useState<number>(-1);
-  // const [successSubmit, setSuccessSubmit] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [userData, setUserData] = useState<AllUserDataResponseType | null>(
     null
   );
   const [inputIsOpen, setInputIsOpen] = useState<number>(-1);
+  const [reload, setReload] = useState(false);
 
   const {
     setError,
@@ -40,7 +40,7 @@ const ProfileSettings = () => {
       setIsLoading(false);
       setUserData(response);
     });
-  }, []);
+  }, [reload]);
 
   const [paymentsOfferText, setPaymentsOfferText] = useState<string>("");
 
@@ -77,10 +77,6 @@ const ProfileSettings = () => {
     setInputIsOpen(-1);
   };
 
-  // useEffect(() => {
-  //   console.log(errors.email);
-  // }, [errors.email]);
-
   const onSubmit = async (formData: SettingsSchemaType) => {
     const cleanedData: SettingsFormType = cleanSettingsData(formData);
     const keys = Object.keys(cleanedData) as (keyof SettingsFormType)[];
@@ -91,14 +87,14 @@ const ProfileSettings = () => {
       if (key === "currentPassword" || key === "password") {
         let changePasswordData = cleanedData as ChangePasswordType;
         changePasswordData["passwordConfirmation"] = cleanedData.password!;
-        console.log(cleanedData);
-        // const response = await changePassword(changePasswordData);
+        // console.log(cleanedData);
+        const response = await changePassword(changePasswordData);
+        console.log("sukces", response);
       } else {
         const response = await putUserData(cleanedData);
+        setReload((prev) => !prev);
         console.log(response);
       }
-
-      // setSuccessSubmit(true);
       resetForm();
     } catch (error) {
       if (error instanceof Error) {
@@ -163,18 +159,6 @@ const ProfileSettings = () => {
                     setInputIsOpen={setInputIsOpen}
                     key={"password"}
                   />
-                  {/* <div
-                    className="settings-item__row"
-                    // onBlur={() => setInputIsOpen(-1)}
-                  >
-                    <p></p>
-                    <button
-                      className="textButton"
-                      onClick={() => setInputIsOpen(2)}
-                    >
-                      zmień hasło
-                    </button>
-                  </div> */}
                 </div>
               </div>
 
@@ -184,7 +168,7 @@ const ProfileSettings = () => {
                 </div>
 
                 <div className="settings-item__content">
-                  <div className="settings-item__row settings-item__row--offer">
+                  <div className="settings-item__row">
                     <div
                       className="offer"
                       dangerouslySetInnerHTML={{ __html: paymentsOfferText }}
@@ -192,7 +176,7 @@ const ProfileSettings = () => {
 
                     <button
                       className="textButton offer"
-                      onClick={() => setInputIsOpen(3)}
+                      onClick={(e) => e.preventDefault()}
                     >
                       szczegóły rozliczenia
                     </button>
@@ -207,7 +191,12 @@ const ProfileSettings = () => {
                 <div className="settings-item__content">
                   <div className="settings-item__row">
                     <p></p>
-                    <button className="textButton">dodaj użytkownika</button>
+                    <button
+                      className="textButton"
+                      onClick={(e) => e.preventDefault()}
+                    >
+                      dodaj użytkownika
+                    </button>
                   </div>
                 </div>
               </div>

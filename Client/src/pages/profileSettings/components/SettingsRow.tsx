@@ -31,16 +31,20 @@ export default function SettingsRow({
       {inputIsOpen == index ? (
         <div className="settings-item__row">
           <div className="settings-item__inputs">
-            <input
-              type="text"
-              placeholder={data}
-              className="wrapper__text-input wrapper__text-input--modifySettings"
-              {...register(type)}
-              autoFocus
-            />
-            {errors[type] && (
-              <p className="error-message">{errors[type]?.message}</p>
-            )}
+            <div>
+              <input
+                type="text"
+                placeholder={data}
+                className="wrapper__text-input wrapper__text-input--modifySettings"
+                {...register(type)}
+                autoFocus
+              />
+              {errors[type] && (
+                <p className="error-message error-message--settings">
+                  {errors[type]?.message}
+                </p>
+              )}
+            </div>
           </div>
           <div className="settings-item__buttons">
             <button className="textButton" onClick={resetForm}>
