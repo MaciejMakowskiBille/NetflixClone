@@ -22,7 +22,11 @@ const PaymentDetails = ({
         <div className="payment-details__content">
           <div className="payment-details__section">
             <h3>SPOSÓB PŁATNOŚCI:</h3>
-            <p>{data?.paymentsProcessing}</p>
+            <p>
+              {data?.paymentsProcessing === "payPal"
+                ? "paypal"
+                : "karta kredytowa"}
+            </p>
           </div>
           <div className="payment-details__section">
             <h3>OKRES PŁATNOŚCI:</h3>
@@ -30,12 +34,30 @@ const PaymentDetails = ({
           </div>
           <div className="payment-details__section">
             <h3>TWOJE DANE: </h3>
-            <ul>
-              <li>imie i nazwisko: {data?.cardName + " " + data?.cardSname}</li>
-              <li>numer konta: {data?.cardNumber}</li>
-              <li>kod bezpieczeństwa: {data?.securityCode}</li>
-              <li>data ważności: {data?.expiryDate}</li>
-            </ul>
+            {data?.paymentsProcessing !== "payPal" ? (
+              <ul>
+                <li>
+                  <p>
+                    imie i nazwisko: {data?.cardName + " " + data?.cardSname}
+                  </p>
+                </li>
+                <li>
+                  <p>numer konta: {data?.cardNumber}</p>
+                </li>
+                <li>
+                  <p>kod bezpieczeństwa: {data?.securityCode}</p>
+                </li>
+                <li>
+                  <p>data ważności: {data?.expiryDate}</p>
+                </li>
+              </ul>
+            ) : (
+              <div>
+                <p>
+                  <a>Paypal</a>
+                </p>
+              </div>
+            )}
           </div>
         </div>
       </div>

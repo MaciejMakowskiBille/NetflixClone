@@ -1,9 +1,7 @@
 .payment-details {
   position: fixed;
-
   background-color: $backgroundAppGrey;
   top: 15px;
-  //   left: 25%;
   width: 50%;
   z-index: 100;
   overflow: hidden;
@@ -23,13 +21,23 @@
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 40px;
 
-    .payment-details__section ul {
-      margin-left: 20px;
+    .payment-details__section {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      h3 {
+        font-weight: bold;
+        font-size: 20px;
+      }
 
-      li {
-        padding: 5px 0;
+      ul {
+        margin-left: 20px;
+
+        li {
+          padding: 5px 0;
+        }
       }
     }
   }
