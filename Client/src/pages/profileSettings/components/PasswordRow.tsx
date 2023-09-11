@@ -27,7 +27,7 @@ function PasswordRow({
     <div>
       {inputIsOpen == index ? (
         <div className="settings-item__row">
-          <div className="settings-item__input">
+          <div className="settings-item__inputs">
             <div>
               <input
                 type="text"
@@ -66,20 +66,15 @@ function PasswordRow({
           </div>
         </div>
       ) : (
-        <>
-          <div className="settings-item__row">
-            <p>{data ? data : "nie ustawiono"}</p>
-            <button
-              className="textButton"
-              onClick={() => setInputIsOpen(index)}
-            >
-              zmień {filedName}
-            </button>
+        <div className="settings-item__row">
+          <div className="settings-item__password-fields">
+            <div className="settings-item__field"></div>
+            <div className="settings-item__field"></div>
           </div>
-          <div className="settings-item__row">
-            <p>{data ? data : "nie ustawiono"}</p>
-          </div>
-        </>
+          <button className="textButton" onClick={() => setInputIsOpen(index)}>
+            zmień {filedName}
+          </button>
+        </div>
       )}
     </div>
   );

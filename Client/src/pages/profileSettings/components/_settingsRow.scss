@@ -8,10 +8,16 @@
   flex-wrap: wrap;
   padding: 5px 0;
 
-  .settings-item__input {
+  .settings-item__inputs,
+  .settings-item__password-fields {
     // width: 90%;
     display: flex;
     flex-direction: column;
+    gap: 10px;
+  }
+
+  .settings-item__password-fields .settings-item__field {
+    height: 20px;
   }
 
   .settings-item__buttons {

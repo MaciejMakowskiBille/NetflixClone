@@ -30,7 +30,7 @@ export default function SettingsRow({
     <div>
       {inputIsOpen == index ? (
         <div className="settings-item__row">
-          <div className="settings-item__input">
+          <div className="settings-item__inputs">
             <input
               type="text"
               placeholder={data}
