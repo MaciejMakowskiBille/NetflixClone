@@ -28,11 +28,15 @@ function PasswordRow({
       {inputIsOpen == index ? (
         <div className="settings-item__row">
           <div className="settings-item__inputs">
-            <div>
+            <div
+              className={
+                errors[type] ? "inputWithError--open" : "inputWithError"
+              }
+            >
               <input
                 type="text"
                 placeholder="bieżące hasło"
-                className="wrapper__text-input wrapper__text-input--modifySettings"
+                className="wrapper__text-input--modifySettings"
                 {...register("currentPassword")}
                 autoFocus
               />
@@ -42,11 +46,11 @@ function PasswordRow({
                 </p>
               )}
             </div>
-            <div>
+            <div className="inputWithError">
               <input
                 type="text"
                 placeholder="nowe hasło"
-                className="wrapper__text-input wrapper__text-input--modifySettings"
+                className="wrapper__text-input--modifySettings"
                 {...register("password")}
               />
               {errors["password"] && (

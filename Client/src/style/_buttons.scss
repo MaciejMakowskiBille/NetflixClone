@@ -70,3 +70,11 @@ button {
     color: $purpleLight;
   }
 }
+
+.closeButton {
+  width: 25px;
+  height: 25px;
+  background-image: url("../imgs/icons/close.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}

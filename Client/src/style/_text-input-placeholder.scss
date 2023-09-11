@@ -42,9 +42,24 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .wrapper__text-input--modifySettings {
   border: none;
-  height: 20px;
+  height: 100%;
+  width: 100%;
+  color: inherit;
+  background-color: inherit;
+  border-radius: none;
   padding: 0;
   &:focus {
+    outline: none;
     border: none;
   }
+}
+
+.inputWithError {
+  box-sizing: border-box;
+  height: 24px;
+}
+
+.inputWithError--open {
+  box-sizing: border-box;
+  height: fit-content;
 }

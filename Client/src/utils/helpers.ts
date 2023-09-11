@@ -165,3 +165,15 @@ export const cleanUserData = (
   };
   return cleanedData;
 };
+
+export const cleanSettingsData = (data: SettingsSchemaType) => {
+  const keys: (keyof SettingsSchemaType)[] = Object.keys(data);
+  let outputObj: SettingsSchemaType = {};
+  keys.forEach((item) => {
+    if (data[item] !== undefined) {
+      outputObj[item] = data[item];
+    }
+  });
+
+  return outputObj as SettingsFormType;
+};
