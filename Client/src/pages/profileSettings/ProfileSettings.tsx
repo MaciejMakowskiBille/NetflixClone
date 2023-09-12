@@ -9,7 +9,7 @@ import SettingsRow from "./components/SettingsRow";
 import { changePassword, putUserData } from "../../utils/Puts";
 import { cleanSettingsData } from "../../utils/helpers";
 import PaymentDetails from "./components/PaymentDetails";
-import Modal from "./components/modal";
+import Modal from "../../components/modal/modal";
 
 const ProfileSettings = () => {
   const [clickedIndex, setClickedIndex] = useState<number>(-1);
@@ -282,9 +282,12 @@ const ProfileSettings = () => {
       )}
 
       {removeProfileModalIsOpen && (
-        <Modal title="Uwaga" content="Czy napewno chcesz usunąć profil?">
-          <button className="button-primary">Zatwierdź</button>
-          <button className="button-secondary">Anuluj</button>
+        <Modal
+          title="Uwaga"
+          btnText={["Tak, chcę"]}
+          setModalIsOpen={setRemoveProfileModalIsOpen}
+        >
+          <p>Czy na pewno chcesz usunąc profil?</p>
         </Modal>
       )}
     </form>

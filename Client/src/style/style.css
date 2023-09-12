@@ -950,21 +950,23 @@ input[type=number]::-webkit-inner-spin-button {
   position: fixed;
   background-color: #262428;
   top: 15px;
-  left: 10%;
-  width: 60%;
+  width: 40%;
   z-index: 100;
   overflow: hidden;
 }
 .modal .modal__header {
   background: #421969;
   padding: 1rem;
+  display: flex;
+  align-items: center;
 }
 .modal .modal__header h2 {
   margin: 0;
   color: #f3eff5;
+  font-weight: bold;
 }
 .modal .modal__content {
-  padding: 1rem;
+  padding: 1rem 1rem 1.5rem 1rem;
 }
 .modal .modal__actions {
   padding: 1rem;
@@ -972,13 +974,15 @@ input[type=number]::-webkit-inner-spin-button {
   justify-content: end;
   gap: 15px;
 }
-
-@media (min-width: 768px) {
-  .modal {
-    left: calc(50% - 10rem);
-    width: 20rem;
-  }
+.modal .modal__actions button {
+  width: 100%;
+  font-weight: bold;
 }
+.modal .right {
+  position: absolute;
+  right: 1.5rem;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -1306,49 +1310,26 @@ html {
   gap: 20px;
 }
 
-.payment-details {
-  position: fixed;
-  background-color: #262428;
-  top: 15px;
-  width: 50%;
-  z-index: 100;
-  overflow: hidden;
-}
-.payment-details .payment-details__header {
-  background: #421969;
-  padding: 1rem 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.payment-details .payment-details__header h2 {
-  margin: 0;
-  color: #f3eff5;
-}
-.payment-details .payment-details__content {
+.modal .modal__content {
   padding: 1.8rem;
   display: flex;
   flex-direction: column;
   gap: 45px;
 }
-.payment-details .payment-details__content .payment-details__section {
+.modal .modal__content .modal__section {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
-.payment-details .payment-details__content .payment-details__section h3 {
+.modal .modal__content .modal__section h3 {
   font-weight: bold;
   font-size: 20px;
 }
-.payment-details .payment-details__content .payment-details__section ul {
+.modal .modal__content .modal__section ul {
   margin-left: 20px;
 }
-.payment-details .payment-details__content .payment-details__section ul li {
+.modal .modal__content .modal__section ul li {
   padding: 5px 0;
-}
-.payment-details .right {
-  position: absolute;
-  right: 1.5rem;
 }
 
 body {

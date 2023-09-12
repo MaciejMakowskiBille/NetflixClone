@@ -1,28 +1,38 @@
+import { ReactNode } from "react";
+
 export default function Modal({
   title,
-  buttonText,
-  content,
+  btnText,
+  children,
+  setModalIsOpen,
 }: {
   title: string;
-  buttonText: string;
-  content: string;
+  btnText: string[];
+  children: ReactNode;
+  setModalIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
+  function handleCloseModal() {
+    setModalIsOpen(false);
+  }
   return (
-    <div>
+    <>
       <div className="backdrop" />
       <div className="modal">
         <header className="modal__header">
-          <h1>{title}</h1>
+          <h2>{title}</h2>
+          <button
+            className="closeButton icon right"
+            onClick={handleCloseModal}
+          />
         </header>
-        <div className="modal__content">
-          <p>{content}</p>
-        </div>
+        <div className="modal__content">{children}</div>
         <footer className="modal__actions">
-          <button type="button" className="form-button button-secondary">
-            {buttonText}
-          </button>
+          <button className="button-primary">{btnText[0]}</button>
+          {btnText.length === 2 && (
+            <button className="button-secondary">{btnText[1]}</button>
+          )}
         </footer>
       </div>
-    </div>
+    </>
   );
 }
