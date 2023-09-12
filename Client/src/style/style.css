@@ -967,6 +967,9 @@ input[type=number]::-webkit-inner-spin-button {
 }
 .modal .modal__actions {
   padding: 1rem;
+  display: flex;
+  justify-content: end;
+  gap: 15px;
 }
 
 @media (min-width: 768px) {
@@ -1239,7 +1242,7 @@ html {
 }
 @media (max-width: 660px) {
   .all-user-settings main.settings .settings__form {
-    width: calc(100% - 50px);
+    width: calc(100% - 20px);
   }
 }
 .all-user-settings main.settings .settings__form h3.settings__header {
@@ -1315,21 +1318,22 @@ html {
   padding: 1rem 1.5rem;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 .payment-details .payment-details__header h2 {
   margin: 0;
   color: #f3eff5;
 }
 .payment-details .payment-details__content {
-  padding: 1.5rem;
+  padding: 1.8rem;
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 45px;
 }
 .payment-details .payment-details__content .payment-details__section {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 8px;
 }
 .payment-details .payment-details__content .payment-details__section h3 {
   font-weight: bold;
