@@ -1,20 +1,21 @@
-import { FieldErrors, UseFormRegister } from "react-hook-form";
+import { ReactNode } from "react";
+
 export default function SettingsRow({
   inputIsOpen,
-  register,
+
   setInputIsOpen,
   data,
   type,
-  errors,
+  children,
   resetForm,
   index,
 }: {
   inputIsOpen: number;
-  register: UseFormRegister<SettingsFormType>;
+
   setInputIsOpen: (value: React.SetStateAction<number>) => void;
-  errors: FieldErrors<SettingsFormType>;
+  children: ReactNode;
   resetForm: () => void;
-  type: "email" | "phoneNumber";
+  type: "email" | "phoneNumber" | "currentPassword";
   data: string | undefined;
   index: number;
 }) {
@@ -23,28 +24,15 @@ export default function SettingsRow({
     filedName = "email";
   } else if (type === "phoneNumber") {
     filedName = "numer";
+  } else if (type === "currentPassword") {
+    filedName = "hasło";
   }
 
   return (
     <div>
       {inputIsOpen == index ? (
         <div className="settings-item__row">
-          <div className="settings-item__inputs">
-            <div>
-              <input
-                type="text"
-                placeholder={data}
-                className="wrapper__text-input wrapper__text-input--modifySettings"
-                {...register(type)}
-                autoFocus
-              />
-              {errors[type] && (
-                <p className="error-message error-message--settings">
-                  {errors[type]?.message}
-                </p>
-              )}
-            </div>
-          </div>
+          <div className="settings-item__inputs">{children}</div>
           <div className="settings-item__buttons">
             <button className="textButton" onClick={resetForm}>
               Anuluj
@@ -56,7 +44,14 @@ export default function SettingsRow({
         </div>
       ) : (
         <div className="settings-item__row">
-          <p>{data ? data : "nie ustawiono"}</p>
+          {type === "currentPassword" ? (
+            <div className="settings-item__password-fields">
+              <div className="settings-item__field"></div>
+              <div className="settings-item__field"></div>
+            </div>
+          ) : (
+            <p>{data ? data : "nie ustawiono"}</p>
+          )}
           <button className="textButton" onClick={() => setInputIsOpen(index)}>
             zmień {filedName}
           </button>

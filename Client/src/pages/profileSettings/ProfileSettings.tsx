@@ -7,7 +7,6 @@ import { settingsSchema } from "../../utils/schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import SettingsRow from "./components/SettingsRow";
 import { changePassword, putUserData } from "../../utils/Puts";
-import PasswordRow from "./components/PasswordRow";
 import { cleanSettingsData } from "../../utils/helpers";
 import PaymentDetails from "./components/PaymentDetails";
 import Modal from "./components/modal";
@@ -123,36 +122,105 @@ const ProfileSettings = () => {
                 <div className="settings-item__content">
                   <SettingsRow
                     data={userData.email}
-                    errors={errors}
-                    inputIsOpen={inputIsOpen}
                     index={0}
-                    register={register}
-                    resetForm={resetForm}
+                    inputIsOpen={inputIsOpen}
                     setInputIsOpen={setInputIsOpen}
                     type="email"
+                    resetForm={resetForm}
                     key={"email"}
-                  />
+                  >
+                    <div>
+                      <input
+                        type="text"
+                        placeholder={userData.email}
+                        className="wrapper__text-input--modifySettings"
+                        {...register("email")}
+                        autoFocus
+                      />
+                      {errors["email"] && (
+                        <p className="error-message error-message--settings">
+                          {errors["email"]?.message}
+                        </p>
+                      )}
+                    </div>
+                  </SettingsRow>
                   <SettingsRow
                     data={userData.phoneNumber?.toString()}
-                    errors={errors}
-                    inputIsOpen={inputIsOpen}
                     index={1}
-                    register={register}
-                    resetForm={resetForm}
+                    inputIsOpen={inputIsOpen}
                     setInputIsOpen={setInputIsOpen}
+                    resetForm={resetForm}
                     type="phoneNumber"
                     key={"phoneNumber"}
-                  />
-                  <PasswordRow
+                  >
+                    <div>
+                      <input
+                        type="text"
+                        placeholder={
+                          !userData.phoneNumber
+                            ? ""
+                            : userData.phoneNumber?.toString()
+                        }
+                        className="wrapper__text-input--modifySettings"
+                        {...register("phoneNumber")}
+                        autoFocus
+                      />
+                      {errors["phoneNumber"] && (
+                        <p className="error-message error-message--settings">
+                          {errors["phoneNumber"]?.message}
+                        </p>
+                      )}
+                    </div>
+                  </SettingsRow>
+                  <SettingsRow
                     data=""
-                    errors={errors}
-                    inputIsOpen={inputIsOpen}
                     index={2}
-                    register={register}
-                    resetForm={resetForm}
+                    inputIsOpen={inputIsOpen}
                     setInputIsOpen={setInputIsOpen}
+                    resetForm={resetForm}
+                    type="currentPassword"
                     key={"password"}
-                  />
+                  >
+                    <div
+                      className={
+                        errors["currentPassword"]
+                          ? "inputWithError--open"
+                          : "inputWithError"
+                      }
+                    >
+                      <input
+                        type="text"
+                        placeholder="bieżące hasło"
+                        className="wrapper__text-input--modifySettings"
+                        {...register("currentPassword")}
+                        autoFocus
+                      />
+                      {errors["currentPassword"] && (
+                        <p className="error-message error-message--settings">
+                          {errors["currentPassword"]?.message}
+                        </p>
+                      )}
+                    </div>
+                    <div
+                      className={
+                        errors["password"]
+                          ? "inputWithError--open"
+                          : "inputWithError"
+                      }
+                    >
+                      <input
+                        type="text"
+                        placeholder="nowe hasło"
+                        className="wrapper__text-input--modifySettings"
+                        {...register("password")}
+                      />
+                      {errors["password"] && (
+                        <p className="error-message error-message--settings">
+                          {errors["password"]?.message}
+                        </p>
+                      )}
+                    </div>
+                  </SettingsRow>
                 </div>
               </div>
 

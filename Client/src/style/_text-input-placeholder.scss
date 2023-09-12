@@ -41,9 +41,10 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 .wrapper__text-input--modifySettings {
+  font-size: inherit;
   border: none;
   height: 100%;
-  width: 100%;
+  width: 400px;
   color: inherit;
   background-color: inherit;
   border-radius: none;
