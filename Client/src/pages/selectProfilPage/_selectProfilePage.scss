@@ -1,0 +1,101 @@
+.profile {
+    &Container {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        padding-top: 10%;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        position: relative;
+    }
+    &Tile {
+        width: 14vw;
+        transition: all ease-in-out 0.3s;
+
+        &:hover {
+            cursor: pointer;
+            color: $purpleLight;
+        }
+    }
+    &Img {
+        width: 15vw;
+        min-height: 30vh;
+        background: #000;
+    }
+    &Name {
+        height: 10%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    &-exit-button {
+        position: absolute;
+        right: 2rem;
+        letter-spacing: 1px;
+        bottom: 2rem;
+    }
+}
+
+.AddProfileModal {
+    padding-top: 1rem;
+    box-sizing: border-box;
+    position: absolute;
+    border-radius: 10px;
+    z-index: 10;
+    background: rgb(22, 4, 40);
+    background: linear-gradient(
+        0deg,
+        rgba(22, 4, 40, 1) 0%,
+        rgba(40, 9, 69, 0.9044410000328256) 100%
+    );
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    gap: 3rem;
+
+    .inputs {
+        display: flex;
+        flex-direction: column;
+        width: 225px;
+        gap: 2rem;
+
+        input[type='text'] {
+            height: 50px;
+        }
+        .file {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            justify-content: center;
+            gap: 1rem;
+            label {
+                font-size: medium;
+            }
+            input[type='file'] {
+                background-color: none;
+                padding: 0;
+            }
+            img {
+                width: 40px;
+                height: 40px;
+            }
+        }
+    }
+
+    .addRow {
+        display: flex;
+        box-sizing: border-box;
+        width: 100%;
+        justify-content: end;
+        padding: 0 2rem 2rem 0;
+    }
+    .right {
+        position: absolute;
+        right: 2rem;
+        top: 2rem;
+    }
+}

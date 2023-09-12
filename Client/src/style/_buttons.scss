@@ -44,6 +44,21 @@ button {
     border: 2px $purple solid;
   }
 }
+
+.button-exit{
+    background-color: $red;
+    color: $whiteText;
+    &:hover{
+        background-color: $redLight;
+        color:$whiteText;
+    }
+    &:active{
+        background-color: $red;
+        box-shadow: inset $black 0 0 5px;
+        color:$whiteText;
+
+    }
+}
 .iconButton {
   width: 40px;
   height: 40px;
@@ -59,6 +74,7 @@ button {
   background-image: url("../imgs/movieTile/Play.svg");
   z-index: 5;
 }
+
 
 .textButton {
   background-color: inherit;
@@ -78,3 +94,20 @@ button {
   background-size: cover;
   background-repeat: no-repeat;
 }
+.addButton{
+    background-image: url('../imgs/icons/addIcon.svg');
+    transition: all ease-in-out 0.3s;
+
+    &:hover{
+        filter: drop-shadow($purple 1px 3px);
+        transform: scale(1.1);
+    }
+}
+.searchButton{
+    width: 30px;
+    height: 30px;
+    background-image: url('../imgs/icons/search.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+

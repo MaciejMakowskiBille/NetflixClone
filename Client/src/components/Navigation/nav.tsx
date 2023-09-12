@@ -1,11 +1,17 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {motion} from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
+import Menu from './components/menu'
 const Navigation = () => {
     const [inputValue, setInputValue] = useState('');
     const [isSearch, setIsSearch] = useState(false)
+    const [isMenuOpen, setIsMenuOpen] = useState(false)
 
     const navigate = useNavigate()
+
+    const handleClickArrow = () =>{
+        setIsMenuOpen((prev) => !prev)
+    }
 
     const handleClickSearch = () => {
         setIsSearch((prev) => prev = !prev)
@@ -22,12 +28,12 @@ const Navigation = () => {
         <>
             <nav>
                 <div className='navLeft'>
-                    <div className='filmexLogo' onClick={() => navigate('/')} >
+                    <div className='filmexLogo' onClick={() => navigate('/main')} >
                         Filme
                         <span>x</span>
                     </div>
                     <ul>
-                        <li onClick={() => navigate('/')}>
+                        <li onClick={() => navigate('/main')}>
                             Strona główna
                         </li>
                         <li onClick={() => navigate('/list/series/all')}>
@@ -42,7 +48,7 @@ const Navigation = () => {
                         <li onClick={() => navigate('/list/new/all')}>
                             Najnowsze
                         </li>
-                        <li>
+                        <li onClick={() => navigate("/favorites")}>
                             Moja lista
                         </li>
                     </ul>
@@ -55,6 +61,7 @@ const Navigation = () => {
                     whileInView={{x:0, opacity:1}}
                     >
                         <input 
+                        className='input-background'
                         type='text' 
                         placeholder='Po wpisaniu wciśnij enter'
                         onKeyDown={handleSearch}
@@ -66,7 +73,8 @@ const Navigation = () => {
                     <button className={isSearch ? 'closeButton icon' : 'searchButton icon'} onClick={handleClickSearch}/>
                     <div className='navMenu'>
                         <div className='avatar'/>
-                        <div className='icon menuArrow'/>
+                        <div className='icon menuArrow'  onClick={handleClickArrow}/>
+                        <Menu isOpen={isMenuOpen}/>
                     </div>
                 </div>
             </nav>
