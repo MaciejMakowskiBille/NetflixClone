@@ -18,6 +18,7 @@ const ProfileSettings = () => {
   const [userData, setUserData] = useState<AllUserDataResponseType | null>(
     null
   );
+  const [removeProfileMessage, setRemoveProfileMessage] = useState<string>("");
   const [paymentsOfferText, setPaymentsOfferText] = useState<string>("");
   const [inputIsOpen, setInputIsOpen] = useState<number>(-1);
   const [paymentModalIsOpen, setPaymentModalIsOpen] = useState<boolean>(false);
@@ -106,6 +107,15 @@ const ProfileSettings = () => {
     e.preventDefault();
     setPaymentModalIsOpen(true);
   }
+
+  const removeYourProfile = () => {
+    if (userData?.profiles.length! > 1) {
+      removeProfile(clickedIndex);
+      setRemoveProfileModalIsOpen(false);
+    } else {
+      setRemoveProfileMessage("Wybrana operacja nie jest możliwa.");
+    }
+  };
 
   return (
     <form className="all-user-settings" onSubmit={handleSubmit(onSubmit)}>
