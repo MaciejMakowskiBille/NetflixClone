@@ -1226,7 +1226,8 @@ html {
 }
 
 .error-message--settings {
-  padding-top: 0;
+  padding-top: 5px;
+  font-size: 16px;
 }
 
 .all-user-settings {

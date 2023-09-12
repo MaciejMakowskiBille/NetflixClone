@@ -1,10 +1,10 @@
 import axios from "axios";
 import { setAuthToken } from "./Posts";
-import { authURL } from "./links";
+import { apiURL, authURL } from "./links";
 
 export const putUserData = async (data: putUserType) => {
   const response = await axios
-    .put("http://localhost:3001/api/user/me", data)
+    .put(apiURL+ "user/me", data)
     .then((response) => response)
     .catch((error) => {
       throw error;

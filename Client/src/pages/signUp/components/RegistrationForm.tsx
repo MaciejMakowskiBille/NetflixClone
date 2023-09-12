@@ -7,7 +7,7 @@ import RegistrationEmail from "./RegistrationEmail";
 import RegistrationPassword from "./RegistrationPassword";
 import RegistrationAgreements from "./RegistrationAgreement";
 import RegistrationPayments from "./payments/RegistrationPayments";
-import Modal from "../../../components/modal/modal";
+import Modal from "../../../components/modal/Modal";
 import { DisplayedPagesObjectType } from "../../../types/propsType";
 import { cleanUserData } from "../../../utils/helpers";
 
@@ -50,7 +50,6 @@ const RegistrationForm = () => {
 
     try {
       const userResponse = await postUser(cleanedData);
-      console.log("udało się:", userResponse);
       if (userResponse) {
         setModalData({
           success: true,
@@ -89,7 +88,8 @@ const RegistrationForm = () => {
         <Modal
           title={modalData.success ? "Sukces" : "Upss!"}
           btnText={modalData.success ? ["Zaloguj się"] : ["Okey"]}
-          setModalIsOpen={setModalIsOpen}
+          setModalIsOpen={undefined}
+          onSubmit={undefined}
         >
           {modalData.content!}
         </Modal>
