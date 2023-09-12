@@ -17,9 +17,6 @@ const SelectProfilePage = () =>{
             <main>
                 <section className="profileContainer">
                     <ProfileTile/>
-                    <ProfileTile/>
-                    <ProfileTile/>
-                    <ProfileTile/>
                     <div className="icon addButton iconButton" onClick={handleClickAddButton}/>
                 </section>
                     <button className="button-exit profile-exit-button" onClick={() => navigate("/")}>WYLOGUJ</button>
