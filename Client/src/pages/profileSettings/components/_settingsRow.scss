@@ -3,14 +3,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  // margin: 10px 0 10px 50px;
   align-items: start;
   flex-wrap: wrap;
   padding: 6px 0;
 
   .settings-item__inputs,
   .settings-item__password-fields {
-    // width: 90%;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -21,7 +19,6 @@
   }
 
   .settings-item__buttons {
-    // width: 10%;
     display: flex;
     gap: 20px;
   }
