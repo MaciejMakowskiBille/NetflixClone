@@ -73,7 +73,7 @@ const FilteredMovies = () => {
     } else if (type && type === "new") {
       assignData(getAllTypeMoviesByDate());
     } else {
-      navigate("/");
+      navigate("/main");
     }
 
     getCategories()

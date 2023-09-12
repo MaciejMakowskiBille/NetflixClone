@@ -1,4 +1,7 @@
+import { useNavigate } from "react-router-dom"
+
 const Home = () => {
+  const navigate = useNavigate();
 
   return (
     <>
@@ -8,7 +11,7 @@ const Home = () => {
             <div className='title'>
                 Filme<text>x</text>
             </div>
-            <button className='button-primary'>Zaloguj się</button>
+            <button className='button-primary' onClick={() => navigate('/signIn')}>Zaloguj się</button>
           </div>
           <div className='centeredContent'>
             <h1>
@@ -23,8 +26,8 @@ const Home = () => {
                   Wprowadź swój adres email aby rozpocząć swoją przygodę.
               </div>
               <div className='homeForm'>
-                  <input type='text' placeholder='Email' className='inputEmailHomge'/>
-                  <button type='submit' className='button-primary'>Rozpocznij</button>
+                  <input type='text' placeholder='Email' className='inputEmailHomge input-background'/>
+                  <button type='submit' className='button-primary' onClick={() => navigate('/signUp')}>Rozpocznij</button>
               </div>
             </div>
 
