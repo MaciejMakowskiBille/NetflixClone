@@ -246,9 +246,9 @@ type ProfileResponseType = {
   attributes: {
     username: string;
     ageGroup: "kid" | "teen" | "adult";
-    favorite_series?: {data: SeriesResponseType[]};
-    favorite_films?: {data: MovieResponseType};
-    avatar: MediaResponseType["attributes"]| null;
+    favorite_series?: { data: SeriesResponseType[] };
+    favorite_films?: { data: MovieResponseType };
+    avatar: MediaResponseType["attributes"] | null;
     createdAt: string;
     updatedAt: string;
     publishedAt: string;
@@ -256,17 +256,27 @@ type ProfileResponseType = {
   id: number;
 };
 
-
 type AllUserDataResponseType = UserResponseType & {
   profiles: Array<ProfileResponseType["attributes"] & { id: number }> | [];
-  payment: PaymentResponseType["attributes"] & {id: number} | null;
-}
+  payment: (PaymentResponseType["attributes"] & { id: number }) | null;
+};
 
 type PutUserResponseType = {
-  id: number,
-  email: string,
-  phoneNumber: string,
-  optInSubscription: boolean,
-  createdAt: string,
-  updatedAt: string,
-}
+  id: number;
+  email: string;
+  phoneNumber: string;
+  optInSubscription: boolean;
+  createdAt: string;
+  updatedAt: string;
+};
+
+type RemoveProfileResponseType = {
+  id: number;
+  attributes: {
+    username: string;
+    ageGroup: "kid" | "adult" | "teen";
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
+  };
+};

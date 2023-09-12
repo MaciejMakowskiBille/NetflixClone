@@ -9,7 +9,8 @@ import SettingsRow from "./components/SettingsRow";
 import { changePassword, putUserData } from "../../utils/Puts";
 import { cleanSettingsData } from "../../utils/helpers";
 import PaymentDetails from "./components/PaymentDetails";
-import Modal from "../../components/modal/modal";
+import Modal from "../../components/modal/Modal";
+import { removeProfile } from "../../utils/Deletes";
 
 const ProfileSettings = () => {
   const [clickedIndex, setClickedIndex] = useState<number>(-1);
@@ -286,8 +287,16 @@ const ProfileSettings = () => {
           title="Uwaga"
           btnText={["Tak, chcę"]}
           setModalIsOpen={setRemoveProfileModalIsOpen}
+          onSubmit={removeYourProfile}
         >
-          <p>Czy na pewno chcesz usunąc profil?</p>
+          <div className="inputWithError">
+            <p>Czy na pewno chcesz usunąc profil?</p>
+            {removeProfileMessage && (
+              <p className="error-message error-message--settings">
+                {removeProfileMessage}
+              </p>
+            )}
+          </div>
         </Modal>
       )}
     </form>
