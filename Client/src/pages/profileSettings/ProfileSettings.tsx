@@ -10,6 +10,7 @@ import { changePassword, putUserData } from "../../utils/Puts";
 import PasswordRow from "./components/PasswordRow";
 import { cleanSettingsData } from "../../utils/helpers";
 import PaymentDetails from "./components/PaymentDetails";
+import Modal from "./components/modal";
 
 const ProfileSettings = () => {
   const [clickedIndex, setClickedIndex] = useState<number>(-1);
@@ -20,6 +21,8 @@ const ProfileSettings = () => {
   const [paymentsOfferText, setPaymentsOfferText] = useState<string>("");
   const [inputIsOpen, setInputIsOpen] = useState<number>(-1);
   const [paymentModalIsOpen, setPaymentModalIsOpen] = useState<boolean>(false);
+  const [removeProfileModalIsOpen, setRemoveProfileModalIsOpen] =
+    useState<boolean>(false);
   const [reload, setReload] = useState(false);
 
   const {
@@ -201,6 +204,7 @@ const ProfileSettings = () => {
                 data={userData.profiles}
                 clickedIndex={clickedIndex}
                 setClickedIndex={setClickedIndex}
+                setRemoveProfileModalIsOpen={setRemoveProfileModalIsOpen}
               />
             </ul>
           </main>
@@ -211,6 +215,13 @@ const ProfileSettings = () => {
           data={userData?.payment!}
           setPaymentModalIsOpen={setPaymentModalIsOpen}
         />
+      )}
+
+      {removeProfileModalIsOpen && (
+        <Modal title="Uwaga" content="Czy napewno chcesz usunąć profil?">
+          <button className="button-secondary">Zatwierdź</button>
+          <button className="button-secondary">Anuluj</button>
+        </Modal>
       )}
     </form>
   );
