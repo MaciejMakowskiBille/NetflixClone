@@ -23,7 +23,6 @@ const ProfileSettings = () => {
   const [paymentModalIsOpen, setPaymentModalIsOpen] = useState<boolean>(false);
   const [removeProfileModalIsOpen, setRemoveProfileModalIsOpen] =
     useState<boolean>(false);
-  const [reload, setReload] = useState(false);
 
   const {
     setError,
@@ -42,23 +41,21 @@ const ProfileSettings = () => {
     resolver: zodResolver(settingsSchema),
   });
 
-  useEffect(() => {
-    const offer = userData?.payment?.paymentsOffer;
-    let outputString: string;
-    if (offer) {
-      outputString = "<p>Plan miesięczny</p>" + "<p>29.99zł/miesiąc</p>";
-    } else {
-      outputString = "<p>Plan roczny</p>" + "<p>289.99zł/rok</p>";
-    }
-    setPaymentsOfferText(outputString);
-  }, [reload]);
-
-  useEffect(() => {
-    getAllUserData().then((response) => {
+  async function loadUserData() {
+    await getAllUserData().then((response) => {
       setIsLoading(false);
       setUserData(response);
+      if (response?.payment?.paymentsOffer) {
+        setPaymentsOfferText("<p>Plan miesięczny</p><p>29.99zł/miesiąc</p>");
+      } else {
+        setPaymentsOfferText("<p>Plan roczny</p><p>289.99zł/rok</p>");
+      }
     });
-  }, [reload]);
+  }
+
+  useEffect(() => {
+    loadUserData();
+  }, []);
 
   const resetForm = () => {
     reset({
@@ -80,12 +77,11 @@ const ProfileSettings = () => {
       if (key === "currentPassword" || key === "password") {
         let changePasswordData = cleanedData as ChangePasswordType;
         changePasswordData["passwordConfirmation"] = cleanedData.password!;
-        // console.log(cleanedData);
         const response = await changePassword(changePasswordData);
         console.log("sukces", response);
       } else {
         const response = await putUserData(cleanedData);
-        setReload((prev) => !prev);
+        loadUserData();
         console.log(response);
       }
       resetForm();
@@ -219,7 +215,7 @@ const ProfileSettings = () => {
 
       {removeProfileModalIsOpen && (
         <Modal title="Uwaga" content="Czy napewno chcesz usunąć profil?">
-          <button className="button-secondary">Zatwierdź</button>
+          <button className="button-primary">Zatwierdź</button>
           <button className="button-secondary">Anuluj</button>
         </Modal>
       )}
