@@ -148,8 +148,12 @@ export function setToken(token: string) {
 }
 
 export const getAllUserData = async (): Promise<AllUserDataResponseType | null> => {
-  setAuthToken(localStorage.getItem("jwt")!);
-  const response = await axios.get(apiURL + `users/me?populate=payment,profiles.avatar`)
+  const token = localStorage.getItem("jwt");
+  const response = await axios.get(apiURL + `users/me?populate=payment,profiles.avatar`, {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  });
   if(response && response.data){
 
       return response.data as AllUserDataResponseType;
@@ -157,4 +161,28 @@ export const getAllUserData = async (): Promise<AllUserDataResponseType | null> 
   }else{
     return null
   }
+}
+
+export const getUserProfiles = async (userId: number): Promise<ProfileInfo[] | null> => {  
+  const response = await axios.get(apiURL + `profiles?populate=user,avatar&filters[user][id][$eq]=${userId}`)
+  if (response && response.data.data) {
+    return response.data.data;
+  }
+  return null
+}
+
+export const getFavoriteMovies = async (profileId: number): Promise<ProfileFavoritesResponsetype | null> => {
+  const response = await axios.get(apiURL + `profiles/${profileId}?populate=attributes,favorite_films`)
+  if (response && response.data.data) {
+    return response.data.data;
+  }
+  return null
+}
+
+export const getFavoriteSeries = async (profileId: number): Promise<ProfileFavoritesResponsetype | null> => {
+  const response = await axios.get(apiURL + `profiles/${profileId}?populate=attributes,favorite_series`)
+  if (response && response.data.data) {
+    return response.data.data;
+  }
+  return null;
 }

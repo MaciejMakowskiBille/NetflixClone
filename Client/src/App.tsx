@@ -26,6 +26,7 @@ const App = () => {
             <Route path="/*" element={<MainPage />} />
             <Route path="/movie/:movieType/:movieId" element={<MoviePage />} />
             <Route path="/main" element={<MainPage />} />
+            <Route path="/settings" element={<ProfileSettings />} />
             <Route path="/profile" element={<SelectProfilePage />} />
             <Route path="/list/:type/:filter" element={<FilteredMovies />} />
             <Route path="/producers" element={<ProducersPage />} />
