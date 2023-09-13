@@ -169,21 +169,21 @@ type UserType = {
 };
 
 type putUserType = {
-  email?: string;
-  password?: string;
-  phoneNumber?: string;
+  email: string | null;
+  password: string | null;
+  phoneNumber: string | null;
 }
 
 type SettingsSchemaType = {
-  [key: string]: string | undefined;
+  [key: string]: string | null;
 };
 
 type SettingsFormType = {
-  currentPassword?: string | undefined;
-  password?: string | undefined;
-  email?: string | undefined;
-  phoneNumber?: string | undefined;
-  passwordConfirmation: string| undefined;
+  currentPassword: string | null;
+  password: string | null;
+  passwordConfirmation: string| null;
+  email: string | null;
+  phoneNumber: string | null;
 }
 
 type ChangePasswordType = {

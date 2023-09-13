@@ -34,10 +34,10 @@ const ProfileSettings = () => {
   } = useForm<SettingsFormType>({
     mode: "onChange",
     defaultValues: {
-      email: undefined,
-      phoneNumber: undefined,
-      currentPassword: undefined,
-      password: undefined,
+      email: null,
+      phoneNumber: null,
+      currentPassword: null,
+      password: null,
     },
     resolver: zodResolver(settingsSchema),
   });
@@ -60,16 +60,16 @@ const ProfileSettings = () => {
 
   const resetForm = () => {
     reset({
-      email: undefined,
-      phoneNumber: undefined,
-      currentPassword: undefined,
-      password: undefined,
+      email: null,
+      phoneNumber: null,
+      currentPassword: null,
+      password: null,
     });
     setInputIsOpen(-1);
   };
 
   const onSubmit = async (formData: SettingsSchemaType) => {
-    const cleanedData: SettingsFormType = cleanSettingsData(formData);
+    const cleanedData = cleanSettingsData(formData);
     const keys = Object.keys(cleanedData) as (keyof SettingsFormType)[];
     const key = keys[0];
     try {
@@ -78,7 +78,7 @@ const ProfileSettings = () => {
         changePasswordData["passwordConfirmation"] = cleanedData.password!;
         await changePassword(changePasswordData);
       } else {
-        await putUserData(cleanedData);
+        await putUserData(cleanedData as putUserType);
         loadUserData();
       }
       resetForm();

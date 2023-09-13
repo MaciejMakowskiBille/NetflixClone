@@ -66,11 +66,18 @@ export const loginSchema = z.object({
 
 const phoneRegex = "^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{3,5}$";
 
+// export const settingsSchema = z.object({
+//   currentPassword: z.string().min(9, "wprowadź poprawną wartość").optional(),
+//   password: z.string().min(9, "wprowadź poprawną wartość").optional(),
+//   email: z.string().email("niepoprawna wartość").optional().transform(e => e === '' ? undefined : e),
+//   phoneNumber: z.string().regex(new RegExp(phoneRegex), "niewłaściwa wartość").optional().transform(e => e === '' ? undefined : e),
+// })
+
 export const settingsSchema = z.object({
-  currentPassword: z.string().min(9, "wprowadź poprawną wartość").optional(),
-  password: z.string().min(9, "wprowadź poprawną wartość").optional(),
-  email: z.string().email("niepoprawna wartość").optional().transform(e => e === '' ? undefined : e),
-  phoneNumber: z.string().regex(new RegExp(phoneRegex), "niewłaściwa wartość").optional().transform(e => e === '' ? undefined : e),
+  currentPassword: z.string().min(9, "wprowadź poprawną wartość").nullable(),
+  password: z.string().min(9, "wprowadź poprawną wartość").nullable(),
+  email: z.string().email("niepoprawna wartość").nullable().transform(e => e === '' ? null : e),
+  phoneNumber: z.string().regex(new RegExp(phoneRegex), "niewłaściwa wartość").nullable().transform(e => e === '' ? null : e),
 })
 
 // export type SettingsFormType = z.infer<typeof settingsSchema>;
