@@ -14,29 +14,28 @@ import SelectProfilePage from "./pages/selectProfilPage/selectProfilePage";
 import Home from "./pages/home/home";
 import FavoritesPage from "./pages/favoritesPage/favoritesPage";
 
-
 const App = () => {
   return (
     <Router>
       <Routes location={location} key={location.pathname}>
         <Route path="/signUp" element={<SignUp />} />
         <Route path="/signIn" element={<SignIn />} />
+        <Route path="/settings" element={<ProfileSettings />} />
 
         <Route path="/" element={<Home />} />
-        {
-          localStorage.getItem("jwt") ?
+        {localStorage.getItem("jwt") ? (
           <>
-            <Route path="/*" element={<MainPage/>} />
+            <Route path="/*" element={<MainPage />} />
             <Route path="/movie/:movieType/:movieId" element={<MoviePage />} />
             <Route path="/main" element={<MainPage />} />
             <Route path="/profile" element={<SelectProfilePage />} />
             <Route path="/list/:type/:filter" element={<FilteredMovies />} />
             <Route path="/producers" element={<ProducersPage />} />
-            <Route path="favorites" element={<FavoritesPage/>}/>
+            <Route path="favorites" element={<FavoritesPage />} />
           </>
-          : <Route path="/*" element={<Home/>} />
-        }
-
+        ) : (
+          <Route path="/*" element={<Home />} />
+        )}
       </Routes>
     </Router>
   );
