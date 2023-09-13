@@ -1,0 +1,112 @@
+.columnDisplay {
+  align-items: flex-start;
+  height: 100%;
+}
+
+.favorites {
+  &__header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+
+    &--title {
+      display: flex;
+      gap: 20px;
+    }
+
+    &--dropdown {
+      .up {
+        border-radius: 5px 5px 0px 0px;
+      }
+
+      &__button {
+        transition: none;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        justify-content: space-evenly;
+        font-size: 20px;
+        background-color: #504957;
+        color: #fff;
+        font-weight: normal;
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.329);
+
+        &--arrow {
+          &__down {
+            transform: rotate(-90deg);
+          }
+          &__up {
+            transform: rotate(90deg);
+          }
+        }
+      }
+
+      &__box {
+        position: absolute;
+        padding: 16px;
+        background-color: #504957;
+        border-radius: 0px 5px 5px 5px;
+        font-size: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.329);
+
+        &--filters {
+          width: 100%;
+          display: flex;
+          justify-content: flex-start;
+          gap: 20px;
+
+          &__option {
+            cursor: pointer;
+            color: #a3a3a3;
+            text-decoration: line-through;
+
+            &:hover {
+              color: #9864c9;
+              font-weight: bold;
+            }
+
+            &--active {
+              cursor: pointer;
+              color: #fff;
+              font-weight: bold;
+
+              &:hover {
+                text-decoration: line-through;
+              }
+            }
+          }
+        }
+
+        &--search {
+          display: flex;
+          gap: 20px;
+
+          input {
+            font-size: 20px;
+            max-width: 200px;
+            height: 30px;
+            background-color: #fff;
+            padding: 0px 5px;
+            position: relative;
+
+            &:focus {
+              outline: none;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &__rows {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+  }
+}

@@ -9,7 +9,7 @@ const Home = () => {
         <main>
           <div className='homeHeader'>
             <div className='title'>
-                Filme<text>x</text>
+                Filme<span>x</span>
             </div>
             <button className='button-primary' onClick={() => navigate('/signIn')}>Zaloguj się</button>
           </div>

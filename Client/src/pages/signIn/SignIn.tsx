@@ -3,10 +3,12 @@ import { loginSchema } from "../../utils/schemas";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { signIn } from "../../utils/Posts";
 import { useNavigate } from "react-router-dom";
+import { useSignedInContext } from "../../providers/signedInProvider";
 import Password from "../../components/Input/Password";
 import { useState } from "react";
 export default function SignIn() {
   const navigate = useNavigate();
+  const signInContext = useSignedInContext();
 
   const {
     setError,
@@ -27,8 +29,8 @@ export default function SignIn() {
     try {
       const response = await signIn(data);
       if (response) {
-        localStorage.setItem("jwt", response.jwt);
-        navigate("/main");
+        signInContext.setIsSignedIn(true);
+        navigate("/profile");
       }
     } catch (error) {
       if (error instanceof Error) {

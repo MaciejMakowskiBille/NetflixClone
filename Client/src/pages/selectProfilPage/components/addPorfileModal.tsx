@@ -1,20 +1,29 @@
 import {useState} from 'react'
+import { addProfile } from '../../../utils/Posts';
 type AddProfileModalProps = {
     setIsModalOpen:React.Dispatch<React.SetStateAction<boolean>>
 }
 
-
 const AddProfileModal = (props:AddProfileModalProps) =>{
-    const [name, setName] = useState('')
-    const [file, setFile] = useState<File | null>(null)
+    const [newProfileInfo, setNewProfileInfo] = useState<NewProfileInfo>({
+        name: "",
+        ageGroup: 'kid',
+        avatar: null,
+    });
 
-    const handleType = (e:React.ChangeEvent<HTMLInputElement>) => {
-        setName(e.target.value)
+    const handleChange = (e:React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+        setNewProfileInfo(prevProfileInfo => ({
+            ...prevProfileInfo,
+            [e.target.name]: e.target.value
+        }))
     }
     const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files && event.target.files[0];
         if (file) {
-          setFile(file);
+            setNewProfileInfo(prevProfileInfo => ({
+                ...prevProfileInfo,
+                avatar: file
+            }))
         }
       };
 
@@ -22,9 +31,14 @@ const AddProfileModal = (props:AddProfileModalProps) =>{
         props.setIsModalOpen(false)
     }
 
-    const handleAddProfile = () =>{
-        return null
+    const handleAddProfile = async () =>{
+        const userId = Number(localStorage.getItem("userId"))
+        const response = await addProfile({...newProfileInfo, userId: userId});
+        if (response) {
+            handleCloseModal();
+        }
     }
+    
     return(
         <div className="AddProfileModal">
             <button className="closeButton icon right" onClick={handleCloseModal}/>
@@ -32,13 +46,19 @@ const AddProfileModal = (props:AddProfileModalProps) =>{
                 Dodaj nowy profil
             </div>
             <div className="inputs">
-                <input type="text" placeholder="Wpisz nazwę" className="input-background" onChange={handleType}></input>
+                <input name="name" type="text" placeholder="Wpisz nazwę" className="input-background" onChange={handleChange}></input>
+                <label htmlFor="ageGroupSelect">Wybierz kategorię wiekową</label>
+                <select name="ageGroup" id="ageGroupSelect" onChange={handleChange}>
+                    <option value="kid">Dzieci</option>
+                    <option value="teen">Młodzież</option>
+                    <option value="adult">Dorośli</option>
+                </select>
                 <div className="file">
                     <label>
                         Dodaj zdjęcie
                     </label>
-                    <input type="file" accept="image/png, image/jpeg" onChange={handleImageChange}></input>
-                    {file && <img src={URL.createObjectURL(file)} alt="Selected" />}
+                    <input name="image" type="file" accept="image/png, image/jpeg" onChange={handleImageChange}></input>
+                    {newProfileInfo.avatar && <img src={URL.createObjectURL(newProfileInfo.avatar)} alt="Selected" />}
                 </div>
             </div>
             <div className="addRow">

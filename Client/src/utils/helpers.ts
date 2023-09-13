@@ -1,3 +1,4 @@
+
 export const clearMovieData = (data: MovieResponseType) => {
   const clearedData: MovieDataType = {
     id: data.id,

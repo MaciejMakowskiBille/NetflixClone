@@ -10,6 +10,8 @@ import RegistrationPayments from "./payments/RegistrationPayments";
 import Modal from "../../../components/modal/Modal";
 import { DisplayedPagesObjectType } from "../../../types/propsType";
 import { cleanUserData } from "../../../utils/helpers";
+import { useSignedInContext } from "../../../providers/signedInProvider";
+
 
 const display: DisplayedPagesObjectType = {
   0: <RegistrationEmail />,
@@ -22,7 +24,7 @@ const RegistrationForm = () => {
   const [modalData, setModalData] = useState<modalTypes>({});
   const { noValidateData, page, handleSubmit, reset, setNoValidateData } =
     useRegistrationContext();
-
+  const signedInContext = useSignedInContext();
   // Submit Form function
   const submitForm = async (data: noValidateFormProp, formData?: FormInput) => {
     const cleanedData = cleanUserData(data, formData);
@@ -76,6 +78,7 @@ const RegistrationForm = () => {
 
   useEffect(() => {
     if (modalData.success) {
+      signedInContext.setIsSignedIn(true);
       cleanUpData;
     }
   }, [modalData]);
@@ -85,7 +88,8 @@ const RegistrationForm = () => {
       {modalData.content && (
         <Modal
           title={modalData.success ? "Sukces" : "Upss!"}
-          buttonText={modalData.success ? "Zaloguj się" : "Okey"}
+          buttonText={modalData.success ? "Przejdź do serwisu" : "Zamknij"}
+          closeModal={() => setModalData({})}
           content={modalData.content!}
         />
       )}

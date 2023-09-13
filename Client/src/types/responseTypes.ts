@@ -155,16 +155,56 @@ type SliderResponseType = {
 };
 
 type ProducerResponseType = {
-  attributes: {
-    name: string;
-    image: { data: MediaResponseType };
+    attributes:{
+        name:string
+        image:{data:MediaResponseType}
+  
+        createdAt:string
+        updatedAt:string
+        publishedAt:string
+      }
+      id:number
+}
 
-    createdAt: string;
-    updatedAt: string;
-    publishedAt: string;
-  };
-  id: number;
-};
+type ProfileFavoritesResponsetype = {
+    id: number,
+    attributes: {
+        favorite_films: {
+            data: {
+                id: number,
+                attributes: {
+                    title: string,
+                    description: string,
+                    premiere: string,
+                    longDescription: string,
+                    duration: number,
+                    transcription: boolean,
+                    ageCategory: number,
+                    createdAt: string,
+                    updatedAt: string,
+                    publishedAt: string
+                }
+            } []
+        }
+        favorite_series: {
+            data: {
+                id: number,
+                attributes: {
+                    title: string,
+                    description: string,
+                    premiere: string,
+                    longDescription: string,
+                    duration: number,
+                    transcription: boolean,
+                    ageCategory: number,
+                    createdAt: string,
+                    updatedAt: string,
+                    publishedAt: string
+                }
+            } []
+        }
+    }
+}
 
 type PaymentsResponseType = {
   attributes: {
