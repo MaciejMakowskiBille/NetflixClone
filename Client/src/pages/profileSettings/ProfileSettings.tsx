@@ -72,18 +72,14 @@ const ProfileSettings = () => {
     const cleanedData: SettingsFormType = cleanSettingsData(formData);
     const keys = Object.keys(cleanedData) as (keyof SettingsFormType)[];
     const key = keys[0];
-    console.log("key", key);
-    console.log(cleanedData);
     try {
       if (key === "currentPassword" || key === "password") {
         let changePasswordData = cleanedData as ChangePasswordType;
         changePasswordData["passwordConfirmation"] = cleanedData.password!;
-        const response = await changePassword(changePasswordData);
-        console.log("sukces", response);
+        await changePassword(changePasswordData);
       } else {
-        const response = await putUserData(cleanedData);
+        await putUserData(cleanedData);
         loadUserData();
-        console.log(response);
       }
       resetForm();
     } catch (error) {

@@ -26,7 +26,6 @@ const ProfilesMenu = ({
         setClickedIndex(-1);
       } else {
         setClickedIndex(item.id);
-        console.log(item.id);
       }
     };
 
@@ -58,7 +57,7 @@ const ProfilesMenu = ({
           }
         >
           <div className="drop-down__content">
-            <p className="textButton" onClick={(e) => console.log(e.target)}>
+            <p className="textButton">
               Edytuj dane
             </p>
             <p className="textButton" onClick={handleRemoveProfileClick}>
