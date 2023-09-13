@@ -13,18 +13,16 @@ import ProfileSettings from "./pages/profileSettings/ProfileSettings";
 import SelectProfilePage from "./pages/selectProfilPage/selectProfilePage";
 import Home from "./pages/home/home";
 import FavoritesPage from "./pages/favoritesPage/favoritesPage";
+import { useSignedInContext } from "./providers/signedInProvider";
 
 const App = () => {
+  const signedInContext = useSignedInContext();
   return (
     <Router>
       <Routes location={location} key={location.pathname}>
-        <Route path="/signUp" element={<SignUp />} />
-        <Route path="/signIn" element={<SignIn />} />
-        <Route path="/settings" element={<ProfileSettings />} />
-
-        <Route path="/" element={<Home />} />
-        {localStorage.getItem("jwt") ? (
+        {signedInContext.isSignedIn ? (
           <>
+            <Route path="/" element={<MainPage />} />
             <Route path="/*" element={<MainPage />} />
             <Route path="/movie/:movieType/:movieId" element={<MoviePage />} />
             <Route path="/main" element={<MainPage />} />
@@ -34,7 +32,12 @@ const App = () => {
             <Route path="favorites" element={<FavoritesPage />} />
           </>
         ) : (
-          <Route path="/*" element={<Home />} />
+          <>
+            <Route path="/signUp" element={<SignUp />} />
+            <Route path="/signIn" element={<SignIn />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/*" element={<Home />} />
+          </>
         )}
       </Routes>
     </Router>

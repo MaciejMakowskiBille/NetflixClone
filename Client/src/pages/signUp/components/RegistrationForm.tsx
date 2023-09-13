@@ -9,7 +9,9 @@ import RegistrationAgreements from "./RegistrationAgreement";
 import RegistrationPayments from "./payments/RegistrationPayments";
 import Modal from "../../../components/modal/Modal";
 import { DisplayedPagesObjectType } from "../../../types/propsType";
-import { cleanUserData } from "../../../utils/helpers";
+import { cleanUserData, reloadPage } from "../../../utils/helpers";
+import { useSignedInContext } from "../../../providers/signedInProvider";
+import { useNavigate } from "react-router-dom";
 
 const display: DisplayedPagesObjectType = {
   0: <RegistrationEmail />,
@@ -20,9 +22,11 @@ const display: DisplayedPagesObjectType = {
 
 const RegistrationForm = () => {
   const [modalData, setModalData] = useState<modalTypes | undefined>({});
-  const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
   const { noValidateData, page, handleSubmit, reset, setNoValidateData } =
     useRegistrationContext();
+
+  const signedInContext = useSignedInContext();
+  const navigate = useNavigate();
 
   // cleanUp all form data
   const cleanUpData = () => {
@@ -77,19 +81,20 @@ const RegistrationForm = () => {
   };
 
   useEffect(() => {
-    if (modalData?.content) {
-      setModalIsOpen(true);
+    if (modalData?.success) {
+      signedInContext.setIsSignedIn(true);
+      cleanUpData;
     }
   }, [modalData]);
 
   return (
     <div className="form-wrapper">
-      {modalData?.content && modalIsOpen && (
+      {modalData?.content && (
         <Modal
           title={modalData.success ? "Sukces" : "Upss!"}
-          btnText={modalData.success ? ["Zaloguj się"] : ["Okey"]}
-          setModalIsOpen={undefined}
-          onSubmit={undefined}
+          btnText={modalData.success ? ["Przejdź do serwisu"] : ["Zamknij"]}
+          setModalIsOpen={reloadPage}
+          onSubmit={() => navigate("/profile")}
         >
           {modalData.content!}
         </Modal>

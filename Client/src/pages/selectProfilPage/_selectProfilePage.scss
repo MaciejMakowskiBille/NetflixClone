@@ -11,6 +11,7 @@
     }
     &Tile {
         width: 14vw;
+        height: 14vw;
         transition: all ease-in-out 0.3s;
 
         &:hover {
@@ -42,6 +43,7 @@
     padding-top: 1rem;
     box-sizing: border-box;
     position: absolute;
+    top: 40px;
     border-radius: 10px;
     z-index: 10;
     background: rgb(22, 4, 40);
@@ -50,12 +52,21 @@
         rgba(22, 4, 40, 1) 0%,
         rgba(40, 9, 69, 0.9044410000328256) 100%
     );
+
     width: 40%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: start;
     gap: 3rem;
+
+    img {
+        object-fit: contain;
+    }
+
+    label {
+        font-size: medium;
+    }
 
     .inputs {
         display: flex;
@@ -72,6 +83,7 @@
             align-items: start;
             justify-content: center;
             gap: 1rem;
+
             label {
                 font-size: medium;
             }

@@ -67,6 +67,10 @@ button {
   background-image: url("../imgs/movieTile/Favorite.svg");
 }
 
+.activeFavButton {
+  background-image: url("../imgs/icons/favorite-active.svg");
+}
+
 .moreButton {
   background-image: url("../imgs/movieTile/More.svg");
 }
@@ -152,7 +156,7 @@ button {
   font-size: 5rem;
   font-family: "Nico Moji";
 }
-.home main .homeHeader .title text {
+.home main .homeHeader .title span {
   margin: 0;
   color: #782cbf;
 }
@@ -792,6 +796,99 @@ main .category .title {
   background-position: center;
 }
 
+.columnDisplay {
+  align-items: flex-start;
+  height: 100%;
+}
+
+.favorites__header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+.favorites__header--title {
+  display: flex;
+  gap: 20px;
+}
+.favorites__header--dropdown .up {
+  border-radius: 5px 5px 0px 0px;
+}
+.favorites__header--dropdown__button {
+  transition: none;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: 20px;
+  background-color: #504957;
+  color: #fff;
+  font-weight: normal;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.329);
+}
+.favorites__header--dropdown__button--arrow__down {
+  transform: rotate(-90deg);
+}
+.favorites__header--dropdown__button--arrow__up {
+  transform: rotate(90deg);
+}
+.favorites__header--dropdown__box {
+  position: absolute;
+  padding: 16px;
+  background-color: #504957;
+  border-radius: 0px 5px 5px 5px;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.329);
+}
+.favorites__header--dropdown__box--filters {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+}
+.favorites__header--dropdown__box--filters__option {
+  cursor: pointer;
+  color: #a3a3a3;
+  text-decoration: line-through;
+}
+.favorites__header--dropdown__box--filters__option:hover {
+  color: #9864c9;
+  font-weight: bold;
+}
+.favorites__header--dropdown__box--filters__option--active {
+  cursor: pointer;
+  color: #fff;
+  font-weight: bold;
+}
+.favorites__header--dropdown__box--filters__option--active:hover {
+  text-decoration: line-through;
+}
+.favorites__header--dropdown__box--search {
+  display: flex;
+  gap: 20px;
+}
+.favorites__header--dropdown__box--search input {
+  font-size: 20px;
+  max-width: 200px;
+  height: 30px;
+  background-color: #fff;
+  padding: 0px 5px;
+  position: relative;
+}
+.favorites__header--dropdown__box--search input:focus {
+  outline: none;
+}
+.favorites__rows {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
 .black-background {
   background-color: rgba(0, 0, 0, 0.8);
   padding: 40px 0;
@@ -1181,11 +1278,12 @@ input[type=checkbox] {
   padding-top: 10%;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
+  gap: 4rem;
   position: relative;
 }
 .profileContainer .profileTile {
   width: 14vw;
+  height: 14vw;
   transition: all ease-in-out 0.3s;
 }
 .profileContainer .profileTile:hover {
@@ -1193,11 +1291,17 @@ input[type=checkbox] {
   color: #9864c9;
 }
 .profileContainer .profileTile .profileImg {
-  width: 15vw;
-  min-height: 30vh;
+  height: 100%;
   background: #000;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+.profileContainer .profileTile .profileImg img {
+  height: 100%;
 }
 .profileContainer .profileTile .profileName {
+  margin-top: 20px;
   height: 10%;
   width: 100%;
   display: flex;
@@ -1216,6 +1320,7 @@ input[type=checkbox] {
   padding-top: 1rem;
   box-sizing: border-box;
   position: absolute;
+  top: 40px;
   border-radius: 10px;
   z-index: 10;
   background: rgb(22, 4, 40);
@@ -1226,6 +1331,13 @@ input[type=checkbox] {
   align-items: center;
   justify-content: start;
   gap: 3rem;
+}
+.AddProfileModal img {
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.AddProfileModal label {
+  font-size: medium;
 }
 .AddProfileModal .inputs {
   display: flex;
@@ -1242,9 +1354,6 @@ input[type=checkbox] {
   align-items: start;
   justify-content: center;
   gap: 1rem;
-}
-.AddProfileModal .inputs .file label {
-  font-size: medium;
 }
 .AddProfileModal .inputs .file input[type=file] {
   background-color: none;

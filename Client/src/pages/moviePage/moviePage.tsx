@@ -4,15 +4,21 @@ import Navigation from '../../components/Navigation/nav'
 import { serverURL } from '../../utils/links'
 import MoviePageNav from './components/moviePageNav'
 import MoviePageAdds from './components/moviePageAdds'
-import { useNavigate, useParams, Link } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
+import { useFavoriteMoviesIds } from '../../customHooks/useFavoriteMoviesIds'
+import { useFavoriteSeriesIds } from '../../customHooks/useFavoriteSeriesIds'
+import { addFavoriteMovie, addFavoriteSeries, removeFavoriteMovie, removeFavoriteSeries } from '../../utils/Puts'
+
 const MoviePage = () => {
     const [movieData, setMovieData] = useState<MovieDataType | SeriesDataType | null>(null)
     const [isLoading, setIsLoading] = useState(true)
+    const [favButtonClass, setFavButtonClass] = useState<"activeFavButton" | "favButton">("favButton");
+    const favoriteMovies = useFavoriteMoviesIds({reloadValueCheck: favButtonClass});
+    const favoriteSeries = useFavoriteSeriesIds({reloadValueCheck: favButtonClass});
     const [active, setActive] = useState('rec')
     const {movieType,movieId} = useParams()
-    const navigate = useNavigate()
-
-
+    const profileId = Number(localStorage.getItem("profileId"));
+    
     const showLength = () => {
         if(movieData && "duration" in movieData){
             return(
@@ -30,15 +36,65 @@ const MoviePage = () => {
             )
         }
     }
-
+    
     const handlePlayVideo = () => {
         if( movieData &&"video" in movieData  && movieData.video){
             const videoURL = serverURL + movieData.video;
             window.open(videoURL, '_blank'); 
-
+            
         }
     }
-        
+    
+    const handleAddMovieToFavorites = () => {
+        if (movieData && favoriteMovies?.includes(Number(movieId))) {
+            removeFavoriteMovie(profileId, movieData.id)
+            .then(() => {
+                setFavButtonClass('favButton');
+            })
+            .catch(() => {
+                throw new Error("Wystąpił nieoczekiwany błąd");
+            })
+        } else if (movieData && !favoriteMovies?.includes(Number(movieId))) {
+            addFavoriteMovie(profileId, movieData.id)
+            .then(() => {
+                setFavButtonClass('activeFavButton');
+            })
+            .catch(() => {
+                throw new Error("Wystąpił nieoczekiwany błąd");
+            })
+        }
+    }
+
+    const handleAddSeriesToFavorites = () => {
+        if (movieData && favoriteSeries?.includes(Number(movieId))) {
+            removeFavoriteSeries(profileId, movieData.id)
+            .then(() => {
+                setFavButtonClass('favButton');
+            })
+            .catch(() => {
+                throw new Error("Wystąpił nieoczekiwany błąd");
+            })
+        } else if (movieData && !favoriteSeries?.includes(Number(movieId))) {
+            addFavoriteSeries(profileId, movieData.id)
+            .then(() => {
+                setFavButtonClass('activeFavButton');
+            })
+            .catch(() => {
+                throw new Error("Wystąpił nieoczekiwany błąd");
+            })
+        }
+    }
+    
+    useEffect(() => {
+        if(movieType === "m" && favoriteMovies?.includes(Number(movieId))) {
+            setFavButtonClass('activeFavButton');
+        } else if (movieType === 's' && favoriteSeries?.includes(Number(movieId))){
+            setFavButtonClass('activeFavButton');
+        } else {
+            setFavButtonClass('favButton');
+        }
+    }, [favoriteMovies, favoriteSeries])
+    
 
     useEffect(() => {
         if(movieType === 'm'){
@@ -60,6 +116,7 @@ const MoviePage = () => {
             }
         }
     },[movieId,movieType])
+
     return(
         <>
         <div className="appBackground">
@@ -95,16 +152,22 @@ const MoviePage = () => {
                                 })}
                             </div>
                         </div>
-                        {movieType === 'm' && (
+                        {movieType === 'm' ? (
                             <div className='buttons'>
                                 <button className='button-primary' onClick={handlePlayVideo}>ODTWÓRZ</button>
                                 <button className='button-secondary ' onClick={handlePlayVideo}>ZWIASTUN</button>
-                                <button className='iconButton icon favButton'/>
+                                <button className={`iconButton icon ${favButtonClass}`} onClick={handleAddMovieToFavorites}/>
                             </div>
-                        )}
+                        ) : 
+                            <div className='buttons'>
+                                <button className={`iconButton icon ${favButtonClass}`} onClick={handleAddSeriesToFavorites}/>
+                            </div>
+                        }
                         <div className='description'>
                             {movieData.description}
+                            
                         </div>
+                        
                     </div>
                 </div>
                     <MoviePageNav 

@@ -1,30 +1,33 @@
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
+import { useSignedInContext } from "../../../providers/signedInProvider";
+import { setAuthToken } from "../../../utils/Posts";
 
 type MenuProps = {
-    isOpen:boolean
-}
+  isOpen: boolean;
+};
 
-const Menu = (props:MenuProps) => {
-    const navigate = useNavigate()
+const Menu = (props: MenuProps) => {
+  const navigate = useNavigate();
+  const signedInContext = useSignedInContext();
 
-    const handleLogOut = () => {
-        navigate('/')
-    }
+  const handleLogOut = () => {
+    localStorage.clear();
+    setAuthToken("");
+    signedInContext.setIsSignedIn(false);
+    navigate("/");
+  };
 
-    return(
-        <div className={props.isOpen ? "menu open" : "menu close"}>
-            <div className="menu-item" onClick={() => navigate("/profile")}>
-                Profile
-            </div>
-            <div className="menu-item">
-                Opcje
-            </div>
-            <div className="menu-item" onClick={handleLogOut}>
-                Wyloguj
-            </div>
+  return (
+    <div className={props.isOpen ? "menu open" : "menu close"}>
+      <div className="menu-item" onClick={() => navigate("/profile")}>
+        Profile
+      </div>
+      <div className="menu-item">Opcje</div>
+      <div className="menu-item" onClick={handleLogOut}>
+        Wyloguj
+      </div>
+    </div>
+  );
+};
 
-        </div>
-    )
-}
-
-export default Menu
+export default Menu;

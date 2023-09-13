@@ -1,23 +1,23 @@
 import { useState, ChangeEvent,useEffect } from "react"
 import EpisodeComponent from "../Episode/episodeComponent"
 
-
 type SeasonsComponentProps = {
     seasons:Season[]
 }
 
 const SeasonsComponent = (props:SeasonsComponentProps) => {
-    const [activeSeason, setActiveSeason] = useState(props.seasons[0])
+    const [activeSeason, setActiveSeason] = useState<Season>()
 
     const handleChangeSeason = (event: ChangeEvent<HTMLSelectElement>) => {
         setActiveSeason(props.seasons[Number(event.target.value)])
     }
+    
     useEffect(() => {
-        setActiveSeason((prev) => ({
-            ...prev, 
-            episodes:prev.episodes.sort((a,b) => a.number - b.number)
-        }))
-    },[activeSeason])
+        setActiveSeason({
+            ...props.seasons[0], 
+            episodes:props.seasons[0].episodes.sort((a,b) => a.number - b.number)
+        })
+    },[])
 
     return(
         <div className="seasons">
@@ -35,7 +35,7 @@ const SeasonsComponent = (props:SeasonsComponentProps) => {
                 </select>
             <div className="episodes">
                 <div className="episodesRow">
-                {activeSeason.episodes.map(episode => {
+                {activeSeason?.episodes.map(episode => {
                     return(
                         <EpisodeComponent
                         key={episode.id}
