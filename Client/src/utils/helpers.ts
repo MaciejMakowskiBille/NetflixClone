@@ -178,3 +178,5 @@ export const cleanSettingsData = (data: SettingsSchemaType) => {
 
   return outputObj as putUserType | ChangePasswordType;
 };
+
+export const reloadPage = () => window.location.reload();
