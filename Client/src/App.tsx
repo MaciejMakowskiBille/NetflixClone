@@ -11,6 +11,7 @@ import SelectProfilePage from "./pages/selectProfilPage/selectProfilePage";
 import Home from "./pages/home/home";
 import FavoritesPage from "./pages/favoritesPage/favoritesPage";
 import { useSignedInContext } from "./providers/signedInProvider";
+import { PlayerPage } from "./pages/playerPage/playerPage";
 
 const App = () => {
   const signedInContext = useSignedInContext();
@@ -27,9 +28,11 @@ const App = () => {
             <Route path="/list/:type/:filter" element={<FilteredMovies />} />
             <Route path="/producers" element={<ProducersPage />} />
             <Route path="favorites" element={<FavoritesPage />} />
+            <Route path="player" element={<PlayerPage />} />
           </>
         ) : (
           <>
+            <Route path="player" element={<PlayerPage />} />
             <Route path="/signUp" element={<SignUp />} />
             <Route path="/signIn" element={<SignIn />} />
             <Route path="/" element={<Home />} />

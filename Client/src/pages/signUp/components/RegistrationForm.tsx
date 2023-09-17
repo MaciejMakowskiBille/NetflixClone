@@ -30,7 +30,6 @@ const RegistrationForm = () => {
     const cleanedData = cleanUserData(data, formData);
     try {
       const userResponse = await postUser(cleanedData);
-      console.log("udało się:", userResponse);
       if (userResponse) {
         setModalData({
           success: true,
@@ -41,7 +40,6 @@ const RegistrationForm = () => {
       if (err instanceof Error) {
         setModalData({ success: false, content: err.message });
       }
-      console.log("error: ", err);
     }
   };
 
