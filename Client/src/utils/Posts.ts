@@ -1,19 +1,6 @@
 import axios, {isAxiosError} from "axios";
 import { apiURL, authURL, uploadURL } from "./links";
-
-
-export const setAuthToken = (token: string) => {
-  if (token) {
-    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-  } else delete axios.defaults.headers.common["Authorization"];
-};
-
-
-const setUserSession = (token: string, id: number) => {
-  setAuthToken(token);
-  localStorage.setItem("jwt", token);
-  localStorage.setItem("userId", `${id}`);
-}
+import { setUserSession } from "./helpers";
 
 
 export async function signIn(data: SignInType){
@@ -56,16 +43,6 @@ export const postUser = async (data: CreateUserType) => {
     }
   }
 };
-
-export function postPayment(endpoint: string, data: PaymentsType){
-  const response = axios.post(apiURL + endpoint, data).then(response=>response.data.data as PaymentsResponseType).catch(err=>{throw new Error("Wystąpił nieoczekiwany błąd:\n"+err)});
-  return response;
-}
-
-export function postProfile(endpoint: string, data: ProfileType){
-  const response = axios.post(apiURL + endpoint, data).then(response=>response.data.data).catch(err=>{throw new Error("Wystąpił nieoczekiwany błąd:\n"+err)});
-  return response;
-}
 
 export const addProfile = async (newProfileData: NewProfileCompleteInfo) => {
   

@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import { useSignedInContext } from "../../../providers/signedInProvider";
-import { setAuthToken } from "../../../utils/Posts";
 
 type MenuProps = {
   isOpen: boolean;
@@ -12,7 +11,6 @@ const Menu = (props: MenuProps) => {
 
   const handleLogOut = () => {
     localStorage.clear();
-    setAuthToken("");
     signedInContext.setIsSignedIn(false);
     navigate("/");
   };
