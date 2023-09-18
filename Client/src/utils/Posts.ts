@@ -1,6 +1,7 @@
 import axios, {isAxiosError} from "axios";
 import { apiURL, authURL, uploadURL } from "./links";
 import { setUserSession } from "./helpers";
+import instance from "./axiosInstance";
 
 
 export async function signIn(data: SignInType){
@@ -61,7 +62,7 @@ export const addProfile = async (newProfileData: NewProfileCompleteInfo) => {
 
   if (newProfileData.avatar) {
     formData.append('files', newProfileData.avatar);
-    const response = await axios.post(uploadURL, formData).then((response) => {
+    const response = await instance.post(uploadURL, formData).then((response) => {
       data = {
         data: {
           ...data.data,
@@ -69,7 +70,7 @@ export const addProfile = async (newProfileData: NewProfileCompleteInfo) => {
         }
       }
 
-      const profileResponse = axios.post(apiURL + "profiles", data)
+      const profileResponse = instance.post(apiURL + "profiles", data)
 
       .then(response => (response))
       .catch(error => {throw new Error("Wystąpił nieoczekiwany błąd:\n"+error)});
@@ -79,7 +80,7 @@ export const addProfile = async (newProfileData: NewProfileCompleteInfo) => {
     
     return response;
   } else {
-    const response = await axios.post(apiURL + "profiles", data)
+    const response = await instance.post(apiURL + "profiles", data)
     .then(response => response.data.data)
     .catch(error => {throw new Error("Wystąpił nieoczekiwany błąd:\n"+error)});
 
