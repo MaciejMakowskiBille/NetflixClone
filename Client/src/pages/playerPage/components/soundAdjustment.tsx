@@ -7,22 +7,21 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
 import { Tooltip } from './tooltip';
 import { motion } from 'framer-motion';
+import { useVideoContext } from '../../../providers/videoProvider';
 
 type SoundAdjustmentProps = {
-    volume: number;
-    handleVolume: React.Dispatch<React.SetStateAction<number>>;
     min?: number;
     max?: number;
 };
 
 export const SoundAdjustment = ({
-    volume,
     min = 0,
     max = 100,
-    handleVolume,
 }: SoundAdjustmentProps) => {
     const [showTooltip, setShowTooltip] = useState(false);
     const [showSlider, setShowSlider] = useState(false);
+
+    const { volume, setVolume } = useVideoContext();
 
     const tooltip = (
         <Tooltip position='left' tooltipText='Dostosuj poziom głośności' />
@@ -61,7 +60,7 @@ export const SoundAdjustment = ({
                         min={0}
                         step={1}
                         value={volume}
-                        onChange={(e) => handleVolume(Number(e.target.value))}
+                        onChange={(e) => setVolume(Number(e.target.value))}
                         className='volume-slider__input'
                         type='range'
                         name='volume'

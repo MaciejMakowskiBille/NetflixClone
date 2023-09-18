@@ -12,35 +12,38 @@ import Home from "./pages/home/home";
 import FavoritesPage from "./pages/favoritesPage/favoritesPage";
 import { useSignedInContext } from "./providers/signedInProvider";
 import { PlayerPage } from "./pages/playerPage/playerPage";
+import { VideoProvider } from "./providers/videoProvider";
 
 const App = () => {
   const signedInContext = useSignedInContext();
   return (
-    <Router>
-      <Routes location={location} key={location.pathname}>
-        {signedInContext.isSignedIn ? (
-          <>
-            <Route path="/" element={<MainPage />} />
-            <Route path="/*" element={<MainPage />} />
-            <Route path="/movie/:movieType/:movieId" element={<MoviePage />} />
-            <Route path="/main" element={<MainPage />} />
-            <Route path="/profile" element={<SelectProfilePage />} />
-            <Route path="/list/:type/:filter" element={<FilteredMovies />} />
-            <Route path="/producers" element={<ProducersPage />} />
-            <Route path="favorites" element={<FavoritesPage />} />
-            <Route path="player" element={<PlayerPage />} />
-          </>
-        ) : (
-          <>
-            <Route path="player" element={<PlayerPage />} />
-            <Route path="/signUp" element={<SignUp />} />
-            <Route path="/signIn" element={<SignIn />} />
-            <Route path="/" element={<Home />} />
-            <Route path="/*" element={<Home />} />
-          </>
-        )}
-      </Routes>
-    </Router>
+    <VideoProvider>
+      <Router>
+        <Routes location={location} key={location.pathname}>
+          {signedInContext.isSignedIn ? (
+            <>
+              <Route path="/" element={<MainPage />} />
+              <Route path="/*" element={<MainPage />} />
+              <Route path="/movie/:movieType/:movieId" element={<MoviePage />} />
+              <Route path="/main" element={<MainPage />} />
+              <Route path="/profile" element={<SelectProfilePage />} />
+              <Route path="/list/:type/:filter" element={<FilteredMovies />} />
+              <Route path="/producers" element={<ProducersPage />} />
+              <Route path="/favorites" element={<FavoritesPage />} />
+              <Route path="/player/:movieType/:id" element={<PlayerPage />} />
+            </>
+          ) : (
+            <>
+              <Route path="player" element={<PlayerPage />} />
+              <Route path="/signUp" element={<SignUp />} />
+              <Route path="/signIn" element={<SignIn />} />
+              <Route path="/" element={<Home />} />
+              <Route path="/*" element={<Home />} />
+            </>
+          )}
+        </Routes>
+      </Router>
+    </VideoProvider>
   );
 };
 

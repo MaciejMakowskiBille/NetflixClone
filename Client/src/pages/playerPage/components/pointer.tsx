@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import ReactPlayer from 'react-player';
+import { useVideoContext } from '../../../providers/videoProvider';
+import { serverURL } from '../../../utils/links';
 
 type PointerProps = {
     showPointer: boolean;
@@ -8,6 +10,8 @@ type PointerProps = {
 
 export const Pointer = ({ showPointer, showThumbnail }: PointerProps) => {
     const [pointerPosition, setPointerPosition] = useState(0);
+
+    const { previewPlayer, videoData } = useVideoContext();
 
     const DURATION = 10;
 
@@ -56,10 +60,11 @@ export const Pointer = ({ showPointer, showThumbnail }: PointerProps) => {
                     style={{ left: `${pointerPosition - 40}px` }}
                 >
                     <ReactPlayer
-                        url={`http://localhost:3001/uploads/electronic_61695_1080p_82af158824.mp4`}
+                        url={`${serverURL}${videoData?.video}`}
                         playing={false}
                         controls={false}
                         height={'100px'}
+                        ref={previewPlayer}
                     />
                 </div>
             ) : null}
