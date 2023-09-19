@@ -166,3 +166,17 @@ export const cleanUserData = (
   };
   return cleanedData;
 };
+
+export const cleanSettingsData = (data: SettingsSchemaType) => {
+  const keys: (keyof SettingsSchemaType)[] = Object.keys(data);
+  let outputObj: SettingsSchemaType = {};
+  keys.forEach((item) => {
+    if (data[item] !== null) {
+      outputObj[item] = data[item];
+    }
+  });
+
+  return outputObj as putUserType | ChangePasswordType;
+};
+
+export const reloadPage = () => window.location.reload();

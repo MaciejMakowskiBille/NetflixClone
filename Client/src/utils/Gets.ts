@@ -1,6 +1,7 @@
 import axios from "axios";
 import { apiURL } from "./links";
 import { clearCategoryData, clearMovieData, clearProducerData, clearSeriesData,clearSliderData  } from "./helpers";
+import { setAuthToken } from "./Posts";
 
 const getBothTypes = async (seriesURL:string, moviesURL:string) => {
   let movies:CombinedDataType = []
@@ -139,6 +140,27 @@ export const getAllTypeMoviesByDate = async () =>{
   const series = `series/?populate=deep&filters[publishedAt][$gte]=${filter}`
   const movies = `films/?populate=deep&filters[publishedAt][$gte]=${filter}`
   return getBothTypes(series, movies)
+}
+
+export function setToken(token: string) {
+  const headerObj = { headers: { Authorization: `Bearer ${token}` } };
+  return headerObj;
+}
+
+export const getAllUserData = async (): Promise<AllUserDataResponseType | null> => {
+  const token = localStorage.getItem("jwt");
+  const response = await axios.get(apiURL + `users/me?populate=payment,profiles.avatar`, {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  });
+  if(response && response.data){
+
+      return response.data as AllUserDataResponseType;
+     
+  }else{
+    return null
+  }
 }
 
 export const getUserProfiles = async (userId: number): Promise<ProfileInfo[] | null> => {  

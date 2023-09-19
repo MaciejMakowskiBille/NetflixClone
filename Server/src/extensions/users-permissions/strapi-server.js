@@ -3,12 +3,26 @@ module.exports = (plugin) => {
     if (!ctx.state.user || !ctx.state.user.id) {
       return (ctx.response.status = 401);
     }
-    await strapi
+
+    const userExists = await strapi
+    .query("plugin::users-permissions.user")
+    .findOne({
+      where: { email: ctx.request.body.email },
+    });
+
+  if (userExists) {
+    return ctx.badRequest(null, "This email is already taken");
+  }
+  const user = await strapi
       .query("plugin::users-permissions.user")
-      .update({ where: { id: ctx.state.user.id }, data: ctx.request.body })
-      .then((res) => {
-        ctx.response.status = 200;
-      });
+      .update({ where: { id: ctx.state.user.id }, data: ctx.request.body });
+  
+    
+  
+    const {id, email, phoneNumber, optInSubscription, createdAt, updatedAt} = user;
+    ctx.response.body = {
+      id, email, phoneNumber, optInSubscription, createdAt, updatedAt
+    };
   };
 
   plugin.controllers.user.create = async (ctx) => {

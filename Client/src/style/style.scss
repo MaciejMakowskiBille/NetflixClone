@@ -18,6 +18,10 @@
 @import "./checkbox";
 @import '../pages/selectProfilPage/selectProfilePage';
 @import "./../components/Input/password";
+@import "./../pages/profileSettings/components/profilesMenu";
+@import "./../pages/profileSettings/profileSettings";
+@import "./../pages/profileSettings/components/settingsRow";
+@import "./../pages/profileSettings/components/paymentDetails";
 
 body {
   font-family: "Roboto";

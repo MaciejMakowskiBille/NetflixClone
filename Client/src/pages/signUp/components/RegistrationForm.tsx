@@ -9,9 +9,9 @@ import RegistrationAgreements from "./RegistrationAgreement";
 import RegistrationPayments from "./payments/RegistrationPayments";
 import Modal from "../../../components/modal/Modal";
 import { DisplayedPagesObjectType } from "../../../types/propsType";
-import { cleanUserData } from "../../../utils/helpers";
+import { cleanUserData, reloadPage } from "../../../utils/helpers";
 import { useSignedInContext } from "../../../providers/signedInProvider";
-
+import { useNavigate } from "react-router-dom";
 
 const display: DisplayedPagesObjectType = {
   0: <RegistrationEmail />,
@@ -21,40 +21,12 @@ const display: DisplayedPagesObjectType = {
 };
 
 const RegistrationForm = () => {
-  const [modalData, setModalData] = useState<modalTypes>({});
+  const [modalData, setModalData] = useState<modalTypes | undefined>({});
   const { noValidateData, page, handleSubmit, reset, setNoValidateData } =
     useRegistrationContext();
+
   const signedInContext = useSignedInContext();
-  // Submit Form function
-  const submitForm = async (data: noValidateFormProp, formData?: FormInput) => {
-    const cleanedData = cleanUserData(data, formData);
-    try {
-      const userResponse = await postUser(cleanedData);
-      console.log("udało się:", userResponse);
-      if (userResponse) {
-        setModalData({
-          success: true,
-          content: "Udało się pomyślnie zarejestrować!",
-        });
-      }
-    } catch (err) {
-      if (err instanceof Error) {
-        setModalData({ success: false, content: err.message });
-      }
-      console.log("error: ", err);
-    }
-  };
-
-  // payPal Submit
-  const payPalSubmit = async (e: React.MouseEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    await submitForm(noValidateData!);
-  };
-
-  // creditCard submit
-  const onSubmit: SubmitHandler<FormInput> = async (data) => {
-    await submitForm(noValidateData!, data);
-  };
+  const navigate = useNavigate();
 
   // cleanUp all form data
   const cleanUpData = () => {
@@ -76,8 +48,40 @@ const RegistrationForm = () => {
     });
   };
 
+  // Submit Form function
+  const submitForm = async (data: noValidateFormProp, formData?: FormInput) => {
+    const cleanedData = cleanUserData(data, formData);
+
+    try {
+      const userResponse = await postUser(cleanedData);
+      if (userResponse) {
+        setModalData({
+          success: true,
+          content: "Udało się pomyślnie zarejestrować!",
+        });
+
+        cleanUpData();
+      }
+    } catch (err) {
+      if (err instanceof Error) {
+        setModalData({ success: false, content: err.message });
+      }
+    }
+  };
+
+  // payPal Submit
+  const payPalSubmit = async (e: React.MouseEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    await submitForm(noValidateData!);
+  };
+
+  // creditCard submit
+  const onSubmit: SubmitHandler<FormInput> = async (data) => {
+    await submitForm(noValidateData!, data);
+  };
+
   useEffect(() => {
-    if (modalData.success) {
+    if (modalData?.success) {
       signedInContext.setIsSignedIn(true);
       cleanUpData;
     }
@@ -85,13 +89,15 @@ const RegistrationForm = () => {
 
   return (
     <div className="form-wrapper">
-      {modalData.content && (
+      {modalData?.content && (
         <Modal
           title={modalData.success ? "Sukces" : "Upss!"}
-          buttonText={modalData.success ? "Przejdź do serwisu" : "Zamknij"}
-          closeModal={() => setModalData({})}
-          content={modalData.content!}
-        />
+          btnText={modalData.success ? ["Przejdź do serwisu"] : ["Zamknij"]}
+          setModalIsOpen={reloadPage}
+          onSubmit={() => navigate("/profile")}
+        >
+          {modalData.content!}
+        </Modal>
       )}
       <form
         onSubmit={
