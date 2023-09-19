@@ -68,16 +68,6 @@
     "phoneNumber": {
       "type": "biginteger"
     },
-    "favoriteFilms": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::film-s.film-s"
-    },
-    "favoriteSeries": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::series-s.series-s"
-    },
     "profiles": {
       "type": "relation",
       "relation": "oneToMany",

@@ -1,11 +1,10 @@
-import axios from "axios";
 import { apiURL } from "./links";
 import { clearCategoryData, clearMovieData, clearProducerData, clearSeriesData,clearSliderData  } from "./helpers";
-import { setAuthToken } from "./Posts";
+import instance from "./axiosInstance";
 
 const getBothTypes = async (seriesURL:string, moviesURL:string) => {
   let movies:CombinedDataType = []
-  const responseS = await axios.get(apiURL + seriesURL)
+  const responseS = await instance.get(apiURL + seriesURL)
     if(responseS && responseS.data.data){
       const data:SeriesResponseType[] = responseS.data.data
       const clearedData:SeriesDataType[] = data.map(item => {
@@ -13,7 +12,7 @@ const getBothTypes = async (seriesURL:string, moviesURL:string) => {
       })
       movies = movies.concat(clearedData)
     }
-  const responseM = await axios.get(apiURL + moviesURL)
+  const responseM = await instance.get(apiURL + moviesURL)
   if(responseM && responseM.data.data){
       const data:MovieResponseType[] = responseM.data.data
       const clearedData:MovieDataType[] = data.map(item => {
@@ -25,7 +24,7 @@ const getBothTypes = async (seriesURL:string, moviesURL:string) => {
 }
 
 export const getFilms = async ():Promise<MovieDataType[] | null> => {
-  const response = await axios.get(apiURL + `films?populate=deep&?`)
+  const response = await instance.get(apiURL + `films?populate=deep&?`)
   if(response && response.data.data){
       const data:MovieResponseType[] = response.data.data
       const clearedData:MovieDataType[] = data.map(item => {
@@ -38,7 +37,7 @@ export const getFilms = async ():Promise<MovieDataType[] | null> => {
 }
 
 export const getOneFilm = async (id:number):Promise<MovieDataType | null> => {
-  const response = await axios.get(apiURL + `films/${id}?populate=deep`)
+  const response = await instance.get(apiURL + `films/${id}?populate=deep`)
   if(response && response.data.data){
       return clearMovieData(response.data.data)
   }else{
@@ -47,7 +46,7 @@ export const getOneFilm = async (id:number):Promise<MovieDataType | null> => {
 }
 
 export const getSeries = async () => {
-  const response = await axios.get(apiURL + `series?populate=deep`)
+  const response = await instance.get(apiURL + `series?populate=deep`)
   if(response && response.data.data){
     const data:SeriesResponseType[] = response.data.data
     const clearedData:SeriesDataType[] = data.map(item => {
@@ -59,7 +58,7 @@ export const getSeries = async () => {
   }
 }
 export const getOneSeries = async (id:number):Promise<SeriesDataType | null> => {
-  const response = await axios.get(apiURL + `series/${id}?populate=deep`)
+  const response = await instance.get(apiURL + `series/${id}?populate=deep`)
   if(response && response.data.data){
       return clearSeriesData(response.data.data)
   }else{
@@ -68,7 +67,7 @@ export const getOneSeries = async (id:number):Promise<SeriesDataType | null> => 
 }
 
 export const getCategories = async ():Promise<Category[] | null> => {
-    const response = await axios.get(apiURL + `categories`)
+    const response = await instance.get(apiURL + `categories`)
     if(response && response.data.data){
       return clearCategoryData(response.data.data)
       }else{
@@ -77,7 +76,7 @@ export const getCategories = async ():Promise<Category[] | null> => {
 }
 
 export const getSlider = async () => {
-    const response = await axios.get(apiURL + 'sliders?populate=deep')
+    const response = await instance.get(apiURL + 'sliders?populate=deep')
     if(response && response.data.data){
       const data:SliderResponseType[] = response.data.data
       const clearedData:Slide[] = data.map(item => {
@@ -97,7 +96,7 @@ export const getAllTypeMoviesByCategory = async (category:string, id:number) => 
 }
 
 export const getProducersLimit = async (limit:number):Promise<Producer[] | null> => {
-  const response = await axios.get(apiURL + `producers/?populate=deep&pagination[limit]=${limit}`)
+  const response = await instance.get(apiURL + `producers/?populate=deep&pagination[limit]=${limit}`)
   if(response && response.data.data){
     const data:ProducerResponseType[] = response.data.data
     const clearedData = data.map(producer => {
@@ -110,7 +109,7 @@ export const getProducersLimit = async (limit:number):Promise<Producer[] | null>
 }
 
 export const getProducers = async ():Promise<Producer[] | null> => {
-  const response = await axios.get(apiURL + `producers/?populate=deep`)
+  const response = await instance.get(apiURL + `producers/?populate=deep`)
   if(response && response.data.data){
     const data:ProducerResponseType[] = response.data.data
     const clearedData = data.map(producer => {
@@ -142,18 +141,9 @@ export const getAllTypeMoviesByDate = async () =>{
   return getBothTypes(series, movies)
 }
 
-export function setToken(token: string) {
-  const headerObj = { headers: { Authorization: `Bearer ${token}` } };
-  return headerObj;
-}
 
 export const getAllUserData = async (): Promise<AllUserDataResponseType | null> => {
-  const token = localStorage.getItem("jwt");
-  const response = await axios.get(apiURL + `users/me?populate=payment,profiles.avatar`, {
-    headers: {
-      Authorization: `Bearer ${token}`
-    }
-  });
+  const response = await instance.get(apiURL + `users/me?populate=payment,profiles.avatar`);
   if(response && response.data){
 
       return response.data as AllUserDataResponseType;
@@ -164,7 +154,7 @@ export const getAllUserData = async (): Promise<AllUserDataResponseType | null> 
 }
 
 export const getUserProfiles = async (userId: number): Promise<ProfileInfo[] | null> => {  
-  const response = await axios.get(apiURL + `profiles?populate=user,avatar&filters[user][id][$eq]=${userId}`)
+  const response = await instance.get(apiURL + `profiles?populate=user,avatar&filters[user][id][$eq]=${userId}`)
   if (response && response.data.data) {
     return response.data.data;
   }
@@ -172,7 +162,7 @@ export const getUserProfiles = async (userId: number): Promise<ProfileInfo[] | n
 }
 
 export const getFavoriteMovies = async (profileId: number): Promise<ProfileFavoritesResponsetype | null> => {
-  const response = await axios.get(apiURL + `profiles/${profileId}?populate=attributes,favorite_films`)
+  const response = await instance.get(apiURL + `profiles/${profileId}?populate=attributes,favorite_films`)
   if (response && response.data.data) {
     return response.data.data;
   }
@@ -180,7 +170,7 @@ export const getFavoriteMovies = async (profileId: number): Promise<ProfileFavor
 }
 
 export const getFavoriteSeries = async (profileId: number): Promise<ProfileFavoritesResponsetype | null> => {
-  const response = await axios.get(apiURL + `profiles/${profileId}?populate=attributes,favorite_series`)
+  const response = await instance.get(apiURL + `profiles/${profileId}?populate=attributes,favorite_series`)
   if (response && response.data.data) {
     return response.data.data;
   }

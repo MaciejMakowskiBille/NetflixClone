@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 
 export const clearMovieData = (data: MovieResponseType) => {
   const clearedData: MovieDataType = {
@@ -180,3 +181,13 @@ export const cleanSettingsData = (data: SettingsSchemaType) => {
 };
 
 export const reloadPage = () => window.location.reload();
+
+export const setUserSession = (token: string, id: number) => {
+  localStorage.setItem("jwt", token);
+  localStorage.setItem("userId", `${id}`);
+}
+
+export const refreshToken = () => {
+  localStorage.clear();
+  reloadPage();
+}

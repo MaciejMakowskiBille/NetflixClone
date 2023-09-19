@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import AddProfileModal from "./components/addPorfileModal";
 import { getUserProfiles } from "../../utils/Gets";
 import { useSignedInContext } from "../../providers/signedInProvider";
-import { setAuthToken } from "../../utils/Posts";
 
 const SelectProfilePage = () => {
   const navigate = useNavigate();
@@ -19,10 +18,9 @@ const SelectProfilePage = () => {
 
   const handleSignOut = () => {
     localStorage.clear();
-    setAuthToken("");
     signedInContext.setIsSignedIn(false);
     navigate("/");
-  }
+  };
 
   if (userProfiles && userProfiles[0]) {
     localStorage.setItem("profileId", `${userProfiles[0].id}`);
