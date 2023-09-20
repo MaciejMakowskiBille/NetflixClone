@@ -49,8 +49,6 @@ const MoviePage = () => {
 
     const handlePlayVideo = () => {
         if (movieData && 'video' in movieData && movieData.video) {
-            const videoURL = serverURL + movieData.video;
-            // window.open(videoURL, '_blank');
             navigate(`/player/m/${movieData.id}`);
         }
     };

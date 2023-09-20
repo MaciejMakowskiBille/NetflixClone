@@ -9,11 +9,11 @@ export const Timeline = () => {
     const max = 100;
 
     const {
-        videoData,
         timestamp,
         player,
         previewPlayer,
         previewTimestamp,
+        duration,
         setPreviewTimeStamp,
         setTimeStamp,
     } = useVideoContext();
@@ -40,7 +40,7 @@ export const Timeline = () => {
                 step={0.1}
                 onMouseMove={(e) => calcSliderPos(e)}
                 min={min}
-                max={videoData ? videoData.duration : max}
+                max={duration ? duration : max}
                 value={timestamp}
                 onChange={(e) => {
                     setTimeStamp(Number(e.target.value));
@@ -51,7 +51,7 @@ export const Timeline = () => {
                 style={{
                     backgroundSize:
                         ((timestamp - min) * 100) /
-                            (videoData ? videoData.duration : 0 - min) +
+                            (duration ? duration : 0 - min) +
                         '% 100%',
                 }}
                 onMouseEnter={() => {

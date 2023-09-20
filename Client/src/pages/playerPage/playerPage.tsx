@@ -1,7 +1,7 @@
 import ReactPlayer from 'react-player';
 import { Controls } from './components/controls';
 import { useEffect, useState } from 'react';
-import { getOneFilm } from '../../utils/Gets';
+import { getEpisode, getOneFilm } from '../../utils/Gets';
 import { useParams } from 'react-router-dom';
 import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -15,12 +15,15 @@ export const PlayerPage = () => {
         volume,
         isPlaying,
         player,
+        setEpisodeInfo,
         setIsPlaying,
         setDuration,
         setTimeStamp,
         setVideoData,
     } = useVideoContext();
-    const { id } = useParams();
+    const { movieType, id } = useParams();
+
+    const [isLoading, setIsLoading] = useState(true);
 
     const hideControls = () => {
         setControlsVisible(false);
@@ -33,16 +36,33 @@ export const PlayerPage = () => {
     const ControlsComponent = <Controls hideControls={hideControls} />;
 
     useEffect(() => {
-        getOneFilm(Number(id)).then((response) => {
-            setTimeout(() => {
-                setVideoData(response);
-            }, 200);
-        });
+        if (movieType === 'm') {
+            getOneFilm(Number(id)).then((response) => {
+                setTimeout(() => {
+                    setIsPlaying(false);
+                    setVideoData(response);
+                    setIsLoading(false);
+                }, 100);
+            });
+        } else {
+            getEpisode(Number(id)).then((response) => {
+                setTimeout(() => {
+                    setIsPlaying(false);
+                    setVideoData(response);
+                    setEpisodeInfo(response);
+                    setIsLoading(false);
+                }, 1000);
+            });
+        }
+
+        return () => {
+            setTimeStamp(0);
+        };
     }, []);
 
     return (
         <div className='player' onMouseMove={() => showControls()}>
-            {videoData ? (
+            {videoData && !isLoading ? (
                 <>
                     {controlsVisible ? ControlsComponent : null}
                     <ReactPlayer
@@ -53,10 +73,16 @@ export const PlayerPage = () => {
                         height={'100vh'}
                         width={'100w'}
                         volume={volume / 100}
-                        onDuration={(duration) => setDuration(duration)}
-                        onProgress={(duration) =>
-                            setTimeStamp(duration.playedSeconds)
-                        }
+                        onDuration={(duration) => {
+                            setDuration(duration);
+                        }}
+                        onProgress={(duration) => {
+                            setTimeStamp(
+                                parseFloat(
+                                    duration.playedSeconds.toPrecision(2)
+                                )
+                            );
+                        }}
                         onEnded={() => setIsPlaying(false)}
                     />
                 </>

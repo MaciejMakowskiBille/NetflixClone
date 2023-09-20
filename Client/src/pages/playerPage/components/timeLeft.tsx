@@ -1,8 +1,8 @@
 import { useVideoContext } from '../../../providers/videoProvider';
 
 export const TimeLeft = (): JSX.Element => {
-    const { timestamp, videoData } = useVideoContext();
-    const timeLeft = videoData ? videoData.duration - timestamp : 0;
+    const { timestamp, duration } = useVideoContext();
+    const timeLeft = duration ? duration - timestamp : 0;
 
     const hours = Math.floor(timestamp / 3600);
     const minutes = Math.floor(timeLeft / 60);

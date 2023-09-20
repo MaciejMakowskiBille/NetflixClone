@@ -6,13 +6,13 @@ import { Tooltip } from '../tooltip';
 
 export const ForwardsButton = () => {
     const [showTooltip, setShowTooltip] = useState(false);
-    const { videoData, player, timestamp, setTimeStamp } = useVideoContext();
+    const {player, timestamp, duration, setTimeStamp } = useVideoContext();
 
     const handleForwards = () => {
-        if (videoData) {
-            if (timestamp + 15 > videoData.duration && player) {
-                setTimeStamp(videoData.duration);
-                player.current?.seekTo(videoData.duration);
+        if (duration) {
+            if (timestamp + 15 > duration && player) {
+                setTimeStamp(duration);
+                player.current?.seekTo(duration);
             } else {
                 setTimeStamp(timestamp + 15);
                 player?.current?.seekTo(timestamp + 15);

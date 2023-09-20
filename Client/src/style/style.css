@@ -1619,11 +1619,17 @@ input[type=checkbox] {
 }
 .timeline__thumbnail {
   position: absolute;
+  display: inline-block;
   z-index: 100;
   pointer-events: none;
   height: 100px;
+  max-width: 180px;
   top: -120px;
   transform: translateX(-50%);
+}
+.timeline__thumbnail video {
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(108, 110, 145, 0.603);
 }
 
 .volume {

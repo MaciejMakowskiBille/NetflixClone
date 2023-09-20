@@ -16,6 +16,11 @@ type DefaultcontextValue = {
     isPlaying: boolean;
     player: RefObject<ReactPlayer> | null;
     previewPlayer: RefObject<ReactPlayer> | null;
+    seriesInfo: Season | null;
+    episodeInfo: Episode | null;
+    duration: number;
+    setEpisodeInfo(episode: Episode | null): void;
+    setSeriesInfo(seriesInfo: Season): void;
     setIsPlaying(isPlaying: boolean): void;
     setDuration(duration: number): void;
     setTimeStamp(timestamp: number): void;
@@ -32,6 +37,11 @@ const defaultContextValue: DefaultcontextValue = {
     player: null,
     previewPlayer: null,
     previewTimestamp: 0,
+    seriesInfo: null,
+    episodeInfo: null,
+    duration: 0,
+    setEpisodeInfo: () => {},
+    setSeriesInfo: () => {},
     setIsPlaying: () => {},
     setDuration: () => {},
     setTimeStamp: () => {},
@@ -48,7 +58,10 @@ export const VideoProvider: React.FC<PropsWithChildren<unknown>> = ({
     const [videoData, setVideoData] = useState<MovieDataType | Episode | null>(
         null
     );
+    const [seriesInfo, setSeriesInfo] = useState<Season | null>(null);
+    const [episodeInfo, setEpisodeInfo] = useState<Episode | null>(null);
 
+    const [duration, setDuration] = useState(0);
     const [volume, setVolume] = useState(50);
     const [timestamp, setTimeStamp] = useState(0);
     const [previewTimestamp, setPreviewTimeStamp] = useState(0);
@@ -56,34 +69,29 @@ export const VideoProvider: React.FC<PropsWithChildren<unknown>> = ({
     const player = useRef<ReactPlayer>(null);
     const previewPlayer = useRef<ReactPlayer>(null);
 
-    const setDuration = (duration: number) => {
-        if (videoData) {
-            const newData: MovieDataType | Episode = {
-                ...videoData,
-                duration,
-            };
-            setVideoData(newData);
-        }
+    const contextValue: DefaultcontextValue = {
+        videoData,
+        duration,
+        volume,
+        timestamp,
+        isPlaying,
+        player,
+        previewPlayer,
+        previewTimestamp,
+        seriesInfo,
+        episodeInfo,
+        setEpisodeInfo,
+        setSeriesInfo,
+        setPreviewTimeStamp,
+        setIsPlaying,
+        setDuration,
+        setTimeStamp,
+        setVolume,
+        setVideoData,
     };
 
     return (
-        <VideoContext.Provider
-            value={{
-                videoData,
-                volume,
-                timestamp,
-                isPlaying,
-                player,
-                previewPlayer,
-                previewTimestamp,
-                setPreviewTimeStamp,
-                setIsPlaying,
-                setDuration,
-                setTimeStamp,
-                setVolume,
-                setVideoData,
-            }}
-        >
+        <VideoContext.Provider value={contextValue}>
             {children}
         </VideoContext.Provider>
     );

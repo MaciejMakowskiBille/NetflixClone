@@ -2,18 +2,49 @@ import { faForwardStep } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
 import { Tooltip } from '../tooltip';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useVideoContext } from '../../../../providers/videoProvider';
 
 export const NextButton = () => {
-    const { videoData, player, setTimeStamp } = useVideoContext();
+    const {
+        duration,
+        player,
+        seriesInfo,
+        episodeInfo,
+        timestamp,
+        setTimeStamp,
+    } = useVideoContext();
     const [showTooltip, setShowTooltip] = useState(false);
     const { movieType } = useParams();
 
+    const navigate = useNavigate();
+
     const handleGoToEnd = () => {
-        if (videoData) {
-            setTimeStamp(videoData.duration);
-            player?.current?.seekTo(videoData.duration);
+        if (duration) {
+            setTimeStamp(duration);
+            player?.current?.seekTo(duration);
+        }
+    };
+    const handleNextEpisode = () => {
+        if (seriesInfo && episodeInfo) {
+            let indexOfEpisode = 0;
+            seriesInfo.episodes.forEach((element, index) => {
+                if (element.id === episodeInfo.id) {
+                    indexOfEpisode = index;
+                    return;
+                }
+            });
+            if (indexOfEpisode !== seriesInfo.episodes.length - 1) {
+                if (timestamp === duration) {
+                    navigate(
+                        `/player/s/${
+                            seriesInfo.episodes[indexOfEpisode + 1].id
+                        }`
+                    );
+                } else {
+                    handleGoToEnd();
+                }
+            }
         }
     };
 
@@ -29,9 +60,7 @@ export const NextButton = () => {
                 onMouseLeave={() => {
                     setShowTooltip(false);
                 }}
-                onClick={
-                    movieType === 'm' ? handleGoToEnd : () => setTimeStamp(0)
-                }
+                onClick={movieType === 'm' ? handleGoToEnd : handleNextEpisode}
             />
             {showTooltip ? (
                 <Tooltip

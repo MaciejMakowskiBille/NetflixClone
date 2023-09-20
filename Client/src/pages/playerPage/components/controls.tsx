@@ -1,4 +1,4 @@
-import { faChevronLeft, faPause, faPlay } from '@fortawesome/free-solid-svg-icons';
+import { faChevronLeft, faPlay } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { motion } from 'framer-motion';
 import { SoundAdjustment } from './soundAdjustment';
@@ -19,7 +19,9 @@ type ControlsProps = {
 };
 
 export const Controls = ({ hideControls }: ControlsProps) => {
-    const { videoData, isPlaying, setIsPlaying } = useVideoContext();
+    const { videoData, isPlaying, seriesInfo, episodeInfo, setIsPlaying } =
+        useVideoContext();
+    const { movieType } = useParams();
 
     const navigate = useNavigate();
 
@@ -28,6 +30,31 @@ export const Controls = ({ hideControls }: ControlsProps) => {
         timeout: 3_000,
         throttle: 500,
     });
+
+    const getDescriptionOrInfo = () => {
+        let seasonString: string;
+        let episodeString: string;
+
+        if (videoData) {
+            if (movieType === 's' && seriesInfo && episodeInfo) {
+                seasonString = `${
+                    Number(seriesInfo.number) < 10
+                        ? 'S0' + seriesInfo.number
+                        : 'S' + seriesInfo.number
+                }`;
+                episodeString = `
+                    ${
+                        Number(episodeInfo.number) < 10
+                            ? 'E0' + episodeInfo.number
+                            : 'S' + episodeInfo.number
+                    }
+                `;
+                return seasonString + episodeString;
+            } else {
+                return videoData.description;
+            }
+        }
+    };
 
     return (
         <motion.div
@@ -55,7 +82,7 @@ export const Controls = ({ hideControls }: ControlsProps) => {
                         {videoData?.title}
                     </h1>
                     <h4 className='controls__header--description__episode-info'>
-                        {videoData?.description}
+                        {videoData ? getDescriptionOrInfo() : null}
                     </h4>
                 </div>
             </div>
