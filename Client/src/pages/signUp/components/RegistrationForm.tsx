@@ -26,6 +26,7 @@ const RegistrationForm = () => {
     useRegistrationContext();
 
   const signedInContext = useSignedInContext();
+
   const navigate = useNavigate();
 
   // cleanUp all form data
