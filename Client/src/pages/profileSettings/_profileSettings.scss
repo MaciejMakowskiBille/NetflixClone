@@ -1,0 +1,77 @@
+* {
+  box-sizing: border-box;
+}
+*,
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.error-message--settings {
+  padding-top: 5px;
+  font-size: 16px;
+}
+
+.all-user-settings {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  main.settings {
+    font-size: 20px;
+    gap: 0;
+    button {
+      padding: 0;
+      background-color: inherit;
+    }
+    .settings__form {
+      width: calc(100% - 200px);
+
+      @media (max-width: 660px) {
+        width: calc(100% - 20px);
+      }
+      h3.settings__header {
+        margin: 10px 0;
+        display: flex;
+        font-size: 40px;
+        color: $pink;
+        justify-content: start;
+      }
+
+      .settings-item {
+        border-top: 2px solid $whiteText;
+        display: flex;
+
+        .settings-item__title {
+          width: 25%;
+          margin-bottom: 30px;
+          color: white;
+          .label {
+            padding: 10px 12px 0 0;
+            font-weight: bold;
+          }
+        }
+
+        .settings-item__content {
+          width: 75%;
+
+          margin-bottom: 30px;
+          margin-top: 4px;
+        }
+      }
+    }
+  }
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media (max-width: 660px) {
+  .settings .settings-item__title,
+  .settings .settings-item__content {
+    width: 100%;
+    margin-bottom: 0;
+  }
+
+  .settings .settings-item {
+    flex-direction: column;
+  }
+}

@@ -1,11 +1,20 @@
 import axios, {isAxiosError} from "axios";
 import { apiURL, authURL, uploadURL } from "./links";
 
+
+export const setAuthToken = (token: string) => {
+  if (token) {
+    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+  } else delete axios.defaults.headers.common["Authorization"];
+};
+
+
 const setUserSession = (token: string, id: number) => {
   setAuthToken(token);
   localStorage.setItem("jwt", token);
   localStorage.setItem("userId", `${id}`);
 }
+
 
 export async function signIn(data: SignInType){
     try {
@@ -14,7 +23,9 @@ export async function signIn(data: SignInType){
         identifier: data.email,
         password: data.password,
       });
+
     setUserSession(response.data.jwt, response.data.user.id);
+
     return response.data as UserPostResponseType;
   } catch (error) {
     if (isAxiosError(error)) {
@@ -26,11 +37,7 @@ export async function signIn(data: SignInType){
   }  
 }
 
-export const setAuthToken = (token: string) => {
-  if (token) {
-    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-  } else delete axios.defaults.headers.common["Authorization"];
-};
+
 
 export const postUser = async (data: CreateUserType) => {
   try {

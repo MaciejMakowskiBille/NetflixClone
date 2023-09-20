@@ -8,6 +8,7 @@ import {
     clearSeriesData,
     clearSliderData,
 } from './helpers';
+import { setAuthToken } from "./Posts";
 
 const getBothTypes = async (seriesURL: string, moviesURL: string) => {
     let movies: CombinedDataType = [];
@@ -189,6 +190,26 @@ export const getFavoriteMovies = async (
     }
     return null;
 };
+export function setToken(token: string) {
+  const headerObj = { headers: { Authorization: `Bearer ${token}` } };
+  return headerObj;
+}
+
+export const getAllUserData = async (): Promise<AllUserDataResponseType | null> => {
+  const token = localStorage.getItem("jwt");
+  const response = await axios.get(apiURL + `users/me?populate=payment,profiles.avatar`, {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  });
+  if(response && response.data){
+
+      return response.data as AllUserDataResponseType;
+     
+  }else{
+    return null
+  }
+}
 
 export const getFavoriteSeries = async (
     profileId: number

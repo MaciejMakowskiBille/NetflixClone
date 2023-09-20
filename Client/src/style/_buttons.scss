@@ -77,6 +77,26 @@ button {
   background-image: url("../imgs/movieTile/Play.svg");
   z-index: 5;
 }
+
+
+.textButton {
+  background-color: inherit;
+  border: none;
+  color: $pink;
+  cursor: pointer;
+  font-size: 16px;
+  &:hover {
+    color: $purpleLight;
+  }
+}
+
+.closeButton {
+  width: 25px;
+  height: 25px;
+  background-image: url("../imgs/icons/close.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 .addButton{
     background-image: url('../imgs/icons/addIcon.svg');
     transition: all ease-in-out 0.3s;
@@ -93,10 +113,4 @@ button {
     background-size: cover;
     background-repeat: no-repeat;
 }
-.closeButton{
-    width: 25px;
-    height: 25px;
-    background-image: url('../imgs/icons/close.svg');
-    background-size: cover;
-    background-repeat: no-repeat;
-}
+

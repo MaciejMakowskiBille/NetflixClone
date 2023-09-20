@@ -1,0 +1,25 @@
+.settings-item__row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  align-items: start;
+  flex-wrap: wrap;
+  padding: 6px 0;
+
+  .settings-item__inputs,
+  .settings-item__password-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .settings-item__password-fields .settings-item__field {
+    height: 24px;
+  }
+
+  .settings-item__buttons {
+    display: flex;
+    gap: 20px;
+  }
+}

@@ -216,3 +216,27 @@ type UserType = {
   optInSubscription?: boolean;
   username: string;
 };
+
+type putUserType = {
+  email: string | null;
+  password: string | null;
+  phoneNumber: string | null;
+}
+
+type SettingsSchemaType = {
+  [key: string]: string | null;
+};
+
+type SettingsFormType = {
+  currentPassword: string | null;
+  password: string | null;
+  passwordConfirmation: string| null;
+  email: string | null;
+  phoneNumber: string | null;
+}
+
+type ChangePasswordType = {
+  currentPassword: string;
+  password: string;
+  passwordConfirmation: string;
+};

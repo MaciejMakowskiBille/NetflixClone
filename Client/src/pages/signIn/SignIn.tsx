@@ -27,11 +27,13 @@ export default function SignIn() {
 
   const onSubmit: SubmitHandler<SignInType> = async (data) => {
     try {
+
       const response = await signIn(data);
       if (response) {
         signInContext.setIsSignedIn(true);
         navigate("/profile");
       }
+
     } catch (error) {
       if (error instanceof Error) {
         setError("password", {

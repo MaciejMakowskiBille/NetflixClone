@@ -65,7 +65,7 @@
       "inversedBy": "users",
       "configurable": false
     },
-    "PhoneNumber": {
+    "phoneNumber": {
       "type": "biginteger"
     },
     "favoriteFilms": {
