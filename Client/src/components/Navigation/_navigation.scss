@@ -1,6 +1,6 @@
 @import '../../style/colors';
 
-nav{
+nav {
     display: flex;
     box-sizing: border-box;
     width: 100%;
@@ -12,9 +12,9 @@ nav{
     justify-content: space-between;
     border-bottom: 1px solid $purple;
 
-    .navLeft{
+    .navLeft {
         display: flex;
-        ul{
+        ul {
             height: 100%;
             font-size: medium;
             padding: 0;
@@ -22,29 +22,29 @@ nav{
             display: flex;
             align-items: center;
             list-style-type: none;
-    
-            li{
+
+            li {
                 margin-left: 1rem;
                 cursor: pointer;
                 transition: ease-in-out all 0.2s;
-    
-                &:hover{
+
+                &:hover {
                     color: $purpleLight;
                 }
             }
         }
     }
-    .navRight{
+    .navRight {
         display: flex;
         align-items: center;
-        gap:1rem;
+        gap: 1rem;
 
-        .navMenu{
+        .navMenu {
             display: flex;
             align-items: center;
-            gap:8px;
+            gap: 8px;
 
-            .menuArrow{
+            .menuArrow {
                 width: 16px;
                 height: 16px;
                 background-size: contain;
@@ -52,13 +52,13 @@ nav{
                 background-image: url('../imgs/icons/menuArrow.svg');
             }
         }
-        .navSearch{
+        .navSearch {
             height: 100%;
             display: flex;
-            flex-grow:initial;
-            input{
+            flex-grow: initial;
+            input {
                 background-color: $backgroundDrak;
-                color:$whiteText;
+                color: $whiteText;
             }
         }
     }
@@ -71,38 +71,37 @@ nav{
         height: fit-content;
         background-color: $black;
         opacity: 0;
-        transition:all 0.5s ease;
-      
+        transition: all 0.5s ease;
+
         &.open {
             opacity: 1;
             transform: translateY(1);
-            max-height: fit-content; 
-            padding-bottom: 1rem;
+            max-height: fit-content;
             z-index: 10;
-            
         }
-        &.close{
+        &.close {
             opacity: 0;
             height: fit-content;
             transform: translateY(-100%);
             padding-bottom: 0;
             z-index: -1;
         }
-      
-        .menu-item{
+        
+        .menu-item {
+            &:last-child {
+                border-bottom: none;
+            }
             font-size: medium;
             width: 100%;
             border-bottom: 1px $whiteText solid;
-            padding: 8px;
+            padding: 10px;
             box-sizing: border-box;
             cursor: pointer;
             transition: all ease-in-out 0.3s;
 
-            &:hover{
+            &:hover {
                 color: $purpleLight;
             }
-
         }
-        
     }
 }

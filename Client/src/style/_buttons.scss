@@ -1,116 +1,140 @@
-@import "fonts.scss";
+@import 'fonts.scss';
 
-@import "./colors.scss";
+@import './colors.scss';
 
 button {
-  font-family: "Roboto";
-  letter-spacing: normal;
-  padding: 8px 16px;
-  border-radius: 5px;
-  border: none;
-  box-sizing: content-box;
-  font-weight: bold;
-  cursor: pointer;
-  transition: ease-in-out 0.2s all;
+    font-family: 'Roboto';
+    letter-spacing: normal;
+    padding: 8px 16px;
+    border-radius: 5px;
+    border: none;
+    box-sizing: content-box;
+    font-weight: bold;
+    cursor: pointer;
+    transition: ease-in-out 0.2s all;
 }
 
 .button-primary {
-  background-color: $purple;
-
-  color: $whiteText;
-  &:hover {
-    background-color: $purpleLight;
-  }
-  &:active {
     background-color: $purple;
-    box-shadow: inset $black 0 0 5px;
-  }
+
+    color: $whiteText;
+    &:hover {
+        background-color: $purpleLight;
+    }
+    &:active {
+        background-color: $purple;
+        box-shadow: inset $black 0 0 5px;
+    }
 }
 
 .button-secondary {
-  background-color: $backgroundDrak;
-  color: $whiteText;
-  border: 2px $purple solid;
-
-  &:hover {
-    background-color: $purpleDark;
-    color: $whiteText;
-    border: 2px $whiteText solid;
-  }
-  &:active {
     background-color: $backgroundDrak;
-    box-shadow: inset $black 0 0 5px;
-    color: $purple;
+    color: $whiteText;
     border: 2px $purple solid;
-  }
+
+    &:hover {
+        background-color: $purpleDark;
+        color: $whiteText;
+        border: 2px $whiteText solid;
+    }
+    &:active {
+        background-color: $backgroundDrak;
+        box-shadow: inset $black 0 0 5px;
+        color: $purple;
+        border: 2px $purple solid;
+    }
 }
 
-.button-exit{
+.button-exit {
     background-color: $red;
     color: $whiteText;
-    &:hover{
+    &:hover {
         background-color: $redLight;
-        color:$whiteText;
+        color: $whiteText;
     }
-    &:active{
+    &:active {
         background-color: $red;
         box-shadow: inset $black 0 0 5px;
-        color:$whiteText;
-
+        color: $whiteText;
     }
 }
 .iconButton {
-  width: 40px;
-  height: 40px;
-  background-size: cover;
+    width: 40px;
+    height: 40px;
+    background-size: cover;
 }
 .favButton {
-  background-image: url("../imgs/movieTile/Favorite.svg");
+    background-image: url('../imgs/movieTile/Favorite.svg');
 }
 .activeFavButton {
-  background-image: url("../imgs/icons/favorite-active.svg");
+    background-image: url('../imgs/icons/favorite-active.svg');
 }
 .moreButton {
-  background-image: url("../imgs/movieTile/More.svg");
+    background-image: url('../imgs/movieTile/More.svg');
 }
 .playButton {
-  background-image: url("../imgs/movieTile/Play.svg");
-  z-index: 5;
+    background-image: url('../imgs/movieTile/Play.svg');
+    z-index: 5;
 }
 
-
 .textButton {
-  background-color: inherit;
-  border: none;
-  color: $pink;
-  cursor: pointer;
-  font-size: 16px;
-  &:hover {
-    color: $purpleLight;
-  }
+    background-color: inherit;
+    border: none;
+    color: $pink;
+    cursor: pointer;
+    font-size: 16px;
+    &:hover {
+        color: $purpleLight;
+    }
 }
 
 .closeButton {
-  width: 25px;
-  height: 25px;
-  background-image: url("../imgs/icons/close.svg");
-  background-size: cover;
-  background-repeat: no-repeat;
+    width: 25px;
+    height: 25px;
+    background-image: url('../imgs/icons/close.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
 }
-.addButton{
-    background-image: url('../imgs/icons/addIcon.svg');
+.addButton {
+    flex: 1;
+    position: relative;
+    width: max-content;
+    height: 20vw;
+    max-height: 200px;
     transition: all ease-in-out 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-    &:hover{
-        filter: drop-shadow($purple 1px 3px);
-        transform: scale(1.1);
+    &:hover &--image {
+      transform: scale(1.2);
+        opacity: 1;
+    }
+    &--image {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+        opacity: 0.7;
+        background-size: contain;
+        border-radius: 50%;
+        background-repeat: no-repeat;
+        height: 150px;
+        width: 150px;
+        transition: all ease-in-out 0.3s;
+    }
+
+    &--label {
+        width: max-content;
+        flex: 1;
+        margin-top: 20px;
+        height: 10%;
+        visibility: hidden;
     }
 }
-.searchButton{
+.searchButton {
     width: 30px;
     height: 30px;
     background-image: url('../imgs/icons/search.svg');
     background-size: cover;
     background-repeat: no-repeat;
 }
-
