@@ -24,8 +24,9 @@ const SelectProfilePage = () => {
     navigate("/");
   }
 
-  if (userProfiles && userProfiles[0]) {
+  if (userProfiles && userProfiles[0].attributes.avatar.data) {
     localStorage.setItem("profileId", `${userProfiles[0].id}`);
+    localStorage.setItem('avatarUrl', `${userProfiles[0].attributes.avatar.data.attributes.url}`)
   }
 
   useEffect(() => {

@@ -9,7 +9,7 @@
         gap: 2rem;
         position: relative;
     }
-    &Tile {
+    &__tile {
         width: 14vw;
         height: 14vw;
         transition: all ease-in-out 0.3s;
@@ -18,19 +18,39 @@
             cursor: pointer;
             color: $purpleLight;
         }
+
+        &--img {
+            width: 100%;
+            height: 100%;
+            background: #000;
+            object-fit: contain;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.507);
+            transition: all ease-in-out 0.3s;
+
+            img {
+                height: 100%;
+            }
+        }
+
+        &:hover &--img {
+            box-shadow: 0 0 10px $purpleLight;
+        }
+
+        &--name {
+            margin-top: 20px;
+            height: 10%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
     }
-    &Img {
-        width: 15vw;
-        min-height: 30vh;
-        background: #000;
-    }
-    &Name {
-        height: 10%;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+
     &-exit-button {
         position: absolute;
         right: 2rem;
